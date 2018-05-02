@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{ partial "meta.html" . }}
+    <title>{{ .Site.Title }}</title>
+    {{ partial "css.html" . }}
+  </head>
+  <body>
+    {{ block "main" . }}
+    <!-- TODO: default main content -->
+    {{ end }}
+
+    {{ partial "javascript.html" . }}
+  </body>
+</html>

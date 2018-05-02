@@ -1,0 +1,9 @@
+baseURL = "https://www.replicante.io/"
+languageCode = "en-gb"
+publishDir = "dist"
+theme = "replicante"
+title = "Replicante"
+
+
+[blackfriday]
+hrefTargetBlank = true
