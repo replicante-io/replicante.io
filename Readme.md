@@ -14,7 +14,14 @@ Layout
 Building
 --------
 ```bash
-# TODO: build theme assets
-# TODO: build books in all their versions
+# TODO: Build books in all their versions.
+
+# Build theme assets.
+cd themes/replicante/src
+npm install
+npm run build
+
+# Build the full site.
+cd ../../../
 hugo
 ```

@@ -1,0 +1,3 @@
+<% htmlWebpackPlugin.files.js.forEach((code) => { %>
+<script src="{{ "<%= code %>" | absURL }}"></script>
+<% }); %>
