@@ -41,6 +41,9 @@ const css = {
   entry: "./scss/index.scss",
   module: {
     rules: [{
+      test: /\.(png)$/,
+      use: 'url-loader'
+    }, {
       test: /\.(scss)$/,
       use: css_loader
     }]

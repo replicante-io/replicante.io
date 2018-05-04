@@ -1,0 +1,35 @@
+<nav class="navbar top navbar-expand-md navbar-light">
+  <div class="container">
+    <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target=".navbar-toggle-target"
+            aria-expanded="false" aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 navbar-toggle-target">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item{{ if .IsHome }} active{{ end }}">
+          <a class="nav-link" href="{{ "/" | absURL }}">Home</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-collapse collapse w-100 navbar-toggle-target">
+      <ul class="navbar-nav ml-auto">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.nav }}
+        {{ $active := or ($currentPage.IsMenuCurrent "nav" .) ($currentPage.HasMenuCurrent "nav" .) }}
+        <li class="nav-item{{if $active }} active{{end}}">
+          <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/replicante-io">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

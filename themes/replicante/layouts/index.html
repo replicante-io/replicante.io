@@ -1,3 +1,14 @@
+{{ define "title" }}
+<title>{{ .Title }}</title>
+{{ end }}
+
+
 {{ define "main" }}
-<!-- TODO: build index page -->
+<div class="landing">
+</div>
+
+<div class="container page">
+  <!-- TODO: build index page -->
+  {{ .Content }}
+</div>
 {{ end }}

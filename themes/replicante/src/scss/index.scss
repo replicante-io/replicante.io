@@ -1,1 +1,20 @@
 @import "~bootstrap/scss/bootstrap";
+
+nav.navbar.top {
+  font-size: 0.95em;
+  border-bottom: 2px solid rgba(181, 113, 216, 0.75);
+  margin-bottom: 0em;
+  padding-bottom: 0em;
+}
+
+div.landing {
+  background-color: rgba(181, 113, 216, 0.75);
+  // Source: https://www.transparenttextures.com/gplay.html
+  background-image: url("./gplay.png");
+  min-height: 320px;
+  width: 100%;
+}
+
+div.container.page {
+  margin-top: 1em;
+}

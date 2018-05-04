@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     {{ partial "meta.html" . }}
-    <title>{{ .Site.Title }}</title>
+    {{ block "title" . }}
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    {{ end }}
     {{ partial "css.html" . }}
   </head>
   <body>
-    {{ block "main" . }}
-    <!-- TODO: default main content -->
-    {{ end }}
-
+    {{ partial "navbar.html" . }}
+    {{ block "main" . }}{{ end }}
     {{ partial "js.html" . }}
   </body>
 </html>
