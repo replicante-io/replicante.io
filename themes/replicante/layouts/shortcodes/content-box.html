@@ -1,0 +1,16 @@
+<div class="content-box col-12 col-md-6 col-xl-4">
+  <div class="card{{ if eq (.Get "future") "true" }} future{{ end }}">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ .Get "title" }}
+        {{ if eq (.Get "future") "true" }}
+        <br />
+        <span class="badge badge-pill badge-secondary">Coming soon</span>
+        {{ end }}
+      </h5>
+      <div class="card-text text-left">
+        {{ .Inner }}
+      </div>
+    </div>
+  </div>
+</div>

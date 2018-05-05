@@ -1,0 +1,15 @@
+{{ $org := .Get "org" }}
+{{ $repo := .Get "repo" }}
+<p>
+  <!-- Star -->
+  <a class="github-button"
+     href="https://github.com/{{ $org }}/{{ $repo }}"
+     data-icon="octicon-star" data-size="large" data-show-count="true"
+     aria-label="Star {{ $org }}/{{ $repo }} on GitHub">Star</a>
+
+  <!-- Watch -->
+  <a class="github-button"
+     href="https://github.com/{{ $org }}/{{ $repo }}/subscription"
+     data-icon="octicon-eye" data-size="large" data-show-count="true"
+     aria-label="Watch {{ $org }}/{{ $repo }} on GitHub">Watch</a>
+</p>

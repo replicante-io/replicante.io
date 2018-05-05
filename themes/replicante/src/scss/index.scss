@@ -1,20 +1,63 @@
 @import "~bootstrap/scss/bootstrap";
 
+$brand: rgba(181, 113, 216, 0.75);
+$brand-dark: rgb(120, 61, 150);
+
+
 nav.navbar.top {
   font-size: 0.95em;
-  border-bottom: 2px solid rgba(181, 113, 216, 0.75);
+  border-bottom: 2px solid $brand;
   margin-bottom: 0em;
   padding-bottom: 0em;
 }
 
+
 div.landing {
-  background-color: rgba(181, 113, 216, 0.75);
+  background-color: $brand;
   // Source: https://www.transparenttextures.com/gplay.html
   background-image: url("./gplay.png");
-  min-height: 320px;
   width: 100%;
+
+  div.container {
+    color: white;
+    padding-bottom: 3em;
+    padding-top: 3em;
+    text-align: center;
+    /* offset-x | offset-y | blur-radius | color */
+    text-shadow: 1px 1px 2px black;
+
+    .title {
+      font-size: 3.5em;
+    }
+
+    .subtitle {
+      color: rgb(228, 228, 228);
+    }
+  }
 }
 
+
 div.container.page {
-  margin-top: 1em;
+  margin-top: 2em;
+}
+
+
+div.content-box {
+  margin-bottom: 2em;
+  text-align: center;
+
+  div.card {
+    border-color: $brand;
+    border-radius: 0;
+    box-shadow: 1px 1px 2px $brand-dark;
+
+    &.future {
+      border-color: $gray-600;
+      box-shadow: 1px 1px 2px $gray-600;
+
+      span.badge {
+        font-size: xx-small;
+      }
+    }
+  }
 }

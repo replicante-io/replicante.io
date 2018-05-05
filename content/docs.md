@@ -8,3 +8,15 @@ menu:
 ---
 
 TODO: docs
+
+{{% row %}}
+
+{{% content-box title="Model specification" %}}
+TODO
+{{% /content-box %}}
+
+{{% content-box title="Admin guide" %}}
+TODO
+{{% /content-box %}}
+
+{{% /row %}}
