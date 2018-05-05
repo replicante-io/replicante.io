@@ -6382,3 +6382,6 @@ div.content-box {
       box-shadow: 1px 1px 2px #6c757d; }
       div.content-box div.card.future span.badge {
         font-size: xx-small; }
+
+span.roadmap-item-body > p {
+  margin: 0; }
