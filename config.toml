@@ -1,4 +1,5 @@
 baseURL = "https://www.replicante.io/"
+disableKinds = ["taxonomyTerm", "sitemap"]
 languageCode = "en-gb"
 publishDir = "dist"
 theme = "replicante"

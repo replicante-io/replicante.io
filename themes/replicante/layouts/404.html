@@ -1,6 +1,15 @@
+{{ define "title" }}
+<title>Page not found | {{ .Site.Title }}</title>
+{{ end }}
+
+
 {{ define "main" }}
-<div class="container page">
-  <!-- TODO: build 404 page -->
-  {{ .Content }}
+<div class="landing not-found">
+  <div class="container">
+    <h1 class="title">404</h1>
+    <h1 class="title">Page Not Found</h1>
+    <h4 class="subtitle">Sorry, it seems what you are looking for is no longer here.</h4>
+    <h4 class="subtitle">Maybe try the links at the top?</h4>
+  </div>
 </div>
 {{ end }}

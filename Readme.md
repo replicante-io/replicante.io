@@ -23,5 +23,13 @@ npm run build
 
 # Build the full site.
 cd ../../../
+rm -r dist/
 hugo
+```
+
+
+Publishing
+----------
+```bash
+aws s3 sync dist/ s3://<bucket>/
 ```
