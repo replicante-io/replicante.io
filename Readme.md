@@ -7,14 +7,16 @@ Layout
 ------
 
   * The static site is built with [Hugo](https://gohugo.io/) (v0.40.2).
-  * Documentation is stored in separate repos.
   * Documentation is built with [GitBook](https://toolchain.gitbook.com/).
+  * Documentation sources are stored in separate repos.
 
 
 Building
 --------
 ```bash
-# TODO: Build books in all their versions.
+# (Re-)Build books (and each neede version).
+rm -r static/docs/<BOOK>/<VERSION>
+gitbook build <PATH/TO/BOOK> static/docs/<BOOK>/<VERSION>
 
 # Build theme assets.
 cd themes/replicante/src
