@@ -1,7 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 $brand: rgba(181, 113, 216, 0.75);
-$brand-dark: rgb(120, 61, 150);
+$brand-light: rgba(181, 113, 216, 0.15);
 
 
 nav.navbar.top {
@@ -52,17 +52,15 @@ div.content-box {
   text-align: center;
 
   div.card {
-    border-color: $brand;
-    border-radius: 0;
-    box-shadow: 1px 1px 2px $brand-dark;
+    border: none;
+    box-shadow: none;
 
-    &.future {
-      border-color: $gray-600;
-      box-shadow: 1px 1px 2px $gray-600;
+    &:hover {
+      background: $brand-light;
+    }
 
-      span.badge {
-        font-size: xx-small;
-      }
+    &.future span.badge {
+      font-size: xx-small;
     }
   }
 }

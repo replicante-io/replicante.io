@@ -6378,14 +6378,12 @@ div.content-box {
   margin-bottom: 2em;
   text-align: center; }
   div.content-box div.card {
-    border-color: rgba(181, 113, 216, 0.75);
-    border-radius: 0;
-    box-shadow: 1px 1px 2px #783d96; }
-    div.content-box div.card.future {
-      border-color: #6c757d;
-      box-shadow: 1px 1px 2px #6c757d; }
-      div.content-box div.card.future span.badge {
-        font-size: xx-small; }
+    border: none;
+    box-shadow: none; }
+    div.content-box div.card:hover {
+      background: rgba(181, 113, 216, 0.15); }
+    div.content-box div.card.future span.badge {
+      font-size: xx-small; }
 
 span.roadmap-item-body > p {
   margin: 0; }
