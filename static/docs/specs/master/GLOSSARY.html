@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · Replicante - Protocol and Model Specifications</title>
+        <title>Glossary · Replicante - Protocol and Model Specifications</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,8 +65,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="./" />
     
+    <link rel="prev" href="agent/" />
     
 
     </head>
@@ -95,7 +95,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -321,7 +321,7 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="GLOSSARY.html">
+        <li class="chapter active" data-level="2.1" data-path="GLOSSARY.html">
             
                 <a href="GLOSSARY.html">
             
@@ -364,7 +364,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Glossary</a>
     </h1>
 </div>
 
@@ -379,30 +379,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
-<p>Datastores, even when very different if pourpose, often follow very similar
-approaches to clustering, high availability, failover, etcetera ...</p>
-<p>The aim of this specification is to defined a <a href="GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
-and defines all its properties.">model</a> that details the
-attributes, behaviours, and expectations needed of datastores.
-After that, we can view and operate on datastores through the <a href="GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
-and defines all its properties.">model</a>
-and expect the same results regardless of the software being manipulated.</p>
-<h2 id="what-is-a-datastore">What is a datastore?</h2>
-<p>A <a href="GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
+                                <h2 id="datastore">Datastore</h2>
+<p>A software solution specialised in storing data for other software.
+The term <a href="GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
 The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> is any software that stores state.
-State is some information that, if lost, can&apos;t easly be regenerated.
-For example:</p>
-<ul>
-<li>A list of users is state: if lost, users would have to re-register.</li>
-<li>A cached web page is NOT state: if lost, the page can be fetch from the origin.</li>
-</ul>
-<p>This, combined with the fact that individual <a href="GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
+details of specific storage models or uses.">datastore</a> is used to avoid focus on
+details of specific storage models or uses.</p>
+<p>For the context of this project a <a href="GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
 The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> nodes
-store up to several terabytes of data, means that simple
-operations may become expensive and/or risky.</p>
+details of specific storage models or uses.">datastore</a> is more generically defined
+as a software that fullfils the requirements of the <a href="model/">model</a>.</p>
+<h2 id="model">Model</h2>
+<p>A conceptual representation of an abstract system that detiles
+and defines all its properties.</p>
+<p>Wikipedia definition: <a href="https://en.wikipedia.org/wiki/Conceptual_model" target="_blank">https://en.wikipedia.org/wiki/Conceptual_model</a></p>
+<h2 id="node">Node</h2>
+<p>An instance of the <a href="GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
+The term datastore is used to avoid focus on
+details of specific storage models or uses.">datastore</a>, usually running on
+different (vitual or pythsical) machines.</p>
+<h2 id="primary">Primary</h2>
+<p>The <a href="GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a> in the cluster that is responsible
+for coordination of a specific <a href="GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a>.</p>
+<h2 id="secondary">Secondary</h2>
+<p>A <a href="GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a> in the cluster that is responsible for keeping a copy of a <a href="GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a>.</p>
+<h2 id="shard">Shard</h2>
+<p>A subset of the data in the <a href="GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
+The term datastore is used to avoid focus on
+details of specific storage models or uses.">datastore</a>.
+Each <a href="GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a> is managed and operated on indepently of other.
+Shards usually also fail independently.</p>
 
                                 
                                 </section>
@@ -430,10 +444,10 @@ operations may become expensive and/or risky.</p>
 
             
                 
-                
-                <a href="./#what-is-a-datastore" class="navigation navigation-next navigation-unique" aria-label="Next page: What is a datastore?">
-                    <i class="fa fa-angle-right"></i>
+                <a href="agent/#get-apiv1status" class="navigation navigation-prev navigation-unique" aria-label="Previous page: GET /api/v1/status">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -442,7 +456,7 @@ operations may become expensive and/or risky.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"What is a datastore?","level":"1.1.1","depth":2,"anchor":"#what-is-a-datastore","path":"README.md","ref":"README.md#what-is-a-datastore","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","alerts@0.2.0","versions@2.1.4"],"styles":{"website":"styles/all.css","ebook":"styles/all.css","pdf":"styles/all.css","mobi":"styles/all.css","epub":"styles/all.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Unreleased (Version 0.1.0)","value":"https://replicante.io/docs/specs/0.1.0/"}]},"alerts":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"README.md","mtime":"2017-12-11T23:46:29.604Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-05T22:07:00.531Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Glossary","level":"2.1","depth":1,"previous":{"title":"GET /api/v1/status","level":"1.4.2","depth":2,"anchor":"#get-apiv1status","path":"agent/README.md","ref":"agent/README.md#get-apiv1status","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","alerts@0.2.0","versions@2.1.4"],"styles":{"website":"styles/all.css","ebook":"styles/all.css","pdf":"styles/all.css","mobi":"styles/all.css","epub":"styles/all.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"}]},"alerts":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"GLOSSARY.md","mtime":"2017-12-24T15:06:35.825Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-06T09:48:35.596Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
