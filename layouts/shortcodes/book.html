@@ -1,0 +1,3 @@
+{{- $id := .Get "id" -}}
+{{- $book := index .Site.Data.books $id -}}
+<a href="/docs/{{ $book.path }}/{{ $book.version }}/">{{ .Inner }}</a>
