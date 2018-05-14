@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>The Agent Protocol · Replicante - Protocol and Model Specifications</title>
+        <title>Shards information · Replicante - Protocol and Model Specifications</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="info.html" />
+    <link rel="next" href="../GLOSSARY.html" />
     
     
-    <link rel="prev" href="../model/mapping/zookeeper.html" />
+    <link rel="prev" href="info.html" />
     
 
     </head>
@@ -296,7 +296,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4" data-path="./">
+        <li class="chapter " data-level="1.4" data-path="./">
             
                 <a href="./">
             
@@ -323,7 +323,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="shards.html">
+        <li class="chapter active" data-level="1.4.2" data-path="shards.html">
             
                 <a href="shards.html">
             
@@ -391,7 +391,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >The Agent Protocol</a>
+        <a href=".." >Shards information</a>
     </h1>
 </div>
 
@@ -406,27 +406,45 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="the-agent-protocol"><a name="the-agent-protocol" class="plugin-anchor" href="#the-agent-protocol"><i class="fa fa-link" aria-hidden="true"></i></a>The Agent Protocol</h1>
+                                <h1 id="shards-information"><a name="shards-information" class="plugin-anchor" href="#shards-information"><i class="fa fa-link" aria-hidden="true"></i></a>Shards information</h1>
 <blockquote>
 <p><strong>[warning] Alpha state disclaimer</strong></p>
 <p>The protocol defined below is in early development cycle
 and is subject to (potentially breaking) change.</p>
 </blockquote>
-<p>The Agents interface is a JSON encoded HTTP API.<br>The API is versioned so that breaking changes can be rolled out gradually
-with version compatibility &quot;windows&quot;.</p>
-<h2 id="agent-information"><a name="agent-information" class="plugin-anchor" href="#agent-information"><i class="fa fa-link" aria-hidden="true"></i></a>Agent information</h2>
-<p><div class="rest"><div class="method get">GET</div><div class="url get">/api/v1/info/agent</div><div class="desc get rtl">
-    Returns information about the agent itself
-
-  </div><div class="method get">GET</div><div class="url get">/api/v1/info/datastore</div><div class="desc get rtl">
-    Returns information about the datastore
-</div></div></p>
-<p><a href="info.html">Details aboud these endpoints</a></p>
-<h2 id="shards-information"><a name="shards-information" class="plugin-anchor" href="#shards-information"><i class="fa fa-link" aria-hidden="true"></i></a>Shards information</h2>
 <p><div class="rest"><div class="method get">GET</div><div class="url get">/api/v1/shards</div><div class="desc get rtl">
     Returns detailed information about shards
 </div></div></p>
-<p><a href="shards.html">Details aboud these endpoints</a></p>
+<div class="api-method"><div class="api-method-definition"><p>The following information MUST be included:</p>
+<ul>
+<li>A list of all <code>shards</code> on the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a>:<ul>
+<li>The <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a> <code>id</code>.</li>
+<li>The <code>role</code> of the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a> for the <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a>.</li>
+<li>The <code>lag</code> (in seconds) of a <a href="../GLOSSARY.html#secondary" class="glossary-term" title="A node in the cluster that is responsible for keeping a copy of a shard.">secondary</a> from its <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
+for coordination of a specific shard.">primary</a>.</li>
+<li>The UNIX timestamp (in seconds) of the last operation on the <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a>.</li>
+</ul>
+</li>
+</ul>
+</div><div class="api-method-code"><div class="api-method-example"><p>Example:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;shards&quot;</span>: [{
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;shard_id&quot;</span>,
+    <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;SECONDARY&quot;</span>,
+    <span class="hljs-string">&quot;lag&quot;</span>: <span class="hljs-number">12345</span>,
+    <span class="hljs-string">&quot;last_op&quot;</span>: <span class="hljs-number">67890</span>
+  }]
+}
+</code></pre>
+</div></div></div>
 
                                 
                                 </section>
@@ -460,7 +478,7 @@ with version compatibility &quot;windows&quot;.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"The Agent Protocol","level":"1.4","depth":1,"next":{"title":"Agent information","level":"1.4.1","depth":2,"path":"agent/info.md","ref":"agent/info.md","articles":[]},"previous":{"title":"(TODO) Zookeeper","level":"1.3.4","depth":2,"path":"model/mapping/zookeeper.md","ref":"model/mapping/zookeeper.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","alerts@0.2.0","anchors@0.7.1","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/all.css","ebook":"styles/all.css","pdf":"styles/all.css","mobi":"styles/all.css","epub":"styles/all.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"alerts":{},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"agent/README.md","mtime":"2018-05-12T11:15:52.813Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-14T13:20:51.509Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Shards information","level":"1.4.2","depth":2,"next":{"title":"Glossary","level":"2.1","depth":1,"path":"GLOSSARY.md","ref":"GLOSSARY.md","articles":[]},"previous":{"title":"Agent information","level":"1.4.1","depth":2,"path":"agent/info.md","ref":"agent/info.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","alerts@0.2.0","anchors@0.7.1","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/all.css","ebook":"styles/all.css","pdf":"styles/all.css","mobi":"styles/all.css","epub":"styles/all.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"alerts":{},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"agent/shards.md","mtime":"2018-05-12T11:09:22.500Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-14T13:20:51.509Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

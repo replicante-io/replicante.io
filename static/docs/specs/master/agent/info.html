@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>The Agent Protocol · Replicante - Protocol and Model Specifications</title>
+        <title>Agent information · Replicante - Protocol and Model Specifications</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="info.html" />
+    <link rel="next" href="shards.html" />
     
     
-    <link rel="prev" href="../model/mapping/zookeeper.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -296,7 +296,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4" data-path="./">
+        <li class="chapter " data-level="1.4" data-path="./">
             
                 <a href="./">
             
@@ -310,7 +310,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="info.html">
+        <li class="chapter active" data-level="1.4.1" data-path="info.html">
             
                 <a href="info.html">
             
@@ -391,7 +391,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >The Agent Protocol</a>
+        <a href=".." >Agent information</a>
     </h1>
 </div>
 
@@ -406,27 +406,60 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="the-agent-protocol"><a name="the-agent-protocol" class="plugin-anchor" href="#the-agent-protocol"><i class="fa fa-link" aria-hidden="true"></i></a>The Agent Protocol</h1>
+                                <h1 id="agent-information"><a name="agent-information" class="plugin-anchor" href="#agent-information"><i class="fa fa-link" aria-hidden="true"></i></a>Agent information</h1>
 <blockquote>
 <p><strong>[warning] Alpha state disclaimer</strong></p>
 <p>The protocol defined below is in early development cycle
 and is subject to (potentially breaking) change.</p>
 </blockquote>
-<p>The Agents interface is a JSON encoded HTTP API.<br>The API is versioned so that breaking changes can be rolled out gradually
-with version compatibility &quot;windows&quot;.</p>
-<h2 id="agent-information"><a name="agent-information" class="plugin-anchor" href="#agent-information"><i class="fa fa-link" aria-hidden="true"></i></a>Agent information</h2>
 <p><div class="rest"><div class="method get">GET</div><div class="url get">/api/v1/info/agent</div><div class="desc get rtl">
     Returns information about the agent itself
+</div></div></p>
+<div class="api-method"><div class="api-method-definition"><p>The following information MUST be included:</p>
+<ul>
+<li><code>agent</code> information:<ul>
+<li><code>version</code> information:</li>
+<li>Version <code>number</code>: the <a href="https://semver.org/" target="_blank">SemVer</a> agent version.</li>
+<li>Version control <code>checkout</code>: VCS ID of the code that was build.</li>
+<li>Version control <code>taint</code> status: indicates uncommitted changes to the code.</li>
+</ul>
+</li>
+</ul>
+</div><div class="api-method-code"><div class="api-method-example"><p>Example:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;version&quot;</span>: {
+    <span class="hljs-string">&quot;number&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+    <span class="hljs-string">&quot;checkout&quot;</span>: <span class="hljs-string">&quot;11a24d9c3940f60e527c571680d64e80e0889abe&quot;</span>,
+    <span class="hljs-string">&quot;taint&quot;</span>: <span class="hljs-string">&quot;not tainted&quot;</span>
+  }
+}
+</code></pre>
+</div></div></div>
 
-  </div><div class="method get">GET</div><div class="url get">/api/v1/info/datastore</div><div class="desc get rtl">
+
+<p><div class="rest"><div class="method get">GET</div><div class="url get">/api/v1/info/datastore</div><div class="desc get rtl">
     Returns information about the datastore
 </div></div></p>
-<p><a href="info.html">Details aboud these endpoints</a></p>
-<h2 id="shards-information"><a name="shards-information" class="plugin-anchor" href="#shards-information"><i class="fa fa-link" aria-hidden="true"></i></a>Shards information</h2>
-<p><div class="rest"><div class="method get">GET</div><div class="url get">/api/v1/shards</div><div class="desc get rtl">
-    Returns detailed information about shards
-</div></div></p>
-<p><a href="shards.html">Details aboud these endpoints</a></p>
+<div class="api-method"><div class="api-method-definition"><p>The following information MUST be included:</p>
+<ul>
+<li><code>datastore</code> information:<ul>
+<li><code>cluster</code>: datastore determined cluster name.</li>
+<li><code>kind</code>: datastore software managed by the agent.</li>
+<li><code>name</code>: datastore determined, cluster unique, <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a> name.</li>
+<li><code>version</code>: the datastore version.</li>
+</ul>
+</li>
+</ul>
+</div><div class="api-method-code"><div class="api-method-example"><p>Example:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;cluster&quot;</span>: <span class="hljs-string">&quot;replica-set-name&quot;</span>,
+  <span class="hljs-string">&quot;kind&quot;</span>: <span class="hljs-string">&quot;MongoDB&quot;</span>,
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;host.domain.com:27017&quot;</span>,
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;3.4.5&quot;</span>
+}
+</code></pre>
+</div></div></div>
 
                                 
                                 </section>
@@ -460,7 +493,7 @@ with version compatibility &quot;windows&quot;.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"The Agent Protocol","level":"1.4","depth":1,"next":{"title":"Agent information","level":"1.4.1","depth":2,"path":"agent/info.md","ref":"agent/info.md","articles":[]},"previous":{"title":"(TODO) Zookeeper","level":"1.3.4","depth":2,"path":"model/mapping/zookeeper.md","ref":"model/mapping/zookeeper.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","alerts@0.2.0","anchors@0.7.1","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/all.css","ebook":"styles/all.css","pdf":"styles/all.css","mobi":"styles/all.css","epub":"styles/all.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"alerts":{},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"agent/README.md","mtime":"2018-05-12T11:15:52.813Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-14T13:20:51.509Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Agent information","level":"1.4.1","depth":2,"next":{"title":"Shards information","level":"1.4.2","depth":2,"path":"agent/shards.md","ref":"agent/shards.md","articles":[]},"previous":{"title":"The Agent Protocol","level":"1.4","depth":1,"path":"agent/README.md","ref":"agent/README.md","articles":[{"title":"Agent information","level":"1.4.1","depth":2,"path":"agent/info.md","ref":"agent/info.md","articles":[]},{"title":"Shards information","level":"1.4.2","depth":2,"path":"agent/shards.md","ref":"agent/shards.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-sharing","alerts@0.2.0","anchors@0.7.1","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/all.css","ebook":"styles/all.css","pdf":"styles/all.css","mobi":"styles/all.css","epub":"styles/all.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"alerts":{},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"agent/info.md","mtime":"2018-05-12T11:07:59.493Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-14T13:20:51.509Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -21,6 +21,14 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-rest/rest.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions/plugin.css">
                 
             
@@ -34,6 +42,10 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
                 
             
         
@@ -213,9 +225,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="mapping.html">
+        <li class="chapter " data-level="1.3" data-path="mapping/">
             
-                <a href="mapping.html">
+                <a href="mapping/">
             
                     
                     Examples: mapping DBs to the Model
@@ -227,12 +239,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="mapping.html">
+        <li class="chapter " data-level="1.3.1" data-path="mapping/mongodb.html">
             
-                <a href="mapping.html#mongodb-replica-set">
+                <a href="mapping/mongodb.html">
             
                     
-                    MongoDB Replica Set
+                    MongoDB
             
                 </a>
             
@@ -240,12 +252,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="mapping.html">
+        <li class="chapter " data-level="1.3.2" data-path="mapping/kafka.html">
             
-                <a href="mapping.html#mongodb-sharded">
+                <a href="mapping/kafka.html">
             
                     
-                    MongoDB Sharded
+                    (TODO) Kafka
             
                 </a>
             
@@ -253,12 +265,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="mapping.html">
+        <li class="chapter " data-level="1.3.3" data-path="mapping/rabbitmq.html">
             
-                <a href="mapping.html#rabbitmq">
+                <a href="mapping/rabbitmq.html">
             
                     
                     (TODO) RabbitMQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="mapping/zookeeper.html">
+            
+                <a href="mapping/zookeeper.html">
+            
+                    
+                    (TODO) Zookeeper
             
                 </a>
             
@@ -285,12 +310,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../agent/">
+        <li class="chapter " data-level="1.4.1" data-path="../agent/info.html">
             
-                <a href="../agent/#get-apiv1info">
+                <a href="../agent/info.html">
             
                     
-                    GET /api/v1/info
+                    Agent information
             
                 </a>
             
@@ -298,12 +323,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../agent/">
+        <li class="chapter " data-level="1.4.2" data-path="../agent/shards.html">
             
-                <a href="../agent/#get-apiv1status">
+                <a href="../agent/shards.html">
             
                     
-                    GET /api/v1/status
+                    Shards information
             
                 </a>
             
@@ -381,22 +406,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="the-datastore-model">The Datastore Model</h1>
+                                <h1 id="the-datastore-model"><a name="the-datastore-model" class="plugin-anchor" href="#the-datastore-model"><i class="fa fa-link" aria-hidden="true"></i></a>The Datastore Model</h1>
 <blockquote>
 <p><strong>[warning] Alpha state disclaimer</strong></p>
 <p>The <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
 and defines all its properties.">model</a> defined below is in early development cycle
 and is subject to (potentially breaking) change.</p>
-<p>The <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
-and defines all its properties.">model</a> is expected to change as it is used for implementations.
-In particular, required metrics can be &quot;downgraded&quot; to suggested metrics
-if most datastores do not expose the information.</p>
 </blockquote>
 <p>Any (collection of) software that fullfills the requirements and expectations
 of the <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
-and defines all its properties.">model</a> defined in this document is considered a <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a>.</p>
+and defines all its properties.">model</a> defined in this document is considered a datastore.</p>
 <p>The difficulty in defining a <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
 and defines all its properties.">model</a> is to find the balance
 between generality and specificity:</p>
@@ -411,32 +430,24 @@ and defines all its properties.">model</a> also should be specific enough so tha
 and defines all its properties.">model</a> are:</p>
 <ul>
 <li>To detemine which softwares can be modelled and how.</li>
-<li>To implement agents that sit between the <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> and the central system.</li>
+<li>To implement agents that sit between the datastore and the central system.</li>
 <li>To detail what information is available and what actions can be performed
 by the agents.</li>
 <li>To determine what features can be built on top of this standardised layer.</li>
 </ul>
-<h2 id="administration">Administration</h2>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> MUST provide the following administration commands:</p>
+<h2 id="administration"><a name="administration" class="plugin-anchor" href="#administration"><i class="fa fa-link" aria-hidden="true"></i></a>Administration</h2>
+<p>The datastore MUST provide the following administration commands:</p>
 <ul>
 <li>A cluster-unique name for the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>.</li>
 <li>Version information.</li>
 </ul>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> MAY provide the following administration commands:</p>
+<p>The datastore MAY provide the following administration commands:</p>
 <ul>
 <li>Cluster name shared by all nodes.</li>
 </ul>
-<h2 id="clustering">Clustering</h2>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> MUST support clustering by running a
+<h2 id="clustering"><a name="clustering" class="plugin-anchor" href="#clustering"><i class="fa fa-link" aria-hidden="true"></i></a>Clustering</h2>
+<p>The datastore MUST support clustering by running a
 process on one or more (virtual or physical) machines.
 Each process in the cluster is a <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>.</p>
@@ -445,10 +456,8 @@ in the cluster (same applies to nodes configuration).
 This allows the cluster to have heterogeneous components as long as they
 all follow the <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
 and defines all its properties.">model</a>.</p>
-<h2 id="replication">Replication</h2>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> MUST support a <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
+<h2 id="replication"><a name="replication" class="plugin-anchor" href="#replication"><i class="fa fa-link" aria-hidden="true"></i></a>Replication</h2>
+<p>The datastore MUST support a <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
 for coordination of a specific shard.">primary</a>/secondaries replication system.
 This means that each <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
@@ -457,9 +466,7 @@ for coordination of a specific shard.">primary</a> <a href="../GLOSSARY.html#nod
 different (vitual or pythsical) machines.">node</a>
 with zero or more <a href="../GLOSSARY.html#secondary" class="glossary-term" title="A node in the cluster that is responsible for keeping a copy of a shard.">secondary</a> nodes that replicate the data from another <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>.</p>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> MUST provide the following information:</p>
+<p>The datastore MUST provide the following information:</p>
 <ul>
 <li>For each <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>, which shards are on the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
@@ -482,9 +489,7 @@ Such details may also be expensive to compute or, worse, require connections to 
 (i.e, it does not require connections to other nodes).</li>
 <li>The information can be computed relatively efficiently.</li>
 </ul>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> SHOULD provide the following information:</p>
+<p>The datastore SHOULD provide the following information:</p>
 <ul>
 <li>For each non-<a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
 for coordination of a specific shard.">primary</a> <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
@@ -494,10 +499,8 @@ different (vitual or pythsical) machines.">node</a>, the replication lag for the
 different (vitual or pythsical) machines.">node</a>.
 The lag must be at least at the second granularity.</li>
 </ul>
-<h2 id="sharding">Sharding</h2>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> MUST organize the data in one or more <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+<h2 id="sharding"><a name="sharding" class="plugin-anchor" href="#sharding"><i class="fa fa-link" aria-hidden="true"></i></a>Sharding</h2>
+<p>The datastore MUST organize the data in one or more <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
 Shards usually also fail independently.">shard</a>.
 Shards are independent units of data, each with their own <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
@@ -506,22 +509,16 @@ secondaries nodes.</p>
 <p>All datastores have at least one <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
 Shards usually also fail independently.">shard</a>: the entire dataset.</p>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> MUST provide the following information:</p>
+<p>The datastore MUST provide the following information:</p>
 <ul>
 <li>For each <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
 Shards usually also fail independently.">shard</a>, the time of the last operation.</li>
 </ul>
-<h2 id="performance">Performance</h2>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> SHOULD provide some performance metrics for users to understand
+<h2 id="performance"><a name="performance" class="plugin-anchor" href="#performance"><i class="fa fa-link" aria-hidden="true"></i></a>Performance</h2>
+<p>The datastore SHOULD provide some performance metrics for users to understand
 the overall state of the system.</p>
-<p>The <a href="../GLOSSARY.html#datastore" class="glossary-term" title="A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.">datastore</a> SHOULD provide the following metrics:</p>
+<p>The datastore SHOULD provide the following metrics:</p>
 <ul>
 <li>Number of clients connected.</li>
 <li>Number of read/writes.</li>
@@ -552,24 +549,14 @@ details of specific storage models or uses.">datastore</a> SHOULD provide the fo
             </div>
 
             
-                
-                <a href="../#what-is-a-datastore" class="navigation navigation-prev " aria-label="Previous page: What is a datastore?">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="./#administration" class="navigation navigation-next " aria-label="Next page: Administration">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
+
         
     </div>
 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"The Datastore Model","level":"1.2","depth":1,"next":{"title":"Administration","level":"1.2.1","depth":2,"anchor":"#administration","path":"model/README.md","ref":"model/README.md#administration","articles":[]},"previous":{"title":"What is a datastore?","level":"1.1.1","depth":2,"anchor":"#what-is-a-datastore","path":"README.md","ref":"README.md#what-is-a-datastore","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","alerts@0.2.0","versions@2.1.4"],"styles":{"website":"styles/all.css","ebook":"styles/all.css","pdf":"styles/all.css","mobi":"styles/all.css","epub":"styles/all.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"}]},"alerts":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"model/README.md","mtime":"2018-04-01T21:41:41.880Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-06T09:48:35.596Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"The Datastore Model","level":"1.2","depth":1,"next":{"title":"Administration","level":"1.2.1","depth":2,"anchor":"#administration","path":"model/README.md","ref":"model/README.md#administration","articles":[]},"previous":{"title":"What is a datastore?","level":"1.1.1","depth":2,"anchor":"#what-is-a-datastore","path":"README.md","ref":"README.md#what-is-a-datastore","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","alerts@0.2.0","anchors@0.7.1","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/all.css","ebook":"styles/all.css","pdf":"styles/all.css","mobi":"styles/all.css","epub":"styles/all.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"alerts":{},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"model/README.md","mtime":"2018-05-12T12:00:28.566Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-14T13:20:51.509Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -604,6 +591,10 @@ details of specific storage models or uses.">datastore</a> SHOULD provide the fo
     
         
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
         
     
 
