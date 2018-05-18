@@ -6366,6 +6366,11 @@ div.landing {
       font-size: 3.5em; }
     div.landing div.container .subtitle {
       color: #e4e4e4; }
+    div.landing div.container .quicklinks {
+      padding-top: 2em;
+      text-shadow: none; }
+      div.landing div.container .quicklinks a {
+        margin-right: 1em; }
 
 div.landing.not-found div.container {
   padding-bottom: 6em;

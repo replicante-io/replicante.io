@@ -1,3 +1,7 @@
+manual:
+  path: 'manual'
+  version: 'master'
+
 specs:
   path: 'specs'
   version: 'master'

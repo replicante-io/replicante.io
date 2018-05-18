@@ -27,11 +27,11 @@ Support development and keep up to date with progress!
 
 {{< row >}}
 {{< roadmap-list >}}
-  {{% roadmap-todo %}}Documentation - Admin Guide{{% /roadmap-todo %}}
+  {{% roadmap-todo %}}Documentation - Agents Guide{{% /roadmap-todo %}}
 {{< /roadmap-list >}}
 
 {{< roadmap-list >}}
-  {{% roadmap-progress %}}Documentation - Datastore model and Agent's specification{{% /roadmap-progress %}}
+  {{% roadmap-progress %}}Documentation - User Guide{{% /roadmap-progress %}}
   {{% roadmap-progress %}}Finishing touches{{% /roadmap-progress %}}
 {{< /roadmap-list >}}
 
@@ -54,5 +54,6 @@ Support development and keep up to date with progress!
   {{% roadmap-done %}}Replicante core - datastore events log{{% /roadmap-done %}}
   {{% roadmap-done %}}Build a real website{{% /roadmap-done %}}
   {{% roadmap-done %}}Replicante core - command line utility (replictl){{% /roadmap-done %}}
+  {{% roadmap-done %}}Documentation - Datastore model and Agent's specification{{% /roadmap-done %}}
 {{< /roadmap-list >}}
 {{< /row >}}
