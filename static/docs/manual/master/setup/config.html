@@ -1,0 +1,641 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Configuration · Replicante User Manual</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../features/discovery.md" />
+    
+    
+    <link rel="prev" href="install.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">First steps</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../first-steps/architecture.html">
+            
+                <a href="../first-steps/architecture.html">
+            
+                    
+                    Architecture overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../first-steps/quickstart.html">
+            
+                <a href="../first-steps/quickstart.html">
+            
+                    
+                    Quick start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Setup</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="deps.html">
+            
+                <a href="deps.html">
+            
+                    
+                    Dependencies
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="config.html">
+            
+                <a href="config.html">
+            
+                    
+                    Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Features</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../features/discovery.md">
+            
+                <span>
+            
+                    
+                    Agents discovery
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../features/events.md">
+            
+                <span>
+            
+                    
+                    Events trail
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../features/webui.md">
+            
+                <span>
+            
+                    
+                    WebUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../features/introspection.md">
+            
+                <span>
+            
+                    
+                    Introspection
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Upgrades</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../upgrades/rolling.md">
+            
+                <span>
+            
+                    
+                    Rolling upgrades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../upgrades/store.md">
+            
+                <span>
+            
+                    
+                    Store changes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">replictl</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../replictl/README.md">
+            
+                <span>
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../replictl/checks.md">
+            
+                <span>
+            
+                    
+                    replictl check
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../replictl/versions.md">
+            
+                <span>
+            
+                    
+                    replictl versions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">API Reference</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../api/public.md">
+            
+                <span>
+            
+                    
+                    Public
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../api/webui.md">
+            
+                <span>
+            
+                    
+                    WebUI (internal)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Configuration</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="configuration"><a name="configuration" class="plugin-anchor" href="#configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Configuration</h1>
+<p>Replicante provides a large set of configuration options with reasonable defaults.
+This supports common use cases where only a handful of options need attention
+as well as advanced setup where the user has the power to fine tune most details.</p>
+<h2 id="required-configuration"><a name="required-configuration" class="plugin-anchor" href="#required-configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Required configuration</h2>
+<p>Some options do not have reasonable defaults so users will have to set them explicitly:</p>
+<ul>
+<li><a href="../features/discovery.md">Agents discovery</a> (vastly depends on user needs).</li>
+<li>Storage configuration (specifically: address of the DB server).</li>
+</ul>
+<h2 id="all-configuration-options"><a name="all-configuration-options" class="plugin-anchor" href="#all-configuration-options"><i class="fa fa-link" aria-hidden="true"></i></a>All configuration options</h2>
+<p>All options are documented in the
+<a href="https://github.com/replicante-io/replicante/blob/master/replicante.example.yaml" target="_blank">example configuration file</a>
+at the root of the repo, also shown below.</p>
+<p>This file shows all options with their defaults and explains their meaning and available settings.
+As mentioned above, common use cases should be able to ignore most options if users are so inclined.</p>
+<p>Details of these options are documented in the features they influence.</p>
+<pre><code class="lang-yaml"><span class="hljs-comment"># The section below is for the API interface configuration.</span>
+<span class="hljs-attr">api:</span>
+  <span class="hljs-comment"># The network interface and port to bind the API server onto.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># By default, only bind to the loopback interface.</span>
+  <span class="hljs-comment"># Production environments should place an HTTPS proxy in front of the API.</span>
+<span class="hljs-attr">  bind:</span> <span class="hljs-string">&apos;127.0.0.1:16016&apos;</span>
+
+
+<span class="hljs-comment"># The section below is for agent discovery configuration.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Discovery is the way the agents that should be managed are found.</span>
+<span class="hljs-comment"># Replicante core then interact with agents by initiating connections out to them.</span>
+<span class="hljs-attr">discovery:</span>
+  <span class="hljs-comment"># Interval (in seconds) to wait between agent discovery runs.</span>
+<span class="hljs-attr">  interval:</span> <span class="hljs-number">60</span>
+
+  <span class="hljs-comment"># Discovery backends configuration.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Backends are a way to support an extensible set of discovery systems.</span>
+  <span class="hljs-comment"># Each backend has its own options as described below.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available backends are:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * `files`: discover agents from local config files.</span>
+<span class="hljs-attr">  backends:</span>
+    <span class="hljs-comment"># The `files` backend discover agents from files.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># The `files` backend can be useful to delegate discovery to unsupported systems.</span>
+    <span class="hljs-comment"># Examples are configuration managemnet tools (ansible, chef, puppet, ...).</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># This is a list of files that are periodically read to perform discovery.</span>
+<span class="hljs-attr">    files:</span> []
+
+
+<span class="hljs-comment"># The section below is for logging configuration.</span>
+<span class="hljs-attr">logging:</span>
+  <span class="hljs-comment"># Flush logs asynchronously.</span>
+  <span class="hljs-comment"># </span>
+  <span class="hljs-comment"># Pro:</span>
+  <span class="hljs-comment">#     Async log flushing is more efficient as processes</span>
+  <span class="hljs-comment">#     are not blocked waiting for logging backends to complete.</span>
+  <span class="hljs-comment"># </span>
+  <span class="hljs-comment"># Con:</span>
+  <span class="hljs-comment">#     If the process crashes logs in the buffer may be lost.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Recommendation:</span>
+  <span class="hljs-comment">#     Keep async logging enabled unless replicante is crashing</span>
+  <span class="hljs-comment">#     and the logs don&apos;t have any indications of why.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#     Async logging may also be disabled in testing, debugging,</span>
+  <span class="hljs-comment">#     or developing environments.</span>
+<span class="hljs-attr">  async:</span> <span class="hljs-literal">true</span>
+
+  <span class="hljs-comment"># Logging backend configuration.</span>
+<span class="hljs-attr">  backend:</span>
+    <span class="hljs-comment"># The backend to send logs to.</span>
+    <span class="hljs-comment"># This option also determines the format and destination of logs.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Available options:</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   * &apos;json&apos;: prints JSON formatted logs to standard output.</span>
+    <span class="hljs-comment">#   * &apos;journald&apos;: sends logs to systemd journal (if enabled at compile time).</span>
+<span class="hljs-attr">    name:</span> json
+
+    <span class="hljs-comment"># Any backend-specific option is set here.</span>
+    <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># *** None available at this time ***</span>
+    <span class="hljs-comment">#options:</span>
+
+  <span class="hljs-comment"># The minimum logging level.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available options:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * &apos;critical&apos;</span>
+  <span class="hljs-comment">#   * &apos;error&apos;</span>
+  <span class="hljs-comment">#   * &apos;warning&apos;</span>
+  <span class="hljs-comment">#   * &apos;info&apos;</span>
+  <span class="hljs-comment">#   * &apos;debug&apos; (only available in debug builds)</span>
+<span class="hljs-attr">  level:</span> info
+
+
+<span class="hljs-comment"># The section below is for storage configuration.</span>
+<span class="hljs-attr">storage:</span>
+  <span class="hljs-comment"># The database to use for persistent storage.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
+  <span class="hljs-comment"># This option is to allow users to choose a supported database that best fits</span>
+  <span class="hljs-comment"># their use and environment.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># To change this option you will need to &quot;Update by rebuild&quot;.</span>
+  <span class="hljs-comment"># See the documentation for more details on this process.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available options:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * &apos;mongodb&apos; (recommended)</span>
+<span class="hljs-attr">  backend:</span> mongodb
+
+  <span class="hljs-comment"># Any backend-specific option is set here.</span>
+  <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># MongoDB options</span>
+<span class="hljs-attr">  options:</span>
+    <span class="hljs-comment"># Name of the MongoDB database to use for persistence.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
+    <span class="hljs-comment"># This option is to allow users to choose a supported database that best fits</span>
+    <span class="hljs-comment"># their use and environment.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># To change this option you will need to &quot;Update by rebuild&quot;.</span>
+    <span class="hljs-comment"># See the documentation for more details on this process.</span>
+<span class="hljs-attr">    db:</span> replicante  <span class="hljs-comment"># (recommended)</span>
+
+    <span class="hljs-comment"># URI of the MongoDB Replica Set or sharded cluster to connect to.</span>
+<span class="hljs-attr">    uri:</span> mongodb://localhost:<span class="hljs-number">27017</span>/
+
+
+<span class="hljs-comment"># The section below is for distributed tracing configuration.</span>
+<span class="hljs-attr">tracing:</span>
+  <span class="hljs-comment"># The distributed tracing backend to integrate with.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available options:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * &apos;noop&apos;</span>
+  <span class="hljs-comment">#   * &apos;zipkin&apos;</span>
+<span class="hljs-attr">  backend:</span> noop
+
+  <span class="hljs-comment"># Any backend-specific option is set here.</span>
+  <span class="hljs-comment"># The available options vary from tracer to tracer and are documented below.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Zipkin options</span>
+  <span class="hljs-comment">#options:</span>
+  <span class="hljs-comment">#  # (required) The service name for this zipkin endpoint.</span>
+  <span class="hljs-comment">#  service_name: replicante</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#  # (required) List of kafka seed hostnames.</span>
+  <span class="hljs-comment">#  kafka:</span>
+  <span class="hljs-comment">#    - HOST1:9092</span>
+  <span class="hljs-comment">#    - HOST2:9092</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#  # The kafka topic to publish spans to.</span>
+  <span class="hljs-comment">#  topic: zipkin</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"2.3","depth":1,"next":{"title":"Agents discovery","level":"3.1","depth":1,"path":"features/discovery.md","ref":"features/discovery.md","articles":[]},"previous":{"title":"Installation","level":"2.2","depth":1,"path":"setup/install.md","ref":"setup/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","theme-api@1.1.2","versions@2.1.4","include-codeblock@3.2.2"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/manual/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/manual/master/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante User Manual","gitbook":"3.2.3","description":"Replicante User Manual"},"file":{"path":"setup/config.md","mtime":"2018-05-26T15:41:37.168Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-26T15:52:53.716Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+
