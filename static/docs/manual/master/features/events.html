@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Installation · Replicante User Manual</title>
+        <title>Events · Replicante User Manual</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="config.html" />
+    <link rel="next" href="webui.html" />
     
     
-    <link rel="prev" href="deps.html" />
+    <link rel="prev" href="discovery.html" />
     
 
     </head>
@@ -149,9 +149,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="deps.html">
+        <li class="chapter " data-level="2.1" data-path="../setup/deps.html">
             
-                <a href="deps.html">
+                <a href="../setup/deps.html">
             
                     
                     Dependencies
@@ -162,9 +162,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2" data-path="install.html">
+        <li class="chapter " data-level="2.2" data-path="../setup/install.html">
             
-                <a href="install.html">
+                <a href="../setup/install.html">
             
                     
                     Installation
@@ -175,9 +175,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="config.html">
+        <li class="chapter " data-level="2.3" data-path="../setup/config.html">
             
-                <a href="config.html">
+                <a href="../setup/config.html">
             
                     
                     Configuration
@@ -195,9 +195,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../features/discovery.html">
+        <li class="chapter " data-level="3.1" data-path="discovery.html">
             
-                <a href="../features/discovery.html">
+                <a href="discovery.html">
             
                     
                     Agent discovery
@@ -208,9 +208,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../features/events.html">
+        <li class="chapter active" data-level="3.2" data-path="events.html">
             
-                <a href="../features/events.html">
+                <a href="events.html">
             
                     
                     Events
@@ -221,9 +221,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.3" data-path="../features/webui.html">
+        <li class="chapter " data-level="3.3" data-path="webui.html">
             
-                <a href="../features/webui.html">
+                <a href="webui.html">
             
                     
                     WebUI
@@ -234,9 +234,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../features/introspection.html">
+        <li class="chapter " data-level="3.4" data-path="introspection.html">
             
-                <a href="../features/introspection.html">
+                <a href="introspection.html">
             
                     
                     Introspection
@@ -376,7 +376,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Installation</a>
+        <a href=".." >Events</a>
     </h1>
 </div>
 
@@ -391,57 +391,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="installation"><a name="installation" class="plugin-anchor" href="#installation"><i class="fa fa-link" aria-hidden="true"></i></a>Installation</h1>
-<p>This page documents the step to install replicante for production use.
-It does NOT detail the installation process of the needed <a href="deps.html">dependences</a>.</p>
-<p>If you are looking for a development/test/demo environment the
-<a href="../first-steps/quickstart.html">quick start guide</a> is where you can find all that.</p>
-<h2 id="1-installing-dependencies"><a name="1-installing-dependencies" class="plugin-anchor" href="#1-installing-dependencies"><i class="fa fa-link" aria-hidden="true"></i></a>1. Installing dependencies</h2>
-<p>The first step is to install all the required dependencies.
-As the process depends on the chosen solution this guide does not cover how.</p>
-<p>For production installation it is <strong>strongly recommended</strong> that all dependences
-support and are installed and configured in highly available mode.</p>
-<p>When using the recommended set of dependencies these guides may be of help:</p>
-<ul>
-<li>Storage layer: MongoDB - <a href="https://docs.mongodb.com/v3.6/installation/" target="_blank">https://docs.mongodb.com/v3.6/installation/</a></li>
-<li>Distributed coordinator: Zookeeper - <a href="http://zookeeper.apache.org/doc/r3.4.12/zookeeperAdmin.html#sc_zkMulitServerSetup" target="_blank">http://zookeeper.apache.org/doc/r3.4.12/zookeeperAdmin.html#sc_zkMulitServerSetup</a></li>
-<li>Event streaming platform: Kafka - <a href="https://kafka.apache.org/11/documentation.html#quickstart" target="_blank">https://kafka.apache.org/11/documentation.html#quickstart</a></li>
-</ul>
-<h2 id="2-installing-from-code"><a name="2-installing-from-code" class="plugin-anchor" href="#2-installing-from-code"><i class="fa fa-link" aria-hidden="true"></i></a>2. Installing from code</h2>
-<p>The following instructions where executed on a clean Fedora 28 install but should work for any Linux system:</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># Install needed tools and dependencies.</span>
-dnf install cmake gcc git make openssl-devel
-
-<span class="hljs-comment"># Install rust and cargo with rustup.</span>
-curl https://sh.rustup.rs <span class="hljs-_">-s</span>Sf | sh
-<span class="hljs-built_in">source</span> <span class="hljs-variable">$HOME</span>/.cargo/env
-
-<span class="hljs-comment"># Get the code and compile replicante.</span>
-git <span class="hljs-built_in">clone</span> --recursive https://github.com/replicante-io/replicante.git
-<span class="hljs-built_in">cd</span> replicante
-cargo build --release
-
-<span class="hljs-comment"># Ensure the built binaries works.</span>
-target/release/replicante --version
-target/release/replictl --version
-
-<span class="hljs-comment"># Binaries are ready for use!</span>
-cp target/release/replicante target/release/replictl replicante.example.yaml /path/to/install/location/
-</code></pre>
-<h2 id="3-store-initialisation"><a name="3-store-initialisation" class="plugin-anchor" href="#3-store-initialisation"><i class="fa fa-link" aria-hidden="true"></i></a>3. Store initialisation</h2>
-<p>Whatever your choice, the store needs some initialisation before it can be used.
-The requirements depend on the selected store and are documented in the code:</p>
-<ul>
-<li>MongoDB:<ul>
-<li>Requirements: <a href="https://github.com/replicante-io/replicante/blob/master/data/store/src/backend/mongo/mod.rs#L47" target="_blank">https://github.com/replicante-io/replicante/blob/master/data/store/src/backend/mongo/mod.rs#L47</a></li>
-<li>Playground example: <a href="https://github.com/replicante-io/replicante/blob/master/data/store/src/backend/mongo/mod.rs#L47" target="_blank">https://github.com/replicante-io/replicante/blob/master/data/store/src/backend/mongo/mod.rs#L47</a></li>
-</ul>
-</li>
-</ul>
-<p>It is possible to verify the store configuration with <a href="../replictl/checks.md"><code>replictl check store schema</code></a>.
-<code>replictl</code> requires replicante to be <a href="config.html">configured</a> before the tests can work.</p>
-<h2 id="4-next-steps"><a name="4-next-steps" class="plugin-anchor" href="#4-next-steps"><i class="fa fa-link" aria-hidden="true"></i></a>4. Next steps</h2>
-<p>Once the binaries are ready and the store is initialised it is time to <a href="config.html">configure replicante</a>.</p>
+                                <h1 id="events"><a name="events" class="plugin-anchor" href="#events"><i class="fa fa-link" aria-hidden="true"></i></a>Events</h1>
+<p>Before you can react to a change in the system you need to know that something has changed.</p>
+<p>Replicante first task is to observe all nodes and generate events to reflect changes to nodes and clusters.
+These events are internally used to drive features but are also recoded for the user to see.</p>
+<p>Having access to historical events can provide valuable insight.
+Increase error rates? Is/was the datastore down or in the middle of a failover?
+Being able to correlate datastore events with application errors, performance issues,
+or other unusual activity is key into improving your own code.</p>
+<h2 id="webui-history-view"><a name="webui-history-view" class="plugin-anchor" href="#webui-history-view"><i class="fa fa-link" aria-hidden="true"></i></a>WebUI history view</h2>
+<p>The simplest way to view the events history is to check out the <code>Events</code> page in the <a href="webui.html">WebUI</a>.</p>
+<h2 id="stream-subscription"><a name="stream-subscription" class="plugin-anchor" href="#stream-subscription"><i class="fa fa-link" aria-hidden="true"></i></a>Stream subscription</h2>
+<p>This feature will be available soon ...</p>
+<h2 id="grafana-integration"><a name="grafana-integration" class="plugin-anchor" href="#grafana-integration"><i class="fa fa-link" aria-hidden="true"></i></a>Grafana integration</h2>
+<p>This feature will be available soon ...</p>
 
                                 
                                 </section>
@@ -475,7 +438,7 @@ The requirements depend on the selected store and are documented in the code:</p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Installation","level":"2.2","depth":1,"next":{"title":"Configuration","level":"2.3","depth":1,"path":"setup/config.md","ref":"setup/config.md","articles":[]},"previous":{"title":"Dependencies","level":"2.1","depth":1,"path":"setup/deps.md","ref":"setup/deps.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","theme-api@1.1.2","versions@2.1.4","include-codeblock@3.2.2"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/manual/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/manual/master/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante User Manual","gitbook":"3.2.3","description":"Replicante User Manual"},"file":{"path":"setup/install.md","mtime":"2018-05-26T12:07:25.173Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-30T22:41:14.508Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Events","level":"3.2","depth":1,"next":{"title":"WebUI","level":"3.3","depth":1,"path":"features/webui.md","ref":"features/webui.md","articles":[]},"previous":{"title":"Agent discovery","level":"3.1","depth":1,"path":"features/discovery.md","ref":"features/discovery.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","theme-api@1.1.2","versions@2.1.4","include-codeblock@3.2.2"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/manual/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/manual/master/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante User Manual","gitbook":"3.2.3","description":"Replicante User Manual"},"file":{"path":"features/events.md","mtime":"2018-05-27T22:26:46.244Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-30T22:41:14.508Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
