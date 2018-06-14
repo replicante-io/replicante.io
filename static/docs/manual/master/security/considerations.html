@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Dependencies · Replicante User Manual</title>
+        <title>Security considerations · Replicante User Manual</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="install.html" />
+    <link rel="next" href="transport.html" />
     
     
-    <link rel="prev" href="../first-steps/quickstart.html" />
+    <link rel="prev" href="../features/introspection.html" />
     
 
     </head>
@@ -157,9 +157,9 @@
         
         
     
-        <li class="chapter active" data-level="2.1" data-path="deps.html">
+        <li class="chapter " data-level="2.1" data-path="../setup/deps.html">
             
-                <a href="deps.html">
+                <a href="../setup/deps.html">
             
                     
                     Dependencies
@@ -170,9 +170,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="install.html">
+        <li class="chapter " data-level="2.2" data-path="../setup/install.html">
             
-                <a href="install.html">
+                <a href="../setup/install.html">
             
                     
                     Installation
@@ -183,9 +183,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="config.html">
+        <li class="chapter " data-level="2.3" data-path="../setup/config.html">
             
-                <a href="config.html">
+                <a href="../setup/config.html">
             
                     
                     Configuration
@@ -262,9 +262,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="../security/considerations.html">
+        <li class="chapter active" data-level="4.1" data-path="considerations.html">
             
-                <a href="../security/considerations.html">
+                <a href="considerations.html">
             
                     
                     Security considerations
@@ -275,9 +275,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="../security/transport.html">
+        <li class="chapter " data-level="4.2" data-path="transport.html">
             
-                <a href="../security/transport.html">
+                <a href="transport.html">
             
                     
                     Agent transports
@@ -456,7 +456,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Dependencies</a>
+        <a href=".." >Security considerations</a>
     </h1>
 </div>
 
@@ -471,49 +471,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="runtime-dependencies"><a name="runtime-dependencies" class="plugin-anchor" href="#runtime-dependencies"><i class="fa fa-link" aria-hidden="true"></i></a>Runtime dependencies</h1>
-<p>Replicante attempts to limit the number of required dependencies to avoid management overhead.
-On the other hand it is unwise to re-implement complex systems (such as databases) if there is no need.</p>
-<p>In order to run replicante requires the following:</p>
+                                <h1 id="security-considerations"><a name="security-considerations" class="plugin-anchor" href="#security-considerations"><i class="fa fa-link" aria-hidden="true"></i></a>Security considerations</h1>
+<p>This section covers Replicante security design and features.</p>
+<p>Replicante aims to provide a reasonable level of security by default but will require tuning
+to ensure the configuration meats your requirements.</p>
+<h2 id="design-expectations"><a name="design-expectations" class="plugin-anchor" href="#design-expectations"><i class="fa fa-link" aria-hidden="true"></i></a>Design expectations</h2>
+<p>Replicante is developed with some expectation about data, users, and runtime environment:</p>
 <ul>
-<li>A storage layer.</li>
-<li>A distributed coordinator (not needed yet).</li>
-<li>An event streaming platform (not needed yet).</li>
+<li>Agents can be trusted and respect the <a href="https://www.replicante.io/docs/specs/master/" target="_blank">specification</a>.</li>
+<li>Users that have access to the system can be trusted.</li>
+<li>Replicante processes can trust each other.</li>
+<li>Agent actions can be harmful so the authenticity and integrity of action requests must be guaranteed.</li>
+<li>Collected data and generated events are sensitive information (precautions are taken to avoid
+unauthorised reads) but are not confidential (no permanent or irreparable harm is done if data
+is leaked).</li>
+<li>Security of third party software (store, message bus, ...) is out of scope.</li>
 </ul>
-<p><strong>Note</strong>: while the distributed coordinator and event streaming platform are not needed in the
-first release, they are mentioned because they will be required from the next release.
-If you are assessing your ability to manage an installation you should account for them.</p>
-<h2 id="storage-layer"><a name="storage-layer" class="plugin-anchor" href="#storage-layer"><i class="fa fa-link" aria-hidden="true"></i></a>Storage layer</h2>
-<p>Used to persist the information collected from agents, generated metadata, and any other permanent
-data that is required by replicante to implement its features.</p>
-<p>Supported systems:</p>
+<h2 id="features"><a name="features" class="plugin-anchor" href="#features"><i class="fa fa-link" aria-hidden="true"></i></a>Features</h2>
+<p>Replicante provides the following security-related features:</p>
 <ul>
-<li><a href="https://www.mongodb.com/" target="_blank">MongoDB</a> (recommended)</li>
+<li><a href="transport.html">Agents transport</a> encryption and action signing.</li>
+<li><a href="../features/events.html#stream-subscription">Events</a> auditing.</li>
 </ul>
-<h2 id="distributed-coordinator"><a name="distributed-coordinator" class="plugin-anchor" href="#distributed-coordinator"><i class="fa fa-link" aria-hidden="true"></i></a>Distributed coordinator</h2>
-<p>Replcante (will) support high availability, machine failure tolerance, and horizontal scaling.
-To achieve all this replicante runs multiple instances of the same process on different machines (or VMs).</p>
-<p>The coordinator is a component (itself also highly available) that allows the distribution of work
-across all processes as well as the re-distribution of work assigned to failed processes.</p>
-<p>Supported systems:</p>
-<ul>
-<li><a href="https://zookeeper.apache.org/" target="_blank">Zookeeper</a> (recommended)</li>
-</ul>
-<h2 id="event-streaming-platform"><a name="event-streaming-platform" class="plugin-anchor" href="#event-streaming-platform"><i class="fa fa-link" aria-hidden="true"></i></a>Event streaming platform</h2>
-<p>Events generated by replicante are emitted onto a streaming platform.
-This provides two advantages:</p>
-<ol>
-<li>Replicante has a reliable event bus to implement an event driven architecture.</li>
-<li>Other tools can process emitted events to implement extra features and integrations.</li>
-</ol>
-<p>Supported systems:</p>
-<ul>
-<li><a href="https://kafka.apache.org/" target="_blank">Kafka</a> (recommended)</li>
-</ul>
-<h2 id="optional-dependencies"><a name="optional-dependencies" class="plugin-anchor" href="#optional-dependencies"><i class="fa fa-link" aria-hidden="true"></i></a>Optional dependencies</h2>
-<p>Some features rely on additional runtime dependencies.
-To keep the set of required dependencies to a minimum these features must be enabled explicitly.</p>
-<p>The needed systems and configuration details are documented within the feature that needs them.</p>
 
                                 
                                 </section>
@@ -547,7 +526,7 @@ To keep the set of required dependencies to a minimum these features must be ena
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dependencies","level":"2.1","depth":1,"next":{"title":"Installation","level":"2.2","depth":1,"path":"setup/install.md","ref":"setup/install.md","articles":[]},"previous":{"title":"Quick start","level":"1.3","depth":1,"path":"first-steps/quickstart.md","ref":"first-steps/quickstart.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/manual/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/manual/master/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante User Manual","gitbook":"3.2.3","description":"Replicante User Manual"},"file":{"path":"setup/deps.md","mtime":"2018-05-22T17:42:17.273Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-14T18:44:23.926Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Security considerations","level":"4.1","depth":1,"next":{"title":"Agent transports","level":"4.2","depth":1,"path":"security/transport.md","ref":"security/transport.md","articles":[]},"previous":{"title":"Introspection","level":"3.4","depth":1,"path":"features/introspection.md","ref":"features/introspection.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/manual/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/manual/master/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante User Manual","gitbook":"3.2.3","description":"Replicante User Manual"},"file":{"path":"security/considerations.md","mtime":"2018-06-07T22:39:02.384Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-14T18:44:23.926Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

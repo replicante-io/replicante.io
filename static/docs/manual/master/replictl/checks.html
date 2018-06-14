@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Dependencies · Replicante User Manual</title>
+        <title>replictl check · Replicante User Manual</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="install.html" />
+    <link rel="next" href="versions.html" />
     
     
-    <link rel="prev" href="../first-steps/quickstart.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -157,9 +157,9 @@
         
         
     
-        <li class="chapter active" data-level="2.1" data-path="deps.html">
+        <li class="chapter " data-level="2.1" data-path="../setup/deps.html">
             
-                <a href="deps.html">
+                <a href="../setup/deps.html">
             
                     
                     Dependencies
@@ -170,9 +170,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="install.html">
+        <li class="chapter " data-level="2.2" data-path="../setup/install.html">
             
-                <a href="install.html">
+                <a href="../setup/install.html">
             
                     
                     Installation
@@ -183,9 +183,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="config.html">
+        <li class="chapter " data-level="2.3" data-path="../setup/config.html">
             
-                <a href="config.html">
+                <a href="../setup/config.html">
             
                     
                     Configuration
@@ -354,9 +354,9 @@
         
         
     
-        <li class="chapter " data-level="6.1" data-path="../replictl/">
+        <li class="chapter " data-level="6.1" data-path="./">
             
-                <a href="../replictl/">
+                <a href="./">
             
                     
                     Introduction
@@ -367,9 +367,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.2" data-path="../replictl/checks.html">
+        <li class="chapter active" data-level="6.2" data-path="checks.html">
             
-                <a href="../replictl/checks.html">
+                <a href="checks.html">
             
                     
                     replictl check
@@ -380,9 +380,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.3" data-path="../replictl/versions.html">
+        <li class="chapter " data-level="6.3" data-path="versions.html">
             
-                <a href="../replictl/versions.html">
+                <a href="versions.html">
             
                     
                     replictl versions
@@ -456,7 +456,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Dependencies</a>
+        <a href=".." >replictl check</a>
     </h1>
 </div>
 
@@ -471,49 +471,68 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="runtime-dependencies"><a name="runtime-dependencies" class="plugin-anchor" href="#runtime-dependencies"><i class="fa fa-link" aria-hidden="true"></i></a>Runtime dependencies</h1>
-<p>Replicante attempts to limit the number of required dependencies to avoid management overhead.
-On the other hand it is unwise to re-implement complex systems (such as databases) if there is no need.</p>
-<p>In order to run replicante requires the following:</p>
-<ul>
-<li>A storage layer.</li>
-<li>A distributed coordinator (not needed yet).</li>
-<li>An event streaming platform (not needed yet).</li>
-</ul>
-<p><strong>Note</strong>: while the distributed coordinator and event streaming platform are not needed in the
-first release, they are mentioned because they will be required from the next release.
-If you are assessing your ability to manage an installation you should account for them.</p>
-<h2 id="storage-layer"><a name="storage-layer" class="plugin-anchor" href="#storage-layer"><i class="fa fa-link" aria-hidden="true"></i></a>Storage layer</h2>
-<p>Used to persist the information collected from agents, generated metadata, and any other permanent
-data that is required by replicante to implement its features.</p>
-<p>Supported systems:</p>
-<ul>
-<li><a href="https://www.mongodb.com/" target="_blank">MongoDB</a> (recommended)</li>
-</ul>
-<h2 id="distributed-coordinator"><a name="distributed-coordinator" class="plugin-anchor" href="#distributed-coordinator"><i class="fa fa-link" aria-hidden="true"></i></a>Distributed coordinator</h2>
-<p>Replcante (will) support high availability, machine failure tolerance, and horizontal scaling.
-To achieve all this replicante runs multiple instances of the same process on different machines (or VMs).</p>
-<p>The coordinator is a component (itself also highly available) that allows the distribution of work
-across all processes as well as the re-distribution of work assigned to failed processes.</p>
-<p>Supported systems:</p>
-<ul>
-<li><a href="https://zookeeper.apache.org/" target="_blank">Zookeeper</a> (recommended)</li>
-</ul>
-<h2 id="event-streaming-platform"><a name="event-streaming-platform" class="plugin-anchor" href="#event-streaming-platform"><i class="fa fa-link" aria-hidden="true"></i></a>Event streaming platform</h2>
-<p>Events generated by replicante are emitted onto a streaming platform.
-This provides two advantages:</p>
-<ol>
-<li>Replicante has a reliable event bus to implement an event driven architecture.</li>
-<li>Other tools can process emitted events to implement extra features and integrations.</li>
-</ol>
-<p>Supported systems:</p>
-<ul>
-<li><a href="https://kafka.apache.org/" target="_blank">Kafka</a> (recommended)</li>
-</ul>
-<h2 id="optional-dependencies"><a name="optional-dependencies" class="plugin-anchor" href="#optional-dependencies"><i class="fa fa-link" aria-hidden="true"></i></a>Optional dependencies</h2>
-<p>Some features rely on additional runtime dependencies.
-To keep the set of required dependencies to a minimum these features must be enabled explicitly.</p>
-<p>The needed systems and configuration details are documented within the feature that needs them.</p>
+                                <h1 id="system-checks"><a name="system-checks" class="plugin-anchor" href="#system-checks"><i class="fa fa-link" aria-hidden="true"></i></a>System checks</h1>
+<p>Perform various checks on different aspects of the system.</p>
+<pre><code class="lang-text">$ replictl check help
+replictl-check
+Perform checks on the system to find issues
+
+USAGE:
+    replictl check [FLAGS] [OPTIONS] [SUBCOMMAND]
+
+FLAGS:
+    -h, --help           Prints help information
+        --no-progress    Do not show progress bars
+    -V, --version        Prints version information
+
+OPTIONS:
+    -c, --config &lt;FILE&gt;        Specifies the configuration file to use [default: replicante.yaml]
+        --log-level &lt;LEVEL&gt;    Specifies the logging verbosity [possible values: Critical, Error, Warning, Info, Debug]
+
+SUBCOMMANDS:
+    config    Check the replicante configuration for errors
+    deep      Run all checks INCLUDING the ones that iterate over ALL data
+    help      Prints this message or the help of the given subcommand(s)
+    quick     Run all checks that do NOT iterate over data (default command)
+    store     Check the primary store for incompatibilities
+    update    Run all checks to confirm an update is possible (iterates over ALL data!)
+</code></pre>
+<h2 id="config"><a name="config" class="plugin-anchor" href="#config"><i class="fa fa-link" aria-hidden="true"></i></a>config</h2>
+<p>Parse the given replicante configuration to check all attributes and referenced files can be loaded.</p>
+<pre><code class="lang-bash">replictl check config
+</code></pre>
+<h2 id="deep"><a name="deep" class="plugin-anchor" href="#deep"><i class="fa fa-link" aria-hidden="true"></i></a>deep</h2>
+<p>An alias to run all checks.</p>
+<pre><code class="lang-bash">replictl check deep
+</code></pre>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p><strong>This check will scan the full content of the storage layer</strong></p>
+<p>As a result it may take a while to complete and could impact performance on large instances.<br>Be careful when using this command against an active replicante system.</p>
+</div></div></p>
+<h2 id="quick"><a name="quick" class="plugin-anchor" href="#quick"><i class="fa fa-link" aria-hidden="true"></i></a>quick</h2>
+<p>An alias to run all checks except for those that access the storage layer.</p>
+<pre><code class="lang-bash">replictl check quick
+</code></pre>
+<h2 id="store-data"><a name="store-data" class="plugin-anchor" href="#store-data"><i class="fa fa-link" aria-hidden="true"></i></a>store data</h2>
+<p>Scan every item in the store to look for incompatible data.
+This can reveal issues linked to running a version of replicante incompatible with the data.</p>
+<pre><code class="lang-bash">replictl check store data
+</code></pre>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p><strong>This check will scan the full content of the storage layer</strong></p>
+<p>As a result it may take a while to complete and could impact performance on large instances.<br>Be careful when using this command against an active replicante system.</p>
+</div></div></p>
+<h2 id="store-schema"><a name="store-schema" class="plugin-anchor" href="#store-schema"><i class="fa fa-link" aria-hidden="true"></i></a>store schema</h2>
+<p>Checks the storage layer metadata for required and suggested items (collections, indexes, tables, ...).</p>
+<p>Also checks for the existence of items (collections, indexes, tables, ...) that belong to older versions of replicante.</p>
+<pre><code class="lang-bash">replictl check store schema
+</code></pre>
+<h2 id="update"><a name="update" class="plugin-anchor" href="#update"><i class="fa fa-link" aria-hidden="true"></i></a>update</h2>
+<p>An alias to run all checks to ensure the replicante version linked to this version of <code>replictl</code>
+is compatible with the current setup (checks if an in-place update is possible).</p>
+<pre><code class="lang-bash">replictl check update
+</code></pre>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p><strong>This check will scan the full content of the storage layer</strong></p>
+<p>As a result it may take a while to complete and could impact performance on large instances.<br>Be careful when using this command against an active replicante system.</p>
+</div></div></p>
 
                                 
                                 </section>
@@ -547,7 +566,7 @@ To keep the set of required dependencies to a minimum these features must be ena
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dependencies","level":"2.1","depth":1,"next":{"title":"Installation","level":"2.2","depth":1,"path":"setup/install.md","ref":"setup/install.md","articles":[]},"previous":{"title":"Quick start","level":"1.3","depth":1,"path":"first-steps/quickstart.md","ref":"first-steps/quickstart.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/manual/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/manual/master/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante User Manual","gitbook":"3.2.3","description":"Replicante User Manual"},"file":{"path":"setup/deps.md","mtime":"2018-05-22T17:42:17.273Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-14T18:44:23.926Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"replictl check","level":"6.2","depth":1,"next":{"title":"replictl versions","level":"6.3","depth":1,"path":"replictl/versions.md","ref":"replictl/versions.md","articles":[]},"previous":{"title":"Introduction","level":"6.1","depth":1,"path":"replictl/README.md","ref":"replictl/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/manual/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/manual/master/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante User Manual","gitbook":"3.2.3","description":"Replicante User Manual"},"file":{"path":"replictl/checks.md","mtime":"2018-06-12T20:52:44.562Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-14T18:44:23.926Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
