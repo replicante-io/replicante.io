@@ -14,17 +14,19 @@ Layout
 Building
 --------
 ```bash
-# (Re-)Build books (and each neede version).
-rm -r static/docs/<BOOK>/<VERSION>
-gitbook build <PATH/TO/BOOK> static/docs/<BOOK>/<VERSION>
+# Rebuild master version of books.
+./build-books.sh
 
-# Build theme assets.
+# [Re-]Build specific version of a book
+./book.sh BOOK VERSION BOOK_SOURCE
+
+# Build theme assets (if needed).
 cd themes/replicante/src
 npm install
 npm run build
+cd ../../../
 
 # Build the full site.
-cd ../../../
 rm -r dist/
 hugo
 ```
