@@ -21,7 +21,8 @@ done
 
 
 ### re-build all current books ###
-echo "Re building master for all books ..."
+echo "--> Re building master for all books ..."
+./book.sh --clean agents master ../agents/docs/
 ./book.sh --clean manual master ../replicante/docs/manual/
 ./book.sh --clean specs master ../replicante/docs/specs/
-echo "Done"
+echo "--> Done"

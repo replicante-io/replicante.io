@@ -19,6 +19,16 @@ Check out the architecture overview and the quickstart, then dive into the detai
 {{% /content-box %}}
 
 
+{{% content-box title="Agents Documentation" %}}
+Agents are lightweight processes runninng next to datastore processes to perform
+all management tasks the datastore software should not deal with.
+
+Agents developed by the Replicante team are documented here.
+
+{{% book id="agents" %}}Read the docs{{% /book %}}
+{{% /content-box %}}
+
+
 {{% content-box title="Datastore specification" %}}
 The specifications document defines a model that details the attributes,
 behaviours, and expectations needed of datastores.

@@ -1,3 +1,7 @@
+agents:
+  path: 'agents'
+  version: 'master'
+
 manual:
   path: 'manual'
   version: 'master'
