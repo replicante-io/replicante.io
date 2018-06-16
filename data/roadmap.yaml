@@ -1,0 +1,27 @@
+todo: []
+
+progress:
+  - Finishing touches
+
+done:
+  - Initial Agent Interface (aid fast agent development)
+  - OpenTracing support (agent)
+  - Agent metrics (in Prometheus format)
+  - Preliminary model tweaks
+  - Release first agent (Initial monitoring only, MongoDB 3.2+)
+  - Replicante core - scaffolding
+  - Replicante core - configuration basics
+  - Replicante core - Logging support (JSON blobs to stdout)
+  - Replicante core - HTTP API interface
+  - Replicante core - metrics (in Prometheus format)
+  - Replicante core - OpenTracing support
+  - Replicante core - agent discovery (static list)
+  - Replicante core - agent state fetcher
+  - Replicante core - storage layer (MongoDB)
+  - Essential Web UI
+  - Replicante core - datastore events log
+  - Build a real website
+  - Replicante core - command line utility (replictl)
+  - Documentation - Datastore model and Agent's specification
+  - Documentation - User Guide
+  - Documentation - Agents Guide

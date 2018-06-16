@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-12 col-md-6 col-xl-4">
+    <ul class="list-group">
+      {{ range $task := .Site.Data.roadmap.todo }}
+      <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+        <span class="roadmap-item-body">{{ $task | markdownify }}</span>
+        <span class="badge badge-secondary">To do</span>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+
+  <div class="col-12 col-md-6 col-xl-4">
+    <ul class="list-group">
+      {{ range $task := .Site.Data.roadmap.progress }}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="roadmap-item-body">{{ $task | markdownify }}</span>
+        <span class="badge badge-primary">In progress</span>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+
+  <div class="col-12 col-md-6 col-xl-4">
+    <ul class="list-group">
+      {{ range $task := .Site.Data.roadmap.done }}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="roadmap-item-body">{{ $task | markdownify }}</span>
+        <span class="badge badge-success">Done</span>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
