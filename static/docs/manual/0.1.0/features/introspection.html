@@ -1,0 +1,603 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introspection · Replicante User Manual</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-rest/rest.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../security/considerations.html" />
+    
+    
+    <link rel="prev" href="webui.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">First steps</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../first-steps/architecture.html">
+            
+                <a href="../first-steps/architecture.html">
+            
+                    
+                    Architecture overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../first-steps/quickstart.html">
+            
+                <a href="../first-steps/quickstart.html">
+            
+                    
+                    Quick start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Setup</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../setup/deps.html">
+            
+                <a href="../setup/deps.html">
+            
+                    
+                    Dependencies
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../setup/install.html">
+            
+                <a href="../setup/install.html">
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../setup/config.html">
+            
+                <a href="../setup/config.html">
+            
+                    
+                    Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Features</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="discovery.html">
+            
+                <a href="discovery.html">
+            
+                    
+                    Agent discovery
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="events.html">
+            
+                <a href="events.html">
+            
+                    
+                    Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="webui.html">
+            
+                <a href="webui.html">
+            
+                    
+                    WebUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.4" data-path="introspection.html">
+            
+                <a href="introspection.html">
+            
+                    
+                    Introspection
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Security</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../security/considerations.html">
+            
+                <a href="../security/considerations.html">
+            
+                    
+                    Security considerations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../security/transport.html">
+            
+                <a href="../security/transport.html">
+            
+                    
+                    Agent transports
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Upgrades</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../upgrades/rolling.html">
+            
+                <a href="../upgrades/rolling.html">
+            
+                    
+                    Rolling upgrades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../upgrades/versions.html">
+            
+                <a href="../upgrades/versions.html">
+            
+                    
+                    Version compatibility
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../upgrades/notes.html">
+            
+                <a href="../upgrades/notes.html">
+            
+                    
+                    Upgrade notes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../upgrades/changelog.html">
+            
+                <a href="../upgrades/changelog.html">
+            
+                    
+                    Change Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">replictl</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../replictl/">
+            
+                <a href="../replictl/">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../replictl/checks.html">
+            
+                <a href="../replictl/checks.html">
+            
+                    
+                    replictl check
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../replictl/versions.html">
+            
+                <a href="../replictl/versions.html">
+            
+                    
+                    replictl versions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">API Reference</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../api/">
+            
+                <a href="../api/">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../api/monitoring.html">
+            
+                <a href="../api/monitoring.html">
+            
+                    
+                    Monitoring
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Introspection</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="introspection"><a name="introspection" class="plugin-anchor" href="#introspection"><i class="fa fa-link" aria-hidden="true"></i></a>Introspection</h1>
+<p>In an ideal world software, once installed and configured, runs perfectly without ever needing attention.
+Of course reality tells a different story.</p>
+<p>Software bugs and evolution, transient network issues, miss-configurations ...
+Many things can go wrong and the symptoms are often unclear.
+Distributed systems also mean that errors often propagate across processes
+and servers so the error location is far from the error origin.</p>
+<p>On top of all that, distributed systems are complex to follow and
+simple questions about correct functioning become hard to answer.</p>
+<p>Replicante is a distributed system and as such it is subject to all the above complications.
+To help users and administrators understand and manage installations, as well as troubleshoot issues,
+Replicante provides a set of features to introspect the system and trace its activity.</p>
+<h2 id="events-trail"><a name="events-trail" class="plugin-anchor" href="#events-trail"><i class="fa fa-link" aria-hidden="true"></i></a>Events trail</h2>
+<p>Replicante is an event-driven system at its core.
+Because of that, most activities of the system can be explained and monitored by looking at events.</p>
+<p>The <a href="events.html">events</a> section explains how to view and programmatically follow events.</p>
+<h2 id="metrics"><a name="metrics" class="plugin-anchor" href="#metrics"><i class="fa fa-link" aria-hidden="true"></i></a>Metrics</h2>
+<p>Information about internal operation of replicante is exposed through metrics.
+These can be used to monitor the health and activity of a process as well as its performance.</p>
+<p>Metrics are exposed in <a href="https://prometheus.io/" target="_blank">Prometheus</a> format by the API endpoint <code>/api/v1/metrics</code>.</p>
+<h2 id="logging"><a name="logging" class="plugin-anchor" href="#logging"><i class="fa fa-link" aria-hidden="true"></i></a>Logging</h2>
+<p>Logging is a good way to see exactly what one system was doing at a precise point in time.
+Replicante provides structured logging so administrators can see what is happening and in what context.</p>
+<p>By itself this is needed but not that great.
+The real power of structured logging comes in with centralised log collection:
+the logs from every server are collected and indexed in a central location along with other services.</p>
+<h3 id="configuration"><a name="configuration" class="plugin-anchor" href="#configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Configuration</h3>
+<p>Various logging backends are supported so that replicante can fit into your infrastructure
+and some options are provided to user regardless of the backend of choice.
+All options are under the <code>logging</code> section.
+The details are documented in the <a href="../setup/config.html">configuration reference</a>.</p>
+<p>Below are the supported backends:</p>
+<ul>
+<li><code>json</code> (default) outputs logs to standard output in JSON format:<ul>
+<li>The output is not the easiest to read directly.</li>
+<li>It works well with process supervisors that expect logs from standard output (i.e, docker).</li>
+<li>Lines can be processed by any tools that understand JSON (i.e, <code>jq</code> or crafted scripts).</li>
+</ul>
+</li>
+<li><code>journald</code> sends logs to journald directly (systemd&apos;s logging facility):<ul>
+<li><code>journald</code> is available only if enabled at compile time.</li>
+<li><code>journald</code> is requires a server running systemd.</li>
+</ul>
+</li>
+</ul>
+<h2 id="distributed-tracing"><a name="distributed-tracing" class="plugin-anchor" href="#distributed-tracing"><i class="fa fa-link" aria-hidden="true"></i></a>Distributed Tracing</h2>
+<p>Following the details of an operation from start to finish when it spans several servers
+can be a challenge.
+Thankfully there are tools to address this challenge: distributed tracers.</p>
+<p>Distributed tracers are central systems that collect segments of operations from different servers
+and combine them together to show the entire story of a full operation.</p>
+<h3 id="configuration"><a name="configuration" class="plugin-anchor" href="#configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Configuration</h3>
+<p>Replicante supports integration with some distributed tracing tools compatible with the
+<a href="http://opentracing.io/" target="_blank">OpenTracing</a> specification.</p>
+<p>By default distributed tracing is disabled but it can be <a href="../setup/config.html">configured</a>
+with the options under the <code>tracing</code> section.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introspection","level":"3.4","depth":1,"next":{"title":"Security considerations","level":"4.1","depth":1,"path":"security/considerations.md","ref":"security/considerations.md","articles":[]},"previous":{"title":"WebUI","level":"3.3","depth":1,"path":"features/webui.md","ref":"features/webui.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/manual/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/manual/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/manual/0.1.0/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante User Manual","gitbook":"3.2.3","description":"Replicante User Manual"},"file":{"path":"features/introspection.md","mtime":"2018-05-30T22:49:39.565Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-28T20:17:32.914Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+

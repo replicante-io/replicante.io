@@ -1,11 +1,11 @@
 agents:
   path: 'agents'
-  version: 'master'
+  version: '0.1.0'
 
 manual:
   path: 'manual'
-  version: 'master'
+  version: '0.1.0'
 
 specs:
   path: 'specs'
-  version: 'master'
+  version: '0.1.0'

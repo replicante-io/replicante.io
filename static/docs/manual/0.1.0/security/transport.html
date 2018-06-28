@@ -1,0 +1,595 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Agent transports · Replicante User Manual</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-rest/rest.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../upgrades/rolling.html" />
+    
+    
+    <link rel="prev" href="considerations.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">First steps</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../first-steps/architecture.html">
+            
+                <a href="../first-steps/architecture.html">
+            
+                    
+                    Architecture overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../first-steps/quickstart.html">
+            
+                <a href="../first-steps/quickstart.html">
+            
+                    
+                    Quick start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Setup</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../setup/deps.html">
+            
+                <a href="../setup/deps.html">
+            
+                    
+                    Dependencies
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../setup/install.html">
+            
+                <a href="../setup/install.html">
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../setup/config.html">
+            
+                <a href="../setup/config.html">
+            
+                    
+                    Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Features</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../features/discovery.html">
+            
+                <a href="../features/discovery.html">
+            
+                    
+                    Agent discovery
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../features/events.html">
+            
+                <a href="../features/events.html">
+            
+                    
+                    Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../features/webui.html">
+            
+                <a href="../features/webui.html">
+            
+                    
+                    WebUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../features/introspection.html">
+            
+                <a href="../features/introspection.html">
+            
+                    
+                    Introspection
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Security</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="considerations.html">
+            
+                <a href="considerations.html">
+            
+                    
+                    Security considerations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.2" data-path="transport.html">
+            
+                <a href="transport.html">
+            
+                    
+                    Agent transports
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Upgrades</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../upgrades/rolling.html">
+            
+                <a href="../upgrades/rolling.html">
+            
+                    
+                    Rolling upgrades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../upgrades/versions.html">
+            
+                <a href="../upgrades/versions.html">
+            
+                    
+                    Version compatibility
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../upgrades/notes.html">
+            
+                <a href="../upgrades/notes.html">
+            
+                    
+                    Upgrade notes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../upgrades/changelog.html">
+            
+                <a href="../upgrades/changelog.html">
+            
+                    
+                    Change Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">replictl</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../replictl/">
+            
+                <a href="../replictl/">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../replictl/checks.html">
+            
+                <a href="../replictl/checks.html">
+            
+                    
+                    replictl check
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../replictl/versions.html">
+            
+                <a href="../replictl/versions.html">
+            
+                    
+                    replictl versions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">API Reference</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../api/">
+            
+                <a href="../api/">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../api/monitoring.html">
+            
+                <a href="../api/monitoring.html">
+            
+                    
+                    Monitoring
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Agent transports</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="agent-transports"><a name="agent-transports" class="plugin-anchor" href="#agent-transports"><i class="fa fa-link" aria-hidden="true"></i></a>Agent transports</h1>
+<p>Replicante core issues commands to the agents.
+This design simplifies the agent interaction logic and allows for dynamic scaling controlled at core.</p>
+<p>By default, communication with agents is performed over HTTP(s) as detailed below.
+This approach makes the system easy to develop, debug, and interact with.
+Using HTTP(s) as the transport layer also allows access to many existing tools for any need.</p>
+<p>Replicante may at some point include other agent transports.</p>
+<p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p><strong>Unimplemented feature warning</strong></p>
+<p>This page makes several mentions to <strong>agent actions</strong>.
+This feature is not yet implemented but it will be a key part of the system.
+For that reason they are planned for from the early stages.</p>
+</div></div></p>
+<h2 id="transport-security"><a name="transport-security" class="plugin-anchor" href="#transport-security"><i class="fa fa-link" aria-hidden="true"></i></a>Transport security</h2>
+<p>Because a network is (likely) involved in the core-agent communication there are
+some security aspects that must be considered and precautions to take.</p>
+<p>There are two main ways for the transport to be abused:</p>
+<ul>
+<li>Agent information and monitoring data could be faked.
+This would lead Replicante to infer the incorrect state of the node and issue corrective
+actions that could harm the healthy node.</li>
+<li>Actions sent to agents could be faked.
+This would cause the agents to take actions that are issued with malignant intent.</li>
+</ul>
+<p>There is also the possibility of packets being dropped by the transport layer.
+This could result in a luck of visibility and/or an inability to issue actions to the node.
+Because such event is indistinguishable from a regular network outage there is not much
+that can be done to defend the system against this kind of attacks.</p>
+<p>Replicante delegates securing the network to the transport layer.</p>
+<h2 id="https-transport"><a name="https-transport" class="plugin-anchor" href="#https-transport"><i class="fa fa-link" aria-hidden="true"></i></a>HTTP(s) transport</h2>
+<p>The HTTP transport is the easiest to use but also the least secure.</p>
+<p>With this transport Replicante core act as an HTTP client for the agent.
+Connections are established by replicante core and closed when no longer needed to avoid all
+the complexity of long-running TCP connections (i.e, need for heart-beats, reconnect logic)
+although this comes at the cost of repeated TPC connection handshakes.</p>
+<p>As mentioned, HTTP is an insecure protocol but there are ways to add security to it.
+Most notable is the HTTPS protocol which solves the agent&apos;s identity and message
+integrity part of the equation.</p>
+<p>Once the identity of the agent is verified by HTTPS and the channel is encrypted
+it is possible to verify the identity and message integrity by signing messages:</p>
+<ul>
+<li>Replicante core will use a signing (private) key to sign sensitive messages before they are sent.</li>
+<li>Replicante agents will use a verification (public) key to verify the signature of messages.</li>
+</ul>
+<p>The HTTP transport was mainly inspired by the advantages shown by
+<a href="https://prometheus.io/docs/introduction/faq/#why-do-you-pull-rather-than-push?" target="_blank">Prometheus</a>
+but also for the added benefit of a simpler scalability architecture for replicante core.</p>
+<h3 id="configuration"><a name="configuration" class="plugin-anchor" href="#configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Configuration</h3>
+<p>At the time of writing HTTPS can be configured on agents through an HTTPS proxy server.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Agent transports","level":"4.2","depth":1,"next":{"title":"Rolling upgrades","level":"5.1","depth":1,"path":"upgrades/rolling.md","ref":"upgrades/rolling.md","articles":[]},"previous":{"title":"Security considerations","level":"4.1","depth":1,"path":"security/considerations.md","ref":"security/considerations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/manual/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/manual/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/manual/0.1.0/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante User Manual","gitbook":"3.2.3","description":"Replicante User Manual"},"file":{"path":"security/transport.md","mtime":"2018-06-10T16:38:37.776Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-28T20:17:32.914Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,7 +1,6 @@
 todo: []
 
-progress:
-  - Finishing touches
+progress: []
 
 done:
   - Initial Agent Interface (aid fast agent development)
@@ -25,3 +24,4 @@ done:
   - Documentation - Datastore model and Agent's specification
   - Documentation - User Guide
   - Documentation - Agents Guide
+  - Finishing touches
