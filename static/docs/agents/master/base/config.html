@@ -222,27 +222,87 @@
 configuration options:</p>
 <pre><code class="lang-yaml"><span class="hljs-comment"># Datastore independent agent configuration.</span>
 <span class="hljs-attr">agent:</span>
-  <span class="hljs-comment"># HTTP server configuration.</span>
-<span class="hljs-attr">  server:</span>
-    <span class="hljs-comment"># Address and port to bind the server to.</span>
+  <span class="hljs-comment"># The section below is for the API interface configuration.</span>
+<span class="hljs-attr">  api:</span>
+    <span class="hljs-comment"># The network interface and port to bind the API server onto.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># By default, only bind to the loopback interface.</span>
+    <span class="hljs-comment"># Production environments should place an HTTPS proxy in front of the API.</span>
 <span class="hljs-attr">    bind:</span> <span class="hljs-string">&apos;127.0.0.1:8000&apos;</span>
 
-  <span class="hljs-comment"># Distributed tracing configuration.</span>
-<span class="hljs-attr">  tracer:</span>
-    <span class="hljs-comment"># Distributed tracing backend to use.</span>
+  <span class="hljs-comment"># The section below is for logging configuration.</span>
+<span class="hljs-attr">  logging:</span>
+    <span class="hljs-comment"># Flush logs asynchronously.</span>
+    <span class="hljs-comment"># </span>
+    <span class="hljs-comment"># Pro:</span>
+    <span class="hljs-comment">#     Async log flushing is more efficient as processes</span>
+    <span class="hljs-comment">#     are not blocked waiting for logging backends to complete.</span>
+    <span class="hljs-comment"># </span>
+    <span class="hljs-comment"># Con:</span>
+    <span class="hljs-comment">#     If the process crashes logs in the buffer may be lost.</span>
     <span class="hljs-comment">#</span>
-    <span class="hljs-comment"># Avaliable options:</span>
+    <span class="hljs-comment"># Recommendation:</span>
+    <span class="hljs-comment">#     Keep async logging enabled unless replicante is crashing</span>
+    <span class="hljs-comment">#     and the logs don&apos;t have any indications of why.</span>
     <span class="hljs-comment">#</span>
-    <span class="hljs-comment">#   - NoopTracer</span>
-    <span class="hljs-comment">#   - ZipkinTracer</span>
-<span class="hljs-attr">    backend:</span> <span class="hljs-string">&apos;NoopTracer&apos;</span>
+    <span class="hljs-comment">#     Async logging may also be disabled in testing, debugging,</span>
+    <span class="hljs-comment">#     or developing environments.</span>
+<span class="hljs-attr">    async:</span> <span class="hljs-literal">true</span>
 
-    <span class="hljs-comment"># Zipkin specific tracer configuration.</span>
-    <span class="hljs-comment">#zipkin:</span>
-    <span class="hljs-comment">#  service_name: &apos;agent&apos;</span>
-    <span class="hljs-comment">#  topic: &apos;zipkin&apos;</span>
+    <span class="hljs-comment"># Logging backend configuration.</span>
+<span class="hljs-attr">    backend:</span>
+      <span class="hljs-comment"># The backend to send logs to.</span>
+      <span class="hljs-comment"># This option also determines the format and destination of logs.</span>
+      <span class="hljs-comment">#</span>
+      <span class="hljs-comment"># Available options:</span>
+      <span class="hljs-comment">#</span>
+      <span class="hljs-comment">#   * &apos;json&apos;: prints JSON formatted logs to standard output.</span>
+      <span class="hljs-comment">#   * &apos;journald&apos;: sends logs to systemd journal (if enabled at compile time).</span>
+<span class="hljs-attr">      name:</span> json
+
+      <span class="hljs-comment"># Any backend-specific option is set here.</span>
+      <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+      <span class="hljs-comment">#</span>
+      <span class="hljs-comment"># *** None available at this time ***</span>
+      <span class="hljs-comment">#options:</span>
+
+    <span class="hljs-comment"># The minimum logging level.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Available options:</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   * &apos;critical&apos;</span>
+    <span class="hljs-comment">#   * &apos;error&apos;</span>
+    <span class="hljs-comment">#   * &apos;warning&apos;</span>
+    <span class="hljs-comment">#   * &apos;info&apos;</span>
+    <span class="hljs-comment">#   * &apos;debug&apos; (only available in debug builds)</span>
+<span class="hljs-attr">    level:</span> info
+
+
+  <span class="hljs-comment"># The section below is for distributed tracing configuration.</span>
+<span class="hljs-attr">  tracing:</span>
+    <span class="hljs-comment"># The distributed tracing backend to integrate with.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Available options:</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   * &apos;noop&apos;</span>
+    <span class="hljs-comment">#   * &apos;zipkin&apos;</span>
+<span class="hljs-attr">    backend:</span> noop
+
+    <span class="hljs-comment"># Any backend-specific option is set here.</span>
+    <span class="hljs-comment"># The available options vary from tracer to tracer and are documented below.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Zipkin options</span>
+    <span class="hljs-comment">#options:</span>
+    <span class="hljs-comment">#  # (required) The service name for this zipkin endpoint.</span>
+    <span class="hljs-comment">#  service_name: replicante</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#  # (required) List of kafka seed hostnames.</span>
     <span class="hljs-comment">#  kafka:</span>
-    <span class="hljs-comment">#    - &apos;localhost:9092&apos;</span>
+    <span class="hljs-comment">#    - HOST1:9092</span>
+    <span class="hljs-comment">#    - HOST2:9092</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#  # The kafka topic to publish spans to.</span>
+    <span class="hljs-comment">#  topic: zipkin</span>
 </code></pre>
 
                                 
@@ -277,7 +337,7 @@ configuration options:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"1.2","depth":1,"next":{"title":"Security considerations","level":"1.3","depth":1,"path":"security.md","ref":"security.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/agents/master/docs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/agents/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/agents/0.1.0/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante Agents Documentation","gitbook":"3.2.3","description":"Replicante Agents Documentation"},"file":{"path":"base/config.md","mtime":"2018-06-16T12:41:50.484Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-28T20:04:55.741Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"1.2","depth":1,"next":{"title":"Security considerations","level":"1.3","depth":1,"path":"security.md","ref":"security.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/agents/master/docs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/agents/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/agents/0.1.0/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante Agents Documentation","gitbook":"3.2.3","description":"Replicante Agents Documentation"},"file":{"path":"base/config.md","mtime":"2018-07-10T18:36:31.704Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-21T11:00:30.784Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

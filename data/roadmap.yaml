@@ -1,15 +1,4 @@
 todo:
-  # Agents refactoring
-  - 'Re-work agents configuration to match core'
-  - 'MongoDB agent should use uri string'
-  - 'Add CLI parser to agents'
-  - 'Add logging to agents'
-  - 'Improve metrics code'
-  # New agents
-  - 'MongoDB agent to support more versions'
-  - 'MongoDB agent to support sharded clusters'
-  - 'Create new Zookeeper agent'
-  - 'Create new Kafka agent'
   # Core
   - 'Extend set of generated events'
   - 'Improve metrics code'
@@ -30,6 +19,15 @@ todo:
   - 'Pre-built binaries'
 
 progress:
-  - 'Use error_chain in agents'
+  - 'Create new Zookeeper agent'
+  - 'Create new Kafka agent'
 
-done: []
+done:
+  - 'Use error_chain in agents'
+  - 'Re-work agents configuration to match core'
+  - 'MongoDB agent should use uri string'
+  - 'Add CLI parser to agents'
+  - 'Add logging to agents'
+  - 'Improve metrics code'
+  - 'MongoDB agent to support more versions'
+  - 'MongoDB agent to support sharded clusters'
