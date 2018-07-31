@@ -19,6 +19,7 @@ todo:
   - 'Pre-built binaries'
 
 progress:
+  - 'Evaluate mode datastore against the model'
   - 'Create new Zookeeper agent'
   - 'Create new Kafka agent'
 

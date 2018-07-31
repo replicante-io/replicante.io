@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>(TODO) Zookeeper · Replicante - Protocol and Model Specifications</title>
+        <title>Zookeeper · Replicante - Protocol and Model Specifications</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -257,7 +257,7 @@
                 <a href="kafka.html">
             
                     
-                    (TODO) Kafka
+                    Kafka
             
                 </a>
             
@@ -283,7 +283,7 @@
                 <a href="zookeeper.html">
             
                     
-                    (TODO) Zookeeper
+                    Zookeeper
             
                 </a>
             
@@ -391,7 +391,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >(TODO) Zookeeper</a>
+        <a href="../.." >Zookeeper</a>
     </h1>
 </div>
 
@@ -407,28 +407,29 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="zookeeper"><a name="zookeeper" class="plugin-anchor" href="#zookeeper"><i class="fa fa-link" aria-hidden="true"></i></a>Zookeeper</h2>
-<p>TODO: create a docker cluster for tests and check what the API returns.</p>
 <ul>
 <li><p>Administration:</p>
 <ul>
 <li>A cluster-unique name for the <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>: ???</li>
-<li>Cluster name shared by all nodes: ???</li>
-<li>Version information: ???</li>
+different (vitual or pythsical) machines.">node</a>: <code>serverId</code> value of the <a href="https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_zkCommands" target="_blank"><code>conf</code></a> command output.</li>
+<li>Cluster name shared by all nodes: user defined in agent configuration.</li>
+<li>Version information: from the output of either <a href="https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_zkCommands" target="_blank"><code>envi</code></a> or <a href="https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_zkCommands" target="_blank"><code>srvr</code></a> command.</li>
 </ul>
 </li>
-<li><p>Clustering: ???</p>
+<li><p>Clustering: zookeeper processes forming an ensable.</p>
 </li>
 <li><p>Replication:</p>
 <ul>
 <li>For each <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>, which shards are on the <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>: ???</li>
+different (vitual or pythsical) machines.">node</a>: a single <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a> named <code>ensamble</code>.</li>
 <li>For each <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
 Shards usually also fail independently.">shard</a> on each <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>, what the role of the <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a> is: ???</li>
+different (vitual or pythsical) machines.">node</a> is: <code>Mode</code> value of the <a href="https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_zkCommands" target="_blank"><code>srvr</code></a> command output.</li>
 <li>For each non-<a href="../../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
 for coordination of a specific shard.">primary</a> <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
@@ -441,16 +442,16 @@ different (vitual or pythsical) machines.">node</a>: ???</li>
 <ul>
 <li>What is a <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>: ???</li>
+Shards usually also fail independently.">shard</a>: the entire ensamble.</li>
 <li>For each <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>, the time of the last operation: ???</li>
+Shards usually also fail independently.">shard</a>, the time of the last operation: unavailable.</li>
 </ul>
 </li>
 <li><p>Performance:</p>
 <ul>
-<li>Number of clients connected: ???</li>
-<li>Number of read/writes: ???</li>
+<li>Number of clients connected: <code>Connections</code> attributes of the <a href="https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_zkCommands" target="_blank"><code>stat</code></a> command.</li>
+<li>Number of read/writes: unavailabe (packets received/sent is available).</li>
 </ul>
 </li>
 </ul>
@@ -487,7 +488,7 @@ Shards usually also fail independently.">shard</a>, the time of the last operati
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"(TODO) Zookeeper","level":"1.3.4","depth":2,"next":{"title":"The Agent Protocol","level":"1.4","depth":1,"path":"agent/README.md","ref":"agent/README.md","articles":[{"title":"Agent information","level":"1.4.1","depth":2,"path":"agent/info.md","ref":"agent/info.md","articles":[]},{"title":"Shards information","level":"1.4.2","depth":2,"path":"agent/shards.md","ref":"agent/shards.md","articles":[]}]},"previous":{"title":"(TODO) RabbitMQ","level":"1.3.3","depth":2,"path":"model/mapping/rabbitmq.md","ref":"model/mapping/rabbitmq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"model/mapping/zookeeper.md","mtime":"2018-05-12T11:35:26.163Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-21T10:50:30.353Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Zookeeper","level":"1.3.4","depth":2,"next":{"title":"The Agent Protocol","level":"1.4","depth":1,"path":"agent/README.md","ref":"agent/README.md","articles":[{"title":"Agent information","level":"1.4.1","depth":2,"path":"agent/info.md","ref":"agent/info.md","articles":[]},{"title":"Shards information","level":"1.4.2","depth":2,"path":"agent/shards.md","ref":"agent/shards.md","articles":[]}]},"previous":{"title":"(TODO) RabbitMQ","level":"1.3.3","depth":2,"path":"model/mapping/rabbitmq.md","ref":"model/mapping/rabbitmq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"model/mapping/zookeeper.md","mtime":"2018-07-24T17:34:18.323Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-24T23:00:36.073Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
