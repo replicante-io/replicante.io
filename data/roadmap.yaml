@@ -19,7 +19,6 @@ todo:
   - 'Pre-built binaries'
 
 progress:
-  - 'Evaluate mode datastore against the model'
   - 'Create new Zookeeper agent'
   - 'Create new Kafka agent'
 
@@ -32,3 +31,4 @@ done:
   - 'Improve metrics code'
   - 'MongoDB agent to support more versions'
   - 'MongoDB agent to support sharded clusters'
+  - 'Evaluate mode datastore against the model'
