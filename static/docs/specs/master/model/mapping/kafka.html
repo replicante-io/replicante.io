@@ -77,7 +77,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="rabbitmq.html" />
+    <link rel="next" href="zookeeper.html" />
     
     
     <link rel="prev" href="mongodb.html" />
@@ -183,19 +183,6 @@
     
         <li class="chapter " data-level="1.2.3" data-path="../">
             
-                <a href="../#replication">
-            
-                    
-                    Replication
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="../">
-            
                 <a href="../#sharding">
             
                     
@@ -207,12 +194,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../">
+        <li class="chapter " data-level="1.2.4" data-path="../">
             
-                <a href="../#performance">
+                <a href="../#replication">
             
                     
-                    Performance
+                    Replication
             
                 </a>
             
@@ -265,20 +252,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="rabbitmq.html">
-            
-                <a href="rabbitmq.html">
-            
-                    
-                    (TODO) RabbitMQ
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="zookeeper.html">
+        <li class="chapter " data-level="1.3.3" data-path="zookeeper.html">
             
                 <a href="zookeeper.html">
             
@@ -338,6 +312,19 @@
     
 
             </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../CHANGELOG.html">
+            
+                <a href="../../CHANGELOG.html">
+            
+                    
+                    Model ChangeLog
+            
+                </a>
+            
+
             
         </li>
     
@@ -410,9 +397,9 @@
 <ul>
 <li><p>Administration:</p>
 <ul>
+<li>A cluster name shared by all nodes: user defined in agent configuration.</li>
 <li>A cluster-unique name for the <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>: extracted from the name of the <a href="https://kafka.apache.org/documentation/#monitoring" target="_blank"><code>kafka.server:type=app-info,id=ID</code></a> JMX MBean.</li>
-<li>Cluster name shared by all nodes: user defined in agent configuration.</li>
 <li>Version information: extracted from the <code>version</code> attribute of the <a href="https://kafka.apache.org/documentation/#monitoring" target="_blank"><code>kafka.server:type=app-info</code></a> JMX MBean.</li>
 </ul>
 </li>
@@ -424,38 +411,36 @@ different (vitual or pythsical) machines.">node</a>: extracted from the name of 
 </li>
 <li><p>Replication:</p>
 <ul>
-<li>For each <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>, which shards are on the <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+<li>Which shards are on the <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>: need to consult each topic&apos;s partition map zookeeper <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a> (<code>/brokers/topics/PARTITION</code>).</li>
 <li>For each <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a> on each <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>, what the role of the <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+Shards usually also fail independently.">shard</a>, what the role on the <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a> is: need to consult each topic&apos;s partition map zookeeper <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a> (<code>/brokers/topics/PARTITION</code>).</li>
-<li>For each non-<a href="../../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
+<li>[Optional] For each non-<a href="../../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
 for coordination of a specific shard.">primary</a> <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a> on each <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>, the replication lag for the <a href="../../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>: value of the <a href="https://kafka.apache.org/documentation/#monitoring" target="_blank"><code>kafka.server:type=FetcherLagMetrics,name=ConsumerLag,clientId=ReplicaFetcherThread-0-LEADER_ID,topic=TOPIC,partition=PARTITON_ID</code></a> JMX MBean, expressed as number of messages.</li>
+Shards usually also fail independently.">shard</a>, the replication lag:<ul>
+<li>The replication lag unit (i.e, seconds, commits, ...): number of messages.</li>
+<li>The replication lag value (as a 64-bits integer): value of the <a href="https://kafka.apache.org/documentation/#monitoring" target="_blank"><code>kafka.server:type=FetcherLagMetrics,name=ConsumerLag,clientId=ReplicaFetcherThread-0-LEADER_ID,topic=TOPIC,partition=PARTITON_ID</code></a> JMX MBean.</li>
 </ul>
 </li>
-<li><p>Sharding:</p>
-<ul>
-<li>What is a <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
-Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>: a topic partition</li>
-<li>For each <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
-Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>, the time of the last operation: unavailable.</li>
 </ul>
 </li>
-<li><p>Performance:</p>
+<li><p>Sharding: (A <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a> is a topic partition).</p>
 <ul>
-<li>Number of clients connected: the <code>connection-count</code> of the <code>kafka.server:type=socker-server-metrics,listener=LISTENER,networkProcessor=X</code> JMX MBean.</li>
-<li>Number of read/writes: unavailabe (there seems to be a messages in rate mbean).</li>
+<li>A <a href="../../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a> ID: <code>TOPIC/PARTITION</code>.</li>
+<li>[Optional] An indicator of when the last write operation happened (commit offset):<ul>
+<li>A commit offset unit (i.e, seconds, commits, ...): offset.</li>
+<li>A commit offset value (as a 64-bits integer): <a href="https://docs.rs/kafka/0.7.0/kafka/client/struct.KafkaClient.html#method.fetch_offsets" target="_blank">topic offsets</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -492,7 +477,7 @@ Shards usually also fail independently.">shard</a>, the time of the last operati
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Kafka","level":"1.3.2","depth":2,"next":{"title":"(TODO) RabbitMQ","level":"1.3.3","depth":2,"path":"model/mapping/rabbitmq.md","ref":"model/mapping/rabbitmq.md","articles":[]},"previous":{"title":"MongoDB","level":"1.3.1","depth":2,"path":"model/mapping/mongodb.md","ref":"model/mapping/mongodb.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"model/mapping/kafka.md","mtime":"2018-07-24T19:12:00.194Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-24T23:00:36.073Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Kafka","level":"1.3.2","depth":2,"next":{"title":"Zookeeper","level":"1.3.3","depth":2,"path":"model/mapping/zookeeper.md","ref":"model/mapping/zookeeper.md","articles":[]},"previous":{"title":"MongoDB","level":"1.3.1","depth":2,"path":"model/mapping/mongodb.md","ref":"model/mapping/mongodb.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"model/mapping/kafka.md","mtime":"2018-08-20T22:18:44.319Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-26T22:52:23.951Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

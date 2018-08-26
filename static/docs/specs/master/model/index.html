@@ -183,19 +183,6 @@
     
         <li class="chapter " data-level="1.2.3" data-path="./">
             
-                <a href="./#replication">
-            
-                    
-                    Replication
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="./">
-            
                 <a href="./#sharding">
             
                     
@@ -207,12 +194,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="./">
+        <li class="chapter " data-level="1.2.4" data-path="./">
             
-                <a href="./#performance">
+                <a href="./#replication">
             
                     
-                    Performance
+                    Replication
             
                 </a>
             
@@ -265,20 +252,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="mapping/rabbitmq.html">
-            
-                <a href="mapping/rabbitmq.html">
-            
-                    
-                    (TODO) RabbitMQ
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="mapping/zookeeper.html">
+        <li class="chapter " data-level="1.3.3" data-path="mapping/zookeeper.html">
             
                 <a href="mapping/zookeeper.html">
             
@@ -338,6 +312,19 @@
     
 
             </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../CHANGELOG.html">
+            
+                <a href="../CHANGELOG.html">
+            
+                    
+                    Model ChangeLog
+            
+                </a>
+            
+
             
         </li>
     
@@ -412,7 +399,7 @@
 and defines all its properties.">model</a> defined below is in early development cycle
 and is subject to (potentially breaking) change.</p>
 </div></div></p>
-<p>Any (collection of) software that fullfills the requirements and expectations
+<p>Any (collection of) software that fulfils the requirements and expectations
 of the <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
 and defines all its properties.">model</a> defined in this document is considered a datastore.</p>
 <p>The difficulty in defining a <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
@@ -420,65 +407,83 @@ and defines all its properties.">model</a> is to find the balance
 between generality and specificity:</p>
 <ul>
 <li>The <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
-and defines all its properties.">model</a> should be general so it does not impose restirctions on the
+and defines all its properties.">model</a> should be general so it does not impose restrictions on the
 datastores that want to be supported (or on us to support datastores).</li>
 <li>The <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
-and defines all its properties.">model</a> also should be specific enough so that it can be operated on.</li>
+and defines all its properties.">model</a> also should be specific enough so that it can be reliably operated on.</li>
 </ul>
 <p>This aims of the <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
 and defines all its properties.">model</a> are:</p>
 <ul>
-<li>To detemine which softwares can be modelled and how.</li>
+<li>To determine which software can be modelled and how.</li>
 <li>To implement agents that sit between the datastore and the central system.</li>
-<li>To detail what information is available and what actions can be performed
-by the agents.</li>
+<li>To detail what information is available and what actions can be performed by the agents.</li>
 <li>To determine what features can be built on top of this standardised layer.</li>
 </ul>
 <h2 id="administration"><a name="administration" class="plugin-anchor" href="#administration"><i class="fa fa-link" aria-hidden="true"></i></a>Administration</h2>
-<p>The datastore MUST provide the following administration commands:</p>
+<p>The datastore MUST provide the following administration information:</p>
 <ul>
+<li>A cluster name shared by all nodes.</li>
 <li>A cluster-unique name for the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>.</li>
 <li>Version information.</li>
 </ul>
-<p>The datastore MAY provide the following administration commands:</p>
-<ul>
-<li>Cluster name shared by all nodes.</li>
-</ul>
 <h2 id="clustering"><a name="clustering" class="plugin-anchor" href="#clustering"><i class="fa fa-link" aria-hidden="true"></i></a>Clustering</h2>
-<p>The datastore MUST support clustering by running a
-process on one or more (virtual or physical) machines.
+<p>The datastore MUST support clustering by running a process on one or more (virtual or physical)
+machines.
 Each process in the cluster is a <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>.</p>
-<p>Note that there is no requirement for the process be the same everywere
-in the cluster (same applies to nodes configuration).
-This allows the cluster to have heterogeneous components as long as they
-all follow the <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
+<p>Note that there is no requirement for the process be the same everywere in the cluster
+(same applies to how nodes are configured).
+This allows the cluster to have heterogeneous components as long as they all follow the <a href="../GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
 and defines all its properties.">model</a>.</p>
+<h2 id="sharding"><a name="sharding" class="plugin-anchor" href="#sharding"><i class="fa fa-link" aria-hidden="true"></i></a>Sharding</h2>
+<p>The datastore MUST organize the data in one or more <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a>.
+Shards are independent units of data, each with their own <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
+for coordination of a specific shard.">primary</a> and secondaries nodes.</p>
+<p>All datastores have at least one <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a>.
+For datastores that do not support sharding this is the entire dataset.</p>
+<p>For each <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a> in the cluster the datastore MUST provide the following information:</p>
+<ul>
+<li>A <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Each shard is managed and operated on indepently of other.
+Shards usually also fail independently.">shard</a> ID.</li>
+</ul>
+<p>Each <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a> in the cluster SHOULD provide the following information for each:</p>
+<ul>
+<li>An indicator of when the last write operation happened (commit offset):<ul>
+<li>A commit offset unit (i.e, seconds, commits, ...).</li>
+<li>A commit offset value (as a 64-bits integer).</li>
+</ul>
+</li>
+</ul>
 <h2 id="replication"><a name="replication" class="plugin-anchor" href="#replication"><i class="fa fa-link" aria-hidden="true"></i></a>Replication</h2>
 <p>The datastore MUST support a <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
 for coordination of a specific shard.">primary</a>/secondaries replication system.
 This means that each <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a> (see below) at any given time has only <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
+Shards usually also fail independently.">shard</a> at any given time has only <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
 for coordination of a specific shard.">primary</a> <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>
-with zero or more <a href="../GLOSSARY.html#secondary" class="glossary-term" title="A node in the cluster that is responsible for keeping a copy of a shard.">secondary</a> nodes that replicate the data from another <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a> with zero or more
+<a href="../GLOSSARY.html#secondary" class="glossary-term" title="A node in the cluster that is responsible for keeping a copy of a shard.">secondary</a> nodes that replicate the data from another <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>.</p>
-<p>The datastore MUST provide the following information:</p>
+<p>Each <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a> in the cluster MUST provide the following information:</p>
 <ul>
-<li>For each <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>, which shards are on the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+<li>Which shards are on the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>.</li>
 <li>For each <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a> on each <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>, what the role of the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a> is
-(i.e, <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
-for coordination of a specific shard.">primary</a> for the <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
-Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>).</li>
+Shards usually also fail independently.">shard</a>, what the role on the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a> is (i.e, <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
+for coordination of a specific shard.">primary</a>, <a href="../GLOSSARY.html#secondary" class="glossary-term" title="A node in the cluster that is responsible for keeping a copy of a shard.">secondary</a>).</li>
 </ul>
 <p>Some details about replication require the cluster to be healthy enough to report such data.
 Such details may also be expensive to compute or, worse, require connections to non-local nodes.</p>
@@ -488,39 +493,18 @@ Such details may also be expensive to compute or, worse, require connections to 
 (i.e, it does not require connections to other nodes).</li>
 <li>The information can be computed relatively efficiently.</li>
 </ul>
-<p>The datastore SHOULD provide the following information:</p>
+<p>Each <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a> in the cluster SHOULD provide the following information:</p>
 <ul>
 <li>For each non-<a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
 for coordination of a specific shard.">primary</a> <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a> on each <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>, the replication lag for the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a>.
-The lag must be at least at the second granularity.</li>
+Shards usually also fail independently.">shard</a>, a replication lag:<ul>
+<li>The replication lag unit (i.e, seconds, commits, etc ...).</li>
+<li>The replication lag value.</li>
+<li>It is NOT required for the unit to be the same as the commit offset but it is encouraged.</li>
 </ul>
-<h2 id="sharding"><a name="sharding" class="plugin-anchor" href="#sharding"><i class="fa fa-link" aria-hidden="true"></i></a>Sharding</h2>
-<p>The datastore MUST organize the data in one or more <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
-Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>.
-Shards are independent units of data, each with their own <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
-for coordination of a specific shard.">primary</a> and
-secondaries nodes.</p>
-<p>All datastores have at least one <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
-Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>: the entire dataset.</p>
-<p>The datastore MUST provide the following information:</p>
-<ul>
-<li>For each <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
-Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>, the time of the last operation.</li>
-</ul>
-<h2 id="performance"><a name="performance" class="plugin-anchor" href="#performance"><i class="fa fa-link" aria-hidden="true"></i></a>Performance</h2>
-<p>The datastore SHOULD provide some performance metrics for users to understand
-the overall state of the system.</p>
-<p>The datastore SHOULD provide the following metrics:</p>
-<ul>
-<li>Number of clients connected.</li>
-<li>Number of read/writes.</li>
+</li>
 </ul>
 
                                 
@@ -555,7 +539,7 @@ the overall state of the system.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"The Datastore Model","level":"1.2","depth":1,"next":{"title":"Administration","level":"1.2.1","depth":2,"anchor":"#administration","path":"model/README.md","ref":"model/README.md#administration","articles":[]},"previous":{"title":"What is a datastore?","level":"1.1.1","depth":2,"anchor":"#what-is-a-datastore","path":"README.md","ref":"README.md#what-is-a-datastore","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"model/README.md","mtime":"2018-06-13T22:54:37.669Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-24T23:00:36.073Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"The Datastore Model","level":"1.2","depth":1,"next":{"title":"Administration","level":"1.2.1","depth":2,"anchor":"#administration","path":"model/README.md","ref":"model/README.md#administration","articles":[]},"previous":{"title":"What is a datastore?","level":"1.1.1","depth":2,"anchor":"#what-is-a-datastore","path":"README.md","ref":"README.md#what-is-a-datastore","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"model/README.md","mtime":"2018-08-22T22:06:55.163Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-26T22:52:23.951Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

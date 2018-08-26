@@ -77,7 +77,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../GLOSSARY.html" />
+    <link rel="next" href="../CHANGELOG.html" />
     
     
     <link rel="prev" href="info.html" />
@@ -183,19 +183,6 @@
     
         <li class="chapter " data-level="1.2.3" data-path="../model/">
             
-                <a href="../model/#replication">
-            
-                    
-                    Replication
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="../model/">
-            
                 <a href="../model/#sharding">
             
                     
@@ -207,12 +194,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../model/">
+        <li class="chapter " data-level="1.2.4" data-path="../model/">
             
-                <a href="../model/#performance">
+                <a href="../model/#replication">
             
                     
-                    Performance
+                    Replication
             
                 </a>
             
@@ -265,20 +252,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../model/mapping/rabbitmq.html">
-            
-                <a href="../model/mapping/rabbitmq.html">
-            
-                    
-                    (TODO) RabbitMQ
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="../model/mapping/zookeeper.html">
+        <li class="chapter " data-level="1.3.3" data-path="../model/mapping/zookeeper.html">
             
                 <a href="../model/mapping/zookeeper.html">
             
@@ -338,6 +312,19 @@
     
 
             </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../CHANGELOG.html">
+            
+                <a href="../CHANGELOG.html">
+            
+                    
+                    Model ChangeLog
+            
+                </a>
+            
+
             
         </li>
     
@@ -416,7 +403,7 @@ and is subject to (potentially breaking) change.</p>
 </div></div></p>
 <div class="api-method"><div class="api-method-definition"><p>The following information MUST be included:</p>
 <ul>
-<li>A list of all <code>shards</code> on the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+<li>A list of <code>shards</code> on the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
 different (vitual or pythsical) machines.">node</a>:<ul>
 <li>The <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
@@ -425,11 +412,20 @@ Shards usually also fail independently.">shard</a> <code>id</code>.</li>
 different (vitual or pythsical) machines.">node</a> for the <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
 Shards usually also fail independently.">shard</a>.</li>
-<li>The <code>lag</code> (in seconds) of a <a href="../GLOSSARY.html#secondary" class="glossary-term" title="A node in the cluster that is responsible for keeping a copy of a shard.">secondary</a> from its <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
-for coordination of a specific shard.">primary</a>.</li>
-<li>The UNIX timestamp (in seconds) of the last operation on the <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+<li>The (optional) <code>commit_offset</code> of the <a href="../GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>.</li>
+Shards usually also fail independently.">shard</a> on the <a href="../GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
+different (vitual or pythsical) machines.">node</a>:<ul>
+<li>The commit offset <code>unit</code>.</li>
+<li>The commit offset <code>value</code> (as a 64-bits integer).</li>
+</ul>
+</li>
+<li>The (optional) <code>lag</code> of a <a href="../GLOSSARY.html#secondary" class="glossary-term" title="A node in the cluster that is responsible for keeping a copy of a shard.">secondary</a> from its <a href="../GLOSSARY.html#primary" class="glossary-term" title="The node in the cluster that is responsible
+for coordination of a specific shard.">primary</a>:<ul>
+<li>The lag <code>unit</code>.</li>
+<li>The lag <code>value</code> (as a 64-bits integer).</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -438,8 +434,14 @@ Shards usually also fail independently.">shard</a>.</li>
   <span class="hljs-string">&quot;shards&quot;</span>: [{
     <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;shard_id&quot;</span>,
     <span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;SECONDARY&quot;</span>,
-    <span class="hljs-string">&quot;lag&quot;</span>: <span class="hljs-number">12345</span>,
-    <span class="hljs-string">&quot;last_op&quot;</span>: <span class="hljs-number">67890</span>
+    <span class="hljs-string">&quot;commit_offset&quot;</span>: {
+      <span class="hljs-string">&quot;unit&quot;</span>: <span class="hljs-string">&quot;seconds&quot;</span>,
+      <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">67890</span>
+    },
+    <span class="hljs-string">&quot;lag&quot;</span>: {
+      <span class="hljs-string">&quot;unit&quot;</span>: <span class="hljs-string">&quot;seconds&quot;</span>,
+      <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">33</span>
+    }
   }]
 }
 </code></pre>
@@ -477,7 +479,7 @@ Shards usually also fail independently.">shard</a>.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Shards information","level":"1.4.2","depth":2,"next":{"title":"Glossary","level":"2.1","depth":1,"path":"GLOSSARY.md","ref":"GLOSSARY.md","articles":[]},"previous":{"title":"Agent information","level":"1.4.1","depth":2,"path":"agent/info.md","ref":"agent/info.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"agent/shards.md","mtime":"2018-06-13T22:54:03.488Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-24T23:00:36.073Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Shards information","level":"1.4.2","depth":2,"next":{"title":"Model ChangeLog","level":"1.5","depth":1,"path":"CHANGELOG.md","ref":"CHANGELOG.md","articles":[]},"previous":{"title":"Agent information","level":"1.4.1","depth":2,"path":"agent/info.md","ref":"agent/info.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"agent/shards.md","mtime":"2018-08-22T22:07:28.413Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-26T22:52:23.951Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

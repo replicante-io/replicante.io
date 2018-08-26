@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Glossary · Replicante - Protocol and Model Specifications</title>
+        <title>Model ChangeLog · Replicante - Protocol and Model Specifications</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,8 +77,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="GLOSSARY.html" />
     
-    <link rel="prev" href="CHANGELOG.html" />
+    
+    <link rel="prev" href="agent/shards.html" />
     
 
     </head>
@@ -313,7 +315,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="CHANGELOG.html">
+        <li class="chapter active" data-level="1.5" data-path="CHANGELOG.html">
             
                 <a href="CHANGELOG.html">
             
@@ -333,7 +335,7 @@
         
         
     
-        <li class="chapter active" data-level="2.1" data-path="GLOSSARY.html">
+        <li class="chapter " data-level="2.1" data-path="GLOSSARY.html">
             
                 <a href="GLOSSARY.html">
             
@@ -376,7 +378,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Glossary</a>
+        <a href="." >Model ChangeLog</a>
     </h1>
 </div>
 
@@ -391,36 +393,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="data-store"><a name="data-store" class="plugin-anchor" href="#data-store"><i class="fa fa-link" aria-hidden="true"></i></a>Data-store</h2>
-<p>A software solution specialised in storing data for other software.
-The term datastore is used to avoid focus on
-details of specific storage models or uses.</p>
-<p>For the context of this project a datastore is more generically defined
-as a software that fullfils the requirements of the <a href="model/">model</a>.</p>
-<h2 id="model"><a name="model" class="plugin-anchor" href="#model"><i class="fa fa-link" aria-hidden="true"></i></a>Model</h2>
-<p>A conceptual representation of an abstract system that detiles
-and defines all its properties.</p>
-<p>Wikipedia definition: <a href="https://en.wikipedia.org/wiki/Conceptual_model" target="_blank">https://en.wikipedia.org/wiki/Conceptual_model</a></p>
-<h2 id="node"><a name="node" class="plugin-anchor" href="#node"><i class="fa fa-link" aria-hidden="true"></i></a>Node</h2>
-<p>An instance of the datastore, usually running on
-different (vitual or pythsical) machines.</p>
-<h2 id="primary"><a name="primary" class="plugin-anchor" href="#primary"><i class="fa fa-link" aria-hidden="true"></i></a>Primary</h2>
-<p>The <a href="GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a> in the cluster that is responsible
-for coordination of a specific <a href="GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+                                <h1 id="model-changelog"><a name="model-changelog" class="plugin-anchor" href="#model-changelog"><i class="fa fa-link" aria-hidden="true"></i></a>Model ChangeLog</h1>
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/" target="_blank">Keep a Changelog</a>
+and this project adheres to <a href="http://semver.org/spec/v2.0.0.html" target="_blank">Semantic Versioning</a>.</p>
+<h2 id="unreleased"><a name="unreleased" class="plugin-anchor" href="#unreleased"><i class="fa fa-link" aria-hidden="true"></i></a>Unreleased</h2>
+<h3 id="changed"><a name="changed" class="plugin-anchor" href="#changed"><i class="fa fa-link" aria-hidden="true"></i></a>Changed</h3>
+<ul>
+<li><strong>BREAKING</strong>: Encode <a href="GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>.</p>
-<h2 id="secondary"><a name="secondary" class="plugin-anchor" href="#secondary"><i class="fa fa-link" aria-hidden="true"></i></a>Secondary</h2>
-<p>A <a href="GLOSSARY.html#node" class="glossary-term" title="An instance of the datastore, usually running on
-different (vitual or pythsical) machines.">node</a> in the cluster that is responsible for keeping a copy of a <a href="GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
+Shards usually also fail independently.">shard</a> roles in lowercase.</li>
+<li><strong>BREAKING</strong>: Replaced <a href="GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
 Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a>.</p>
-<h2 id="shard"><a name="shard" class="plugin-anchor" href="#shard"><i class="fa fa-link" aria-hidden="true"></i></a>Shard</h2>
-<p>A subset of the data in the datastore.
-Each <a href="GLOSSARY.html#shard" class="glossary-term" title="A subset of the data in the datastore.
-Each shard is managed and operated on indepently of other.
-Shards usually also fail independently.">shard</a> is managed and operated on indepently of other.
-Shards usually also fail independently.</p>
+Shards usually also fail independently.">shard</a>&apos;s <code>last_op</code> with a <code>commit_offset</code>.</li>
+<li><strong>BREAKING</strong>: Replication lag has a specified unit (no longer assumed to be seconds).</li>
+</ul>
+<h3 id="removed"><a name="removed" class="plugin-anchor" href="#removed"><i class="fa fa-link" aria-hidden="true"></i></a>Removed</h3>
+<ul>
+<li>Half-thought performance stats.</li>
+</ul>
+<h2 id="010---2018-01-28"><a name="010---2018-01-28" class="plugin-anchor" href="#010---2018-01-28"><i class="fa fa-link" aria-hidden="true"></i></a>0.1.0 - 2018-01-28</h2>
+<h3 id="added"><a name="added" class="plugin-anchor" href="#added"><i class="fa fa-link" aria-hidden="true"></i></a>Added</h3>
+<ul>
+<li>Initial <a href="GLOSSARY.html#model" class="glossary-term" title="A conceptual representation of an abstract system that detiles
+and defines all its properties.">model</a> definition.</li>
+</ul>
 
                                 
                                 </section>
@@ -454,7 +451,7 @@ Shards usually also fail independently.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Glossary","level":"2.1","depth":1,"previous":{"title":"Model ChangeLog","level":"1.5","depth":1,"path":"CHANGELOG.md","ref":"CHANGELOG.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"GLOSSARY.md","mtime":"2018-05-12T10:53:06.973Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-26T22:52:23.951Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Model ChangeLog","level":"1.5","depth":1,"next":{"title":"Glossary","level":"2.1","depth":1,"path":"GLOSSARY.md","ref":"GLOSSARY.md","articles":[]},"previous":{"title":"Shards information","level":"1.4.2","depth":2,"path":"agent/shards.md","ref":"agent/shards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/replicante/master/docs/specs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/specs/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/specs/0.1.0/"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante - Protocol and Model Specifications","gitbook":"3.2.3","description":"Definition of the Datastore model and the agent protocol"},"file":{"path":"CHANGELOG.md","mtime":"2018-08-23T21:32:51.690Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-26T22:52:23.951Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
