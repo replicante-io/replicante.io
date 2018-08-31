@@ -13,8 +13,10 @@ todo:
   # WebUI
   - 'Show shards in the WebUI'
   # Misc
+  - 'Replicante node ID'
   - 'Sentry integration (core)'
   - 'Sentry integration (agents)'
+  - 'Developers notebook'
   - 'Community growth monitoring'
   - 'Docker images'
   - 'Pre-built binaries'
