@@ -1,5 +1,6 @@
 todo:
   # Core
+  - 'Ensure slow agents do not hang core forever'
   - 'Extend set of generated events'
   - 'Improve metrics code'
   - 'Enable/disable components through configuration'
@@ -19,8 +20,11 @@ todo:
   - 'Pre-built binaries'
 
 progress:
-  - 'Create new Zookeeper agent'
+  - 'Improve versioned agent internals'
+  - 'Improve base agent opentracing integration'
   - 'Create new Kafka agent'
+  - 'Test more MongoDB versions'
+  - 'Tune with new agents WebUI'
 
 done:
   - 'Use error_chain in agents'
@@ -32,3 +36,4 @@ done:
   - 'MongoDB agent to support more versions'
   - 'MongoDB agent to support sharded clusters'
   - 'Evaluate mode datastore against the model'
+  - 'Create new Zookeeper agent'
