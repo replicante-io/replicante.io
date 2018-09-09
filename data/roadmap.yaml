@@ -22,11 +22,9 @@ todo:
   - 'Pre-built binaries'
 
 progress:
-  - 'Improve versioned agent internals'
-  - 'Improve base agent opentracing integration'
   - 'Create new Kafka agent'
   - 'Test more MongoDB versions'
-  - 'Tune with new agents WebUI'
+  - 'Tune WebUI with new datastores'
 
 done:
   - 'Use error_chain in agents'
@@ -39,3 +37,5 @@ done:
   - 'MongoDB agent to support sharded clusters'
   - 'Evaluate mode datastore against the model'
   - 'Create new Zookeeper agent'
+  - 'Improve versioned agent internals'
+  - 'Improve base agent opentracing integration'
