@@ -1,4 +1,5 @@
 todo:
+  - 'Developers notebook'
   # Core
   - 'Ensure slow agents do not hang core forever'
   - 'Extend set of generated events'
@@ -16,7 +17,6 @@ todo:
   - 'Replicante node ID'
   - 'Sentry integration (core)'
   - 'Sentry integration (agents)'
-  - 'Developers notebook'
   - 'Community growth monitoring'
   - 'Docker images'
   - 'Pre-built binaries'
