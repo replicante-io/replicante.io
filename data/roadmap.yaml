@@ -22,7 +22,7 @@ todo:
   - 'Pre-built binaries'
 
 progress:
-  - 'Create new Kafka agent'
+  - 'Additional Zookeeper agent metrics'
   - 'Test more MongoDB versions'
   - 'Tune WebUI with new datastores'
 
@@ -39,3 +39,4 @@ done:
   - 'Create new Zookeeper agent'
   - 'Improve versioned agent internals'
   - 'Improve base agent opentracing integration'
+  - 'Create new Kafka agent'

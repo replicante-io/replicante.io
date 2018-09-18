@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Zookeeper · Replicante Agents Documentation</title>
+        <title>Kafka · Replicante Agents Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,8 +77,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="mongodb.html" />
     
-    <link rel="prev" href="mongodb.html" />
+    
+    <link rel="prev" href="base/security.html" />
     
 
     </head>
@@ -168,7 +170,7 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="kafka.html">
+        <li class="chapter active" data-level="2.1" data-path="kafka.html">
             
                 <a href="kafka.html">
             
@@ -194,7 +196,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.3" data-path="zookeeper.html">
+        <li class="chapter " data-level="2.3" data-path="zookeeper.html">
             
                 <a href="zookeeper.html">
             
@@ -237,7 +239,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Zookeeper</a>
+        <a href="." >Kafka</a>
     </h1>
 </div>
 
@@ -252,40 +254,62 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="zookeeper"><a name="zookeeper" class="plugin-anchor" href="#zookeeper"><i class="fa fa-link" aria-hidden="true"></i></a>Zookeeper</h1>
-<p><a href="https://zookeeper.apache.org/" target="_blank">Zookeeper</a> is a centralized service for maintaining configuration
-information, naming, providing distributed synchronization, and providing group services.</p>
+                                <h1 id="kafka"><a name="kafka" class="plugin-anchor" href="#kafka"><i class="fa fa-link" aria-hidden="true"></i></a>Kafka</h1>
+<p><a href="https://kafka.apache.org/" target="_blank">Kafka</a> is a distributed streaming platform.</p>
 <h2 id="supported-versions"><a name="supported-versions" class="plugin-anchor" href="#supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>Supported versions</h2>
 <table>
 <thead>
 <tr>
 <th>Agent Version</th>
-<th>Zookeeper Version</th>
+<th>Kafka Version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>0.1.0+</td>
-<td>3.3+</td>
+<td>1.0+</td>
 </tr>
 </tbody>
 </table>
 <h2 id="installation-from-code"><a name="installation-from-code" class="plugin-anchor" href="#installation-from-code"><i class="fa fa-link" aria-hidden="true"></i></a>Installation from code</h2>
-<p>Follow the instructions in the <a href="base/install.html">installation</a> page.
-Once the agent is available in <code>$PATH</code> check the usage:</p>
-<pre><code class="lang-bash">$ replicante-agent-zookeeper --help
-Zookeeper Replicante Agent 0.1.0 [01c4992a74a7331810e92a808b5cc3fec2b02635; working directory tainted]
-Replicante agent <span class="hljs-keyword">for</span> Zookeeper
+<p>The Kafka agent uses an embedded JVM instance to access remote JMX data.
+This means compiling the Kafka agent has extra requirements as compared to other agents.</p>
+<p>To avoid the extra burdens of Java dependencies on other agents, the Kafka agent is not part
+of the root workspace that includes all other agents.</p>
+<p>The following instructions where executed on a clean Fedora 28 install
+but should work for any Linux system:</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># Install needed tools and dependencies.</span>
+dnf install cmake gcc git make openssl-devel java-1.8.0-openjdk-devel
+<span class="hljs-built_in">export</span> JAVA_HOME=$(find /usr/lib/jvm/java-1.8.0-openjdk-1.8.0* | head -n1)
+<span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-string">&quot;<span class="hljs-variable">${JAVA_HOME}</span>/jre/lib/amd64/server:<span class="hljs-variable">$LD_LIBRARY_PATH</span>&quot;</span>
+
+<span class="hljs-comment"># Install rust and cargo with rustup.</span>
+curl https://sh.rustup.rs <span class="hljs-_">-s</span>Sf | sh
+<span class="hljs-built_in">source</span> <span class="hljs-variable">$HOME</span>/.cargo/env
+
+<span class="hljs-comment"># Get the code and compile replicante.</span>
+git <span class="hljs-built_in">clone</span> --recursive https://github.com/replicante-io/agents.git
+<span class="hljs-built_in">cd</span> agents/kafka
+<span class="hljs-comment"># To install a specific VERSION uncomment the command below.</span>
+<span class="hljs-comment"># By default the latest DEVELOPMENT version is compiled.</span>
+<span class="hljs-comment"># Production users should instead switch to the latest STABLE release.</span>
+<span class="hljs-comment">#git checkout v&lt;VERSION&gt;</span>
+cargo build --release
+
+<span class="hljs-comment"># Ensure the built binaries work.</span>
+$ target/release/replicante-agent-kafka --help
+Kafka Replicante Agent 0.1.0 [01c4992a74a7331810e92a808b5cc3fec2b02635; not tainted]
+Replicante agent <span class="hljs-keyword">for</span> Kafka
 
 USAGE:
-    replicante-agent-zookeeper [OPTIONS]
+    replicante-agent-kafka [OPTIONS]
 
 FLAGS:
     -h, --help       Prints <span class="hljs-built_in">help</span> information
     -V, --version    Prints version information
 
 OPTIONS:
-    -c, --config &lt;FILE&gt;    Specifies the configuration file to use [default: agent-zookeeper.yaml]
+    -c, --config &lt;FILE&gt;    Specifies the configuration file to use [default: agent-kafka.yaml]
 </code></pre>
 <h2 id="configuration"><a name="configuration" class="plugin-anchor" href="#configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Configuration</h2>
 <pre><code class="lang-yaml"><span class="hljs-comment"># Common agents options described in the </span>
@@ -293,17 +317,36 @@ OPTIONS:
   <span class="hljs-comment"># ... snip ...</span>
 
 
-<span class="hljs-comment"># Zookeeper specific configuration.</span>
-<span class="hljs-attr">zookeeper:</span>
-  <span class="hljs-comment"># Name of the zookeeper cluster.</span>
-  <span class="hljs-comment"># *** Required ***</span>
-  <span class="hljs-comment">#cluster: &lt;CLUSTER_NAME&gt;</span>
+<span class="hljs-comment"># Kafka specific configuration.</span>
+<span class="hljs-attr">kafka:</span>
+  <span class="hljs-comment"># Addresses used to locate the kafka services.</span>
+<span class="hljs-attr">  target:</span>
+    <span class="hljs-comment"># Kafka broker configuration.</span>
+<span class="hljs-attr">    broker:</span>
+      <span class="hljs-comment"># Addresses &quot;host:port&quot; of the kafka broker.</span>
+<span class="hljs-attr">      uri:</span> <span class="hljs-string">&apos;localhost:9092&apos;</span>
 
-  <span class="hljs-comment"># Host and port (in host:port format) of the zookeeper 4lw server.</span>
-<span class="hljs-attr">  target:</span> <span class="hljs-string">&quot;localhost:2181&quot;</span>
+      <span class="hljs-comment"># Network timeout for requests to Kafka.</span>
+<span class="hljs-attr">      timeout:</span> <span class="hljs-number">10</span>
+
+    <span class="hljs-comment"># Address &quot;host:port&quot; of the JMX server.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># By default kafka does not expose the JMX server.</span>
+    <span class="hljs-comment"># To do so, set the `JMX_PORT` environment variable before starting the server.</span>
+    <span class="hljs-comment"># For additional options see:</span>
+    <span class="hljs-comment">#   https://github.com/apache/kafka/blob/1.1.1/bin/kafka-run-class.sh#L166-L174</span>
+<span class="hljs-attr">    jmx:</span> <span class="hljs-string">&apos;localhost:9999&apos;</span>
+
+    <span class="hljs-comment"># Zookeeper ensamble for the Kafka cluster.</span>
+<span class="hljs-attr">    zookeeper:</span>
+      <span class="hljs-comment"># Addresses &quot;host:port&quot; of the zookeeper ensamble.</span>
+<span class="hljs-attr">      uri:</span> <span class="hljs-string">&apos;localhost:2181&apos;</span>
+
+      <span class="hljs-comment"># Zookeeper session timeout.</span>
+<span class="hljs-attr">      timeout:</span> <span class="hljs-number">10</span>
 </code></pre>
 <h2 id="upgrades-notes"><a name="upgrades-notes" class="plugin-anchor" href="#upgrades-notes"><i class="fa fa-link" aria-hidden="true"></i></a>Upgrades notes</h2>
-<p>See the <a href="https://github.com/replicante-io/agents/blob/master/zookeeper/CHANGELOG.md" target="_blank">full changelog</a>
+<p>See the <a href="https://github.com/replicante-io/agents/blob/master/kafka/CHANGELOG.md" target="_blank">full changelog</a>
 for all details.</p>
 
                                 
@@ -338,7 +381,7 @@ for all details.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Zookeeper","level":"2.3","depth":1,"previous":{"title":"MongoDB","level":"2.2","depth":1,"path":"mongodb.md","ref":"mongodb.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/agents/master/docs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/agents/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/agents/0.1.0/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante Agents Documentation","gitbook":"3.2.3","description":"Replicante Agents Documentation"},"file":{"path":"zookeeper.md","mtime":"2018-09-18T17:57:03.179Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-18T19:55:46.946Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Kafka","level":"2.1","depth":1,"next":{"title":"MongoDB","level":"2.2","depth":1,"path":"mongodb.md","ref":"mongodb.md","articles":[]},"previous":{"title":"Security considerations","level":"1.4","depth":1,"path":"base/security.md","ref":"base/security.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchors@0.7.1","hints@1.0.2","include-codeblock@3.2.2","rest@1.1.1","theme-api@1.1.2","versions@2.1.4"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"rest":{"rtl":"true"},"theme-api":{"languages":[],"split":true,"theme":"light"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/replicante-io/agents/master/docs/book.json","options":[{"text":"Master (unreleased)","value":"https://replicante.io/docs/agents/master/"},{"text":"Version 0.1.0","value":"https://replicante.io/docs/agents/0.1.0/"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Replicante Agents Documentation","gitbook":"3.2.3","description":"Replicante Agents Documentation"},"file":{"path":"kafka.md","mtime":"2018-09-18T19:52:59.644Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-18T19:55:46.946Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
