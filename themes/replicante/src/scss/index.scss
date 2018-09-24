@@ -1,14 +1,20 @@
 @import "~bootstrap/scss/bootstrap";
 
-$brand: rgba(181, 113, 216, 0.75);
+//$brand: rgba(181, 113, 216, 0.75);
+$brand: rgb(119, 101, 193);
 $brand-light: rgba(181, 113, 216, 0.15);
 
 
 nav.navbar.top {
+  background-color: $brand;
+  // Source: https://www.transparenttextures.com/gplay.html
+  background-image: url("./gplay.png");
+
+  //border-bottom: 2px solid $brand;
   font-size: 0.95em;
-  border-bottom: 2px solid $brand;
   margin-bottom: 0em;
-  padding-bottom: 0em;
+  //padding-bottom: 0em;
+  padding-bottom: 2px;
 }
 
 
@@ -16,6 +22,9 @@ div.landing {
   background-color: $brand;
   // Source: https://www.transparenttextures.com/gplay.html
   background-image: url("./gplay.png");
+  // Account for the navbar above us.
+  // This is a cheat and is visible when scrolling.
+  background-attachment: fixed;
   width: 100%;
 
   div.container {
@@ -40,6 +49,12 @@ div.landing {
 
       a {
         margin-right: 1em;
+
+        &:not(:hover) {
+          background-color: $brand;
+          border-color: white;
+          color: white;
+        }
       }
     }
   }

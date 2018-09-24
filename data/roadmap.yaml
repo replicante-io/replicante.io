@@ -1,17 +1,12 @@
 todo:
-  - 'Developers notebook'
   # Core
-  - 'Ensure slow agents do not hang core forever'
-  - 'Extend set of generated events'
-  - 'Improve metrics code'
-  - 'Enable/disable components through configuration'
-  - 'Expose events through grafana annotations'
   - 'OpenTrace discovery runs'
   - 'OpenTrace agent interactions'
   - 'HTTP backed agents discovery'
   - 'Refactor agents monitoring into a ClusterManager component'
   - 'Coordinate ClusterManagers across nodes with zookeeper (HA support)'
   # WebUI
+  - 'Show nodes in the WebUI'
   - 'Show shards in the WebUI'
   # Misc
   - 'Replicante node ID'
@@ -22,9 +17,11 @@ todo:
   - 'Pre-built binaries'
 
 progress:
-  - 'Additional Zookeeper agent metrics'
-  - 'Test more MongoDB versions'
-  - 'Tune WebUI with new datastores'
+  - 'Ensure slow agents do not hang core forever'
+  - 'Improve generated events'
+  - 'Improve metrics code'
+  - 'Enable/disable components through configuration'
+  - 'Expose events through grafana annotations'
 
 done:
   - 'Use error_chain in agents'
@@ -40,3 +37,7 @@ done:
   - 'Improve versioned agent internals'
   - 'Improve base agent opentracing integration'
   - 'Create new Kafka agent'
+  - 'Additional Zookeeper agent metrics'
+  - 'Test more MongoDB versions'
+  - 'Tune WebUI with new datastores'
+  - 'Developers notebook'

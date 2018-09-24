@@ -7,27 +7,33 @@ Layout
 ------
 
   * The static site is built with [Hugo](https://gohugo.io/) (v0.40.2).
-  * Documentation is built with [GitBook](https://toolchain.gitbook.com/).
+  * Documentation is built with [Docusaurus](https://docusaurus.io/).
   * Documentation sources are stored in separate repos.
+  * Legacy documentation is built with [GitBook](https://toolchain.gitbook.com/) (migration is in progress).
 
 
 Building
 --------
+Build theme assets (if needed):
 ```bash
-# Rebuild master version of books.
-./build-books.sh
-
-# [Re-]Build specific version of a book
-./book.sh BOOK VERSION BOOK_SOURCE
-
-# Build theme assets (if needed).
 cd themes/replicante/src
 npm install
 npm run build
 cd ../../../
+```
 
-# Build the full site.
-rm -r dist/
+All in one build:
+```bash
+# Builds docs and site:
+./build.sh
+
+# Clean all built files and re-builds them
+./build.sh --clean
+```
+
+Build the site only (using docs already found in `static/docs`):
+```bash
+rm -r dist/  # Clean target before build.
 hugo
 ```
 

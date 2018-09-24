@@ -38,4 +38,13 @@ so that datastores can be managed and monitored consistently regardless of softw
 
 {{% book id="specs" %}}Read the Specifications Document{{% /book %}}
 {{% /content-box %}}
+
+{{% content-box title="Developers Notebook" %}}
+Replicante architecture, internals, possible futures, and more.
+These pages hold a bit of lore, a bit of history, and a lot of mind dump.
+
+Mainly aimed at project developers to learn the past, understand the now, and glance at the future.
+
+[Read the notebook](./notes/)
+{{% /content-box %}}
 {{< /row >}}
