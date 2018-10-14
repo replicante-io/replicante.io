@@ -3,11 +3,11 @@ todo:
   - 'OpenTrace discovery runs'
   - 'OpenTrace agent interactions'
   - 'HTTP backed agents discovery'
-  - 'Refactor agents monitoring into a ClusterManager component'
-  - 'Coordinate ClusterManagers across nodes with zookeeper (HA support)'
   # WebUI
   - 'Show nodes in the WebUI'
   - 'Show shards in the WebUI'
+  # Core (continued)
+  - 'First data aggregations'
   # Misc
   - 'Replicante node ID'
   - 'Sentry integration (core)'
@@ -15,13 +15,12 @@ todo:
   - 'Community growth monitoring'
   - 'Docker images'
   - 'Pre-built binaries'
+  - 'Update documentation'
 
 progress:
-  - 'Ensure slow agents do not hang core forever'
-  - 'Improve generated events'
-  - 'Improve metrics code'
-  - 'Enable/disable components through configuration'
-  - 'Expose events through grafana annotations'
+  - 'Introduce async tasks queues and workers'
+  - 'Refactor agents monitoring into a ClusterManager component'
+  - 'Coordinate ClusterManagers across nodes with zookeeper (HA support)'
 
 done:
   - 'Use error_chain in agents'
@@ -41,3 +40,8 @@ done:
   - 'Test more MongoDB versions'
   - 'Tune WebUI with new datastores'
   - 'Developers notebook'
+  - 'Ensure slow agents do not hang core forever'
+  - 'Improve generated events'
+  - 'Improve metrics code'
+  - 'Enable/disable components through configuration'
+  - 'Expose events through grafana annotations'
