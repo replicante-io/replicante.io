@@ -29,17 +29,6 @@ docubuild() {
   echo '---> Done'
 }
 
-## Build gitbook project and copy it into the site statics.
-gitbookbuild() {
-  name=$1
-  project=$2
-  clean=""
-  if [ "${CLEAN}" == "yes" ]; then
-    clean="--clean"
-  fi
-  ./book.sh ${clean} "${name}" 'master' "${project}"
-}
-
 ## Print script usage and exit.
 usage() {
   echo 'Usage: ./build.sh [options]'
@@ -76,12 +65,10 @@ done
 
 # Start by building docusaurus sites
 echo '--> Building docs ...'
+docubuild 'agents' '../agents/docs' 'replicante'
+docubuild 'manual' '../replicante/docs/manual' 'replicante'
 docubuild 'notes' '../replicante/docs/notes' 'replicante'
-
-# Build legacy gitbooks
-gitbookbuild 'agents' '../agents/docs/'
-gitbookbuild 'manual' '../replicante/docs/manual/'
-gitbookbuild 'specs' '../replicante/docs/specs/'
+docubuild 'specs' '../replicante/docs/specs' 'replicante'
 echo '--> Done'
 
 # Finally build the site itself.

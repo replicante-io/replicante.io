@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Configuration · Replicante Core Manual</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Replicante provides a large set of configuration options with reasonable defaults.&lt;/p&gt;
+"/><meta name="docsearch:version" content="0.1.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Configuration · Replicante Core Manual"/><meta property="og:type" content="website"/><meta property="og:url" content="https://www.replicante.io/docs/manual/index.html"/><meta property="og:description" content="&lt;p&gt;Replicante provides a large set of configuration options with reasonable defaults.&lt;/p&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/docs/manual/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/docs/manual/css/main.css"/><script src="/docs/manual/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docs/manual/"><h2 class="headerTitle">Replicante Core Manual</h2></a><a href="/docs/manual/versions"><h3>0.1.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/manual/docs/intro" target="_self">Docs</a></li><li class=""><a href="https://www.replicante.io" target="_self">Website</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Administration</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">First steps</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/quick-start">Quick Start</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/architecture">Architecture Overview</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Administration</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/admin-deps">Dependencies</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/admin-install">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/manual/docs/admin-config">Configuration</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Features</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/features">Features Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/features-discovery">Agent Discovery</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/features-events">Events</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/features-webui">WebUI</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/features-introspection">Introspection</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Security</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/security">Security Considerations</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/security-transport">Agent Transports</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Upgrades</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/upgrades-rolling">Rolling Upgrades</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/upgrades-versions">Version Compatibility</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/upgrades-notes">Upgrade Notes</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/upgrades-changelog">Change Log</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">replictl</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/replictl-intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/replictl-check">replictl check</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/replictl-versions">replictl versions</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/api">API Reference</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/api-monitoring">Monitoring</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Configuration</h1></header><article><div><span><p>Replicante provides a large set of configuration options with reasonable defaults.
+This supports common use cases where only a handful of options need attention
+as well as advanced setup where the user has the power to fine tune most details.</p>
+<h2><a class="anchor" aria-hidden="true" id="required-configuration"></a><a href="#required-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Required configuration</h2>
+<p>Some options do not have reasonable defaults so users will have to set them explicitly:</p>
+<ul>
+<li><a href="/docs/manual/docs/features-discovery">Agents discovery</a> (vastly depends on user needs).</li>
+<li>Storage configuration (specifically: address of the DB server).</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="all-configuration-options"></a><a href="#all-configuration-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>All configuration options</h2>
+<p>All options are documented in the
+<a href="https://github.com/replicante-io/replicante/blob/master/replicante.example.yaml">example configuration file</a>
+at the root of the repo, also shown below.</p>
+<p>This file shows all options with their defaults and explains their meaning and available settings.
+As mentioned above, common use cases should be able to ignore most options if users are so inclined.</p>
+<p>Details of these options are documented in the features they influence.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-comment"># The section below is for the API interface configuration.</span>
+<span class="hljs-attr">api:</span>
+  <span class="hljs-comment"># The network interface and port to bind the API server onto.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># By default, only bind to the loopback interface.</span>
+  <span class="hljs-comment"># Production environments should place an HTTPS proxy in front of the API.</span>
+<span class="hljs-attr">  bind:</span> <span class="hljs-string">'127.0.0.1:16016'</span>
+
+
+<span class="hljs-comment"># The section below is for agent discovery configuration.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Discovery is the way the agents that should be managed are found.</span>
+<span class="hljs-comment"># Replicante core then interact with agents by initiating connections out to them.</span>
+<span class="hljs-attr">discovery:</span>
+  <span class="hljs-comment"># Interval (in seconds) to wait between agent discovery runs.</span>
+<span class="hljs-attr">  interval:</span> <span class="hljs-number">60</span>
+
+  <span class="hljs-comment"># Discovery backends configuration.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Backends are a way to support an extensible set of discovery systems.</span>
+  <span class="hljs-comment"># Each backend has its own options as described below.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available backends are:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * `files`: discover agents from local config files.</span>
+<span class="hljs-attr">  backends:</span>
+    <span class="hljs-comment"># The `files` backend discover agents from files.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># The `files` backend can be useful to delegate discovery to unsupported systems.</span>
+    <span class="hljs-comment"># Examples are configuration managemnet tools (ansible, chef, puppet, ...).</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># This is a list of files that are periodically read to perform discovery.</span>
+<span class="hljs-attr">    files:</span> <span class="hljs-string">[]</span>
+
+
+<span class="hljs-comment"># The section below is for logging configuration.</span>
+<span class="hljs-attr">logging:</span>
+  <span class="hljs-comment"># Flush logs asynchronously.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Pro:</span>
+  <span class="hljs-comment">#     Async log flushing is more efficient as processes</span>
+  <span class="hljs-comment">#     are not blocked waiting for logging backends to complete.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Con:</span>
+  <span class="hljs-comment">#     If the process crashes logs in the buffer may be lost.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Recommendation:</span>
+  <span class="hljs-comment">#     Keep async logging enabled unless replicante is crashing</span>
+  <span class="hljs-comment">#     and the logs don't have any indications of why.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#     Async logging may also be disabled in testing, debugging,</span>
+  <span class="hljs-comment">#     or developing environments.</span>
+<span class="hljs-attr">  async:</span> <span class="hljs-literal">true</span>
+
+  <span class="hljs-comment"># Logging backend configuration.</span>
+<span class="hljs-attr">  backend:</span>
+    <span class="hljs-comment"># The backend to send logs to.</span>
+    <span class="hljs-comment"># This option also determines the format and destination of logs.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Available options:</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   * 'json': prints JSON formatted logs to standard output.</span>
+    <span class="hljs-comment">#   * 'journald': sends logs to systemd journal (if enabled at compile time).</span>
+<span class="hljs-attr">    name:</span> <span class="hljs-string">json</span>
+
+    <span class="hljs-comment"># Any backend-specific option is set here.</span>
+    <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># *** None available at this time ***</span>
+    <span class="hljs-comment">#options:</span>
+
+  <span class="hljs-comment"># The minimum logging level.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available options:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * 'critical'</span>
+  <span class="hljs-comment">#   * 'error'</span>
+  <span class="hljs-comment">#   * 'warning'</span>
+  <span class="hljs-comment">#   * 'info'</span>
+  <span class="hljs-comment">#   * 'debug' (only available in debug builds)</span>
+<span class="hljs-attr">  level:</span> <span class="hljs-string">info</span>
+
+
+<span class="hljs-comment"># The section below is for storage configuration.</span>
+<span class="hljs-attr">storage:</span>
+  <span class="hljs-comment"># The database to use for persistent storage.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
+  <span class="hljs-comment"># This option is to allow users to choose a supported database that best fits</span>
+  <span class="hljs-comment"># their use and environment.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># To change this option you will need to "Update by rebuild".</span>
+  <span class="hljs-comment"># See the documentation for more details on this process.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available options:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * 'mongodb' (recommended)</span>
+<span class="hljs-attr">  backend:</span> <span class="hljs-string">mongodb</span>
+
+  <span class="hljs-comment"># Any backend-specific option is set here.</span>
+  <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># MongoDB options</span>
+<span class="hljs-attr">  options:</span>
+    <span class="hljs-comment"># Name of the MongoDB database to use for persistence.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
+    <span class="hljs-comment"># This option is to allow users to choose a supported database that best fits</span>
+    <span class="hljs-comment"># their use and environment.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># To change this option you will need to "Update by rebuild".</span>
+    <span class="hljs-comment"># See the documentation for more details on this process.</span>
+<span class="hljs-attr">    db:</span> <span class="hljs-string">replicante</span>  <span class="hljs-comment"># (recommended)</span>
+
+    <span class="hljs-comment"># URI of the MongoDB Replica Set or sharded cluster to connect to.</span>
+<span class="hljs-attr">    uri:</span> <span class="hljs-attr">mongodb://localhost:27017/</span>
+
+
+<span class="hljs-comment"># The section below is for distributed tracing configuration.</span>
+<span class="hljs-attr">tracing:</span>
+  <span class="hljs-comment"># The distributed tracing backend to integrate with.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available options:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * 'noop'</span>
+  <span class="hljs-comment">#   * 'zipkin'</span>
+<span class="hljs-attr">  backend:</span> <span class="hljs-string">noop</span>
+
+  <span class="hljs-comment"># Any backend-specific option is set here.</span>
+  <span class="hljs-comment"># The available options vary from tracer to tracer and are documented below.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Zipkin options</span>
+  <span class="hljs-comment">#options:</span>
+  <span class="hljs-comment">#  # (required) The service name for this zipkin endpoint.</span>
+  <span class="hljs-comment">#  service_name: replicante</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#  # (required) List of kafka seed hostnames.</span>
+  <span class="hljs-comment">#  kafka:</span>
+  <span class="hljs-comment">#    - HOST1:9092</span>
+  <span class="hljs-comment">#    - HOST2:9092</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#  # The kafka topic to publish spans to.</span>
+  <span class="hljs-comment">#  topic: zipkin</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/manual/docs/admin-install"><span class="arrow-prev">← </span><span>Installation</span></a><a class="docs-next button" href="/docs/manual/docs/features"><span>Features Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#required-configuration">Required configuration</a></li><li><a href="#all-configuration-options">All configuration options</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap" style="text-align:center"><div><h5>Docs</h5><a href="/docs/manual/docs/quick-start">Quick Start</a><a href="/docs/manual/docs/features">Features</a><a href="/docs/manual/docs/api">API Reference</a></div><div><h5>Community</h5><a href="https://github.com/replicante-io">GitHub Organisation</a><a href="https://www.replicante.io/">Official Website</a></div></section><section class="copyright">Copyright © 2019 Stefano Pogliani</section></footer></div></body></html>

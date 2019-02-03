@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Introspection · Replicante Core Manual</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;In an ideal world software, once installed and configured, runs perfectly without ever needing attention.&lt;/p&gt;
+"/><meta name="docsearch:version" content="0.1.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Introspection · Replicante Core Manual"/><meta property="og:type" content="website"/><meta property="og:url" content="https://www.replicante.io/docs/manual/index.html"/><meta property="og:description" content="&lt;p&gt;In an ideal world software, once installed and configured, runs perfectly without ever needing attention.&lt;/p&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/docs/manual/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/docs/manual/css/main.css"/><script src="/docs/manual/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docs/manual/"><h2 class="headerTitle">Replicante Core Manual</h2></a><a href="/docs/manual/versions"><h3>0.1.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/manual/docs/intro" target="_self">Docs</a></li><li class=""><a href="https://www.replicante.io" target="_self">Website</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Features</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">First steps</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/quick-start">Quick Start</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/architecture">Architecture Overview</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Administration</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/admin-deps">Dependencies</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/admin-install">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/admin-config">Configuration</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Features</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/features">Features Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/features-discovery">Agent Discovery</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/features-events">Events</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/features-webui">WebUI</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/manual/docs/features-introspection">Introspection</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Security</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/security">Security Considerations</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/security-transport">Agent Transports</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Upgrades</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/upgrades-rolling">Rolling Upgrades</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/upgrades-versions">Version Compatibility</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/upgrades-notes">Upgrade Notes</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/upgrades-changelog">Change Log</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">replictl</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/replictl-intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/replictl-check">replictl check</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/replictl-versions">replictl versions</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/api">API Reference</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/api-monitoring">Monitoring</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Introspection</h1></header><article><div><span><p>In an ideal world software, once installed and configured, runs perfectly without ever needing attention.
+Of course reality tells a different story.</p>
+<p>Software bugs and evolution, transient network issues, miss-configurations ...
+Many things can go wrong and the symptoms are often unclear.
+Distributed systems also mean that errors often propagate across processes
+and servers so the error location is far from the error origin.</p>
+<p>On top of all that, distributed systems are complex to follow and
+simple questions about correct functioning become hard to answer.</p>
+<p>Replicante is a distributed system and as such it is subject to all the above complications.
+To help users and administrators understand and manage installations, as well as troubleshoot issues,
+Replicante provides a set of features to introspect the system and trace its activity.</p>
+<h2><a class="anchor" aria-hidden="true" id="events-trail"></a><a href="#events-trail" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Events trail</h2>
+<p>Replicante is an event-driven system at its core.
+Because of that, most activities of the system can be explained and monitored by looking at events.</p>
+<p>The <a href="/docs/manual/docs/features-events">events</a> section explains how to view and programmatically follow events.</p>
+<h2><a class="anchor" aria-hidden="true" id="metrics"></a><a href="#metrics" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Metrics</h2>
+<p>Information about internal operation of replicante is exposed through metrics.
+These can be used to monitor the health and activity of a process as well as its performance.</p>
+<p>Metrics are exposed in <a href="https://prometheus.io/">Prometheus</a> format by the API endpoint <code>/api/v1/metrics</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="logging"></a><a href="#logging" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Logging</h2>
+<p>Logging is a good way to see exactly what one system was doing at a precise point in time.
+Replicante provides structured logging so administrators can see what is happening and in what context.</p>
+<p>By itself this is needed but not that great.
+The real power of structured logging comes in with centralised log collection:
+the logs from every server are collected and indexed in a central location along with other services.</p>
+<h3><a class="anchor" aria-hidden="true" id="configuration"></a><a href="#configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration</h3>
+<p>Various logging backends are supported so that replicante can fit into your infrastructure
+and some options are provided to user regardless of the backend of choice.
+All options are under the <code>logging</code> section.
+The details are documented in the <a href="/docs/manual/docs/admin-config">configuration reference</a>.</p>
+<p>Below are the supported backends:</p>
+<ul>
+<li><code>json</code> (default) outputs logs to standard output in JSON format:
+<ul>
+<li>The output is not the easiest to read directly.</li>
+<li>It works well with process supervisors that expect logs from standard output (i.e, docker).</li>
+<li>Lines can be processed by any tools that understand JSON (i.e, <code>jq</code> or crafted scripts).</li>
+</ul></li>
+<li><code>journald</code> sends logs to journald directly (systemd's logging facility):
+<ul>
+<li><code>journald</code> is available only if enabled at compile time.</li>
+<li><code>journald</code> is requires a server running systemd.</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="distributed-tracing"></a><a href="#distributed-tracing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Distributed Tracing</h2>
+<p>Following the details of an operation from start to finish when it spans several servers
+can be a challenge.
+Thankfully there are tools to address this challenge: distributed tracers.</p>
+<p>Distributed tracers are central systems that collect segments of operations from different servers
+and combine them together to show the entire story of a full operation.</p>
+<h3><a class="anchor" aria-hidden="true" id="configuration-1"></a><a href="#configuration-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration</h3>
+<p>Replicante supports integration with some distributed tracing tools compatible with the
+<a href="http://opentracing.io/">OpenTracing</a> specification.</p>
+<p>By default distributed tracing is disabled but it can be <a href="/docs/manual/docs/admin-config">configured</a>
+with the options under the <code>tracing</code> section.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/manual/docs/features-webui"><span class="arrow-prev">← </span><span class="function-name-prevnext">WebUI</span></a><a class="docs-next button" href="/docs/manual/docs/security"><span>Security Considerations</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#events-trail">Events trail</a></li><li><a href="#metrics">Metrics</a></li><li><a href="#logging">Logging</a><ul class="toc-headings"><li><a href="#configuration">Configuration</a></li></ul></li><li><a href="#distributed-tracing">Distributed Tracing</a><ul class="toc-headings"><li><a href="#configuration-1">Configuration</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap" style="text-align:center"><div><h5>Docs</h5><a href="/docs/manual/docs/quick-start">Quick Start</a><a href="/docs/manual/docs/features">Features</a><a href="/docs/manual/docs/api">API Reference</a></div><div><h5>Community</h5><a href="https://github.com/replicante-io">GitHub Organisation</a><a href="https://www.replicante.io/">Official Website</a></div></section><section class="copyright">Copyright © 2019 Stefano Pogliani</section></footer></div></body></html>

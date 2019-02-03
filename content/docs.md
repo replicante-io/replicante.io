@@ -15,7 +15,7 @@ You likely want to start here.
 
 Check out the architecture overview and the quickstart, then dive into the details.
 
-{{% book id="manual" %}}Read the guide{{% /book %}}
+[Read the guide](./manual/)
 {{% /content-box %}}
 
 
@@ -25,7 +25,7 @@ all management tasks the datastore software should not deal with.
 
 Agents developed by the Replicante team are documented here.
 
-{{% book id="agents" %}}Read the docs{{% /book %}}
+[Read the docs](./agents/)
 {{% /content-box %}}
 
 
@@ -36,7 +36,7 @@ behaviours, and expectations needed of datastores.
 In Replicante we see every datastore through the lenses of this specifications
 so that datastores can be managed and monitored consistently regardless of software.
 
-{{% book id="specs" %}}Read the Specifications Document{{% /book %}}
+[Read the Specifications Document](./specs/)
 {{% /content-box %}}
 
 {{% content-box title="Developers Notebook" %}}

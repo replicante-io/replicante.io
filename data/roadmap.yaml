@@ -1,26 +1,8 @@
 todo:
-  # Core
-  - 'OpenTrace discovery runs'
-  - 'OpenTrace agent interactions'
-  - 'HTTP backed agents discovery'
-  # WebUI
-  - 'Show nodes in the WebUI'
-  - 'Show shards in the WebUI'
-  # Core (continued)
-  - 'First data aggregations'
-  # Misc
-  - 'Replicante node ID'
-  - 'Sentry integration (core)'
-  - 'Sentry integration (agents)'
-  - 'Community growth monitoring'
-  - 'Docker images'
-  - 'Pre-built binaries'
-  - 'Update documentation'
+  - 'Release 0.2.0'
 
 progress:
-  - 'Introduce async tasks queues and workers'
-  - 'Refactor agents monitoring into a ClusterManager component'
-  - 'Coordinate ClusterManagers across nodes with zookeeper (HA support)'
+  - 'Update documentation'
 
 done:
   - 'Use error_chain in agents'
@@ -45,3 +27,7 @@ done:
   - 'Improve metrics code'
   - 'Enable/disable components through configuration'
   - 'Expose events through grafana annotations'
+  - 'Introduce async tasks queues and workers'
+  - 'Refactor agents monitoring into a ClusterManager component'
+  - 'Coordinate ClusterManagers across nodes with zookeeper (HA support)'
+  - 'Replicante node ID'

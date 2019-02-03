@@ -6,8 +6,7 @@ draft: false
 
 {{< row >}}
 {{% content-box title="Consistent Model" %}}
-What defines a datastore is detailed in the
-{{% book id="specs" %}}specifications{{% /book %}} document.
+What defines a datastore is detailed in the [specifications](./docs/specs/) document.
 Building on this document we can reuse concepts and model datastores.
 
 No need to focus on the details of Kafka, MongoDB, Zookeeper, etcetera for day to day operations.
@@ -18,7 +17,7 @@ No need to focus on the details of Kafka, MongoDB, Zookeeper, etcetera for day t
 Continuous monitoring is used to detect changes and failures quickly.
 
 This information is used to check if the datastore is in the desired state
-(as determined by the {{% book id="specs" %}}specifications{{% /book %}} document).
+(as determined by the [specifications](./docs/specs/) document).
 {{% /content-box %}}
 
 
@@ -45,7 +44,7 @@ external tool that can process events off the stream independent of the core pla
 Knowing when things go wrong is good.
 Automatically executing corrective actions for the most common issues is better!
 
-By accepting that bad things happen from the {{% book id="specs" %}}specifications{{% /book %}} level
+By accepting that bad things happen from the [specifications](./docs/specs/) level
 it is also possible to determine corrective actions and perform them.
 
 Don't be too scared though: the model can also tell us when it is safe to act.
