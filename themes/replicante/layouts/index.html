@@ -12,9 +12,8 @@
     </h4>
 
     <div class="quicklinks">
-      {{- $book := .Site.Data.books.manual -}}
-      {{- $url := printf "/docs/%s/%s" $book.path $book.version -}}
-      {{- $quickstart := printf "%s/first-steps/quickstart.html" $url -}}
+      {{- $url := "/docs/manual/docs/intro" -}}
+      {{- $quickstart := "/docs/manual/docs/quick-start" -}}
       <a class="btn btn-outline-dark" role="button" href="{{ $quickstart }}">Quick start</a>
       <a class="btn btn-outline-dark" role="button" href="{{ $url }}">User guide</a>
     </div>
