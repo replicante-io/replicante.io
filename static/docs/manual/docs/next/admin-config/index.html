@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Configuration · Replicante Core Manual</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Replicante provides a large set of configuration options with reasonable defaults.&lt;/p&gt;
 "/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Configuration · Replicante Core Manual"/><meta property="og:type" content="website"/><meta property="og:url" content="https://www.replicante.io/docs/manual/index.html"/><meta property="og:description" content="&lt;p&gt;Replicante provides a large set of configuration options with reasonable defaults.&lt;/p&gt;
-"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/docs/manual/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/docs/manual/css/main.css"/><script src="/docs/manual/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docs/manual/"><h2 class="headerTitle">Replicante Core Manual</h2></a><a href="/docs/manual/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/manual/docs/next/intro" target="_self">Docs</a></li><li class=""><a href="https://www.replicante.io" target="_self">Website</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Administration</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">First steps</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/quick-start">Quick Start</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/architecture">Architecture Overview</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Administration</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-deps">Dependencies</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-install">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/manual/docs/next/admin-config">Configuration</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Features</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features">Features Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-discovery">Agent Discovery</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-events">Events</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-webui">WebUI</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-introspection">Introspection</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Security</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/security">Security Considerations</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/security-transport">Agent Transports</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Upgrades</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-rolling">Rolling Upgrades</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-versions">Version Compatibility</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-notes">Upgrade Notes</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-changelog">Change Log</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">replictl</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-check">replictl check</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-versions">replictl versions</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api">API Reference</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api-monitoring">Monitoring</a></li></ul></div></div></section></div><script>
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/docs/manual/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/docs/manual/css/main.css"/><script src="/docs/manual/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docs/manual/"><h2 class="headerTitle">Replicante Core Manual</h2></a><a href="/docs/manual/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/manual/docs/next/intro" target="_self">Docs</a></li><li class=""><a href="https://www.replicante.io" target="_self">Website</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Administration</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">First steps</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/quick-start">Quick Start</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/architecture">Architecture Overview</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Administration</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-deps">Dependencies</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-install">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/manual/docs/next/admin-config">Configuration</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-flexible-deployment">Flexible Deployment</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-tasks">Tasks subsystem</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Features</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-discovery">Agent Discovery</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-events">Events</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-webui">WebUI</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-introspection">Introspection</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Security</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/security">Security Considerations</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/security-transport">Agent Transports</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Upgrades</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-rolling">Rolling Upgrades</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-versions">Version Compatibility</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-notes">Upgrade Notes</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-changelog">Change Log</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">replictl</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-check">replictl check</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-coordinator">replictl coordinator</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-versions">replictl versions</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api">API Reference</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api-monitoring">Monitoring</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Scaling</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-store">Primary Store</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-tasks">Task Queues</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-events">Event streams</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-coordinator">Coordinator</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -59,13 +59,16 @@ as well as advanced setup where the user has the power to fine tune most details
 <li><a href="/docs/manual/docs/next/features-discovery">Agents discovery</a> (vastly depends on user needs).</li>
 <li>Storage configuration (specifically: address of the DB server).</li>
 </ul>
-<h2><a class="anchor" aria-hidden="true" id="all-configuration-options"></a><a href="#all-configuration-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>All configuration options</h2>
+<h2><a class="anchor" aria-hidden="true" id="configuration-options"></a><a href="#configuration-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration options</h2>
 <p>All options are documented in the
 <a href="https://github.com/replicante-io/replicante/blob/master/replicante.example.yaml">example configuration file</a>
 at the root of the repo, also shown below.</p>
 <p>This file shows all options with their defaults and explains their meaning and available settings.
 As mentioned above, common use cases should be able to ignore most options if users are so inclined.</p>
-<p>Details of these options are documented in the features they influence.</p>
+<blockquote class="info">
+<p>In most cases, details of these options are documented in the features they influence.</p>
+<p>Options that don't directly relate to a single feature are instead documented below the example file.</p>
+</blockquote>
 <pre><code class="hljs css language-yaml"><span class="hljs-comment"># The section below is for the API interface configuration.</span>
 <span class="hljs-attr">api:</span>
   <span class="hljs-comment"># The network interface and port to bind the API server onto.</span>
@@ -75,14 +78,131 @@ As mentioned above, common use cases should be able to ignore most options if us
 <span class="hljs-attr">  bind:</span> <span class="hljs-string">'127.0.0.1:16016'</span>
 
 
+<span class="hljs-comment"># Components enabling configuration.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># For Replicante to function correctly ALL components need to be running</span>
+<span class="hljs-comment"># (unless explicitly stated otherwise).</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># By default, all required components are enabled on all nodes.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># While this allows the configuration to stay simple (all nodes in the cluster are identical),</span>
+<span class="hljs-comment"># more advanced configuration options based around specialised nodes roles can be used to</span>
+<span class="hljs-comment"># scale to larger clusters in a more efficient way (because roles can be scaled based on</span>
+<span class="hljs-comment"># each role needs rather then scaling all roles based on the bottleneck).</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># # Exceptions to the ALL components rule</span>
+<span class="hljs-comment"># Some components are not required for essential operations.</span>
+<span class="hljs-comment"># These include new features being beta-tested or features that you may not need.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># For example the `grafana` component can be used to enable grafana endpoints annotations.</span>
+<span class="hljs-comment"># If these are not needed, the endpoint can be left disabled.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># # Advanced configurations</span>
+<span class="hljs-comment"># Advanced configurations are aimed at large clusters or other specialised needs.</span>
+<span class="hljs-comment"># By default, start with all components enabled on all nodes and move to roles if and when needed.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># ## Dedicated Web/API nodes</span>
+<span class="hljs-comment"># The first thing to split aside are the API and Web nodes.</span>
+<span class="hljs-comment"># API/Web nodes are the ones that receive requests from users and have less</span>
+<span class="hljs-comment"># predictable resource requirements.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Separating them from other components means that:</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#   * Users can use all resources without background tasks impacting them.</span>
+<span class="hljs-comment">#   * Having other components not impacted by user requests.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#     # For the API/Web nodes</span>
+<span class="hljs-comment">#     components:</span>
+<span class="hljs-comment">#       _default: false</span>
+<span class="hljs-comment">#       grafana: true  # Optional</span>
+<span class="hljs-comment">#       webui: true</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#     # For all other nodes</span>
+<span class="hljs-comment">#     components:</span>
+<span class="hljs-comment">#       _default: true</span>
+<span class="hljs-comment">#       grafana: false</span>
+<span class="hljs-comment">#       webui: false</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># ## Fully dedicated components</span>
+<span class="hljs-comment"># If more control is needed, further roles can be defined by disabling components in the</span>
+<span class="hljs-comment"># general case (named "all other nodes" in the example above) and enabling on their own</span>
+<span class="hljs-comment"># in a new, specialised, role.</span>
+<span class="hljs-attr">components:</span>
+  <span class="hljs-comment"># Default status for all components that are not explicitly enabled/disabled.</span>
+<span class="hljs-attr">  _default:</span> <span class="hljs-literal">true</span>
+
+  <span class="hljs-comment"># Enable/disable agent discovery.</span>
+<span class="hljs-attr">  discovery:</span> <span class="hljs-literal">null</span>
+
+  <span class="hljs-comment"># Enable Grafana Annotations API endpoints (optional).</span>
+<span class="hljs-attr">  grafana:</span> <span class="hljs-literal">null</span>
+
+  <span class="hljs-comment"># Enable the WebUI API endpoints (optional).</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Without them, the nodejs WebUI will NOT work.</span>
+<span class="hljs-attr">  webui:</span> <span class="hljs-literal">null</span>
+
+  <span class="hljs-comment"># Enable the task workers component to process tasks.</span>
+<span class="hljs-attr">  workers:</span> <span class="hljs-literal">null</span>
+
+
+<span class="hljs-comment"># Distributed coordinator configuration options.</span>
+<span class="hljs-attr">coordinator:</span>
+  <span class="hljs-comment"># The distributed coordination system to use for nodes coordination.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
+  <span class="hljs-comment"># This option is to allow users to choose a supported software that best fits</span>
+  <span class="hljs-comment"># their use and environment.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available options:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * 'zookeeper' (recommended)</span>
+<span class="hljs-attr">  backend:</span> <span class="hljs-string">'zookeeper'</span>
+
+  <span class="hljs-comment"># User specified key/value map attached to node IDs.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># This data is not used by the system and is provided to help users debug</span>
+  <span class="hljs-comment"># and otherwise label nodes for whatever needs they may have.</span>
+<span class="hljs-attr">  node_attributes:</span> <span class="hljs-string">{}</span>
+
+  <span class="hljs-comment"># Any backend-specific option is set here.</span>
+  <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Zookeeper options:</span>
+<span class="hljs-attr">  options:</span>
+    <span class="hljs-comment"># Zookeeper ensemble connection string.</span>
+<span class="hljs-attr">    ensemble:</span> <span class="hljs-string">'localhost:2181/replicante'</span>
+
+    <span class="hljs-comment"># Zookeeper background cleaner configuration.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># The background cleaner thread ensures that znodes no longer needed are removed</span>
+    <span class="hljs-comment"># from zookeeper to keep the number of znodes to a minimum.</span>
+<span class="hljs-attr">    cleanup:</span>
+      <span class="hljs-comment"># Maximum number of nodes to delete in a single cleanup cycle.</span>
+<span class="hljs-attr">      limit:</span> <span class="hljs-number">1000</span>
+
+      <span class="hljs-comment"># Seconds to wait between cleanup cycles.</span>
+<span class="hljs-attr">      interval:</span> <span class="hljs-number">3600</span>
+
+      <span class="hljs-comment"># Number of cycles before this node will re-run an election, 0 to disable re-runs.</span>
+      <span class="hljs-comment">#</span>
+      <span class="hljs-comment"># Having the system re-run elections continuously ensures that failover procedures are</span>
+      <span class="hljs-comment"># exercised constantly and not just in case of errors.</span>
+      <span class="hljs-comment"># You do not want to discover that failover does not work when a primary fails</span>
+      <span class="hljs-comment"># and nothing picks up after it.</span>
+      <span class="hljs-comment">#</span>
+      <span class="hljs-comment"># With the default interval, this default will cause a re-election about every 6 hours.</span>
+<span class="hljs-attr">      term:</span> <span class="hljs-number">6</span>
+
+    <span class="hljs-comment"># Zookeeper session timeout (in seconds).</span>
+<span class="hljs-attr">    timeout:</span> <span class="hljs-number">10</span>
+
+
 <span class="hljs-comment"># The section below is for agent discovery configuration.</span>
 <span class="hljs-comment">#</span>
 <span class="hljs-comment"># Discovery is the way the agents that should be managed are found.</span>
-<span class="hljs-comment"># Replicante core then interact with agents by initiating connections out to them.</span>
+<span class="hljs-comment"># Replicante Core then interacts with agents by initiating connections out to them.</span>
 <span class="hljs-attr">discovery:</span>
-  <span class="hljs-comment"># Interval (in seconds) to wait between agent discovery runs.</span>
-<span class="hljs-attr">  interval:</span> <span class="hljs-number">60</span>
-
   <span class="hljs-comment"># Discovery backends configuration.</span>
   <span class="hljs-comment">#</span>
   <span class="hljs-comment"># Backends are a way to support an extensible set of discovery systems.</span>
@@ -90,25 +210,73 @@ As mentioned above, common use cases should be able to ignore most options if us
   <span class="hljs-comment">#</span>
   <span class="hljs-comment"># Available backends are:</span>
   <span class="hljs-comment">#</span>
-  <span class="hljs-comment">#   * `files`: discover agents from local config files.</span>
+  <span class="hljs-comment">#   * `files`: discover agents from local configuration files.</span>
 <span class="hljs-attr">  backends:</span>
-    <span class="hljs-comment"># The `files` backend discover agents from files.</span>
+    <span class="hljs-comment"># The `files` backend discovers agents from files.</span>
     <span class="hljs-comment">#</span>
-    <span class="hljs-comment"># The `files` backend can be useful to delegate discovery to unsupported systems.</span>
-    <span class="hljs-comment"># Examples are configuration managemnet tools (ansible, chef, puppet, ...).</span>
+    <span class="hljs-comment"># It can be useful to delegate discovery to unsupported systems.</span>
+    <span class="hljs-comment"># Examples are configuration management tools (ansible, chef, puppet, ...).</span>
     <span class="hljs-comment">#</span>
     <span class="hljs-comment"># This is a list of files that are periodically read to perform discovery.</span>
+    <span class="hljs-comment"># When running replicated nodes for HA users must ensure every node has the same set of files.</span>
 <span class="hljs-attr">    files:</span> <span class="hljs-string">[]</span>
+
+  <span class="hljs-comment"># Interval (in seconds) to wait between agent discovery runs.</span>
+<span class="hljs-attr">  interval:</span> <span class="hljs-number">60</span>
+
+  <span class="hljs-comment"># Number of cycles before this node will re-run an election, 0 to disable re-runs.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Having the system re-run elections continuously ensures that failover procedures are</span>
+  <span class="hljs-comment"># exercised constantly and not just in case of errors.</span>
+  <span class="hljs-comment"># You do not want to discover that failover does not work when a primary fails</span>
+  <span class="hljs-comment"># and nothing picks up after it.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># With the default interval, this default will cause a re-election about every 3 hours.</span>
+<span class="hljs-attr">  term:</span> <span class="hljs-number">10800</span>
+
+
+<span class="hljs-comment"># The section below is for events related configuration.</span>
+<span class="hljs-attr">events:</span>
+  <span class="hljs-comment"># Configuration of periodic snapshots of tracked clusters/agents state.</span>
+<span class="hljs-attr">  snapshots:</span>
+    <span class="hljs-comment"># Enables/disables the emission of snapshot events.</span>
+<span class="hljs-attr">    enabled:</span> <span class="hljs-literal">true</span>
+
+    <span class="hljs-comment"># Frequency (expressed as number of cluster state fetches) of snapshot emission.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Snapshots may be emitted more often than requested.</span>
+    <span class="hljs-comment"># Precautions are taken to emit snapshots at least this frequently but there is no guarantee</span>
+    <span class="hljs-comment"># this will happen, especially in the presence of some prolonged (total or partial) failures.</span>
+<span class="hljs-attr">    frequency:</span> <span class="hljs-number">60</span>
+
+  <span class="hljs-comment"># Configuration of the streaming platform events are emitted to.</span>
+<span class="hljs-attr">  stream:</span>
+    <span class="hljs-comment"># The backend to emit events to.</span>
+    <span class="hljs-comment"># </span>
+    <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
+    <span class="hljs-comment"># This option is to allow users to choose a supported software that best fits</span>
+    <span class="hljs-comment"># their use and environment.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Available options are:</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   * 'store': use the configured datastore as the backend for the events stream too.</span>
+<span class="hljs-attr">    backend:</span> <span class="hljs-string">'store'</span>
+
+    <span class="hljs-comment"># Any backend-specific option is set here.</span>
+    <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># *** None available at this time ***</span>
+    <span class="hljs-comment">#options:</span>
 
 
 <span class="hljs-comment"># The section below is for logging configuration.</span>
 <span class="hljs-attr">logging:</span>
   <span class="hljs-comment"># Flush logs asynchronously.</span>
-  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># </span>
   <span class="hljs-comment"># Pro:</span>
   <span class="hljs-comment">#     Async log flushing is more efficient as processes</span>
   <span class="hljs-comment">#     are not blocked waiting for logging backends to complete.</span>
-  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># </span>
   <span class="hljs-comment"># Con:</span>
   <span class="hljs-comment">#     If the process crashes logs in the buffer may be lost.</span>
   <span class="hljs-comment">#</span>
@@ -148,6 +316,34 @@ As mentioned above, common use cases should be able to ignore most options if us
   <span class="hljs-comment">#   * 'debug' (only available in debug builds)</span>
 <span class="hljs-attr">  level:</span> <span class="hljs-string">info</span>
 
+  <span class="hljs-comment"># Advanced level configuration by module prefix.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># The keys in this map are used as prefix matches against log event modules.</span>
+  <span class="hljs-comment"># If a match is found the mapped level is used for the event.</span>
+  <span class="hljs-comment"># If no match is found the `level` value is used as the filter.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Example:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#     modules:</span>
+  <span class="hljs-comment">#       'hyper::server': debug</span>
+  <span class="hljs-comment">#       'rdkafka': error</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># To find out what modules are available you can set `level` to DEBUG</span>
+  <span class="hljs-comment"># and enable `verbose` logging to see all logs.</span>
+  <span class="hljs-comment"># Once you know what logs you are looking for you can undo the changes to `level` and `verbose`</span>
+  <span class="hljs-comment"># and add the module prefix you need to the `modules` option.</span>
+<span class="hljs-attr">  modules:</span> <span class="hljs-string">{}</span>
+
+  <span class="hljs-comment"># Enable verbose debug logs.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># When DEBUG level is enabled, things can get loud pretty easily.</span>
+  <span class="hljs-comment"># To allow DEBUG level to be more useful, only application events are emitted at</span>
+  <span class="hljs-comment"># DEBUG level while dependency events are emitted at INFO level.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Verbose mode can be used in cases where DEBUG level should be enabled by default</span>
+  <span class="hljs-comment"># on all events and not just the application logs.</span>
+<span class="hljs-attr">  verbose:</span> <span class="hljs-literal">false</span>
+
 
 <span class="hljs-comment"># The section below is for storage configuration.</span>
 <span class="hljs-attr">storage:</span>
@@ -157,9 +353,6 @@ As mentioned above, common use cases should be able to ignore most options if us
   <span class="hljs-comment"># This option is to allow users to choose a supported database that best fits</span>
   <span class="hljs-comment"># their use and environment.</span>
   <span class="hljs-comment">#</span>
-  <span class="hljs-comment"># To change this option you will need to "Update by rebuild".</span>
-  <span class="hljs-comment"># See the documentation for more details on this process.</span>
-  <span class="hljs-comment">#</span>
   <span class="hljs-comment"># Available options:</span>
   <span class="hljs-comment">#</span>
   <span class="hljs-comment">#   * 'mongodb' (recommended)</span>
@@ -168,13 +361,9 @@ As mentioned above, common use cases should be able to ignore most options if us
   <span class="hljs-comment"># Any backend-specific option is set here.</span>
   <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
   <span class="hljs-comment">#</span>
-  <span class="hljs-comment"># MongoDB options</span>
+  <span class="hljs-comment"># MongoDB options:</span>
 <span class="hljs-attr">  options:</span>
     <span class="hljs-comment"># Name of the MongoDB database to use for persistence.</span>
-    <span class="hljs-comment">#</span>
-    <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
-    <span class="hljs-comment"># This option is to allow users to choose a supported database that best fits</span>
-    <span class="hljs-comment"># their use and environment.</span>
     <span class="hljs-comment">#</span>
     <span class="hljs-comment"># To change this option you will need to "Update by rebuild".</span>
     <span class="hljs-comment"># See the documentation for more details on this process.</span>
@@ -184,6 +373,90 @@ As mentioned above, common use cases should be able to ignore most options if us
 <span class="hljs-attr">    uri:</span> <span class="hljs-attr">mongodb://localhost:27017/</span>
 
 
+<span class="hljs-comment"># Task workers enabling configuration.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># For Replicante to function correctly ALL queues need to be worked on.</span>
+<span class="hljs-comment"># By default, all queues are enabled on all nodes.</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># While this allows the configuration to stay simple (all nodes in the cluster are identical),</span>
+<span class="hljs-comment"># more advanced configuration options based around specialised node roles can be used to</span>
+<span class="hljs-comment"># scale replicante deployments in a more efficient way (because roles can be scaled based on</span>
+<span class="hljs-comment"># each role needs rather then scaling all roles to the needs of the biggest role).</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This is similar to the `components` configuration section but targeted at queues.</span>
+<span class="hljs-comment"># Processes MUST have the `workers` component enabled on the process for tasks to be processed.</span>
+<span class="hljs-attr">task_workers:</span>
+  <span class="hljs-comment"># Default status for all task workers that are not explicitly enabled/disabled.</span>
+<span class="hljs-attr">  _default:</span> <span class="hljs-literal">true</span>
+
+  <span class="hljs-comment"># Enable cluster state refresh and aggregation task processing.</span>
+<span class="hljs-attr">  cluster_refresh:</span> <span class="hljs-literal">null</span>
+
+
+<span class="hljs-comment"># The section below is for the tasks system configuration.</span>
+<span class="hljs-attr">tasks:</span>
+  <span class="hljs-comment"># The queue system to use for async tasks.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
+  <span class="hljs-comment"># This option is to allow users to choose a supported software that best fits</span>
+  <span class="hljs-comment"># their use and environment.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Available options:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * 'kafka' (recommended)</span>
+<span class="hljs-attr">  backend:</span> <span class="hljs-string">'kafka'</span>
+
+  <span class="hljs-comment"># Any backend-specific option is set here.</span>
+  <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Kafka options:</span>
+<span class="hljs-attr">  options:</span>
+    <span class="hljs-comment"># Acknowledgement level for published messages.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Possible values are:</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   * 'all': all in-sync-replicas for the partition published to must ack messages</span>
+    <span class="hljs-comment">#            (default; required for consistency; see kafka documentation for details).</span>
+    <span class="hljs-comment">#   * 'leader_only': only the leader of the partition published to must ack messages.</span>
+    <span class="hljs-comment">#   * 'none': no acknowledgements are required for produced messages.</span>
+<span class="hljs-attr">    ack_level:</span> <span class="hljs-string">'all'</span>
+
+    <span class="hljs-comment"># Comma separated list of seed brokers.</span>
+<span class="hljs-attr">    brokers:</span> <span class="hljs-string">'localhost:9092'</span>
+
+    <span class="hljs-comment"># Number of attempts to commit offsets before giving up and recreating the client.</span>
+<span class="hljs-attr">    commit_retries:</span> <span class="hljs-number">10</span>
+
+    <span class="hljs-comment"># Worker session keepalive heartbeat interval (in milliseconds).</span>
+<span class="hljs-attr">    heartbeat:</span> <span class="hljs-number">3000</span>
+
+    <span class="hljs-comment"># Prefix to be placed in front of queue names to derive topic names.</span>
+<span class="hljs-attr">    queue_prefix:</span> <span class="hljs-string">'task'</span>
+
+    <span class="hljs-comment"># Kafka-specific timeout options.</span>
+<span class="hljs-attr">    timeouts:</span>
+      <span class="hljs-comment"># Timeout (in millisecond) for non-topic requests.</span>
+<span class="hljs-attr">      metadata:</span> <span class="hljs-number">60000</span>
+
+      <span class="hljs-comment"># Timeout (in milliseconds) for tasks to be acknowledged.</span>
+<span class="hljs-attr">      request:</span> <span class="hljs-number">5000</span>
+
+      <span class="hljs-comment"># Timeout (in milliseconds) after which workers are presumed dead by the brokers.</span>
+<span class="hljs-attr">      session:</span> <span class="hljs-number">10000</span>
+
+      <span class="hljs-comment"># Default timeout (in milliseconds) for network requests.</span>
+<span class="hljs-attr">      socket:</span> <span class="hljs-number">60000</span>
+
+  <span class="hljs-comment"># Number of task processing threads to spawn.</span>
+  <span class="hljs-comment">#threads_count: 8 * number of CPUs</span>
+
+
+<span class="hljs-comment"># Timeouts configured here are used throughout the system for various reasons.</span>
+<span class="hljs-attr">timeouts:</span>
+  <span class="hljs-comment"># Time (in seconds) after which API requests to agents are failed.</span>
+<span class="hljs-attr">  agents_api:</span> <span class="hljs-number">15</span>
+
+      
 <span class="hljs-comment"># The section below is for distributed tracing configuration.</span>
 <span class="hljs-attr">tracing:</span>
   <span class="hljs-comment"># The distributed tracing backend to integrate with.</span>
@@ -210,4 +483,21 @@ As mentioned above, common use cases should be able to ignore most options if us
   <span class="hljs-comment">#  # The kafka topic to publish spans to.</span>
   <span class="hljs-comment">#  topic: zipkin</span>
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/manual/docs/next/admin-install"><span class="arrow-prev">← </span><span>Installation</span></a><a class="docs-next button" href="/docs/manual/docs/next/features"><span>Features Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#required-configuration">Required configuration</a></li><li><a href="#all-configuration-options">All configuration options</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap" style="text-align:center"><div><h5>Docs</h5><a href="/docs/manual/docs/quick-start">Quick Start</a><a href="/docs/manual/docs/features">Features</a><a href="/docs/manual/docs/api">API Reference</a></div><div><h5>Community</h5><a href="https://github.com/replicante-io">GitHub Organisation</a><a href="https://www.replicante.io/">Official Website</a></div></section><section class="copyright">Copyright © 2019 Stefano Pogliani</section></footer></div></body></html>
+<h3><a class="anchor" aria-hidden="true" id="timeouts"></a><a href="#timeouts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Timeouts</h3>
+<p>Replicante is an event-based, distributed, system.
+As such we often expect things to happen within time limits but there is no guarantee that
+they will in fact happen at all.</p>
+<p>Timeouts are used to ensure that miss-functioning, slow, or unresponsive elements
+(agents, processes, dependencies, ...) do not permanently or severely impact the entire system.</p>
+<p>The timeout related options allow operators to tune the level of sensibility:</p>
+<ul>
+<li>Low timeouts improve system responsiveness but require more reliable elements.</li>
+<li>High timeouts are more forgiving of transient issues at the expense of responsiveness.</li>
+</ul>
+<p>Available timeout options:</p>
+<ul>
+<li><code>timeouts.agents_api</code>: timeout applied to all agent HTTP requests.</li>
+</ul>
+<p>Some of replicante dependencies (DB, coordinator, ...) also support timeouts that are
+documented along the other options for each dependency.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/manual/docs/next/admin-install"><span class="arrow-prev">← </span><span>Installation</span></a><a class="docs-next button" href="/docs/manual/docs/next/admin-flexible-deployment"><span>Flexible Deployment</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#required-configuration">Required configuration</a></li><li><a href="#configuration-options">Configuration options</a><ul class="toc-headings"><li><a href="#timeouts">Timeouts</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap" style="text-align:center"><div><h5>Docs</h5><a href="/docs/manual/docs/quick-start">Quick Start</a><a href="/docs/manual/docs/features">Features</a><a href="/docs/manual/docs/api">API Reference</a></div><div><h5>Community</h5><a href="https://github.com/replicante-io">GitHub Organisation</a><a href="https://www.replicante.io/">Official Website</a></div></section><section class="copyright">Copyright © 2019 Stefano Pogliani</section></footer></div></body></html>

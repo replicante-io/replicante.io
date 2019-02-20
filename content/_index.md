@@ -52,7 +52,7 @@ Nothing is done if there is a risk to the data.
 {{% /content-box %}}
 
 
-{{% content-box title="Highly Available" future="true" %}}
+{{% content-box title="Highly Available" %}}
 Replicante is built to stay on even when some of your servers go off.
 
 This isn't so much of a feature for the modern infrastructure software but a requirement.
