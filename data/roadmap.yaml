@@ -1,5 +1,4 @@
 todo:
-  - 'Improve playgrounds'
   - 'Code of conduct for all repos'
   - 'TrevisCI'
   - 'Replace `error-chain` with `failure`'
@@ -10,6 +9,7 @@ todo:
   - 'Dual license?'
 
 progress:
-  - 'Docker images'
+  - 'Improve playgrounds'
 
-done: []
+done:
+  - 'Docker images'
