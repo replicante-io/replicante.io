@@ -7,7 +7,7 @@ menu:
     parent: 'Code of Conduct'
 ---
 
-## Django Code of Conduct - Enforcement Manual
+## Replicante Code of Conduct - Enforcement Manual
 
 This is the enforcement manual followed by the Code of Conduct Committee.
 It's used when we respond to an issue to make sure we're consistent and fair.
