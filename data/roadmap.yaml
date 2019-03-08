@@ -1,7 +1,4 @@
 todo:
-  - 'Code of conduct for all repos'
-  - 'TrevisCI'
-  - 'Replace `error-chain` with `failure`'
   - 'Automate docker-based dev setup'
   - 'Standardise logging across core and agents'
   - 'Pre-built binaries?'
@@ -9,7 +6,10 @@ todo:
   - 'Dual license?'
 
 progress:
-  - 'Improve playgrounds'
+  - 'Replace `error-chain` with `failure`'
 
 done:
   - 'Docker images'
+  - 'Improve playgrounds'
+  - 'TravisCI'
+  - 'Introduce Code of Conduct'
