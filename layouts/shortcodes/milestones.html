@@ -1,0 +1,16 @@
+<div class="row milestones">
+  <div class="col-12">
+    <h4>Future milestones</h4>
+    <ul class="list-group">
+      {{ range $milestone := .Site.Data.milestones.next }}
+      <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+        <span class="roadmap-item-body">
+          <h5>{{ $milestone.title | markdownify }}</h5>
+          <span>{{ $milestone.description | markdownify }}</span>
+        </span>
+        <span class="badge badge-secondary">To do</span>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</div>

@@ -1,4 +1,8 @@
 <div class="row">
+  <div class="col-12 roadmap-title">
+    <h4>Current milestone: {{ .Site.Data.milestones.current.title | markdownify }}</h4>
+    <span>{{ .Site.Data.milestones.current.description | markdownify }}</span>
+  </div>
   <div class="col-12 col-md-6 col-xl-4">
     <ul class="list-group">
       {{ range $task := .Site.Data.roadmap.todo }}

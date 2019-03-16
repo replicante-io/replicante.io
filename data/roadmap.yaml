@@ -6,10 +6,12 @@ todo:
   - 'Dual license?'
 
 progress:
-  - 'Replace `error-chain` with `failure`'
+  - 'Contributing guidelines'
 
 done:
   - 'Docker images'
   - 'Improve playgrounds'
   - 'TravisCI'
   - 'Introduce Code of Conduct'
+  - 'Replace `error-chain` with `failure`'
+  - 'Add future milestones to roadmap page'

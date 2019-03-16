@@ -19,10 +19,5 @@ Support development and keep up to date with progress!
 {{< /row >}}
 
 
-{{< row >}}
-{{% column class="col-12" %}}
-#### Roadmap to next relase
-{{% /column %}}
-{{< /row >}}
-
 {{< roadmap >}}
+{{< milestones >}}

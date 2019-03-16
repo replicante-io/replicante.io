@@ -93,3 +93,15 @@ div.content-box {
 span.roadmap-item-body > p {
   margin: 0;
 }
+
+.roadmap-title {
+  margin-bottom: 1em;
+
+  & > span {
+    color: #6c757d; 
+  }
+}
+
+.milestones {
+  margin-top: 2em;
+}
