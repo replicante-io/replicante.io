@@ -13,6 +13,8 @@ next:
     description: 'Iterate over the WebUI to add and improve shown information'
   - title: 'Support more datastores'
     description: 'Expand supported datastores with new agents'
+  - title: 'Nodes and Clusters deletion'
+    description: 'Nodes are replaced and clusters decommissioned, and they should be auto-removed when that happens'
   - title: 'The first Action'
     description: 'Actions support across agents and Core'
   - title: 'The first Dance (Actions playbook)'

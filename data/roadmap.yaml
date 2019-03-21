@@ -1,12 +1,10 @@
 todo:
-  - 'Automate docker-based dev setup'
   - 'Standardise logging across core and agents'
-  - 'Pre-built binaries?'
-  - 'DCO requirement?'
-  - 'Dual license?'
 
 progress:
-  - 'Contributing guidelines'
+  - 'Introduce rustfmt check'
+  - 'DCO requirement'
+  - 'Pre-built binaries?'
 
 done:
   - 'Docker images'
@@ -15,3 +13,5 @@ done:
   - 'Introduce Code of Conduct'
   - 'Replace `error-chain` with `failure`'
   - 'Add future milestones to roadmap page'
+  - 'Automate docker-based dev setup'
+  - 'Contributing guidelines'
