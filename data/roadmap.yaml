@@ -1,10 +1,9 @@
-todo:
-  - 'Standardise logging across core and agents'
+todo: []
 
 progress:
-  - 'Introduce rustfmt check'
-  - 'DCO requirement'
-  - 'Pre-built binaries?'
+  - 'Trace in API error responses as array of strings'
+  - 'Standardise logging across core and agents'
+  - 'Replicante community Gitter chat'
 
 done:
   - 'Docker images'
@@ -15,3 +14,6 @@ done:
   - 'Add future milestones to roadmap page'
   - 'Automate docker-based dev setup'
   - 'Contributing guidelines'
+  - 'Introduce rustfmt check'
+  - 'DCO requirement'
+  - 'Pre-built binaries'
