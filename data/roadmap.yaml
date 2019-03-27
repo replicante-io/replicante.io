@@ -1,9 +1,6 @@
 todo: []
 
-progress:
-  - 'Trace in API error responses as array of strings'
-  - 'Standardise logging across core and agents'
-  - 'Replicante community Gitter chat'
+progress: []
 
 done:
   - 'Docker images'
@@ -17,3 +14,6 @@ done:
   - 'Introduce rustfmt check'
   - 'DCO requirement'
   - 'Pre-built binaries'
+  - 'Standardise API error responses'
+  - 'Standardise logging across core and agents'
+  - 'Replicante community Gitter chat'
