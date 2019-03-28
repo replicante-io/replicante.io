@@ -4,7 +4,7 @@ current:
 
 next:
   - title: 'System introspection'
-    description: 'No more guessing what is going on inside'
+    description: 'No more guessing what is going on inside your systems'
   - title: 'Events streams'
     description: 'React to events as they happen'
   - title: 'Dedicated "view" store'

@@ -48,3 +48,11 @@ Mainly aimed at project developers to learn the past, understand the now, and gl
 [Read the notebook](./notes/)
 {{% /content-box %}}
 {{< /row >}}
+
+
+<div class="alert alert-secondary text-center" role="alert">
+  Could not find what you are looking for?
+  We would be happy to help you further.
+  <br />
+  Come chat to us on <a href="https://gitter.im/replicante-io/community">gitter</a>.
+</div>
