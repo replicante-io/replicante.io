@@ -1,10 +1,8 @@
 current:
-  title: 'Community Engagement'
-  description: 'Making replicante more welcoming to starters, users, and developers'
+  title: 'System introspection'
+  description: 'No more guessing what is going on inside your systems'
 
 next:
-  - title: 'System introspection'
-    description: 'No more guessing what is going on inside your systems'
   - title: 'Events streams'
     description: 'React to events as they happen'
   - title: 'Dedicated "view" store'
