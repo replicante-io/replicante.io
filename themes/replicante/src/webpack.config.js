@@ -54,7 +54,11 @@ const css = {
     publicPath: "assets/",
   },
   plugins: [
-    new CleanWebpackPlugin([ASSETS_PATH], {allowExternal: true}),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [ASSETS_PATH],
+      dangerouslyAllowCleanPatternsOutsideProject: true,
+      dry: false,
+    }),
     css_plugin,
     css_partial
   ]

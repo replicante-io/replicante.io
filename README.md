@@ -55,13 +55,3 @@ hugo
 ```bash
 aws s3 sync dist/ s3://<bucket>/
 ```
-
-
-## Undesired patches
-### EJS Loader
-The [upstream ejs-loader](https://github.com/okonet/ejs-loader) package depends
-on a version of lodash that has security vulnerabilities.
-
-Unfortunately the mantainer [has not been upgrading](https://github.com/okonet/ejs-loader/issues/33)
-the package to a version without issue.
-We are therefore using a specific commit of a fork that has upgraded to a fixed version of `lodash`.

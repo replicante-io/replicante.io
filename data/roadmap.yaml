@@ -1,19 +1,19 @@
 todo:
+  - 'Check for available updates'
+  - 'Status endpoints'
+  - 'Cluster refresh request endpoint'
+
+progress:
+  - 'Trace discovery tasks'
+  - 'Trace agent status refresh tasks'
+  - 'Standardise metrics names'
+  - 'Investigate yield and harvast'
+
+done:
+  - 'A better thread story'
   - 'Introduce an `/api/unstable` API "root"'
   - 'Threads introspection API'
   - 'Rename incorrectly named v1 as unstable (**breaking**)'
   - 'Cluster ID and Friendly name (**breaking**)'
   - 'Graceful shutdown'
   - 'Sentry error reporting'
-  - 'Trace discovery tasks'
-  - 'Trace agent status refresh tasks'
-  - 'Standardise metrics names'
-  - 'Investigate yield and harvast'
-  - 'Check for available updates'
-  - 'Status endpoints'
-  - 'Cluster refresh request endpoint'
-
-progress:
-  - 'A better thread story'
-
-done: []
