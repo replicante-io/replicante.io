@@ -1,13 +1,10 @@
 todo:
-  - 'Check for available updates'
-  - 'Status endpoints'
-  - 'Cluster refresh request endpoint'
+  - 'Release new version'
 
 progress:
-  - 'Trace discovery tasks'
-  - 'Trace agent status refresh tasks'
-  - 'Standardise metrics names'
-  - 'Investigate yield and harvast'
+  - 'Check for available updates'
+  - 'Status endpoints'
+  - 'Ensure documentation is up to date'
 
 done:
   - 'A better thread story'
@@ -17,3 +14,8 @@ done:
   - 'Cluster ID and Friendly name (**breaking**)'
   - 'Graceful shutdown'
   - 'Sentry error reporting'
+  - 'Trace discovery tasks'
+  - 'Trace agent status refresh tasks'
+  - 'Standardise metrics names'
+  - 'Investigate yield and harvast'
+  - 'Cluster refresh request endpoint'
