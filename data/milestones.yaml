@@ -3,7 +3,7 @@ current:
   description: 'No more guessing what is going on inside your systems'
 
 next:
-  - title: 'Events streams'
+  - title: 'Events stream'
     description: 'React to events as they happen'
   - title: 'Dedicated "view" store'
     description: 'Split API only "view" data into dedicated database'
