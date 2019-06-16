@@ -8,7 +8,7 @@ menu:
 ---
 
 {{< row >}}
-{{% content-box title="User guide" %}}
+{{% content-box title="Core Documentation" %}}
 All you need to know to use, configure, install, manage replicante.
 
 You likely want to start here.

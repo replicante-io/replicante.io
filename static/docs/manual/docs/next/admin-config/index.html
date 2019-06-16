@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Configuration · Replicante Core Manual</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Replicante provides a large set of configuration options with reasonable defaults.&lt;/p&gt;
-"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Configuration · Replicante Core Manual"/><meta property="og:type" content="website"/><meta property="og:url" content="https://www.replicante.io/docs/manual/index.html"/><meta property="og:description" content="&lt;p&gt;Replicante provides a large set of configuration options with reasonable defaults.&lt;/p&gt;
-"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/docs/manual/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/docs/manual/css/main.css"/><script src="/docs/manual/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docs/manual/"><h2 class="headerTitle">Replicante Core Manual</h2></a><a href="/docs/manual/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/manual/docs/next/intro" target="_self">Docs</a></li><li class=""><a href="https://www.replicante.io" target="_self">Website</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Administration</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">First steps</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/quick-start">Quick Start</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/architecture">Architecture Overview</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Administration</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-deps">Dependencies</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-install">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/manual/docs/next/admin-config">Configuration</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-flexible-deployment">Flexible Deployment</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-tasks">Tasks subsystem</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Features</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-discovery">Agent Discovery</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-events">Events</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-webui">WebUI</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-introspection">Introspection</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Security</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/security">Security Considerations</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/security-transport">Agent Transports</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Upgrades</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-rolling">Rolling Upgrades</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-versions">Version Compatibility</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-notes">Upgrade Notes</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-changelog">Change Log</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">replictl</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-check">replictl check</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-coordinator">replictl coordinator</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-versions">replictl versions</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api">API Reference</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api-monitoring">Monitoring</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Scaling</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-store">Primary Store</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-tasks">Task Queues</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-events">Event streams</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-coordinator">Coordinator</a></li></ul></div></div></section></div><script>
+"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Configuration · Replicante Core Manual"/><meta property="og:type" content="website"/><meta property="og:url" content="https://www.replicante.io/docs/manual/"/><meta property="og:description" content="&lt;p&gt;Replicante provides a large set of configuration options with reasonable defaults.&lt;/p&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/docs/manual/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/docs/manual/js/scrollSpy.js"></script><link rel="stylesheet" href="/docs/manual/css/main.css"/><script src="/docs/manual/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docs/manual/"><h2 class="headerTitle">Replicante Core Manual</h2></a><a href="/docs/manual/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/manual/docs/next/intro" target="_self">Docs</a></li><li class=""><a href="https://www.replicante.io" target="_self">Website</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Administration</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">First steps</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/quick-start">Quick Start</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/architecture">Architecture Overview</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Features</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-discovery">Cluster Discovery</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-events">Events</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-webui">WebUI</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/features-introspection">Introspection</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Security</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/security">Security Considerations</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/security-transport">Agent Transports</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Administration</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-deps">Dependencies</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-install">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/manual/docs/next/admin-config">Configuration</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-flexible-deployment">Flexible Deployment</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/admin-tasks">Tasks subsystem</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Upgrades</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-rolling">Rolling Upgrades</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-versions">Version Compatibility</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-notes">Upgrade Notes</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/upgrades-changelog">Change Log</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">replictl</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-check">replictl check</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-coordinator">replictl coordinator</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/replictl-versions">replictl versions</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api">API Reference</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api-core">Core</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api-grafana">Grafana</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api-introspection">Introspection</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/api-webui">WebUI</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Scaling</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-store">Stores</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-tasks">Task Queues</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-streams">Streams</a></li><li class="navListItem"><a class="navItem" href="/docs/manual/docs/next/scaling-coordinator">Coordinator</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -28,10 +28,16 @@
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
 
-              const headings = document.querySelector('.toc-headings');
+              var headings = document.querySelector('.toc-headings');
               headings && headings.addEventListener('click', function(event) {
-                if (event.target.tagName === 'A') {
-                  document.body.classList.remove('tocActive');
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
                 }
               }, false);
 
@@ -57,7 +63,9 @@ as well as advanced setup where the user has the power to fine tune most details
 <p>Some options do not have reasonable defaults so users will have to set them explicitly:</p>
 <ul>
 <li><a href="/docs/manual/docs/next/features-discovery">Agents discovery</a> (vastly depends on user needs).</li>
-<li>Storage configuration (specifically: address of the DB server).</li>
+<li>Coordinator configuration, mainly connection settings: <code>coordinator.backend</code> and <code>coordinator.options</code>.</li>
+<li>Storage configuration, mainly connection settings: <code>storage.backend</code> and <code>storage.options</code>.</li>
+<li>Tasks queue configuration, mainly connection settings: <code>tasks.backend</code> and <code>tasks.options</code>.</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="configuration-options"></a><a href="#configuration-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration options</h2>
 <p>All options are documented in the
@@ -76,6 +84,61 @@ As mentioned above, common use cases should be able to ignore most options if us
   <span class="hljs-comment"># By default, only bind to the loopback interface.</span>
   <span class="hljs-comment"># Production environments should place an HTTPS proxy in front of the API.</span>
 <span class="hljs-attr">  bind:</span> <span class="hljs-string">'127.0.0.1:16016'</span>
+
+  <span class="hljs-comment"># The health checks refresh frequency (in seconds).</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Health checks are an internal indicator of replicante processes ability</span>
+  <span class="hljs-comment"># to interact with external dependencies.</span>
+  <span class="hljs-comment"># Since they can be expensive an have a small cost to each dependency they are run periodically</span>
+  <span class="hljs-comment"># in the background with the latest result made visible through the API and metrics.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># This option configures the amount of time (in seconds) to wait between checks.</span>
+<span class="hljs-attr">  healthcheck_refresh:</span> <span class="hljs-number">10</span>
+
+  <span class="hljs-comment"># The number of request handling threads.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># By default this is 8 * number of CPUs.</span>
+<span class="hljs-attr">  threads_count:</span> <span class="hljs-string">~</span>
+
+  <span class="hljs-comment"># API server timeouts.</span>
+<span class="hljs-attr">  timeouts:</span>
+    <span class="hljs-comment"># Controls the timeout, in seconds, for keep alive connections.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> Setting this to null (~) will turn off keep alive.</span>
+<span class="hljs-attr">    keep_alive:</span> <span class="hljs-number">5</span>
+
+    <span class="hljs-comment"># Control the timeout, in seconds, for reads on existing connections.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> Setting this to null (~) will turn off read timeouts.</span>
+<span class="hljs-attr">    read:</span> <span class="hljs-number">5</span>
+
+    <span class="hljs-comment"># Control the timeout, in seconds, for writes on existing connections.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> Setting this to null (~) will turn off write timeouts.</span>
+<span class="hljs-attr">    write:</span> <span class="hljs-number">1</span>
+
+  <span class="hljs-comment"># Enable/disable entire API trees.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Useful for advanced operators that which to control access to experimental or legacy</span>
+  <span class="hljs-comment"># API versions or reduce attack surfices by removing endpoints that are not needed.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># Example use cases are:</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   * Upgrade prep: testing new API versions while having a quick rollback plan.</span>
+  <span class="hljs-comment">#   * Controlled rollout: be prepared for when verions are no longer supported.</span>
+  <span class="hljs-comment">#   * Disable unstable/experimental APIs: to enusre integrated tools only use stable APIs.</span>
+<span class="hljs-attr">  trees:</span>
+    <span class="hljs-comment"># Enable/disable the introspection APIs.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># The introspection API is very usesul to gain insight into the system.</span>
+    <span class="hljs-comment"># It can also be used to monitor the system for failures or performance degradation.</span>
+<span class="hljs-attr">    introspect:</span> <span class="hljs-literal">true</span>
+
+    <span class="hljs-comment"># Enable/disable the unstable APIs.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># The unstable APIs are for endpoints in the early development cycle</span>
+    <span class="hljs-comment"># where the attributes and parameters can change a lot and often.</span>
+<span class="hljs-attr">    unstable:</span> <span class="hljs-literal">true</span>
 
 
 <span class="hljs-comment"># Components enabling configuration.</span>
@@ -136,6 +199,16 @@ As mentioned above, common use cases should be able to ignore most options if us
 
   <span class="hljs-comment"># Enable Grafana Annotations API endpoints (optional).</span>
 <span class="hljs-attr">  grafana:</span> <span class="hljs-literal">null</span>
+
+  <span class="hljs-comment"># Enable the update checker (optional).</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># The check is performed only once in the background as the process starts.</span>
+  <span class="hljs-comment"># If a new version is available a notice will be logged and captured as a sentry event.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># This component is disabled by default and does not follow the _defaul attribute</span>
+  <span class="hljs-comment"># to ensure the user privacy is respected (HTTP requests can be tracked).</span>
+  <span class="hljs-comment"># If this option is not enabled, you will have to make sure you keep replicante up to date.</span>
+<span class="hljs-attr">  update_checker:</span> <span class="hljs-literal">false</span>
 
   <span class="hljs-comment"># Enable the WebUI API endpoints (optional).</span>
   <span class="hljs-comment">#</span>
@@ -345,6 +418,26 @@ As mentioned above, common use cases should be able to ignore most options if us
 <span class="hljs-attr">  verbose:</span> <span class="hljs-literal">false</span>
 
 
+<span class="hljs-comment"># Optional sentry.io integration configuration (desabled by default).</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Set a DSN parameter to enable centralised error reporting.</span>
+<span class="hljs-comment">#sentry:</span>
+<span class="hljs-comment">#  # Sentry API response capture filter.</span>
+<span class="hljs-comment">#  #</span>
+<span class="hljs-comment">#  # When sentry is enabled, API error responses returned to clients can be recorded</span>
+<span class="hljs-comment">#  # as sentry events to detect and debug issues.</span>
+<span class="hljs-comment">#  #</span>
+<span class="hljs-comment">#  # This option sets the severity level of responses that are reported:</span>
+<span class="hljs-comment">#  #  * `no`: disable sentry capturing of API error responses.</span>
+<span class="hljs-comment">#  #  * `client`: report client side errors and above (status code &gt;= 400).</span>
+<span class="hljs-comment">#  #  * `server`: only report server side errors (status code &gt;= 500).</span>
+<span class="hljs-comment">#  capture_api_errors: 'server'</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">#  # (required) The DSN to use to configure sentry.</span>
+<span class="hljs-comment">#  dsn: 'https://key@server.domain:port/project'</span>
+<span class="hljs-attr">sentry:</span> <span class="hljs-string">~</span>
+
+
 <span class="hljs-comment"># The section below is for storage configuration.</span>
 <span class="hljs-attr">storage:</span>
   <span class="hljs-comment"># The database to use for persistent storage.</span>
@@ -367,7 +460,7 @@ As mentioned above, common use cases should be able to ignore most options if us
     <span class="hljs-comment">#</span>
     <span class="hljs-comment"># To change this option you will need to "Update by rebuild".</span>
     <span class="hljs-comment"># See the documentation for more details on this process.</span>
-<span class="hljs-attr">    db:</span> <span class="hljs-string">replicante</span>  <span class="hljs-comment"># (recommended)</span>
+<span class="hljs-attr">    db:</span> <span class="hljs-string">replicore</span>  <span class="hljs-comment"># (recommended)</span>
 
     <span class="hljs-comment"># URI of the MongoDB Replica Set or sharded cluster to connect to.</span>
 <span class="hljs-attr">    uri:</span> <span class="hljs-attr">mongodb://localhost:27017/</span>
@@ -448,7 +541,7 @@ As mentioned above, common use cases should be able to ignore most options if us
 <span class="hljs-attr">      socket:</span> <span class="hljs-number">60000</span>
 
   <span class="hljs-comment"># Number of task processing threads to spawn.</span>
-  <span class="hljs-comment">#threads_count: 8 * number of CPUs</span>
+  <span class="hljs-comment">#threads_count: number of CPUs</span>
 
 
 <span class="hljs-comment"># Timeouts configured here are used throughout the system for various reasons.</span>
@@ -472,16 +565,46 @@ As mentioned above, common use cases should be able to ignore most options if us
   <span class="hljs-comment">#</span>
   <span class="hljs-comment"># Zipkin options</span>
   <span class="hljs-comment">#options:</span>
-  <span class="hljs-comment">#  # (required) The service name for this zipkin endpoint.</span>
-  <span class="hljs-comment">#  service_name: replicante</span>
+  <span class="hljs-comment">#  # (required) The transport to send tracing information to zipkin.</span>
+  <span class="hljs-comment">#  #</span>
+  <span class="hljs-comment">#  # Available options:</span>
+  <span class="hljs-comment">#  #</span>
+  <span class="hljs-comment">#  #  * 'http'</span>
+  <span class="hljs-comment">#  #  * 'kafka'</span>
+  <span class="hljs-comment">#  transport: 'http'</span>
   <span class="hljs-comment">#</span>
-  <span class="hljs-comment">#  # (required) List of kafka seed hostnames.</span>
-  <span class="hljs-comment">#  kafka:</span>
-  <span class="hljs-comment">#    - HOST1:9092</span>
-  <span class="hljs-comment">#    - HOST2:9092</span>
+  <span class="hljs-comment">#  # Any transport-specific option is set here.</span>
+  <span class="hljs-comment">#  # The available options vary and are documented below.</span>
+  <span class="hljs-comment">#  #</span>
+  <span class="hljs-comment">#  # HTTP transport options</span>
+  <span class="hljs-comment">#  options:</span>
+  <span class="hljs-comment">#    # Number of buffered spans that should trigger a flush.</span>
+  <span class="hljs-comment">#    #</span>
+  <span class="hljs-comment">#    # This option is a best-effort configuration and the size of the buffer may grow</span>
+  <span class="hljs-comment">#    # slightly above this threshold.</span>
+  <span class="hljs-comment">#    flush_count: 100</span>
   <span class="hljs-comment">#</span>
-  <span class="hljs-comment">#  # The kafka topic to publish spans to.</span>
-  <span class="hljs-comment">#  topic: zipkin</span>
+  <span class="hljs-comment">#    # Muximum delay between span flushes in milliseconds.</span>
+  <span class="hljs-comment">#    #</span>
+  <span class="hljs-comment">#    # This option is a best-effort configuration and the size of the buffer may grow</span>
+  <span class="hljs-comment">#    # slightly above this threshold.</span>
+  <span class="hljs-comment">#    flush_timeout_millis: 2000</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#    # Custom headers to attach to POST requests.</span>
+  <span class="hljs-comment">#    headers: {}</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#    # (required) Target URL to POST spans to.</span>
+  <span class="hljs-comment">#    url: 'https://zipkin.corp/'</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#  # Kafka transport options</span>
+  <span class="hljs-comment">#  options:</span>
+  <span class="hljs-comment">#    # (required) List of kafka seed hostnames.</span>
+  <span class="hljs-comment">#    kafka:</span>
+  <span class="hljs-comment">#      - HOST1:9092</span>
+  <span class="hljs-comment">#      - HOST2:9092</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#    # The kafka topic to publish spans to.</span>
+  <span class="hljs-comment">#    topic: zipkin</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="timeouts"></a><a href="#timeouts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Timeouts</h3>
 <p>Replicante is an event-based, distributed, system.
