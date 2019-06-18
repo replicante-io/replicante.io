@@ -1,6 +1,10 @@
 todo:
+  - 'Implement kafka backend for streams'
+  - 'Push events to new kafka stream'
+  - 'New component to follow events and persist to store'
+
+progress:
+  - 'Create base `stream/stream`'
+
+done:
   - 'Plan iteration'
-
-progress: []
-
-done: []
