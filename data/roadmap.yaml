@@ -1,10 +1,12 @@
-todo:
-  - 'Implement kafka backend for streams'
-  - 'Push events to new kafka stream'
-  - 'New component to follow events and persist to store'
+todo: []
 
-progress:
-  - 'Create base `stream/stream`'
+progress: []
 
 done:
   - 'Plan iteration'
+  - 'Create base `stream/stream`'
+  - 'Implement kafka backend for streams'
+  - 'Push events to new kafka stream'
+  - 'Fetch events from the store and not the new stream'
+  - 'New component to follow events and persist to store'
+  - 'Ensure replictl checks streams'
