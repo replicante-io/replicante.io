@@ -32,7 +32,7 @@ But there is much more then that to transparency:
 {{% /content-box %}}
 
 
-{{% content-box title="Streaming events" future="true" %}}
+{{% content-box title="Streaming events" %}}
 Events are also generated when the state changes and pushed to a streaming platform.
 
 Beside acting as an audit log of events, this powers many features as well as any
