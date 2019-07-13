@@ -1,6 +1,15 @@
 todo:
+  - 'Script docker image building'
+  - 'Script document versioning'
+
+progress:
+  - 'Show cluster nodes in the WebUI'
+
+done:
   - 'Plan iteration'
-
-progress: []
-
-done: []
+  - 'Rearrange `storage` config'
+  - 'Create `store/view` crate'
+  - 'Move events to the view store'
+  - 'HTTP discovery backend'
+  - 'Show cluster events in the WebUI'
+  - 'Show cluster agents in the WebUI'
