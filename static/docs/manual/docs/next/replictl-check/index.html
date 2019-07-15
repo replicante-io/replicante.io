@@ -58,6 +58,7 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">replictl check</h1></header><article><div><span><p>Perform various checks on different aspects of the system.</p>
 <pre><code class="hljs css language-text">$ replictl check help
+replictl-check
 Perform checks on the system to find issues
 
 USAGE:
@@ -81,7 +82,7 @@ SUBCOMMANDS:
     deep           Run all checks INCLUDING the ones that iterate over ALL data
     help           Prints this message or the help of the given subcommand(s)
     quick          Run all checks that do NOT iterate over data (default command)
-    store          Check the primary store for incompatibilities
+    stores         Check stores for incompatibilities
     streams        Check all streams for incompatibilities
     tasks          Check commands for the tasks subsystem
     update         Run all checks to confirm an update is possible (iterates over ALL data!)
@@ -114,21 +115,37 @@ Be careful when using this command against an active replicante system.</p>
 <p>An alias to run all checks except for those that access the storage layer.</p>
 <pre><code class="hljs css language-bash">replictl check quick
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" id="store-data"></a><a href="#store-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>store data</h2>
+<h2><a class="anchor" aria-hidden="true" id="stores-primary-data"></a><a href="#stores-primary-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>stores primary data</h2>
 <p>Scan every item in the store to look for incompatible data.</p>
 <p>Useful to reveal schema conflicts between the version of the currently running Replicante cluster
 and the version of Replicante compiled against the <code>replictl</code> version.</p>
-<pre><code class="hljs css language-bash">replictl check store data
+<pre><code class="hljs css language-bash">replictl check stores primary data
 </code></pre>
 <blockquote class="danger">
 <p><strong>This check will scan the full content of the storage layer</strong></p>
 <p>As a result it may take a while to complete and could impact performance on large instances.<br>
 Be careful when using this command against an active replicante system.</p>
 </blockquote>
-<h2><a class="anchor" aria-hidden="true" id="store-schema"></a><a href="#store-schema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>store schema</h2>
+<h2><a class="anchor" aria-hidden="true" id="stores-primary-schema"></a><a href="#stores-primary-schema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>stores primary schema</h2>
 <p>Checks the storage layer metadata for required and suggested items (collections, indexes, tables, ...).</p>
 <p>Also checks for the existence of items (collections, indexes, tables, ...) that belong to older versions of replicante.</p>
-<pre><code class="hljs css language-bash">replictl check store schema
+<pre><code class="hljs css language-bash">replictl check stores primary schema
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="stores-view-data"></a><a href="#stores-view-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>stores view data</h2>
+<p>Scan every item in the store to look for incompatible data.</p>
+<p>Useful to reveal schema conflicts between the version of the currently running Replicante cluster
+and the version of Replicante compiled against the <code>replictl</code> version.</p>
+<pre><code class="hljs css language-bash">replictl check stores view data
+</code></pre>
+<blockquote class="danger">
+<p><strong>This check will scan the full content of the storage layer</strong></p>
+<p>As a result it may take a while to complete and could impact performance on large instances.<br>
+Be careful when using this command against an active replicante system.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="stores-view-schema"></a><a href="#stores-view-schema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>stores view schema</h2>
+<p>Checks the storage layer metadata for required and suggested items (collections, indexes, tables, ...).</p>
+<p>Also checks for the existence of items (collections, indexes, tables, ...) that belong to older versions of replicante.</p>
+<pre><code class="hljs css language-bash">replictl check stores view schema
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="streams-events"></a><a href="#streams-events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>streams events</h2>
 <p>Scan every item in the <code>events</code> stream to look for schema incompatibilities.</p>
@@ -162,4 +179,4 @@ is compatible with the current setup (checks if an in-place update is possible).
 <p>As a result it may take a while to complete and could impact performance on large instances.<br>
 Be careful when using this command against an active replicante system.</p>
 </blockquote>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/manual/docs/next/replictl-intro"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/docs/manual/docs/next/replictl-coordinator"><span>replictl coordinator</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#config">config</a></li><li><a href="#coordinator">coordinator</a></li><li><a href="#deep">deep</a></li><li><a href="#quick">quick</a></li><li><a href="#store-data">store data</a></li><li><a href="#store-schema">store schema</a></li><li><a href="#streams-events">streams events</a></li><li><a href="#tasks-data">tasks data</a></li><li><a href="#update">update</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap" style="text-align:center"><div><h5>Docs</h5><a href="/docs/manual/docs/quick-start">Quick Start</a><a href="/docs/manual/docs/features">Features</a><a href="/docs/manual/docs/api">API Reference</a></div><div><h5>Community</h5><a href="https://github.com/replicante-io">GitHub Organisation</a><a href="https://www.replicante.io/">Official Website</a></div></section><section class="copyright">Copyright © 2019 Stefano Pogliani</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/manual/docs/next/replictl-intro"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/docs/manual/docs/next/replictl-coordinator"><span>replictl coordinator</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#config">config</a></li><li><a href="#coordinator">coordinator</a></li><li><a href="#deep">deep</a></li><li><a href="#quick">quick</a></li><li><a href="#stores-primary-data">stores primary data</a></li><li><a href="#stores-primary-schema">stores primary schema</a></li><li><a href="#stores-view-data">stores view data</a></li><li><a href="#stores-view-schema">stores view schema</a></li><li><a href="#streams-events">streams events</a></li><li><a href="#tasks-data">tasks data</a></li><li><a href="#update">update</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap" style="text-align:center"><div><h5>Docs</h5><a href="/docs/manual/docs/quick-start">Quick Start</a><a href="/docs/manual/docs/features">Features</a><a href="/docs/manual/docs/api">API Reference</a></div><div><h5>Community</h5><a href="https://github.com/replicante-io">GitHub Organisation</a><a href="https://www.replicante.io/">Official Website</a></div></section><section class="copyright">Copyright © 2019 Stefano Pogliani</section></footer></div></body></html>

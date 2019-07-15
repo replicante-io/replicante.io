@@ -116,7 +116,9 @@ documented along the other options for each dependency.</p>
 
 <span class="hljs-attr">discovery:</span>
 <span class="hljs-attr">  backends:</span>
-<span class="hljs-attr">    files:</span> <span class="hljs-string">[]</span>
+<span class="hljs-attr">    http:</span>
+<span class="hljs-attr">      - url:</span> <span class="hljs-string">'http://static.server:port/discovery.json'</span>
+<span class="hljs-attr">        method:</span> <span class="hljs-string">GET</span>
 
 
 <span class="hljs-attr">events:</span>
@@ -127,10 +129,15 @@ documented along the other options for each dependency.</p>
 
 
 <span class="hljs-attr">storage:</span>
-<span class="hljs-attr">  backend:</span> <span class="hljs-string">mongodb</span>
-<span class="hljs-attr">  options:</span>
-<span class="hljs-attr">    db:</span> <span class="hljs-string">replicore</span>
-<span class="hljs-attr">    uri:</span> <span class="hljs-attr">mongodb://localhost:27017/</span>
+<span class="hljs-attr">  primary:</span>
+<span class="hljs-attr">    backend:</span> <span class="hljs-string">mongodb</span>
+<span class="hljs-attr">    options:</span>
+<span class="hljs-attr">      uri:</span> <span class="hljs-string">'mongodb://localhost:27017/'</span>
+
+<span class="hljs-attr">  view:</span>
+<span class="hljs-attr">    backend:</span> <span class="hljs-string">mongodb</span>
+<span class="hljs-attr">    options:</span>
+<span class="hljs-attr">      uri:</span> <span class="hljs-string">'mongodb://localhost:27017/'</span>
 
 
 <span class="hljs-attr">tasks:</span>
@@ -292,6 +299,9 @@ documented along the other options for each dependency.</p>
   <span class="hljs-comment"># This option is to allow users to choose a supported software that best fits</span>
   <span class="hljs-comment"># their use and environment.</span>
   <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># To change this option, follow the instructions to rebuild your system:</span>
+  <span class="hljs-comment">#   https://www.replicante.io/docs/manual/docs/upgrades-fresh/</span>
+  <span class="hljs-comment">#</span>
   <span class="hljs-comment"># Available options:</span>
   <span class="hljs-comment">#</span>
   <span class="hljs-comment">#   * 'zookeeper' (recommended)</span>
@@ -348,16 +358,42 @@ documented along the other options for each dependency.</p>
   <span class="hljs-comment">#</span>
   <span class="hljs-comment"># Available backends are:</span>
   <span class="hljs-comment">#</span>
-  <span class="hljs-comment">#   * `files`: discover agents from local configuration files.</span>
+  <span class="hljs-comment">#   * `http`: discover clusters by querying remote HTTP servers.</span>
 <span class="hljs-attr">  backends:</span>
-    <span class="hljs-comment"># The `files` backend discovers agents from files.</span>
+    <span class="hljs-comment"># HTTP cluster discovery configurations.</span>
     <span class="hljs-comment">#</span>
-    <span class="hljs-comment"># It can be useful to delegate discovery to unsupported systems.</span>
-    <span class="hljs-comment"># Examples are configuration management tools (ansible, chef, puppet, ...).</span>
+    <span class="hljs-comment"># A POST request is performed to fetch cluster discoveries.</span>
+    <span class="hljs-comment"># Requests are issued against the configured list of targets.</span>
+    <span class="hljs-comment"># Each target has the following options:</span>
     <span class="hljs-comment">#</span>
-    <span class="hljs-comment"># This is a list of files that are periodically read to perform discovery.</span>
-    <span class="hljs-comment"># When running replicated nodes for HA users must ensure every node has the same set of files.</span>
-<span class="hljs-attr">    files:</span> <span class="hljs-string">[]</span>
+    <span class="hljs-comment">#   # URL of the remote target to request clusters to.</span>
+    <span class="hljs-comment">#   url: 'https://inventory.corp:1234/replicante/some/path'</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   # HTTP method to send the request as.</span>
+    <span class="hljs-comment">#   # Valid options are GET and POST.</span>
+    <span class="hljs-comment">#   # If the method is changed to GET, pagination support is disabled and as a result</span>
+    <span class="hljs-comment">#   # responses with a non-null cursor may cause endless loops.</span>
+    <span class="hljs-comment">#   method: POST</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   # Optional JSON object to send along every POST request.</span>
+    <span class="hljs-comment">#   body: ~</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   # Headers to send along every request.</span>
+    <span class="hljs-comment">#   headers: {}</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   # HTTP Requests timeout (in milliseconds).</span>
+    <span class="hljs-comment">#   timeout: 30000</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   # TLS confifuration options.</span>
+    <span class="hljs-comment">#   tls:</span>
+    <span class="hljs-comment">#     # Optional path to a PEM CA certificate file to validate servers with.</span>
+    <span class="hljs-comment">#     ca_cert: ~</span>
+    <span class="hljs-comment">#     # Optional path to a PEM HTTP client certificate file.</span>
+    <span class="hljs-comment">#     client_cert: ~</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Static discovery can be achieved by serving a fixed JSON response file with</span>
+    <span class="hljs-comment"># any one of the many HTTP servers that support static serving (Apache, NGINX, ...).</span>
+<span class="hljs-attr">    http:</span> <span class="hljs-string">[]</span>
 
   <span class="hljs-comment"># Interval (in seconds) to wait between agent discovery runs.</span>
 <span class="hljs-attr">  interval:</span> <span class="hljs-number">60</span>
@@ -394,6 +430,9 @@ documented along the other options for each dependency.</p>
     <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
     <span class="hljs-comment"># This option is to allow users to choose a supported software that best fits</span>
     <span class="hljs-comment"># their use and environment.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># To change this option, follow the instructions to rebuild your system:</span>
+    <span class="hljs-comment">#   https://www.replicante.io/docs/manual/docs/upgrades-fresh/</span>
     <span class="hljs-comment">#</span>
     <span class="hljs-comment"># Available options are:</span>
     <span class="hljs-comment">#</span>
@@ -537,30 +576,65 @@ documented along the other options for each dependency.</p>
 
 <span class="hljs-comment"># The section below is for storage configuration.</span>
 <span class="hljs-attr">storage:</span>
-  <span class="hljs-comment"># The database to use for persistent storage.</span>
-  <span class="hljs-comment">#</span>
-  <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
-  <span class="hljs-comment"># This option is to allow users to choose a supported database that best fits</span>
-  <span class="hljs-comment"># their use and environment.</span>
-  <span class="hljs-comment">#</span>
-  <span class="hljs-comment"># Available options:</span>
-  <span class="hljs-comment">#</span>
-  <span class="hljs-comment">#   * 'mongodb' (recommended)</span>
-<span class="hljs-attr">  backend:</span> <span class="hljs-string">mongodb</span>
-
-  <span class="hljs-comment"># Any backend-specific option is set here.</span>
-  <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
-  <span class="hljs-comment">#</span>
-  <span class="hljs-comment"># MongoDB options:</span>
-<span class="hljs-attr">  options:</span>
-    <span class="hljs-comment"># Name of the MongoDB database to use for persistence.</span>
+  <span class="hljs-comment"># The primary store where data needed by the core Replicante logic is stored.</span>
+<span class="hljs-attr">  primary:</span>
+    <span class="hljs-comment"># The database to persistent data in.</span>
     <span class="hljs-comment">#</span>
-    <span class="hljs-comment"># To change this option you will need to "Update by rebuild".</span>
-    <span class="hljs-comment"># See the documentation for more details on this process.</span>
-<span class="hljs-attr">    db:</span> <span class="hljs-string">replicore</span>  <span class="hljs-comment"># (recommended)</span>
+    <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
+    <span class="hljs-comment"># This option is to allow users to choose a supported database that best fits</span>
+    <span class="hljs-comment"># their use and environment.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># To change this option, follow the instructions to rebuild your system:</span>
+    <span class="hljs-comment">#   https://www.replicante.io/docs/manual/docs/upgrades-fresh/</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Available options:</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   * 'mongodb' (recommended)</span>
+<span class="hljs-attr">    backend:</span> <span class="hljs-string">mongodb</span>
 
-    <span class="hljs-comment"># URI of the MongoDB Replica Set or sharded cluster to connect to.</span>
-<span class="hljs-attr">    uri:</span> <span class="hljs-attr">mongodb://localhost:27017/</span>
+    <span class="hljs-comment"># Any backend-specific option is set here.</span>
+    <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># MongoDB options:</span>
+<span class="hljs-attr">    options:</span>
+      <span class="hljs-comment"># Name of the MongoDB database to use for persistence.</span>
+      <span class="hljs-comment">#</span>
+      <span class="hljs-comment"># To change this option you will need to "Update by rebuild".</span>
+      <span class="hljs-comment"># See the documentation for more details on this process.</span>
+<span class="hljs-attr">      db:</span> <span class="hljs-string">replicore</span>  <span class="hljs-comment"># (recommended)</span>
+
+      <span class="hljs-comment"># URI of the MongoDB Replica Set or sharded cluster to connect to.</span>
+<span class="hljs-attr">      uri:</span> <span class="hljs-attr">mongodb://localhost:27017/</span>
+
+  <span class="hljs-comment"># The view store where data used to answer user queries is stored.</span>
+<span class="hljs-attr">  view:</span>
+    <span class="hljs-comment"># The database to persistent data in.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
+    <span class="hljs-comment"># This option is to allow users to choose a supported database that best fits</span>
+    <span class="hljs-comment"># their use and environment.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># To change this option, follow the instructions to rebuild your system:</span>
+    <span class="hljs-comment">#   https://www.replicante.io/docs/manual/docs/upgrades-fresh/</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Available options:</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment">#   * 'mongodb' (recommended)</span>
+<span class="hljs-attr">    backend:</span> <span class="hljs-string">mongodb</span>
+
+    <span class="hljs-comment"># Any backend-specific option is set here.</span>
+    <span class="hljs-comment"># The available options vary from backend to backend and are documented below.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># MongoDB options:</span>
+<span class="hljs-attr">    options:</span>
+      <span class="hljs-comment"># Name of the MongoDB database to use for persistence.</span>
+      <span class="hljs-comment">#</span>
+      <span class="hljs-comment"># To change this option you will need to "Update by rebuild".</span>
+      <span class="hljs-comment"># See the documentation for more details on this process.</span>
+<span class="hljs-attr">      db:</span> <span class="hljs-string">repliview</span>  <span class="hljs-comment"># (recommended)</span>
+
+      <span class="hljs-comment"># URI of the MongoDB Replica Set or sharded cluster to connect to.</span>
+<span class="hljs-attr">      uri:</span> <span class="hljs-attr">mongodb://localhost:27017/</span>
 
 
 <span class="hljs-comment"># Task workers enabling configuration.</span>
@@ -590,6 +664,9 @@ documented along the other options for each dependency.</p>
   <span class="hljs-comment"># !!! DO NOT CHANGE AFTER INITIAL CONFIGURATION !!!</span>
   <span class="hljs-comment"># This option is to allow users to choose a supported software that best fits</span>
   <span class="hljs-comment"># their use and environment.</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># To change this option, follow the instructions to rebuild your system:</span>
+  <span class="hljs-comment">#   https://www.replicante.io/docs/manual/docs/upgrades-fresh/</span>
   <span class="hljs-comment">#</span>
   <span class="hljs-comment"># Available options:</span>
   <span class="hljs-comment">#</span>

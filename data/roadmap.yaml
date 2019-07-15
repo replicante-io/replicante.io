@@ -1,9 +1,8 @@
-todo:
-  - 'Script docker image building'
-  - 'Script document versioning'
+todo: []
 
 progress:
-  - 'Show cluster nodes in the WebUI'
+  - 'Partially script WebUI release steps'
+  - 'Partially script agents release steps'
 
 done:
   - 'Plan iteration'
@@ -13,3 +12,6 @@ done:
   - 'HTTP discovery backend'
   - 'Show cluster events in the WebUI'
   - 'Show cluster agents in the WebUI'
+  - 'Show cluster nodes in the WebUI'
+  - 'Script docker image building'
+  - 'Script document versioning'
