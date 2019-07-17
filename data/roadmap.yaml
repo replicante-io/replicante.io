@@ -1,17 +1,17 @@
-todo: []
+todo:
+  - 'Agent actions scaffolding'
+  - 'Agent actions requests'
+  - 'Agent actions engine'
+  - 'Agent actions preconditions'
+  - 'Agent action to start/stop/restore'
+  - 'Expand agent model with actions API'
+  - 'Core actions monitoring'
+  - 'Core actions scheduling'
+  - 'Review features priority'
+  - 'Partially script agents release steps'
 
 progress:
-  - 'Partially script WebUI release steps'
-  - 'Partially script agents release steps'
+  - 'Agent actions client authentication'
 
 done:
   - 'Plan iteration'
-  - 'Rearrange `storage` config'
-  - 'Create `store/view` crate'
-  - 'Move events to the view store'
-  - 'HTTP discovery backend'
-  - 'Show cluster events in the WebUI'
-  - 'Show cluster agents in the WebUI'
-  - 'Show cluster nodes in the WebUI'
-  - 'Script docker image building'
-  - 'Script document versioning'

@@ -1,10 +1,8 @@
 current:
-  title: 'Dedicated "view" store'
-  description: 'Split API only "view" data into dedicated database'
+  title: 'The first Action'
+  description: 'Actions support across agents and Core'
 
 next:
-  - title: 'The first Action'
-    description: 'Actions support across agents and Core'
   - title: 'The first Dance (Actions playbook)'
     description: 'Nodes coordination to perform advanced cluster operations<br>_Initial focus will be on cluster rolling restarts_'
   - title: 'Nodes and Clusters deletion'
