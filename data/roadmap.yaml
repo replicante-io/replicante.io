@@ -1,17 +1,17 @@
 todo:
-  - 'Agent actions scaffolding'
-  - 'Agent actions requests'
-  - 'Agent actions engine'
-  - 'Agent actions preconditions'
-  - 'Agent action to start/stop/restore'
-  - 'Expand agent model with actions API'
   - 'Core actions monitoring'
   - 'Core actions scheduling'
   - 'Review features priority'
   - 'Partially script agents release steps'
 
 progress:
-  - 'Agent actions client authentication'
+  - 'Expand agent model with actions API'
+  - 'Update agents documentation'
 
 done:
   - 'Plan iteration'
+  - 'Agent actions client authentication'
+  - 'Agent actions scaffolding'
+  - 'Agent actions requests'
+  - 'Agent actions engine'
+  - 'Agent action to start/stop/restore'
