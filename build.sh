@@ -67,7 +67,6 @@ done
 echo '--> Building docs ...'
 docubuild 'agents' '../agents/docs' 'replicante'
 docubuild 'manual' '../replicante/docs/manual' 'replicante'
-docubuild 'notes' '../replicante/docs/notes' 'replicante'
 docubuild 'specs' '../replicante/docs/specs' 'replicante'
 echo '--> Done'
 

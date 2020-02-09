@@ -15,6 +15,7 @@
         </li>
         {{ range .Site.Menus.main }}
         {{ $active := or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
+        {{ $active := or $active (eq $currentPage.Section .Identifier) }}
         <li class="nav-item{{if $active }} active{{end}}">
           <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
         </li>

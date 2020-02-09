@@ -1,107 +1,27 @@
 @import "~bootstrap/scss/bootstrap";
 
-//$brand: rgba(181, 113, 216, 0.75);
 $brand: rgb(119, 101, 193);
 $brand-light: rgba(181, 113, 216, 0.15);
 
-
-nav.navbar.top {
-  background-color: $brand;
-  // Source: https://www.transparenttextures.com/gplay.html
-  background-image: url("./gplay.png");
-
-  //border-bottom: 2px solid $brand;
-  font-size: 0.95em;
-  margin-bottom: 0em;
-  //padding-bottom: 0em;
-  padding-bottom: 2px;
-}
+@import "./navbar";
+@import "./home";
+@import "./roadmap";
+@import "./docs";
+@import "./notice";
 
 
-div.landing {
-  background-color: $brand;
-  // Source: https://www.transparenttextures.com/gplay.html
-  background-image: url("./gplay.png");
-  // Account for the navbar above us.
-  // This is a cheat and is visible when scrolling.
-  background-attachment: fixed;
-  width: 100%;
-
-  div.container {
-    color: white;
-    padding-bottom: 3em;
-    padding-top: 3em;
-    text-align: center;
-    /* offset-x | offset-y | blur-radius | color */
-    text-shadow: 1px 1px 2px black;
-
-    .title {
-      font-size: 3.5em;
-    }
-
-    .subtitle {
-      color: rgb(228, 228, 228);
-    }
-
-    .quicklinks {
-      padding-top: 2em;
-      text-shadow: none;
-
-      a {
-        margin-right: 1em;
-
-        &:not(:hover) {
-          background-color: $brand;
-          border-color: white;
-          color: white;
-        }
-      }
-    }
+div.container, div.container-fluid {
+  &.page {
+    margin-top: 2em;
   }
 }
 
-div.landing.not-found div.container {
-  padding-bottom: 6em;
-  padding-top: 6em;
-}
-
-
-div.container.page {
-  margin-top: 2em;
-}
-
-
-div.content-box {
-  margin-bottom: 2em;
-  text-align: center;
-
-  div.card {
-    border: none;
-    box-shadow: none;
-
-    &:hover {
-      background: $brand-light;
-    }
-
-    &.future span.badge {
-      font-size: xx-small;
-    }
-  }
-}
-
-
-span.roadmap-item-body > p {
+code {
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  color: inherit;
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  font-size: 85%;
   margin: 0;
-}
-
-.roadmap-title {
-  margin-bottom: 1em;
-
-  & > span {
-    color: #6c757d; 
-  }
-}
-
-.milestones {
-  margin-top: 2em;
+  padding: 3.2px 6.4px;
 }

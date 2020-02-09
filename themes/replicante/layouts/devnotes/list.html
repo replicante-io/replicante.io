@@ -1,0 +1,34 @@
+{{ define "main" }}
+<div class="container page">
+  {{ $dreams := where .CurrentSection.Pages "Params.group" "dreams" }}
+  {{ $notes  := where .CurrentSection.Pages "Params.group" "notes" }}
+  {{ $opts   := where .CurrentSection.Pages "Params.group" "opts" }}
+
+  <h1>Architectural Notes</h1>
+  <ul>
+    {{ range $notes }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+
+  <h1>Premature Optimisations</h1>
+  <ul>
+    {{ range $opts }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+
+  <h1>Dreamland</h1>
+  <ul>
+    {{ range $dreams }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

@@ -4,7 +4,3 @@ languageCode = "en-gb"
 publishDir = "dist"
 theme = "replicante"
 title = "Replicante"
-
-
-[blackfriday]
-hrefTargetBlank = true

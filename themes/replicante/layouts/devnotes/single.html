@@ -1,0 +1,52 @@
+{{ define "main" }}
+<div class="container-fluid page">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-2 docs-pages">
+      {{ $dreams := where .CurrentSection.Pages "Params.group" "dreams" }}
+      {{ $notes  := where .CurrentSection.Pages "Params.group" "notes" }}
+      {{ $opts   := where .CurrentSection.Pages "Params.group" "opts" }}
+
+      <h3>Architectural Notes</h3>
+      <ul>
+        {{ range $notes }}
+        <li>
+          {{ $active := eq . $ }}
+          <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+
+      <h3>Premature Optimisations</h3>
+      <ul>
+        {{ range $opts }}
+        <li>
+          {{ $active := eq . $ }}
+          <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+
+      <h3>Dreamland</h3>
+      <ul>
+        {{ range $dreams }}
+        <li>
+          {{ $active := eq . $ }}
+          <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+
+    <div class="col-6">
+      <h1 id="top">{{ .Title }}</h1>
+      {{ .Content }}
+    </div>
+
+    <div class="col-2 docs-toc">
+      {{ .TableOfContents }}
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+{{ end }}

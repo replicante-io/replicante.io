@@ -20,10 +20,22 @@ In addition to the Code Of Conduct below the following documents are relevant:
 
 ## Layout
 
-  * The static site is built with [Hugo](https://gohugo.io/) (v0.40.2).
-  * Documentation is built with [Docusaurus](https://docusaurus.io/).
-  * Documentation sources are stored in separate repos.
-  * Legacy documentation is built with [GitBook](https://toolchain.gitbook.com/) (migration is in progress).
+  * The static site is built with [Hugo](https://gohugo.io/) (v0.64.0).
+  * Legacy documentation is built with [Docusaurus](https://docusaurus.io/) (migration is in progress).
+
+
+## Adding new content
+The `hugo new` command should be used to add content:
+
+  * Skipping the `content/` prefix.
+  * But including the `.md` file extention.
+  * So `hugo new section/content.md`.
+
+For some sections there are dedicated archetypes that should be used (with `--kind NAME`:
+
+  * For `docs/devnotes/dreams` use `devnotes-dream`.
+  * For `docs/devnotes/notes` use `devnotes-note`.
+  * For `docs/devnotes/opts` use `devnotes-optimise`.
 
 
 ## Building
@@ -50,8 +62,7 @@ rm -r dist/  # Clean target before build.
 hugo
 ```
 
-
-## Publishing
+### Publishing to S3
 ```bash
 aws s3 sync dist/ s3://<bucket>/
 ```
