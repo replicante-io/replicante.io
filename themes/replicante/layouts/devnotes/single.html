@@ -6,6 +6,7 @@
       {{ $dreams := where .CurrentSection.Pages "Params.group" "dreams" }}
       {{ $notes  := where .CurrentSection.Pages "Params.group" "notes" }}
       {{ $opts   := where .CurrentSection.Pages "Params.group" "opts" }}
+      {{ partial "version-select" . }}
 
       <h3>Architectural Notes</h3>
       <ul>

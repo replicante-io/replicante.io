@@ -4,3 +4,9 @@ languageCode = "en-gb"
 publishDir = "dist"
 theme = "replicante"
 title = "Replicante"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # Content in this site is managed carefully so the risk from inline HTML is low.
+      unsafe = true

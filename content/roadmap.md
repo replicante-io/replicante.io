@@ -9,13 +9,17 @@ menu:
 
 
 {{< row >}}
-{{% column class="col-12 text-center" %}}
-The road ahead is so full of options, possibilities, distractions it is difficult to keep focus.  
-The balance between new featurs and technical improvements is a though one to find.
-
-Support development and keep up to date with progress!
+{{< column class="col-12 text-center" >}}
+<p>
+  The road ahead is so full of options, possibilities, distractions it is difficult to keep focus.
+  <br />
+  The balance between new featurs and technical improvements is a though one to find.
+</p>
+<p>
+  Support development and keep up to date with progress!
+</p>
 {{< github-buttons org="replicante-io" repo="replicante" >}}
-{{% /column %}}
+{{< /column >}}
 {{< /row >}}
 
 

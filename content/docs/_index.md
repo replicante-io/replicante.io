@@ -46,8 +46,8 @@ These pages hold a bit of lore, a bit of history, and a lot of mind dump.
 
 Mainly aimed at project developers to learn the past, understand the now, and glance at the future.
 
-[Latest stable](./devnotes/v0.5.0/notes/intro/)  
-[Development version](./devnotes/master/notes/intro/)
+[Latest Stable]({{% docs-link "devnotes" "stable" %}})  
+[Development version]({{% docs-link "devnotes" "master" %}})
 {{% /content-box %}}
 {{< /row >}}
 

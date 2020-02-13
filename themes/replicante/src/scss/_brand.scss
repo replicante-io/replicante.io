@@ -1,0 +1,9 @@
+.btn-brand {
+  color: $brand;
+  border-color: $brand;
+
+  &:hover {
+    color: #fff;
+    background-color: $brand;
+  }
+}

@@ -37,6 +37,25 @@ For some sections there are dedicated archetypes that should be used (with `--ki
   * For `docs/devnotes/notes` use `devnotes-note`.
   * For `docs/devnotes/opts` use `devnotes-optimise`.
 
+### Versioned documents
+The documents under the `docs/` sections are versioned.
+
+Versions are handled as hugo sections:
+
+  * Each set of documentation is its own section under `docs/` (for example the `docs/devnotes/` section).
+  * Each version is then a sub-section for the same set of documents.
+  * The `_index.md` file is only used for:
+    * The sub-section title, used to set the version "name".
+    * The weight of sub-section, used to order versions explicitly.
+  * The current stable version for a section is set in `data/docs.yaml`.
+
+To "cut" a new version:
+
+  1. Make sure the `master` version is up to date and ready to be cut.
+  2. Copy the full tree to the new version (`cp -r master/ vX.Y.Z/`).
+  3. Update the title for the new version and all the weights (hint: use high weights for older versions).
+  4. Update the stable version set in `data/docs.yaml`.
+
 
 ## Building
 Build theme assets (if needed):

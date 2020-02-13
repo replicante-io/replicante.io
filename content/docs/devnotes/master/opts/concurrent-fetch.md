@@ -3,7 +3,7 @@ title: "Concurrent Agent Fetches"
 date: 2010-03-02T13:43:30+01:00
 draft: false
 group: opts
-weight: 2
+weight: 102
 ---
 
 Refreshing cluster nodes is performed in sequence, one node at a time.

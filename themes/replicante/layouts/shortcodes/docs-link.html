@@ -1,0 +1,10 @@
+{{- $section := .Get 0 -}}
+{{- $version := .Get 1 -}}
+{{- if eq $version "stable" -}}
+  {{- $version = index $.Site.Data.docs.stable $section }}
+{{- end -}}
+
+{{- $docs := printf "/docs/%s/%s" $section $version -}}
+{{- $docs := $.Site.GetPage $docs -}}
+{{- $page := index $docs.Pages 0 -}}
+{{ $page.Permalink }}

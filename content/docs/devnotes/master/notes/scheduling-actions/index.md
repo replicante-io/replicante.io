@@ -3,11 +3,10 @@ title: "Scheduling Actions"
 date: 2020-02-09T13:43:30+01:00
 draft: false
 group: notes
-weight: 2
+weight: 5
 ---
 
-{{< notice class="warning" >}}
-
+{{% notice class="warning" %}}
 **Playbooks are not a thing yet**
 
 They will provide a way to automatically schedule actions to perform orchestrated
@@ -16,8 +15,7 @@ Writing about the actions system assuming playbook are already here makes
 the entire system (agents and core) easier to think about and design.
 
 Aspects related to Playbooks and how they work are likely to change significantly.
-
-{{< /notice >}}
+{{% /notice %}}
 
 Each agent can run a single action at any time and has a queue of actions waiting to be executed.
 These actions can be scheduled either directly though the agent API or through Replicante Core.

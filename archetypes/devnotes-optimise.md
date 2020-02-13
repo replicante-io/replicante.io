@@ -3,7 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: false
 group: opts
-weight: 1000
+weight: 200
 ---
 
 CONTEXT AND CURRENT IMPLEMENTATION

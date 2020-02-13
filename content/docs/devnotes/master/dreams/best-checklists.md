@@ -1,9 +1,9 @@
 ---
-title: "Best Checklists"
+title: "Best practices checklists"
 date: 2020-02-09T22:18:33Z
 draft: false
 group: dreams
-weight: 3
+weight: 203
 ---
 
 Support cluster and node level items that can be checked for presence/absence then build reports around this.
