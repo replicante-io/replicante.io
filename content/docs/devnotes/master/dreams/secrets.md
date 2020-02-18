@@ -3,7 +3,7 @@ title: "Secrets manager integrations"
 date: 2020-02-13T20:17:20Z
 draft: false
 group: dreams
-weight: 218
+weight: 220
 ---
 
 Replicante core will interact with some secret manager tool (like

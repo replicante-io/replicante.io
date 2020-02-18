@@ -3,7 +3,7 @@ title: "Rate Limits"
 date: 2020-02-13T19:13:10Z
 draft: false
 group: dreams
-weight: 214
+weight: 216
 ---
 
 Rate limits may take different forms in different contexts but share the same goal:

@@ -3,7 +3,7 @@ title: "Resyncable WebUI application"
 date: 2020-02-13T20:15:27Z
 draft: false
 group: dreams
-weight: 217
+weight: 219
 ---
 
 Build a completely independent WebUI application (with its own database and everything)

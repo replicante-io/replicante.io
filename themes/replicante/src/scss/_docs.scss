@@ -1,4 +1,12 @@
 div.docs-pages {
+  display: block;
+  margin-bottom: 0.5em;
+  max-height: calc(100vh - 1em);
+  overflow-y: auto;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0.5em;
+
   h3 {
     color: #393939;
     font-size: 18px;
@@ -40,11 +48,12 @@ div.docs-pages {
 div.docs-toc {
   nav {
     display: block;
-    max-height: 92vh;
+    margin-bottom: 0.5em;
+    max-height: calc(100vh - 1em);
     overflow-y: auto;
     position: -webkit-sticky;
     position: sticky;
-    top: 1em;
+    top: 0.5em;
   }
 
   ul {

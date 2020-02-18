@@ -3,8 +3,10 @@ current:
   description: 'Actions support across agents and Core'
 
 next:
-  - title: 'The first Dance (Actions playbook)'
-    description: 'Nodes coordination to perform advanced cluster operations<br>_Initial focus will be on cluster rolling restarts_'
+  - title: 'The first Dance (playbooks)'
+    description: |
+      Nodes coordination to perform advanced cluster operations  
+      _Initial focus will be on cluster rolling restarts_
   - title: 'Declarative Clusters'
     description: 'Bootstrap, scale and reconfigure any supported datastore. All from a YAML file.'
   - title: 'Support more datastores'

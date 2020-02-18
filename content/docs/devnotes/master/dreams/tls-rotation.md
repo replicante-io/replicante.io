@@ -3,7 +3,7 @@ title: "TLS certificate rotation"
 date: 2020-02-13T20:18:25Z
 draft: false
 group: dreams
-weight: 219
+weight: 221
 ---
 
 Once of the original dreams for Replicante was to have a WebUI button/automation around TLS certificates:

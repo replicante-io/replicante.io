@@ -3,7 +3,7 @@ title: "Replication window metrics and re-sync times"
 date: 2020-02-13T19:15:25Z
 draft: false
 group: dreams
-weight: 216
+weight: 218
 ---
 
 Intorduce some form of "oldest commit offset that can be replayed" metric for shards.

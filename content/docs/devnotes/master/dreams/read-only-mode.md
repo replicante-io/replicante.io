@@ -3,7 +3,7 @@ title: "Read only mode"
 date: 2020-02-13T19:14:36Z
 draft: false
 group: dreams
-weight: 215
+weight: 217
 ---
 
 **NOTE**: should this be called "Monitor Only" mode?
