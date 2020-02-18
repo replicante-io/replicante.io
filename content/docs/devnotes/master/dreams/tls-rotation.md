@@ -6,7 +6,7 @@ group: dreams
 weight: 221
 ---
 
-Once of the original dreams for Replicante was to have a WebUI button/automation around TLS certificates:
+One of the original dreams for Replicante was to have a WebUI button/automation around TLS certificates:
 
   * Check certificate validity dates (for all certificates in the chain)
   * Integrate with some certificate manager solution like [lemur](https://github.com/Netflix/lemur)

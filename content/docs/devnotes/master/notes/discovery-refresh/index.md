@@ -18,7 +18,7 @@ or re-adapt everything every few months.
 At the essence of Replicante Core is a reactive engine: when a state change is
 detected actions are taken to return the system to a desired state.
 
-The idea of automation built on a reactive engine is not new:
+The idea of orchestration built on a reactive engine is not new:
 
   * It is an easy model to understand for humans (physics is based on the action-reaction paradigm).
   * It is easy enough to implement (at least compared to other options).

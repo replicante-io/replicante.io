@@ -40,9 +40,9 @@ external tool that can process events off the stream independent of the core pla
 {{% /content-box %}}
 
 
-{{% content-box title="Automation" future="true" %}}
-Knowing when things go wrong is good.
-Automatically executing corrective actions for the most common issues is better!
+{{% content-box title="Orchestration" future="true" %}}
+Knowing when things are not as expected is good.
+Automatically bringing things back to the desired state is better!
 
 By accepting that bad things happen from the [specifications](./docs/specs/) level
 it is also possible to determine corrective actions and perform them.
