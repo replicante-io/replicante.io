@@ -37,7 +37,8 @@ behaviours, and expectations needed of datastores.
 In Replicante we see every datastore through the lenses of this specifications
 so that datastores can be managed and monitored consistently regardless of software.
 
-[Read the Specifications Document](./specs/)
+[Stable version]({{% docs-link "spec" "stable" %}})  
+[Development version]({{% docs-link "spec" "master" %}})
 {{% /content-box %}}
 
 {{% content-box title="Developers Notebook" %}}
@@ -46,7 +47,7 @@ These pages hold a bit of lore, a bit of history, and a lot of mind dump.
 
 Mainly aimed at project developers to learn the past, understand the now, and glance at the future.
 
-[Latest Stable]({{% docs-link "devnotes" "stable" %}})  
+[Stable version]({{% docs-link "devnotes" "stable" %}})  
 [Development version]({{% docs-link "devnotes" "master" %}})
 {{% /content-box %}}
 {{< /row >}}

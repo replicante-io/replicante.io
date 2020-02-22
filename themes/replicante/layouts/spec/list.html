@@ -3,14 +3,13 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-2 docs-pages">
-      {{ $dreams := where .CurrentSection.Pages "Params.group" "dreams" }}
-      {{ $notes  := where .CurrentSection.Pages "Params.group" "notes" }}
-      {{ $opts   := where .CurrentSection.Pages "Params.group" "opts" }}
+      {{ $agent := where .CurrentSection.Pages "Params.group" "agent" }}
+      {{ $model := where .CurrentSection.Pages "Params.group" "model" }}
       {{ partial "version-select" . }}
 
-      <h3>Architectural Notes</h3>
+      <h3>The Datastore Model</h3>
       <ul>
-        {{ range $notes }}
+        {{ range $model }}
         <li>
           {{ $active := eq . $ }}
           <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
@@ -18,19 +17,9 @@
         {{ end }}
       </ul>
 
-      <h3>Premature Optimisations</h3>
+      <h3>The Agent Protocol</h3>
       <ul>
-        {{ range $opts }}
-        <li>
-          {{ $active := eq . $ }}
-          <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-      </ul>
-
-      <h3>Dreamland</h3>
-      <ul>
-        {{ range $dreams }}
+        {{ range $agent }}
         <li>
           {{ $active := eq . $ }}
           <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>

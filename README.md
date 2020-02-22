@@ -31,11 +31,13 @@ The `hugo new` command should be used to add content:
   * But including the `.md` file extention.
   * So `hugo new section/content.md`.
 
-For some sections there are dedicated archetypes that should be used (with `--kind NAME`:
+For some sections there are dedicated archetypes that should be used (with `--kind NAME`):
 
   * For `docs/devnotes/dreams` use `devnotes-dream`.
   * For `docs/devnotes/notes` use `devnotes-note`.
   * For `docs/devnotes/opts` use `devnotes-optimise`.
+  * For `docs/spec/agent` use `spec-agent`.
+  * For `docs/spec/model` use `spec-model`.
 
 ### Versioned documents
 The documents under the `docs/` sections are versioned.

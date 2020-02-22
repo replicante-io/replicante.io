@@ -1,0 +1,60 @@
+/* HTTP API styles (based on gitbook-rest) */
+/* https://github.com/Emonadeo/gitbook-rest */
+div.rest {
+  display: grid;
+  grid-template-columns: min-content min-content auto;
+  grid-row-gap: 0.5em;
+  line-height: normal;
+
+  & > div {
+    padding: 0.5em 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .desc {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 700;
+    border-radius: 0 0.2em 0.2em 0;
+    padding-left: 0 !important;
+
+    // Example: &.X { color: #607D8B; }
+    &.delete { color: #CB2431; }
+    &.get { color: #4078C0; }
+    &.patch { color: #673AB7; }
+    &.post { color: #4CAF50; }
+    &.put { color: #FFF2CC; }
+  }
+
+  .method {
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    border-radius: 0.2em 0 0 0.2em;
+
+    // Example: &.X { background-color: #607D8B; }
+    &.delete { background-color: #CB2431; }
+    &.get { background-color: #4078C0; }
+    &.patch { background-color: #673AB7; }
+    &.post { background-color: #4CAF50; }
+    &.put { background-color: #F0B400; }
+  }
+
+  .rtl {
+    text-align: right;
+  }
+
+  .url {
+    flex: 1;
+    font-family: monospace;
+  }
+
+  // Method options.
+  // Example: .X { background-color: #E1E7EA; }
+  .delete { background-color: #F7D4D7; }
+  .get { background-color: #D9E4F2; }
+  .patch { background-color: #E2D8F3; }
+  .post { background-color: #DCEFDC; }
+  .put { background-color: #FFF2CC; }
+}

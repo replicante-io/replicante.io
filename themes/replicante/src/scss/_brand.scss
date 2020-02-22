@@ -7,3 +7,17 @@
     background-color: $brand;
   }
 }
+
+code {
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  color: inherit;
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  font-size: 85%;
+  margin: 0;
+  padding: 3.2px 6.4px;
+}
+
+li > p {
+  margin-bottom: 0;
+}
