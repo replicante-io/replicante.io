@@ -1,0 +1,4 @@
+{{- $striped := .Get "striped" -}}
+<div class="table-wrapper{{ if $striped }} table-striped{{ end }}">
+  {{ .Inner }}
+</div>

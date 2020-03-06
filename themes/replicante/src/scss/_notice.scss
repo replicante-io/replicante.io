@@ -15,8 +15,17 @@ blockquote.notice {
     border-left-color: rgb(100, 205, 255);
   }
 
+  &.success {
+    background-color: #D4EDDA;
+    border-left-color: #155724;
+  }
+
   &.warning {
     background-color: rgba(255, 229, 100, 0.3);
     border-left-color: rgb(255, 229, 100);
+  }
+
+  & > p:last-of-type {
+    margin-bottom: 0;
   }
 }

@@ -5,6 +5,10 @@
 {{- end -}}
 
 {{- $docs := printf "/docs/%s/%s" $section $version -}}
-{{- $docs := $.Site.GetPage $docs -}}
-{{- $page := index $docs.Pages 0 -}}
-{{ $page.Permalink }}
+{{- with .Get 2 -}}
+  {{ printf "%s/%s" $docs . }}
+{{- else -}}
+  {{- $docs := $.Site.GetPage $docs -}}
+  {{- $page := index $docs.Pages 0 -}}
+  {{ $page.Permalink }}
+{{- end -}}

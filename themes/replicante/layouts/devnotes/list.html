@@ -9,34 +9,11 @@
       {{ partial "version-select" . }}
 
       <h3>Architectural Notes</h3>
-      <ul>
-        {{ range $notes }}
-        <li>
-          {{ $active := eq . $ }}
-          <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-      </ul>
-
+      {{ partial "nav-group" (dict "Pages" $notes "Current" $) }}
       <h3>Premature Optimisations</h3>
-      <ul>
-        {{ range $opts }}
-        <li>
-          {{ $active := eq . $ }}
-          <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-      </ul>
-
+      {{ partial "nav-group" (dict "Pages" $opts "Current" $) }}
       <h3>Dreamland</h3>
-      <ul>
-        {{ range $dreams }}
-        <li>
-          {{ $active := eq . $ }}
-          <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-      </ul>
+      {{ partial "nav-group" (dict "Pages" $dreams "Current" $) }}
     </div>
 
     <div class="col-6">

@@ -12,10 +12,12 @@
     </h4>
 
     <div class="quicklinks">
-      {{- $url := "/docs/manual/docs/intro" -}}
-      {{- $quickstart := "/docs/manual/docs/quick-start" -}}
-      <a class="btn btn-outline-dark" role="button" href="{{ $quickstart }}">Quick start</a>
-      <a class="btn btn-outline-dark" role="button" href="{{ $url }}">User guide</a>
+      {{- $guide := printf "/docs/core/%s" $.Site.Data.docs.stable.core -}}
+      {{- $guide := $.Site.GetPage $guide -}}
+      {{- $guide := index $guide.Pages 0 -}}
+      {{- $quickstart := $.Site.GetPage $.Site.Data.docs.quickstart -}}
+      <a class="btn btn-outline-dark" role="button" href="{{ $quickstart.Permalink }}">Quick start</a>
+      <a class="btn btn-outline-dark" role="button" href="{{ $guide.Permalink }}">User guide</a>
     </div>
   </div>
 </div>

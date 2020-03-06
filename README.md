@@ -18,12 +18,6 @@ In addition to the Code Of Conduct below the following documents are relevant:
   * The [Enforcement Guideline](https://www.replicante.io/conduct/enforcing)
 
 
-## Layout
-
-  * The static site is built with [Hugo](https://gohugo.io/) (v0.64.0).
-  * Legacy documentation is built with [Docusaurus](https://docusaurus.io/) (migration is in progress).
-
-
 ## Adding new content
 The `hugo new` command should be used to add content:
 
@@ -33,11 +27,19 @@ The `hugo new` command should be used to add content:
 
 For some sections there are dedicated archetypes that should be used (with `--kind NAME`):
 
-  * For `docs/devnotes/dreams` use `devnotes-dream`.
-  * For `docs/devnotes/notes` use `devnotes-note`.
-  * For `docs/devnotes/opts` use `devnotes-optimise`.
-  * For `docs/spec/agent` use `spec-agent`.
-  * For `docs/spec/model` use `spec-model`.
+  * For `docs/core/<version>/admin` use `core-admin`.
+  * For `docs/core/<version>/apiref` use `core-apiref`.
+  * For `docs/core/<version>/basics` use `core-basics`.
+  * For `docs/core/<version>/cli` use `core-cli`.
+  * For `docs/core/<version>/features` use `core-feature`.
+  * For `docs/core/<version>/scale` use `core-scale`.
+  * For `docs/core/<version>/security` use `core-sec`.
+  * For `docs/core/<version>/upgrade` use `core-upgrade`.
+  * For `docs/devnotes/<version>/dreams` use `devnotes-dream`.
+  * For `docs/devnotes/<version>/notes` use `devnotes-note`.
+  * For `docs/devnotes/<version>/opts` use `devnotes-optimise`.
+  * For `docs/spec/<version>/agent` use `spec-agent`.
+  * For `docs/spec/<version>/model` use `spec-model`.
 
 ### Versioned documents
 The documents under the `docs/` sections are versioned.
@@ -68,20 +70,14 @@ npm run build
 cd ../../../
 ```
 
-All in one build:
-```bash
-# Builds docs and site:
-./build.sh
-
-# Clean all built files and re-builds them
-./build.sh --clean
-```
-
-Build the site only (using docs already found in `static/docs`):
+Build the site only:
 ```bash
 rm -r dist/  # Clean target before build.
 hugo
 ```
+
+### Publish to GitHub Pages
+TODO
 
 ### Publishing to S3
 ```bash

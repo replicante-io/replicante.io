@@ -1,0 +1,10 @@
+{{- $pages := .Pages -}}
+{{- $current := .Current -}}
+<ul>
+  {{ range $pages }}
+  <li>
+    {{ $active := eq . $current }}
+    <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
+  </li>
+  {{ end }}
+</ul>

@@ -50,6 +50,13 @@ div.docs-pages {
   }
 }
 
+div.docs-content {
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+}
+
 div.docs-toc {
   nav {
     display: block;

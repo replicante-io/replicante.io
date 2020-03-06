@@ -1,0 +1,17 @@
+div.highlight > pre {
+  padding: 1em;
+
+  & > code {
+    padding: 0;
+  }
+}
+
+div.table-wrapper {
+  & > table {
+    @extend .table;
+  }
+
+  &.table-striped > table {
+    @extend .table-striped;
+  }
+}

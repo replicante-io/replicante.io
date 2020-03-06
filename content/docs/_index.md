@@ -16,7 +16,8 @@ You likely want to start here.
 
 Check out the architecture overview and the quickstart, then dive into the details.
 
-[Read the guide](./manual/)
+[Stable version]({{% docs-link "core" "stable" %}})  
+[Development version]({{% docs-link "core" "master" %}})
 {{% /content-box %}}
 
 

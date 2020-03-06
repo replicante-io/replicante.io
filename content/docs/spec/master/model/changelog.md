@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 ### Changed
+- **BREAKING**: Added actions API.
 - **BREAKING**: Rename incorrectly named `v1` endpoints.
 
 ## 0.2.0 - 2019-02-20

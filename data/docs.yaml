@@ -1,3 +1,12 @@
+# Path to the Quick Start guide to link to from the Homepage.
+quickstart: '/docs/core/master/basics/quick-start'
+
+# Stable versions for each documentation section.
 stable:
-  devnotes: v0.5.0
-  spec: v0.5.0
+  # Once the new versions are cut update here.
+  #core: v0.5.0
+  #devnotes: v0.5.0
+  #spec: v0.3.0
+  core: master
+  devnotes: master
+  spec: master

@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="container-fluid page">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-2 docs-pages">
+      {{ $admin := where .CurrentSection.Pages "Params.group" "admin" }}
+      {{ $apiref := where .CurrentSection.Pages "Params.group" "apiref" }}
+      {{ $basics := where .CurrentSection.Pages "Params.group" "basics" }}
+      {{ $clis := where .CurrentSection.Pages "Params.group" "cli" }}
+      {{ $features := where .CurrentSection.Pages "Params.group" "feature" }}
+      {{ $scale := where .CurrentSection.Pages "Params.group" "scale" }}
+      {{ $security := where .CurrentSection.Pages "Params.group" "security" }}
+      {{ $upgrade := where .CurrentSection.Pages "Params.group" "upgrade" }}
+      {{ partial "version-select" . }}
+
+      <h3>Basics</h3>
+      {{ partial "nav-group" (dict "Pages" $basics "Current" $) }}
+      <h3>Features</h3>
+      {{ partial "nav-group" (dict "Pages" $features "Current" $) }}
+      <h3>Security</h3>
+      {{ partial "nav-group" (dict "Pages" $security "Current" $) }}
+      <h3>Administration</h3>
+      {{ partial "nav-group" (dict "Pages" $admin "Current" $) }}
+      <h3>Upgrades</h3>
+      {{ partial "nav-group" (dict "Pages" $upgrade "Current" $) }}
+      <h3>Command Line Interfaces</h3>
+      {{ partial "nav-group" (dict "Pages" $clis "Current" $) }}
+      <h3>API Reference</h3>
+      {{ partial "nav-group" (dict "Pages" $apiref "Current" $) }}
+      <h3>Scaling</h3>
+      {{ partial "nav-group" (dict "Pages" $scale "Current" $) }}
+    </div>
+
+    <div class="col-6 docs-content">
+      <h1 id="top">{{ .Title }}</h1>
+      {{ .Content }}
+    </div>
+
+    <div class="col-2 docs-toc">
+      {{ .TableOfContents }}
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+{{ end }}

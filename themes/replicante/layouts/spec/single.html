@@ -8,27 +8,12 @@
       {{ partial "version-select" . }}
 
       <h3>The Datastore Model</h3>
-      <ul>
-        {{ range $model }}
-        <li>
-          {{ $active := eq . $ }}
-          <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-      </ul>
-
+      {{ partial "nav-group" (dict "Pages" $model "Current" $) }}
       <h3>The Agent Protocol</h3>
-      <ul>
-        {{ range $agent }}
-        <li>
-          {{ $active := eq . $ }}
-          <a class="{{ if $active }}active{{end}}" href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-      </ul>
+      {{ partial "nav-group" (dict "Pages" $agent "Current" $) }}
     </div>
 
-    <div class="col-6">
+    <div class="col-6 docs-content">
       <h1 id="top">{{ .Title }}</h1>
       {{ .Content }}
     </div>
