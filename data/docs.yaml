@@ -4,9 +4,11 @@ quickstart: '/docs/core/master/basics/quick-start'
 # Stable versions for each documentation section.
 stable:
   # Once the new versions are cut update here.
+  #agent: v0.5.0
   #core: v0.5.0
   #devnotes: v0.5.0
   #spec: v0.3.0
+  agent: master
   core: master
   devnotes: master
   spec: master

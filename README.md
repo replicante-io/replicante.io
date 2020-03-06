@@ -27,6 +27,8 @@ The `hugo new` command should be used to add content:
 
 For some sections there are dedicated archetypes that should be used (with `--kind NAME`):
 
+  * For `docs/agent/<version>/info` use `agent-info`.
+  * For `docs/agent/<version>/official` use `agent-official`.
   * For `docs/core/<version>/admin` use `core-admin`.
   * For `docs/core/<version>/apiref` use `core-apiref`.
   * For `docs/core/<version>/basics` use `core-basics`.

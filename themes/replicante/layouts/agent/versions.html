@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="container page">
+  Available versions of this documentation:
+  <ul>
+    {{ range .CurrentSection.Pages }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

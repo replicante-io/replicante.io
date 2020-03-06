@@ -27,7 +27,8 @@ all management tasks the datastore software should not deal with.
 
 Agents developed by the Replicante team are documented here.
 
-[Read the docs](./agents/)
+[Stable version]({{% docs-link "agent" "stable" %}})  
+[Development version]({{% docs-link "agent" "master" %}})
 {{% /content-box %}}
 
 

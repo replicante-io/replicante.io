@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="container-fluid page">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-2 docs-pages">
+      {{ $info := where .CurrentSection.Pages "Params.group" "info" }}
+      {{ $official := where .CurrentSection.Pages "Params.group" "official" }}
+      {{ partial "version-select" . }}
+
+      <h3>Basics</h3>
+      {{ partial "nav-group" (dict "Pages" $info "Current" $) }}
+      <h3>Agents</h3>
+      {{ partial "nav-group" (dict "Pages" $official "Current" $) }}
+    </div>
+
+    <div class="col-6 docs-content">
+      <h1 id="top">{{ .Title }}</h1>
+      {{ .Content }}
+    </div>
+
+    <div class="col-2 docs-toc">
+      {{ .TableOfContents }}
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+{{ end }}

@@ -1,9 +1,7 @@
 todo: []
 
 progress:
-  - 'Update documentation'
-  - 'Partially script agents release steps'
-  - 'Review features priority'
+  - 'Release this iteration'
 
 done:
   - 'Plan iteration'
@@ -15,3 +13,4 @@ done:
   - 'Expand agent model with actions API'
   - 'Core actions monitoring'
   - 'Core actions scheduling'
+  - 'Update documentation'
