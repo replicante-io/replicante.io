@@ -6,5 +6,4 @@ type: core
 layout: versions
 cascade:
   type: core
-  version: master
 ---

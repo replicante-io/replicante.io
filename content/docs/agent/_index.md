@@ -6,5 +6,4 @@ type: agent
 layout: versions
 cascade:
   type: agent
-  version: master
 ---

@@ -1,16 +1,21 @@
-todo: []
+todo:
+  - 'Agents repo reorganization'
+  - 'Action kind IDs refactor'
+  - 'Base agents action hooks refactor'
+  - 'Ping action'
+  - 'Shell actions'
+  - 'Rename replicante_agent to repliagent'
+  - 'Initial `replidev deps` implementation'
+  - 'Expand `replidev deps` and drop docker & docker-compose from core'
+  - 'Initial `replidev play` iteration'
+  - 'Implement `replidev play gen-certs` to generate TLS certs'
+  - 'Create playground nodes as podman pods'
+  - 'Implement `replidev play node-list`'
+  - 'Implement a podman discovery server'
+  - 'Rewrite dev env & playground documentation'
+  - 'Implement `replidev release image-*` commands to manage docker images'
+  - 'Implement `replidev release changes` to help list changelogs & crates that need updates'
 
-progress:
-  - 'Release this iteration'
+progress: []
 
-done:
-  - 'Plan iteration'
-  - 'Agent actions client authentication'
-  - 'Agent actions scaffolding'
-  - 'Agent actions requests'
-  - 'Agent actions engine'
-  - 'Agent action to start/stop/restore'
-  - 'Expand agent model with actions API'
-  - 'Core actions monitoring'
-  - 'Core actions scheduling'
-  - 'Update documentation'
+done: []

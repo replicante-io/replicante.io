@@ -1,6 +1,6 @@
 current:
-  title: 'The first Action'
-  description: 'Actions support across agents and Core'
+  title: 'Polish cycle'
+  description: 'General improvements and refactoring to make things better'
 
 next:
   - title: 'The first Dance (playbooks)'
