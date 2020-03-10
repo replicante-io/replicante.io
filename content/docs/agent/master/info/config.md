@@ -13,5 +13,5 @@ Official agents and those implemented using the base rust crate provide a set of
 configuration options as well as agent specific options.
 
 All common options are documented in the
-[example configuration file]({{< versioned "https://github.com/replicante-io/agents/blob/{version}/agent.example.yaml" >}})
+[example configuration file]({{< versioned "https://github.com/replicante-io/agents/blob/{version}/agents/agent.example.yaml" >}})
 at the root of the repo while agent specific options are documented with the agents details.

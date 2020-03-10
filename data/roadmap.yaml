@@ -1,9 +1,4 @@
 todo:
-  - 'Agents repo reorganization'
-  - 'Action kind IDs refactor'
-  - 'Base agents action hooks refactor'
-  - 'Ping action'
-  - 'Shell actions'
   - 'Rename replicante_agent to repliagent'
   - 'Initial `replidev deps` implementation'
   - 'Expand `replidev deps` and drop docker & docker-compose from core'
@@ -16,6 +11,11 @@ todo:
   - 'Implement `replidev release image-*` commands to manage docker images'
   - 'Implement `replidev release changes` to help list changelogs & crates that need updates'
 
-progress: []
+progress:
+  - 'Base agents action hooks refactor'
+  - 'Ping action'
+  - 'Shell actions'
 
-done: []
+done:
+  - 'Agents repo reorganization'
+  - 'Action kind IDs refactor'

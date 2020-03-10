@@ -41,7 +41,7 @@ metadata:
 
 spec:
   # Trigger a debug action that executes two dummy steps and then successfully completes.
-  action: replicante.debug.progress
+  action: agent.replicante.io/debug.progress
   # Pass additional arguments as structured data.
   args:
     options: 'available options change based on the action'

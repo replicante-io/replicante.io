@@ -19,8 +19,8 @@ For cases where it is not, MongoDB provides tansparent
 [sharding](https://docs.mongodb.com/manual/sharding/) support with the use of `mongos`.
 
 {{% notice class="warning" %}}
-Replicante Core uses a [pure-rust mongodb driver prototype](https://crates.io/crates/mongodb)
-that is currently in prototype stage.
+Replicante Core uses a [pure-rust mongodb driver prototype](https://crates.io/crates/mongodb).  
+A more stable driver has recently been release and upgrade will be planned in the future.
 
 While this has not been a problem yet, some issues with performance and/or advanced setups may arise.
 If that is the case [please report](https://github.com/replicante-io/replicante/issues) them.

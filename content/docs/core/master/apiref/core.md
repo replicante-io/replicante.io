@@ -11,6 +11,34 @@ Core endpoints are related to the essential features of Replicante Core.
 
 <div class="rest">
   <div class="method post">POST</div>
+  <div class="url post">/api/unstable/core/apply</div>
+  <div class="desc post rtl"></div>
+</div>
+
+Apply a new or updated configuration.
+
+The body of the request must be a JSON object with the following attributes:
+
+  * `apiVersion`: identifier of the group and version of the configuration to apply.
+  * `kind`: identifier of the class of configuration object to apply.
+  * `metadata`: additional metadata relevant for the object.
+  * Additional attributes may be required based on what the object being applied is.
+
+Response:
+
+  * `ok`: set to 1 on success.
+  * `response`: an optional JSON response based on the object `apiVersion` and `kind`.
+
+```json
+{
+  "ok": 1,
+  "response": "any"
+}
+```
+
+
+<div class="rest">
+  <div class="method post">POST</div>
   <div class="url post">/api/unstable/core/cluster/:cluster_id/refresh</div>
   <div class="desc post rtl"></div>
 </div>

@@ -40,17 +40,17 @@ Example:
 ```json
 [
     {
-        "kind": "replicante.store.stop",
+        "kind": "replicante.io/store.stop",
         "id": "703824bf-2c16-44f5-b4da-b21688c57043",
         "state": "DONE"
     },
     {
-        "kind": "replicante.store.stop",
+        "kind": "replicante.io/store.stop",
         "id": "f4fdda3f-3130-474b-b22c-66c6824a5d89",
         "state": "DONE"
     },
     {
-        "kind": "replicante.store.stop",
+        "kind": "replicante.io/store.stop",
         "id": "191cc19b-2dee-4013-b908-29c7985f79ac",
         "state": "DONE"
     }
@@ -73,17 +73,17 @@ Example:
 ```json
 [
     {
-        "kind": "replicante.store.stop",
+        "kind": "replicante.io/store.stop",
         "id": "703824bf-2c16-44f5-b4da-b21688c57043",
         "state": "RUNNING"
     },
     {
-        "kind": "replicante.store.stop",
+        "kind": "replicante.io/store.stop",
         "id": "f4fdda3f-3130-474b-b22c-66c6824a5d89",
         "state": "NEW"
     },
     {
-        "kind": "replicante.store.stop",
+        "kind": "replicante.io/store.stop",
         "id": "191cc19b-2dee-4013-b908-29c7985f79ac",
         "state": "NEW"
     }
@@ -115,7 +115,7 @@ Example:
 ```json
 {
     "action": {
-        "kind": "replicante.service.gracefulrestart",
+        "kind": "replicante.io/service.gracefulrestart",
         "created_ts": "2019-08-30T20:40:24Z",
         "finished_ts": "2019-08-30T20:40:37Z",
         "headers": {},
