@@ -1,7 +1,4 @@
 todo:
-  - 'Rename replicante_agent to repliagent'
-  - 'Initial `replidev deps` implementation'
-  - 'Expand `replidev deps` and drop docker & docker-compose from core'
   - 'Initial `replidev play` iteration'
   - 'Implement `replidev play gen-certs` to generate TLS certs'
   - 'Create playground nodes as podman pods'
@@ -12,10 +9,13 @@ todo:
   - 'Implement `replidev release changes` to help list changelogs & crates that need updates'
 
 progress:
-  - 'Base agents action hooks refactor'
-  - 'Ping action'
-  - 'Shell actions'
+  - 'Rename replicante_agent to repliagent'
+  - 'Initial `replidev deps` implementation'
+  - 'Expand `replidev deps` and drop docker & docker-compose from core'
 
 done:
   - 'Agents repo reorganization'
   - 'Action kind IDs refactor'
+  - 'Base agents action hooks refactor'
+  - 'Ping action'
+  - 'Shell actions'

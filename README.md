@@ -27,21 +27,21 @@ The `hugo new` command should be used to add content:
 
 For some sections there are dedicated archetypes that should be used (with `--kind NAME`):
 
-  * For `docs/agent/<version>/info` use `agent-info`.
-  * For `docs/agent/<version>/official` use `agent-official`.
-  * For `docs/core/<version>/admin` use `core-admin`.
-  * For `docs/core/<version>/apiref` use `core-apiref`.
-  * For `docs/core/<version>/basics` use `core-basics`.
-  * For `docs/core/<version>/cli` use `core-cli`.
-  * For `docs/core/<version>/features` use `core-feature`.
-  * For `docs/core/<version>/scale` use `core-scale`.
-  * For `docs/core/<version>/security` use `core-sec`.
-  * For `docs/core/<version>/upgrade` use `core-upgrade`.
-  * For `docs/devnotes/<version>/dreams` use `devnotes-dream`.
-  * For `docs/devnotes/<version>/notes` use `devnotes-note`.
-  * For `docs/devnotes/<version>/opts` use `devnotes-optimise`.
-  * For `docs/spec/<version>/agent` use `spec-agent`.
-  * For `docs/spec/<version>/model` use `spec-model`.
+  * For `docs/agent/<version>/info/` use `agent-info`.
+  * For `docs/agent/<version>/official/` use `agent-official`.
+  * For `docs/core/<version>/admin/` use `core-admin`.
+  * For `docs/core/<version>/apiref/` use `core-apiref`.
+  * For `docs/core/<version>/basics/` use `core-basics`.
+  * For `docs/core/<version>/cli/` use `core-cli`.
+  * For `docs/core/<version>/features/` use `core-feature`.
+  * For `docs/core/<version>/scale/` use `core-scale`.
+  * For `docs/core/<version>/security/` use `core-sec`.
+  * For `docs/core/<version>/upgrade/` use `core-upgrade`.
+  * For `docs/devnotes/<version>/dreams/` use `devnotes-dream`.
+  * For `docs/devnotes/<version>/notes/` use `devnotes-note`.
+  * For `docs/devnotes/<version>/opts/` use `devnotes-optimise`.
+  * For `docs/spec/<version>/agent/` use `spec-agent`.
+  * For `docs/spec/<version>/model/` use `spec-model`.
 
 ### Versioned documents
 The documents under the `docs/` sections are versioned.

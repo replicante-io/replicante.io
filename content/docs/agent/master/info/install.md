@@ -67,24 +67,19 @@ source $HOME/.cargo/env
 
 # Get the code and compile replicante.
 git clone --recursive https://github.com/replicante-io/agents.git
-cd agents
+cd agents/
 # To install a specific VERSION uncomment the command below.
 # By default the latest DEVELOPMENT version is compiled.
 # Production users should instead switch to the latest STABLE release.
 #git checkout v<VERSION>
-cargo build --release
+cargo build --release --manifest-path agents/kafka/Cargo.toml
+cargo build --release --manifest-path agents/mongodb/Cargo.toml
+cargo build --release --manifest-path agents/zookeeper/Cargo.toml
 
 # Ensure the built binaries work.
-target/release/replicante-agent-mongodb --version
-target/release/replicante-agent-zookeeper --version
-
-# Due to additional dependencies of the kafka agent alone,
-# it is managed as a separate project in the same repo.
-# To build it:
-cd kafka/
-cargo build --release
-# NOTE: the kafka agent needs access to JVM libraries and build artifacts.
-target/release/replicante-agent-kafka --version
+agents/kafka/target/release/replicante-agent-kafka --version
+agents/mongodb/target/release/replicante-agent-mongodb --version
+agents/zookeeper/target/release/replicante-agent-zookeeper --version
 ```
 
 You can now install the desired agents by copying the build target to your preferred location.
