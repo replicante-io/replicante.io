@@ -10,7 +10,7 @@ This page documents the step to install Replicante Core for production use.
 It does NOT detail the installation process of the needed [dependences]({{< ref "./deps.md" >}}).
 
 If you are looking for a development/test/demo environment the
-[quick start guide]({{< ref "../basics/quick-start/index.md" >}}) is where you can find all that.
+[quick start guide]({{< ref "/quick-start/index.md" >}}) is where you can find all that.
 
 
 ## 1. Installing dependencies

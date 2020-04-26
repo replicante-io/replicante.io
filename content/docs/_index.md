@@ -5,7 +5,7 @@ draft: false
 menu:
   main:
     identifier: docs
-    weight: 1
+    weight: 2
 ---
 
 {{< row >}}

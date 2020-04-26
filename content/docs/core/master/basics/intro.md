@@ -30,7 +30,7 @@ regardless of software in use or its version.
 If all you are looking for this time is a place to mess about and experiment
 you can get a container-based local setup locally in minutes.
 
-Follow the steps in the [quick start]({{< ref "./quick-start/index.md" >}})
+Follow the steps in the [quick start]({{< ref "/quick-start/index.md" >}})
 guide to start exploring while you read this documentation.
 {{% /notice %}}
 
