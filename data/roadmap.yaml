@@ -1,17 +1,12 @@
 todo:
-  - 'Initial `replidev play` iteration'
-  - 'Implement `replidev play gen-certs` to generate TLS certs'
-  - 'Create playground nodes as podman pods'
-  - 'Implement `replidev play node-list`'
-  - 'Implement a podman discovery server'
-  - 'Rewrite dev env & playground documentation'
   - 'Implement `replidev release image-*` commands to manage docker images'
   - 'Implement `replidev release changes` to help list changelogs & crates that need updates'
 
 progress:
-  - 'Rename replicante_agent to repliagent'
-  - 'Initial `replidev deps` implementation'
-  - 'Expand `replidev deps` and drop docker & docker-compose from core'
+  - 'Upgrade rdkafka library'
+  - 'Upgrade prototype MongoDB driver to alpha'
+  - 'Update all other dependencies'
+  - 'Replace Iron framework with actix-web'
 
 done:
   - 'Agents repo reorganization'
@@ -19,3 +14,10 @@ done:
   - 'Base agents action hooks refactor'
   - 'Ping action'
   - 'Shell actions'
+  - 'Initial `replidev deps` implementation'
+  - 'Expand `replidev deps` and drop docker & docker-compose from core'
+  - 'Implement `replidev gen-certs` to generate playground TLS certs'
+  - 'Create playground nodes as podman pods'
+  - 'Implement `replidev play node-list`'
+  - 'Implement a podman discovery server'
+  - 'Rewrite dev env & playground documentation'

@@ -3,12 +3,16 @@ current:
   description: 'General improvements and refactoring to make things better'
 
 next:
+  - title: 'Orchestrator Actions'
+    description: 'Expand the actions system with cluster-level actions perfomred by the orchestrator.'
+  - title: 'Nodes Provisioning'
+    description: 'Orchestrator actions to create and destroy nodes.'
+  - title: 'Declarative Clusters'
+    description: 'Bootstrap, scale and reconfigure any supported datastore. All from a YAML file.'
   - title: 'The first Dance (playbooks)'
     description: |
       Nodes coordination to perform advanced cluster operations  
       _Initial focus will be on cluster rolling restarts_
-  - title: 'Declarative Clusters'
-    description: 'Bootstrap, scale and reconfigure any supported datastore. All from a YAML file.'
   - title: 'Support more datastores'
     description: 'Expand supported datastores with new agents'
   - title: 'Agents Authentication and Authorisation'
