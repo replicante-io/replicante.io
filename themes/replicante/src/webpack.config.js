@@ -35,6 +35,7 @@ const css_partial = new HtmlWebpackPlugin({
   filename: path.join(PARTIALS_PATH, 'css.html'),
   template: 'ejs-loader!css_partial.ejs',
   inject: false,
+  minify: false,
 });
 const css = {
   entry: "./scss/index.scss",
@@ -76,6 +77,7 @@ const js_partial = new HtmlWebpackPlugin({
   filename: path.join(PARTIALS_PATH, 'js.html'),
   template: 'ejs-loader!js_partial.ejs',
   inject: false,
+  minify: false,
 });
 const js = {
   entry: "./js/index.js",

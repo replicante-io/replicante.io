@@ -1,12 +1,9 @@
-todo:
-  - 'Implement `replidev release image-*` commands to manage docker images'
-  - 'Implement `replidev release changes` to help list changelogs & crates that need updates'
+todo: []
 
 progress:
-  - 'Upgrade rdkafka library'
-  - 'Upgrade prototype MongoDB driver to alpha'
-  - 'Update all other dependencies'
   - 'Replace Iron framework with actix-web'
+  - 'Implement `replidev release image-*` commands to manage docker images'
+  - 'Implement `replidev release changes` to help list changelogs & crates that need updates'
 
 done:
   - 'Agents repo reorganization'
@@ -21,3 +18,6 @@ done:
   - 'Implement `replidev play node-list`'
   - 'Implement a podman discovery server'
   - 'Rewrite dev env & playground documentation'
+  - 'Upgrade rdkafka library'
+  - 'Upgrade prototype MongoDB driver to alpha'
+  - 'Update all other dependencies'
