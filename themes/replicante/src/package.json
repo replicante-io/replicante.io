@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/replicante-io/replicante.io#readme",
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
-    "bootstrap": "^4.4.1",
+    "autoprefixer": "^9.8.0",
+    "bootstrap": "^4.5.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
     "ejs-loader": "^0.3.6",
