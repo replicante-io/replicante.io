@@ -104,7 +104,7 @@ docker run --rm -it replicanteio/replicante:v0 replictl --version
 Whatever your choice, the store needs some initialisation before it can be used.  
 The requirements depend on the selected store:
 
-  * [MongoDB]({{< versioned "https://github.com/replicante-io/replicante/blob/{version}/devtools/provisioning/mongo/indexes.js" >}})
+  * [MongoDB]({{< versioned "https://github.com/replicante-io/replicante/blob/{version}/devtools/deps/configs/essential/mongo/indexes.js" >}})
 
 It is possible to verify the store configuration with
 [`repliadm validate primary-store-schema`]({{< ref "../cli/repliadm/validate.md#primary-store-schema" >}}).

@@ -1,7 +1,6 @@
 todo: []
 
 progress:
-  - 'Replace Iron framework with actix-web'
   - 'Implement `replidev release image-*` commands to manage docker images'
   - 'Implement `replidev release changes` to help list changelogs & crates that need updates'
 
@@ -21,3 +20,4 @@ done:
   - 'Upgrade rdkafka library'
   - 'Upgrade prototype MongoDB driver to alpha'
   - 'Update all other dependencies'
+  - 'Replace Iron framework with actix-web'

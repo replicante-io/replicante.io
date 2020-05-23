@@ -6,7 +6,7 @@ group: cli
 weight: 552
 ---
 
-Apply or update system and cluster configuration.  
+Apply or update system and clusters configuration.  
 This interface is modelled after [kubernetes](https://kubernetes.io/) for its
 many advantages and for the familiarity.
 
@@ -18,23 +18,13 @@ kind of relationship between the two project.**
 {{% notice class="warning" %}}
 Unlike `kubectl apply`, Replicante can only apply one object at a time
 and files must contain only one document in each YAML file.
+
+This limitation is likely to be removed in the future.
 {{% /notice %}}
 
 ```text
 $ replictl apply [OPTIONS] --file <FILE>
 ```
-
-
-## Scope overrides
-One of the foundational ideas is that generic tasks not tailored to a specific cluster
-(such as performing some [`AgentAction`]({{< ref "../../features/actions.md#agent-actions" >}}))
-should be transferable from one scope (namespace, cluster, node) to another.
-
-To make this easier `replictl apply` supports command line options to override parts of the scope:
-
-  * `--namespace` can be set to override or set the value of `metadata.namespace`.
-  * `--cluster` can be set to override or set the value of `metadata.cluster`.
-  * `--node` can be set to override or set the value of `metadata.node`.
 
 
 ## Objects format
@@ -53,3 +43,9 @@ Regardless of the object you are looking to apply the following attributes are r
 
 The details of the `metadata` attributes as well as all `spec` attributes
 are documented along side the supported `apiVersion` and `kind` values.
+
+The scope attributes can be used to set or override values in the `metadata` object:
+
+  * The `cluster` scope attribute is set as the `metadata.cluster` attribute.
+  * The `namespace` scope attribute is set as the `metadata.namespace` attribute.
+  * The `node` scope attribute is set as the `metadata.node` attribute.

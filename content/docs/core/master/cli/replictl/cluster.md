@@ -9,9 +9,13 @@ weight: 553
 Group of commands to manage and inspect clusters.
 See `replictl cluster --help` for general information.
 
+{{% notice class="info" %}}
+Cluster commands require the following scopes: `namespace`, `cluster`.
+{{% /notice %}}
+
 ## refresh
 Schedule a cluster refresh task.
 
 ```text
-$ replictl cluster --cluster <CLUSTER> --namespace <NAMESPACE> refresh [OPTIONS]
+$ replictl cluster refresh [OPTIONS]
 ```
