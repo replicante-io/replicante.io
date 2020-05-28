@@ -3,7 +3,7 @@ quickstart: '/quick-start'
 
 # Stable versions for each documentation section.
 stable:
-  agent: v0.4.1
-  core: v0.5.0
-  devnotes: v0.5.0
+  agent: v0.5.0
+  core: v0.6.0
+  devnotes: v0.6.0
   spec: v0.3.0

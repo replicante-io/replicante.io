@@ -1,23 +1,6 @@
-todo: []
+todo:
+  - 'Plan the iteration'
 
-progress:
-  - 'Implement `replidev release image-*` commands to manage docker images'
-  - 'Implement `replidev release changes` to help list changelogs & crates that need updates'
+progress: []
 
-done:
-  - 'Agents repo reorganization'
-  - 'Action kind IDs refactor'
-  - 'Base agents action hooks refactor'
-  - 'Ping action'
-  - 'Shell actions'
-  - 'Initial `replidev deps` implementation'
-  - 'Expand `replidev deps` and drop docker & docker-compose from core'
-  - 'Implement `replidev gen-certs` to generate playground TLS certs'
-  - 'Create playground nodes as podman pods'
-  - 'Implement `replidev play node-list`'
-  - 'Implement a podman discovery server'
-  - 'Rewrite dev env & playground documentation'
-  - 'Upgrade rdkafka library'
-  - 'Upgrade prototype MongoDB driver to alpha'
-  - 'Update all other dependencies'
-  - 'Replace Iron framework with actix-web'
+done: []

@@ -1,10 +1,10 @@
 ---
-title: "v0.5.0"
+title: "v0.6.0 (latest)"
 date: 2020-02-18T22:37:30+01:00
 draft: false
-weight: 99
+weight: 98
 cascade:
-  version: v0.5.0
+  version: v0.6.0
 ---
 
 Select a page from the side menu.
