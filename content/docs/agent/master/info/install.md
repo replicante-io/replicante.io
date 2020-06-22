@@ -30,9 +30,9 @@ we suggest you use an alternative install method.
 # Grab the binaries for the version of your choice from GitHub:
 VERSION=vX.Y.Z
 wget https://github.com/replicante-io/agents/releases/download/$VERSION/checksum.txt
-wget https://github.com/replicante-io/agents/releases/download/$VERSION/replicante-agent-kafka.tar.gz-linux-64bits
-wget https://github.com/replicante-io/agents/releases/download/$VERSION/replicante-agent-mongodb-linux-64bits
-wget https://github.com/replicante-io/agents/releases/download/$VERSION/replicante-agent-zookeeper-linux-64bits
+wget https://github.com/replicante-io/agents/releases/download/$VERSION/repliagent-kafka.tar.gz-linux-64bits
+wget https://github.com/replicante-io/agents/releases/download/$VERSION/repliagent-mongodb-linux-64bits
+wget https://github.com/replicante-io/agents/releases/download/$VERSION/repliagent-zookeeper-linux-64bits
 
 # Verify the integrity of the binaries:
 sha256sum --check checksum.txt
@@ -40,17 +40,17 @@ sha256sum --check checksum.txt
 # Unpack the kafka agent:
 mkdir -p kafka
 pushd kafka
-tar --extract --file ../replicante-agent-kafka.tar.gz-linux-64bits
+tar --extract --file ../repliagent-kafka.tar.gz-linux-64bits
 popd
 
 # Verify the binaries work:
-mv replicante-agent-mongodb-linux-64bits replicante-agent-mongodb
-mv replicante-agent-zookeeper-linux-64bits replicante-agent-zookeeper
-chmod +x replicante-agent-mongodb replicante-agent-zookeeper
-./replicante-agent-mongodb --version
-./replicante-agent-zookeeper --version
+mv repliagent-mongodb-linux-64bits repliagent-mongodb
+mv repliagent-zookeeper-linux-64bits repliagent-zookeeper
+chmod +x repliagent-mongodb repliagent-zookeeper
+./repliagent-mongodb --version
+./repliagent-zookeeper --version
 # NOTE: the kafka agent needs access to JVM libraries.
-kafka/replicante-agent-kafka --version
+kafka/repliagent-kafka --version
 ```
 
 
@@ -77,9 +77,9 @@ cargo build --release --manifest-path agents/mongodb/Cargo.toml
 cargo build --release --manifest-path agents/zookeeper/Cargo.toml
 
 # Ensure the built binaries work.
-agents/kafka/target/release/replicante-agent-kafka --version
-agents/mongodb/target/release/replicante-agent-mongodb --version
-agents/zookeeper/target/release/replicante-agent-zookeeper --version
+agents/kafka/target/release/repliagent-kafka --version
+agents/mongodb/target/release/repliagent-mongodb --version
+agents/zookeeper/target/release/repliagent-zookeeper --version
 ```
 
 You can now install the desired agents by copying the build target to your preferred location.
@@ -94,9 +94,9 @@ Docker images with the officail agents pre-compiled are also available.
 To check the image works as expected:
 ```bash
 docker pull replicanteio/agent-kafka:v0
-docker run --rm -it replicanteio/agent-kafka:v0 replicante-agent-kafka --version
+docker run --rm -it replicanteio/agent-kafka:v0 repliagent-kafka --version
 
 docker pull replicanteio/agents:v0
-docker run --rm -it replicanteio/agents:v0 replicante-agent-mongodb --version
-docker run --rm -it replicanteio/agents:v0 replicante-agent-zookeeper --version
+docker run --rm -it replicanteio/agents:v0 repliagent-mongodb --version
+docker run --rm -it replicanteio/agents:v0 repliagent-zookeeper --version
 ```
