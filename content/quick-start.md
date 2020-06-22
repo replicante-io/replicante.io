@@ -34,6 +34,12 @@ Only nodes with an agent attached to them will be exposed by the discovery serve
 
 
 ## 1. Get the code
+There are two command line tools you will need to install:
+
+  * [`replidev`]: the Replicante development tool will start, stop and manage datastore and similar components.
+  * [`replictl`]: the Replicante command line client to interact with you playground Core stack.
+
+### Install [`replidev`]
 First of all, [`replidev`] requires some dependencies:
 
   * [`Podman`](https://podman.io/getting-started/installation) to manage containers (version 1.9 or later).
@@ -45,18 +51,8 @@ This tools must be avaliable in `$PATH` for [`replidev`] to be able to use them.
 
 Once dependencies are available fetch and compile [`replidev`]:
 ```bash
-$ cd /path/for/replicante/repos
-$ git clone --recursive https://github.com/replicante-io/replicante.git
-$ cd replicante/
-
-# To make things simpler, replidev can be in added to $PATH.
-# If you have $HOME/bin already in your $PATH you can compile replidev
-# and add a symlink to it from $HOME/bin with:
-$ make -C devtools/replidev install
-
-# Otherwise compile the tool and "install" it as you please:
-# (this command can also be used to update replidev after git pulls)
-$ cargo build --release --manifest-path devtools/replidev/Cargo.toml
+# Cargo install will fetch the git sources and make the compiled binary available in $PATH.
+$ cargo install --git https://github.com/replicante-io/replicante.git replidev
 
 # Check that replidev is working:
 $ replidev --version
@@ -72,6 +68,21 @@ $ cd playgrounds/
 # Check replidev works and finds podman:
 $ replidev play node-list
 NODE   CLUSTER   STORE PORT   CLIENT PORT   AGENT PORT   STATUS   POD ID
+```
+
+### Install [`replictl`]
+The replicante command line tool comes pre-built for some platforms.
+The official documentation has a section on
+[installing from pre-built binaries](http://localhost:1313/docs/core/master/admin/install/#from-pre-built-binaries)
+you can try first.
+
+If that does not work for you or you want to install the latest version from the repo:
+```bash
+# Cargo install will fetch the git sources and make the compiled binary available in $PATH.
+$ cargo install --git https://github.com/replicante-io/replicante.git replictl
+
+# Check that replidev is working:
+$ replictl --version
 ```
 
 
@@ -99,8 +110,7 @@ Server Private Key: ./data/pki/replidev/keys/server.key
 This step is only needed once on a new machine or when the certificates expire.
 
 
-We generate certificates and then start a Replicante Core stack,
-including all dependencies with two [`replidev`] commands:
+With certificates in place start the Replicante Core stack, including all dependencies, with:
 ```bash
 $ replidev play replicore-start
 --> Create pod play-replicore
@@ -220,7 +230,7 @@ To demo replicante's cross-store features we are going to also start a
 
 This is very similar to what we did for MongoDB so you could skip it if you are not interested:
 ```bash
-cat - > zookeeper.demo.json <<EOS
+$ cat - > zookeeper.demo.json <<EOS
 [{
   "id": "0",
   "port": 10006,
@@ -244,7 +254,63 @@ $ replidev play node-start zookeeper --var-file 'cluster=zookeeper.demo.json' --
 ```
 
 
-## 6. Clean up everything
+## 6. Schedule some actions
+Before you can interact with the local Replicante Core stack you need to set up [`replictl`]:
+```bash
+$ replictl context login --context play
+Replicante API address: http://localhost:16016/
+(Optional) API CA certificate file:
+(Optional) API client certificate bundle:
+
+$ replictl context select --context play
+$ replictl context list
+ACTIVE   NAME   URL                       CA BUNDLE   CLIENT KEY   NAMESPACE   CLUSTER   NODE  
+*        play   http://localhost:16016/   Not set     Not set      Not set     Not set   Not set
+
+# Set the namespace for the context once for all other commands.
+$ replictl context change
+Select a namespace (empty to clear selection): default
+Select a cluster (empty to clear selection):
+Select a node (empty to clear selection):
+```
+
+Actions are defined as YAML files.
+This is a bit much for an example ping action but provides many advantages for real use systems:
+
+  * Define an action once and run it against any node.
+  * Build a library of actions you and your team needs often.
+  * Consistent interface to other Replicante Core features.
+
+For our example we'll schedule a ping action against any cluster/node:
+```bash
+$ cat - > ping.yaml <<EOS
+apiVersion: replicante.io/v0
+kind: AgentAction
+metadata: {}
+spec:
+  action: agent.replicante.io/test.ping
+EOS
+$ replictl apply -f ping.yaml --cluster mongo-rs --node 'https://podman-host:10001'
+$ replictl apply -f ping.yaml --cluster mongo-rs --node 'https://podman-host:10003'
+$ replictl apply -f ping.yaml --cluster zookeeper --node 'https://podman-host:10009'
+```
+
+Note how the same action definition is applied to any nodes across any cluster.
+
+Actions are scheduled during the next cluster refresh operation, and updated every refresh.
+As a result we'll need two refresh cycles to happen before our ping action is marked as done.
+
+While we could wait for these cycles to be scheduled, we can also request additional refresh
+tasks to be performed against a specific cluster.
+This is great for testing clusters and agents, like now, but when done too often it could
+increase the load on agents and nodes in the cluster.
+```bash
+$ replictl cluster refresh --cluster mongo-rs
+Cluster refresh scheduled
+```
+
+
+## 7. Clean up everything
 Once you are done experimenting with the playgrounds you can stop all processes and nodes.
 
 Stop all the datastore nodes:
@@ -307,3 +373,4 @@ $ replidev play replicore-clean --confirm
 
 
 [`replidev`]: https://github.com/replicante-io/replicante/tree/master/devtools/replidev
+[`replictl`]: https://github.com/replicante-io/replicante/tree/master/bin/replictl
