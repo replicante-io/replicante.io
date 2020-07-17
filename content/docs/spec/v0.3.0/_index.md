@@ -1,5 +1,5 @@
 ---
-title: "v0.3.0 (latest)"
+title: "Latest (v0.3.0)"
 date: 2020-02-18T22:37:30+01:00
 draft: false
 weight: 2

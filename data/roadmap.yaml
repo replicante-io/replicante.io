@@ -1,13 +1,4 @@
 todo:
-  - 'Remove CI caches and clean up travis (management overhead is too high)'
-  - 'Update `replidev` install steps to `cargo install <git>`'
-  - 'Update playgrounds to latest release and add actions examples'
-  - 'Add a `replidev curl -- <arg>...` wrapper to call `curl` with added TLS parameters'
-  - 'Rename agents crates and binaries to `repliagent-$AGENT`'
-  - 'Sync view DB using the events stream only'
-  - 'Build an in-memory view of the cluster'
-  - 'Introduce `RefreshReport`s'
-  - 'Introduce `EventScope`s to better represent the "target" of an event'
   - 'Improve primary and view stores schemas a bit'
   - 'Compute a lag value for each non-primary shard that does not report it'
   - 'Introduce cluster state checks'
@@ -15,6 +6,16 @@ todo:
   - 'Add and update documentation'
   - 'Update `Orchestrator` box on homepage to remove the "coming soon" tag'
 
-progress: []
+progress:
+  - 'Build an in-memory view of the cluster'
+  - 'Introduce `RefreshReport`s'
+  - 'Introduce `EventScope`s to better represent the "target" of an event'
 
-done: []
+done:
+  - 'Remove CI caches and clean up travis (management overhead is too high)'
+  - 'Update `replidev` install steps to `cargo install <git>`'
+  - 'Update playgrounds to latest release and add actions examples'
+  - 'Add a `replidev curl -- <arg>...` wrapper to call `curl` with added TLS parameters'
+  - 'Rename agents crates and binaries to `repliagent-$AGENT`'
+  - 'Sync view DB using the events stream only'
+  - 'Replace uses of problematic terms with inclusive language'

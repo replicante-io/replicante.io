@@ -81,7 +81,7 @@ Example JSON file to serve statically:
 
 #### Implementing HTTP Discovery servers
 Details of the client/server JSON over HTTP protocol are documented in comments in the code that implements
-[HTTP Discovery](https://github.com/replicante-io/replicante/blob/master/cluster/discovery/src/backends/http.rs).
+[HTTP Discovery](https://github.com/replicante-io/replicante/blob/main/cluster/discovery/src/backends/http.rs).
 
 To make sure that any changes to the code are reflected in the documentation
 the code itself is where the details are documented.

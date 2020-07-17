@@ -73,7 +73,7 @@ NODE   CLUSTER   STORE PORT   CLIENT PORT   AGENT PORT   STATUS   POD ID
 ### Install [`replictl`]
 The replicante command line tool comes pre-built for some platforms.
 The official documentation has a section on
-[installing from pre-built binaries](http://localhost:1313/docs/core/master/admin/install/#from-pre-built-binaries)
+[installing from pre-built binaries]({{< ref "docs/core/main/admin/install.md#from-pre-built-binaries" >}})
 you can try first.
 
 If that does not work for you or you want to install the latest version from the repo:
@@ -167,11 +167,11 @@ While the WebUI will stay empty, the error should be gone now!
 
 ## 4. Start a MongoDB cluster
 It is now time to start our first datastore node.
-Any of the datastores in https://github.com/replicante-io/playgrounds/tree/master/stores
+Any of the datastores in https://github.com/replicante-io/playgrounds/tree/main/stores
 can be started but only those where an agent is available will be listed in `replidev play server`.
 
 For our quick start we will create a
-[MongoDB Replica Set](https://github.com/replicante-io/playgrounds/tree/master/stores/mongo#replica-sets)
+[MongoDB Replica Set](https://github.com/replicante-io/playgrounds/tree/main/stores/mongo#replica-sets)
 node:
 ```bash
 $ replidev play node-start mongo/rs
@@ -226,7 +226,7 @@ $ podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.add("podman-host:100
 
 ## 5. Start a zookeeper cluster
 To demo replicante's cross-store features we are going to also start a
-[zookeeper cluster](https://github.com/replicante-io/playgrounds/tree/master/stores/zookeeper).
+[zookeeper cluster](https://github.com/replicante-io/playgrounds/tree/main/stores/zookeeper).
 
 This is very similar to what we did for MongoDB so you could skip it if you are not interested:
 ```bash
@@ -372,5 +372,5 @@ $ replidev play replicore-clean --confirm
 ```
 
 
-[`replidev`]: https://github.com/replicante-io/replicante/tree/master/devtools/replidev
-[`replictl`]: https://github.com/replicante-io/replicante/tree/master/bin/replictl
+[`replidev`]: https://github.com/replicante-io/replicante/tree/main/devtools/replidev
+[`replictl`]: https://github.com/replicante-io/replicante/tree/main/bin/replictl

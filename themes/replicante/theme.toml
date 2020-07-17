@@ -3,7 +3,7 @@
 
 name = "Replicante"
 license = "MIT"
-licenselink = "https://github.com/replicante-io/replicante/blob/master/Readme.md"
+licenselink = "https://github.com/replicante-io/replicante/blob/main/Readme.md"
 description = "Purpouse built theme for replicante.io"
 homepage = "https://replicante.io/"
 tags = []

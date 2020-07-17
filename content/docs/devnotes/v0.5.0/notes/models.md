@@ -87,7 +87,7 @@ This is not exposed to the application as it does not care for this information.
 Replicante core stores data in a document store.
 
 The format of the data stored here is strictly defined by the
-[application code](https://github.com/replicante-io/replicante/tree/master/models)
+[application code](https://github.com/replicante-io/replicante/tree/main/models)
 and care must be taken to allow for a zero downtime upgrade path.
 This means that changing the data format must be incremental:
 

@@ -28,7 +28,7 @@ Below is a list of knows agents:
 
 ## Developing community agents
 Official agents are built on top of a shared
-[base agent rust crate](https://github.com/replicante-io/agents/tree/master/base).
+[base agent rust crate](https://github.com/replicante-io/agents/tree/main/base).
 This reduces code duplication and improves consistency across the ecosystem.
 
 Using a shared base crate also mean that:

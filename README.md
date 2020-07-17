@@ -57,8 +57,8 @@ Versions are handled as hugo sections:
 
 To "cut" a new version:
 
-  1. Make sure the `master` version is up to date and ready to be cut.
-  2. Copy the full tree to the new version (`cp -r master/ vX.Y.Z/`).
+  1. Make sure the `main` version is up to date and ready to be cut.
+  2. Copy the full tree to the new version (`cp -r main/ vX.Y.Z/`).
   3. Update the title for the new version and all the weights (hint: use high weights for older versions).
   4. Update the stable version set in `data/docs.yaml`.
 

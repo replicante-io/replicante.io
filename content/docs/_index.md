@@ -16,8 +16,8 @@ You likely want to start here.
 
 Check out the architecture overview and the quickstart, then dive into the details.
 
-[Stable version]({{% docs-link "core" "stable" %}})  
-[Development version]({{% docs-link "core" "master" %}})
+[Latest version]({{% docs-link "core" "stable" %}})  
+[Development version]({{% docs-link "core" "main" %}})
 {{% /content-box %}}
 
 
@@ -27,8 +27,8 @@ all management tasks the datastore software should not deal with.
 
 Agents developed by the Replicante team are documented here.
 
-[Stable version]({{% docs-link "agent" "stable" %}})  
-[Development version]({{% docs-link "agent" "master" %}})
+[Latest version]({{% docs-link "agent" "stable" %}})  
+[Development version]({{% docs-link "agent" "main" %}})
 {{% /content-box %}}
 
 
@@ -39,8 +39,8 @@ behaviours, and expectations needed of datastores.
 In Replicante we see every datastore through the lenses of this specifications
 so that datastores can be managed and monitored consistently regardless of software.
 
-[Stable version]({{% docs-link "spec" "stable" %}})  
-[Development version]({{% docs-link "spec" "master" %}})
+[Latest version]({{% docs-link "spec" "stable" %}})  
+[Development version]({{% docs-link "spec" "main" %}})
 {{% /content-box %}}
 
 {{% content-box title="Developers Notebook" %}}
@@ -49,8 +49,8 @@ These pages hold a bit of lore, a bit of history, and a lot of mind dump.
 
 Mainly aimed at project developers to learn the past, understand the now, and glance at the future.
 
-[Stable version]({{% docs-link "devnotes" "stable" %}})  
-[Development version]({{% docs-link "devnotes" "master" %}})
+[Latest version]({{% docs-link "devnotes" "stable" %}})  
+[Development version]({{% docs-link "devnotes" "main" %}})
 {{% /content-box %}}
 {{< /row >}}
 
