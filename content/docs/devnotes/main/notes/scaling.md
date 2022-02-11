@@ -3,7 +3,7 @@ title: "Scaling"
 date: 2020-02-11T22:25:44Z
 draft: false
 group: notes
-weight: 10
+weight: 11
 ---
 
 Replicante is a highly available and scalable service.

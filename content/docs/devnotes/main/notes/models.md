@@ -3,7 +3,7 @@ title: "Handling data models"
 date: 2020-02-11T22:07:17Z
 draft: false
 group: notes
-weight: 7
+weight: 8
 ---
 
 Any application that handles data (any application?) has to define data models to operate on.

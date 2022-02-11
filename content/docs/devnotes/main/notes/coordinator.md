@@ -3,7 +3,7 @@ title: "Distributed Coordination"
 date: 2020-02-11T22:17:59Z
 draft: false
 group: notes
-weight: 8
+weight: 9
 ---
 
 Replicante uses a distributed coordinator for a variety of reasons.

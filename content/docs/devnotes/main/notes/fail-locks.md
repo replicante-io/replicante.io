@@ -3,7 +3,7 @@ title: "Failure Modes: Locks"
 date: 2020-02-11T22:24:32Z
 draft: false
 group: notes
-weight: 9
+weight: 10
 ---
 
 The behaviour of the system in the event of loosing a lock varies based on the operation
