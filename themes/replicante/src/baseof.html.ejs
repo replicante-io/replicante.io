@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{ partial "meta.html" . }}
+    {{ block "title" . }}
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    {{ end }}
+
+    <!-- NOTE: CSS and JS resources injected here by HtmlWebpackPlugin -->
+  </head>
+  <body>
+    {{ partial "navbar.html" . }}
+    {{ block "main" . }}{{ end }}
+  </body>
+</html>
