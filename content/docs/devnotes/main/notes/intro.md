@@ -12,5 +12,5 @@ explanations of decisions and designs that may be looked upon in the future with
 
 Overall, documents in this section revolve (not exclusively) around:
 
-  * Explaining the current design to new/interested parties
-  * Explaining the context around sub-optimal or overly complex designs for future developers
+* Explaining the current design to new/interested parties
+* Explaining the context around sub-optimal or overly complex designs for future developers

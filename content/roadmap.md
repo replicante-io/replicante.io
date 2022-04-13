@@ -22,6 +22,5 @@ menu:
 {{< /column >}}
 {{< /row >}}
 
-
 {{< roadmap >}}
 {{< milestones >}}

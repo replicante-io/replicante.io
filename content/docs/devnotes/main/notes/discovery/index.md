@@ -13,7 +13,7 @@ So how does cluster discovery work?
 
 {{< img "discovery.png" "Overview: cluster discovery" >}}
 
-  0. One or more `DiscoverySetting` object is applied though the API.
+  0. Users apply one or more `DiscoverySetting` objects though the API.
   1. The cluster `discovery` component periodically runs at fixed intervals.
      The interval should be short as it determines the delay between
      discoveries needing to run and them being scheduled.
@@ -30,7 +30,7 @@ So how does cluster discovery work?
 When clusters and nodes are automatically discovered they can also automatically go away.
 
 {{% notice class="warning" %}}
-This feature is not currently available and is yet to be designed.
+This feature is not currently available and is yet to be designed in full.
 {{% /notice %}}
 
 ## Why discover clusters?

@@ -18,38 +18,39 @@ for production use and it does not attempt to cover all possible configuration,
 installation and management details.
 {{% /notice %}}
 
-
 ## 0. Overview
+
 Replicante provides an opinionated development tool, [`replidev`],
 that can be used to demo and experiment with replicante's features as well.
 
 In this guide we will use [`replidev`] to start a set of containers to run:
 
-  * A local Replicante Core stack
-  * The `replidev play server` to serve the node discovery API
-  * A MongoDB replica set and a Zookeeper cluster
+* A local Replicante Core stack
+* The `replidev play server` to serve the node discovery API
+* A MongoDB replica set and a Zookeeper cluster
 
 Once you are familiar with how the playgrounds setup works you can run any node.
 Only nodes with an agent attached to them will be exposed by the discovery server.
 
-
 ## 1. Get the code
+
 There are two command line tools you will need to install:
 
-  * [`replidev`]: the Replicante development tool will start, stop and manage datastore and similar components.
-  * [`replictl`]: the Replicante command line client to interact with you playground Core stack.
+* [`replidev`]: the Replicante development tool will start, stop and manage datastore and similar components.
+* [`replictl`]: the Replicante command line client to interact with you playground Core stack.
 
 ### Install [`replidev`]
+
 First of all, [`replidev`] requires some dependencies:
 
-  * [`Podman`](https://podman.io/getting-started/installation) to manage containers (version 1.9 or later).
-    Podman was selected instead of docker because it supports pods (groups of containers)
-    as well as rootless containers (security!!!).
-  * [`easypki`](https://github.com/google/easypki) to generte certificates.
+* [`Podman`](https://podman.io/getting-started/installation) to manage containers (version 1.9 or later).
+* [`easy-rsa`](https://github.com/OpenVPN/easy-rsa) and [`openssl`](https://www.openssl.org/)
+  to generate certificates.
 
-This tools must be avaliable in `$PATH` for [`replidev`] to be able to use them.
+This tools must be available in `$PATH` for [`replidev`] to be able to use them.
 
 Once dependencies are available fetch and compile [`replidev`]:
+
 ```bash
 # Cargo install will fetch the git sources and make the compiled binary available in $PATH.
 $ cargo install --git https://github.com/replicante-io/replicante.git replidev
@@ -60,6 +61,7 @@ $ replidev --version
 
 With all the dependencies in place we can get the [playgrounds repo](https://github.com/replicante-io/playgrounds),
 which provides the definitions for datastore nodes and Replicante Core pods to start everything easily:
+
 ```bash
 $ cd /path/for/replicante/repos
 $ git clone https://github.com/replicante-io/playgrounds
@@ -71,12 +73,14 @@ NODE   CLUSTER   STORE PORT   CLIENT PORT   AGENT PORT   STATUS   POD ID
 ```
 
 ### Install [`replictl`]
+
 The replicante command line tool comes pre-built for some platforms.
 The official documentation has a section on
 [installing from pre-built binaries]({{< ref "docs/core/main/admin/install.md#from-pre-built-binaries" >}})
 you can try first.
 
 If that does not work for you or you want to install the latest version from the repo:
+
 ```bash
 # Cargo install will fetch the git sources and make the compiled binary available in $PATH.
 $ cargo install --git https://github.com/replicante-io/replicante.git replictl
@@ -85,12 +89,13 @@ $ cargo install --git https://github.com/replicante-io/replicante.git replictl
 $ replictl --version
 ```
 
-
 ## 2. Start Replicante Core
+
 Replicante Core uses TLS certificates to securely communicate with agents.
 Mutual TLS authentication is required to enable the action system on agents.
 
 First, generate certificates to be used by core and agents:
+
 ```bash
 $ replidev gen-certs
 --> Generating CA certificates
@@ -109,18 +114,18 @@ Server Private Key: ./data/pki/replidev/keys/server.key
 
 This step is only needed once on a new machine or when the certificates expire.
 
-
 With certificates in place start the Replicante Core stack, including all dependencies, with:
+
 ```bash
 $ replidev play replicore-start
 --> Create pod play-replicore
 ab9fe546c021ba0a366a29d30a1996eea1a0d21d28be78bd5ea3f74c748a5c2a
 --> Start container play-replicore-zookeeper
 bb1206f6884fa85266a8c6276f29fb60ffd48aa03ebc03f03d7b2d5ecca595aa
---> Wating 10s for play-replicore-zookeeper to start
+--> Waiting 10s for play-replicore-zookeeper to start
 --> Start container play-replicore-mongo
 0d7efa500edab710c6613a7bddb7b3934986fc71631839787ce8e4cbd2310566
---> Wating 10s for play-replicore-mongo to start
+--> Waiting 10s for play-replicore-mongo to start
 --> Start container play-replicore-kafka
 e02fc11827131bc98ab9624b4dec87c0c2abfde70ff716570ec250afacc6d9b9
 --> Start container play-replicore-app
@@ -147,9 +152,10 @@ MongoDB server version: 4.2.5
 Once the above command completes you should have access to the WebUI at [http://localhost:3000](http://localhost:3000)
 and you can follow replicante core logs with `podman logs -f play-replicore-app`.
 
-
 ## 3. Start the playgrounds API server
+
 At this point you should see an empty WebUI and, if you look at the logs, some errors like the one below:
+
 ```json
 {"msg":"Cluster discovery error","level":"ERRO","ts":"2020-04-26T09:23:08.957288273+00:00","module":"replicante::components::discovery::election","error_cause":"http://podman-host:9876/discover: error trying to connect: Connection refused (os error 111)","error_layers":2,"error_message":"HTTP request failed","error_name":"HttpRequest"}
 ```
@@ -157,6 +163,7 @@ At this point you should see an empty WebUI and, if you look at the logs, some e
 This is because this Replicante stack is configured to discover clusters from the
 playgrounds API server running on your podman host.
 To start this service open a new console and run:
+
 ```bash
 $ replidev play server
 --> Server listening at http://0.0.0.0:9876
@@ -164,15 +171,16 @@ $ replidev play server
 
 While the WebUI will stay empty, the error should be gone now!
 
-
 ## 4. Start a MongoDB cluster
+
 It is now time to start our first datastore node.
-Any of the datastores in https://github.com/replicante-io/playgrounds/tree/main/stores
+Any of the datastores in <https://github.com/replicante-io/playgrounds/tree/main/stores>
 can be started but only those where an agent is available will be listed in `replidev play server`.
 
 For our quick start we will create a
 [MongoDB Replica Set](https://github.com/replicante-io/playgrounds/tree/main/stores/mongo#replica-sets)
 node:
+
 ```bash
 $ replidev play node-start mongo/rs
 --> Starting mongo/rs node play-node-JfC9yNPm for cluster mongo-rs
@@ -189,16 +197,18 @@ you should see a new cluster and agent in the WebUI!
 
 Since the node has not been initialised it should be in the `NODE_DOWN` state.
 Let's fix that now:
+
 ```bash
 # Note that the port set in the host attribute is set dynamically and may be different.
 # Use replidev play node-list to check for the correct store port.
 $ podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.initiate({_id: "mongo-rs", members: [{_id: 0, host: "podman-host:10000"}]})'
 ```
 
-Once replicante refreshes the cluster, the node should be in the `UP` state.
+Once replicante checks the cluster, the node should be in the `UP` state.
 
 But a one node replica set is not that useful,
 let us add two more nodes and wait for them to show up (as `NODE_DOWN`):
+
 ```bash
 $ replidev play node-start mongo/rs
 --> Starting mongo/rs node play-node-8bMJWWs0 for cluster mongo-rs
@@ -219,16 +229,19 @@ fda39e282598843251638c9392516b1c8cf12be564d172ca68929c18af033ba7
 ```
 
 And add them to the initialised replica set:
+
 ```bash
-$ podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.add("podman-host:10002");'
-$ podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.add("podman-host:10004");'
+podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.add("podman-host:10002");'
+podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.add("podman-host:10004");'
 ```
 
 ## 5. Start a zookeeper cluster
+
 To demo replicante's cross-store features we are going to also start a
 [zookeeper cluster](https://github.com/replicante-io/playgrounds/tree/main/stores/zookeeper).
 
 This is very similar to what we did for MongoDB so you could skip it if you are not interested:
+
 ```bash
 $ cat - > zookeeper.demo.json <<EOS
 [{
@@ -253,9 +266,10 @@ $ replidev play node-start zookeeper --var-file 'cluster=zookeeper.demo.json' --
 $ replidev play node-start zookeeper --var-file 'cluster=zookeeper.demo.json' --var 'my_id=2'
 ```
 
-
 ## 6. Schedule some actions
+
 Before you can interact with the local Replicante Core stack you need to set up [`replictl`]:
+
 ```bash
 $ replictl context login --context play
 Replicante API address: http://localhost:16016/
@@ -277,11 +291,12 @@ Select a node (empty to clear selection):
 Actions are defined as YAML files.
 This is a bit much for an example ping action but provides many advantages for real use systems:
 
-  * Define an action once and run it against any node.
-  * Build a library of actions you and your team needs often.
-  * Consistent interface to other Replicante Core features.
+* Define an action once and run it against any node.
+* Build a library of actions you and your team needs often.
+* Consistent interface to other Replicante Core features.
 
 For our example we'll schedule a ping action against any cluster/node:
+
 ```bash
 $ cat - > ping.yaml <<EOS
 apiVersion: replicante.io/v0
@@ -297,23 +312,25 @@ $ replictl apply -f ping.yaml --cluster zookeeper --node 'https://podman-host:10
 
 Note how the same action definition is applied to any nodes across any cluster.
 
-Actions are scheduled during the next cluster refresh operation, and updated every refresh.
-As a result we'll need two refresh cycles to happen before our ping action is marked as done.
+Actions are scheduled during the next cluster orchestrate operation, and updated every orchestration.
+As a result we'll need two orchestration cycles to happen before our ping action is marked as done.
 
-While we could wait for these cycles to be scheduled, we can also request additional refresh
-tasks to be performed against a specific cluster.
+While we could wait for these cycles to be scheduled, we can also request additional
+orchestration tasks to be performed against a specific cluster.
 This is great for testing clusters and agents, like now, but when done too often it could
 increase the load on agents and nodes in the cluster.
+
 ```bash
-$ replictl cluster refresh --cluster mongo-rs
-Cluster refresh scheduled
+$ replictl cluster orchestrate --cluster mongo-rs
+Cluster orchestration scheduled
 ```
 
-
 ## 7. Clean up everything
+
 Once you are done experimenting with the playgrounds you can stop all processes and nodes.
 
 Stop all the datastore nodes:
+
 ```bash
 $ replidev play node-list
 NODE                 CLUSTER     STORE PORT   CLIENT PORT   AGENT PORT   STATUS    POD ID  
@@ -352,6 +369,7 @@ $ replidev play node-stop play-node-ou1ZPcVe play-node-epjE9kI8 play-node-RJZBqG
 ```
 
 Stop the replicante core stack:
+
 ```bash
 $ replidev play replicore-stop
 --> Stop pod play-replicore
@@ -363,6 +381,7 @@ $ replidev play replicore-stop
 Stop the `replidev play server` by hitting `Ctrl-C` on the terminal where it is running.
 
 And finally you can delete all node and core data with:
+
 ```bash
 $ replidev play node-clean-all --confirm
 --> Clean data for all nodes (from ./data/nodes/)
@@ -370,7 +389,6 @@ $ replidev play node-clean-all --confirm
 $ replidev play replicore-clean --confirm
 --> Clean data for play-replicore pod (from ./data/replicore)
 ```
-
 
 [`replidev`]: https://github.com/replicante-io/replicante/tree/main/devtools/replidev
 [`replictl`]: https://github.com/replicante-io/replicante/tree/main/bin/replictl

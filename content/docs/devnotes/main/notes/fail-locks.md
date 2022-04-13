@@ -9,14 +9,16 @@ weight: 10
 The behaviour of the system in the event of loosing a lock varies based on the operation
 being performed while the lock is lost.
 
+## Cluster orchestration
 
-## Cluster state refresh
-The refresh process is multi-phase:
+The orchestration process is multi-phase:
 
-  * Fetch nodes: lock is checked before each node is updated.
-  * Data aggregation: lock is checked before updating.
+* Update nodes data: lock is checked before each node is updated.
+* Action scheduling: lock is checked before each action is scheduled.
+* Data aggregation: lock is checked before updating.
 
 ### When a lock is lost during fetch
+
 Each node is processed independently so nodes that have been updated before the lock was
 lost will have their state updated correctly.
 
@@ -31,7 +33,8 @@ the update only if the current hash matches the expected one.
 inconsistencies have to be expected**.
 
 ### When a lock is lost during aggregation
+
 There is a possibility that lock is lost between the check before writing
 the new updated data and the write itself.
 
-In such case, the aggregate data would be stale and in need of regeneration by a cluster refresh.
+In such case, the aggregate data would be stale and in need of regeneration by a cluster orchestration.

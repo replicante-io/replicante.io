@@ -13,9 +13,10 @@ See `replictl cluster --help` for general information.
 Cluster commands require the following scopes: `namespace`, `cluster`.
 {{% /notice %}}
 
-## refresh
-Schedule a cluster refresh task.
+## orchestrate
+
+Schedule a cluster orchestration task.
 
 ```text
-$ replictl cluster refresh [OPTIONS]
+replictl cluster orchestrate [OPTIONS]
 ```

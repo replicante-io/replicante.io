@@ -7,8 +7,8 @@ todo:
   - 'Update `Orchestrator` box on homepage to remove the "coming soon" tag'
 
 progress:
-  - 'Build an in-memory view of the cluster'
-  - 'Introduce `RefreshReport`s'
+  - 'Replace TravisCI with GitHub Actions'
+  - 'Introduce `ClusterOrchestrateReport`s'
   - 'Introduce `EventScope`s to better represent the "target" of an event'
 
 done:
@@ -19,3 +19,4 @@ done:
   - 'Rename agents crates and binaries to `repliagent-$AGENT`'
   - 'Sync view DB using the events stream only'
   - 'Replace uses of problematic terms with inclusive language'
+  - 'Build an in-memory view of the cluster'
