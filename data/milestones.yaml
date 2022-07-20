@@ -8,10 +8,8 @@ next:
     description: 'Orchestrator actions to create and destroy nodes.'
   - title: 'Declarative Clusters'
     description: 'Bootstrap, scale and reconfigure any supported datastore. All from a YAML file.'
-  - title: 'The first Dance (playbooks)'
-    description: |
-      Nodes coordination to perform advanced cluster operations  
-      _Initial focus will be on cluster rolling restarts_
+  - title: 'Nodes Deletion'
+    description: 'Support deleting nodes and forgetting deleted nodes'
   - title: 'Agents Authentication and Authorisation'
     description: 'Secure agent <-> store communication and limit needed permissions'
   - title: 'Core Authentication and Authorisation'
@@ -22,6 +20,10 @@ next:
     description: 'Close the loop with the addition of users, roles and teams to Replicante Core'
   - title: 'Support more datastores'
     description: 'Expand supported datastores with new agents'
+  #- title: 'The first Dance (playbooks)'
+  #  description: |
+  #    Nodes coordination to perform advanced cluster operations  
+  #    _Initial focus will be on cluster rolling restarts_
   - title: 'WebUI iteration'
     description: 'Iterate over the WebUI to add and improve shown information'
   #- title: 'Rate limits'

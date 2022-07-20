@@ -1,15 +1,10 @@
 todo:
-  - 'Improve primary and view stores schemas a bit'
-  - 'Compute a lag value for each non-primary shard that does not report it'
-  - 'Introduce cluster state checks'
-  - 'Orchestrator actions'
   - 'Add and update documentation'
   - 'Update `Orchestrator` box on homepage to remove the "coming soon" tag'
 
 progress:
   - 'Replace TravisCI with GitHub Actions'
-  - 'Introduce `ClusterOrchestrateReport`s'
-  - 'Introduce `EventScope`s to better represent the "target" of an event'
+  - 'Orchestrator actions'
 
 done:
   - 'Remove CI caches and clean up travis (management overhead is too high)'
@@ -20,3 +15,7 @@ done:
   - 'Sync view DB using the events stream only'
   - 'Replace uses of problematic terms with inclusive language'
   - 'Build an in-memory view of the cluster'
+  - 'Enforce `default` as the only namespace ID'
+  - 'Introduce `ClusterOrchestrateReport`s'
+  - 'Introduce `EventScope`s to better represent the "target" of an event'
+  - 'Compute a lag value for each non-primary shard that does not report it'

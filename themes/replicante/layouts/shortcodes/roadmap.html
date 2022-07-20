@@ -3,7 +3,7 @@
     <h4>Current milestone: {{ .Site.Data.milestones.current.title | markdownify }}</h4>
     <span>{{ .Site.Data.milestones.current.description | markdownify }}</span>
   </div>
-  <div class="col-12 col-md-6 col-xl-4">
+  <div class="col-12 col-lg-4">
     <ul class="list-group">
       {{ range $task := .Site.Data.roadmap.todo }}
       <li class="list-group-item d-flex justify-content-between align-items-center disabled">
@@ -14,7 +14,7 @@
     </ul>
   </div>
 
-  <div class="col-12 col-md-6 col-xl-4">
+  <div class="col-12 col-lg-4">
     <ul class="list-group">
       {{ range $task := .Site.Data.roadmap.progress }}
       <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -25,7 +25,7 @@
     </ul>
   </div>
 
-  <div class="col-12 col-md-6 col-xl-4">
+  <div class="col-12 col-lg-4">
     <ul class="list-group">
       {{ range $task := .Site.Data.roadmap.done }}
       <li class="list-group-item d-flex justify-content-between align-items-center">
