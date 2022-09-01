@@ -51,7 +51,7 @@ spec:
     format: 'any structured YAML object is fine'
 ```
 
-### Scheduling Approval
+### Node Actions Approval
 
 Node actions require approval for scheduling by default when they are applied.
 
@@ -59,6 +59,19 @@ This means that actions will NOT be scheduled until they are approved using `rep
 Requiring approval for an action means that an action can be created without
 executing it and someone else can approve it after review.
 The action executed on approval is exactly the one applied with no change allowed.
+
+To approve and action with `replictl`:
+
+```bash
+# Approve a node action for execution.
+# It will be scheduled the next orchestration cycle for the cluster.
+$ replictl action approve-node-action UUID
+Action approved for scheduling
+
+# Node actions can also be disapproved and thus cancelled.
+$ replictl action disapprove-node-action UUID
+Action disapproved and will not be scheduled
+```
 
 To skip the approval step and schedule an action as soon as possible after it is applied
 you can set the `approval` metadata attribute to `granted`.
@@ -79,9 +92,45 @@ To support these use cases Replicante Core provides Orchestrator Actions.
 These are actions that are executed outside of the datastore they target and at the control
 plane level (either as part of Replicante Core or as a stateless service invoked by Core).
 
-TODO: orchestrator action schema.
+```yaml
+apiVersion: replicante.io/v0
+kind: OrchestratorAction
 
-TODO: approval of orchestrator actions.
+metadata:
+  # Can override the namespace with --namespace=test-namespace
+  namespace: default
+  # Can override the cluster with --cluster=test-cluster
+  cluster: target-cluster-id
+
+spec:
+  # Trigger a debug action that executes two dummy steps and then successfully completes.
+  action: core.replicante.io/debug.ping
+  # Pass additional arguments as structured data.
+  args:
+    options: 'available options change based on the action'
+    format: 'any structured YAML object is fine'
+```
+
+### Orchestrator Actions Approval
+
+Orchestrator actions scheduling approval works the same way as node action scheduling approval does.
+The only difference is the `replictl` command (and API endpoint) used to approve actions:
+
+```bash
+# List orchestrator actions to know what needs to be approved still.
+$ replictl action list-orchestrator-actions
+CLUSTER ID            ACTION ID                              KIND                            STATE             CREATED                       FINISHED  
+dev-agent-zookeeper   f3bab556-d25f-4d06-90e9-63a5793dd083   core.replicante.io/debug.ping   PENDING_APPROVE   2022-06-19 11:34:45.256 UTC
+
+# Approve an orchestrator action for execution.
+# It will be scheduled the next orchestration cycle for the cluster.
+$ replictl action approve-orchestrator-action UUID
+Orchestrator action approved for scheduling
+
+# Orchestrator actions can also be disapproved and thus cancelled.
+$ replictl action disapprove-orchestrator-action UUID
+Orchestrator action disapproved and will not be scheduled
+```
 
 ## Actions concurrency and scheduling priorities
 
@@ -89,8 +138,7 @@ When Replicante Core schedules actions it follows defined rules around which act
 scheduled, when and where.
 
 The aim of actions is to change the state of the system.
-
-Running multiple actions at the same time is therefore risky as it means difference changes
+Running multiple actions at the same time is therefore risky as it means different changes
 possibly going into different directions.
 On the other hand many activities can be safely performed while other changes are happening.
 
@@ -111,7 +159,8 @@ Rule 1 exists mainly for safety and simplicity:
 
 As for orchestrator action scheduling modes: no, you can choose the mode.
 Scheduling modes are a property of actions and not action invocations.
-If a task is not safe to perform in parallel with others it is never safe and not sometimes.
+If a task is not safe to perform in parallel with others it is never safe to do so,
+not just sometimes.
 
 The exception to this would be running actions in more restrictive modes,
 which may be supported in the future.
@@ -139,3 +188,9 @@ In the table below:
 | \[Pending\] Orchestrator (Exclusive)                    |   |   | X |
 | \[Pending\] Orchestrator (ClusterExclusiveNodeParallel) |   |   |   |
 {{% /table-wrapper %}}
+
+{{% notice class="warning" %}}
+
+The `ClusterExclusiveNodeParallel` orchestrator action mode is planned but not currently in use.
+
+{{% /notice %}}

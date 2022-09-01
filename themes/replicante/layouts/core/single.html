@@ -8,6 +8,7 @@
       {{ $basics := where .CurrentSection.Pages "Params.group" "basics" }}
       {{ $clis := where .CurrentSection.Pages "Params.group" "cli" }}
       {{ $features := where .CurrentSection.Pages "Params.group" "feature" }}
+      {{ $orcactref := where .CurrentSection.Pages "Params.group" "orcactref" }}
       {{ $scale := where .CurrentSection.Pages "Params.group" "scale" }}
       {{ $security := where .CurrentSection.Pages "Params.group" "security" }}
       {{ $upgrade := where .CurrentSection.Pages "Params.group" "upgrade" }}
@@ -21,12 +22,14 @@
       {{ partial "nav-group" (dict "Pages" $security "Current" $) }}
       <h3>Administration</h3>
       {{ partial "nav-group" (dict "Pages" $admin "Current" $) }}
-      <h3>Upgrades</h3>
-      {{ partial "nav-group" (dict "Pages" $upgrade "Current" $) }}
       <h3>Command Line Interfaces</h3>
       {{ partial "nav-group" (dict "Pages" $clis "Current" $) }}
+      <h3>Orchestrator Action Reference</h3>
+      {{ partial "nav-group" (dict "Pages" $orcactref "Current" $) }}
       <h3>API Reference</h3>
       {{ partial "nav-group" (dict "Pages" $apiref "Current" $) }}
+      <h3>Upgrades</h3>
+      {{ partial "nav-group" (dict "Pages" $upgrade "Current" $) }}
       <h3>Scaling</h3>
       {{ partial "nav-group" (dict "Pages" $scale "Current" $) }}
     </div>

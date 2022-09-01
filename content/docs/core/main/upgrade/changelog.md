@@ -6,10 +6,52 @@ group: upgrade
 weight: 405
 ---
 
+<!-- markdownlint-disable MD022 MD024 MD032 -->
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+### Added
+- Cluster discovery dynamically configured with `apply`.
+- Discovery settings apply and delete events.
+- Introduce `core.replicante.io/debug.*` actions: `counting`, `fail`, `ping` and `success`.
+- Introduce `core.replicante.io/http` action.
+- List and delete `DiscoverySettings` objects (API and `replictl`).
+- Orchestrate reports for details on the latest attempt to sync a cluster.
+- Orchestrator actions, executing during cluster orchestration.
+- Reject any object with a non `default` namespace.
+- Synthesise lag metrics for shards that don't report it.
+- Synthetic in-memory Cluster Views.
+
+### Changed
+- **BREAKING**: The `events.stream` config block is no longer nested and is now simply `events`.
+- **BREAKING**: Refactor event partition keys for streams.
+- Populate view DB from the events stream.
+- Refactor cluster discovery.
+- Refactor cluster orchestration (also know as refresh).
+- Start aliasing [agent] actions to node actions.
+
+### Fixed
+- Added Grafana API friendly text for missing events.
+- Ensure `replictl` contexts store is flushed to disk before exiting.
+- WebUI `/cluster/{cluster_id}/action/{action_id}` handles `GET` requests instead of `POST`.
+
+### Removed
+- **BREAKING**: Discovery backends defined in the config file are ignored.
+- **BREAKING**: Dropped snapshot events.
+- The `events_indexer` component was replaced by the `viewupdater` component.
+
+## [0.6.0] - 2020-05-28
+### Added
+- Support for TLS and mTLS.
+
+### Changed
+- **BREAKING**: Remove MongoDB index validation (alpha driver does not support fetching indexes).
+- **BREAKING**: Rework `replictl sso` into `replictl context`.
+- Replaced deprecated iron with actix-web.
+- Update all dependencies to latest available versions.
 
 ## [0.5.0] - 2020-03-07
 ### Added
@@ -120,7 +162,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Emit new `SHARD_ALLOCATION_NEW` event.
 - Events streaming interface (backed by store).
 - Fine-grained log level configuration.
-- Grafana annotations backend (through JSON datasource).
+- Grafana annotations backend (through JSON data source).
 - HA `discovery` component.
 - Periodically emit snapshot events.
 - ROADMAP.md to document "nearby" versions and their "aim".
@@ -164,8 +206,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Validate contents of the store.
 - WebUI endpoints for initial UI.
 
-
-[Unreleased]: https://github.com/replicante-io/replicante/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/replicante-io/replicante/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/replicante-io/replicante/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/replicante-io/replicante/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/replicante-io/replicante/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/replicante-io/replicante/compare/v0.3.0...v0.3.1

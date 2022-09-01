@@ -6,13 +6,13 @@ group: scale
 weight: 701
 ---
 
-Replicante Core is designed as a distributed system meant to scale with user demand.
+Replicante Core is designed as a distributed system meant to scale based on users demand.
 
 {{% notice class="info" %}}
-Scaling is an advanced topic that requires time and effort put into.
+Scaling is an advanced topic that requires time and effort.
 
 To achieve optimal value for money when considering the size of the cluster and number of tasks,
-a degree of familiarity with each replicante component is required.
+a degree of familiarity with each Replicante Core component is required.
 {{% /notice %}}
 
 {{% notice class="warning" %}}
@@ -22,10 +22,10 @@ While scaling is a core feature of the platform, the limitations and requirement
 Evolution of the system is likely to lead to changes in the scaling needs and configurations.
 {{% /notice %}}
 
-
 ## Replicante Core
+
 Replicante Core stores its state out of process and using existing technologies
-designed to scale state storage (databases, messaging systems, etcetera ...).
+designed to scale (databases, messaging systems, etcetera ...).
 Process coordination also ensures that exclusive operations are performed safely
 regardless of the number of processes running.
 
@@ -38,35 +38,37 @@ The desired number of processes depends on the user's
 Signals of the need to scale vary for each component.
 The list below provides suggestions of what to look at for each component.
 
-  * API components (this includes `components.grafana` and `components.webui`):
-      look at the number of HTTP requests and their duration.
-      Long running HTTP requests are an indication that something is not well.
-      If other components and the datastores are healthy, long running HTTP requests may indicate
-      a need to scale the API components.
-  * Coordination/scheduling components (this includes `components.discovery`):
-      these components only need a single instance running at any given time.
-      To ensure all functionality remains available more then one instance of each service
-      should be deployed so if the active instance fails another can take its place.
-      Running 3 instances of each component should be the best form most situations.
-  * Event consumers:
-      event streams backup (rate of incoming events is higher then events processing rate).
-      These components are similar to tasks (below) but must process events in order.
-      Scaling the number of event consumers is as easy as running more instances.
-      The complication may be with scaling the [streaming platform]({{< ref "./streams.md" >}}).
-  * Task workers (`components.workers`):
-      task queue backup (rate of incoming tasks is higher then task processing rate).
-      Scaling the number of task workers is as easy as running more instances.
-      If scaling the worker instances is not enough users may need to scale the
-      [task queues system]({{< ref "./tasks.md" >}}).
-
+* API components (this includes `components.grafana` and `components.webui`):
+    look at the number of HTTP requests and their duration.
+    Long running HTTP requests are an indication that something is not well.
+    If other components and the datastores are healthy, long running HTTP requests may indicate
+    a need to scale the API components.
+* Coordination/scheduling components (this includes `components.discovery`):
+    these components only need a single instance running at any given time.
+    To ensure all functionality remains available more then one instance of each service
+    should be deployed so if the active instance fails another can take its place.
+    Running 3 instances of each component should provide high reliability form most situations.
+    These components should be lightweight enough not to need scaling.
+    If they do, vertical scaling is the only option at this time.
+* Event consumers:
+    event streams are backing up (rate of incoming events is higher then events processing rate).
+    These components are similar to tasks (below) but must process events in order.
+    Scaling the number of event consumers is as easy as running more instances.
+    The complication may be with scaling the [streaming platform]({{< ref "./streams.md" >}}).
+* Task workers (`components.workers`):
+    task queues are backing up (rate of incoming tasks is higher then task processing rate).
+    Scaling the number of task workers is as easy as running more instances.
+    If scaling the worker instances is not enough users may need to scale the
+    [task queues system]({{< ref "./tasks.md" >}}).
 
 ## External systems
+
 The more complex aspect of scaling tends to be at the state layer.
 
 In most cases this means that the documentation of the dependencies will be the primary
 source of information but some replicante-specific details are presented in these pages:
 
-  * [Primary Store]({{< ref "./stores.md" >}}): where the current state of the system is stored.
-  * [Tasks]({{< ref "./tasks.md" >}}): for asynchronously processing data and performing tasks.
-  * [Streams]({{< ref "./streams.md" >}}): for ordered events occurring across the system.
-  * [Coordinator]({{< ref "./coordinator.md" >}}): for all processes to agree on work being done.
+* [Primary Store]({{< ref "./store.md" >}}): where the current state of the system is stored.
+* [Tasks]({{< ref "./tasks.md" >}}): for asynchronously processing data and performing tasks.
+* [Streams]({{< ref "./streams.md" >}}): for ordered events occurring across the system.
+* [Coordinator]({{< ref "./coordinator.md" >}}): for all processes to agree on work being done.

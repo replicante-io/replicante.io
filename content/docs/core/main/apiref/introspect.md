@@ -5,9 +5,9 @@ draft: false
 group: apiref
 weight: 604
 ---
+<!-- markdownlint-disable MD033 -->
 
 The endpoints in this section provides information about the current state of the system.
-
 
 <div class="rest">
   <div class="method get">GET</div>
@@ -126,7 +126,6 @@ into this instrumentation.
 }
 ```
 
-
 <div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/introspect/version</div>
@@ -135,14 +134,14 @@ into this instrumentation.
 
 Return version information about the running code:
 
-  * `commit`: the git commit the code was build from.
-  * `taint`: indicates if the code was changed compared to the commit.
-  * `version`: friendly semantic versioning string.
+* `commit`: the git commit the code was build from.
+* `taint`: indicates if the code was changed compared to the commit.
+* `version`: friendly semantic versioning string.
 
 ```json
 {
-	"commit": "bbe5ddf4b62608974a35335014b854a650e72f7c",
-	"taint": "working directory tainted",
-	"version": "0.1.0"
+  "commit": "bbe5ddf4b62608974a35335014b854a650e72f7c",
+  "taint": "working directory tainted",
+  "version": "0.1.0"
 }
 ```
