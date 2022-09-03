@@ -6,10 +6,10 @@ group: official
 weight: 203
 ---
 
-[MongoDB](https://www.mongodb.com/) is a felxible document NoSQL database.
-
+[MongoDB](https://www.mongodb.com/) is a flexible document NoSQL database.
 
 ## Supported versions
+
 {{% table-wrapper %}}
 | Agent Version | MongoDB Version | MongoDB Mode            |
 | ------------- | --------------- | ----------------------- |
@@ -17,12 +17,12 @@ weight: 203
 | 0.1.0+        | 3.2+            | Replica Set             |
 {{% /table-wrapper %}}
 
-
 ## Install
+
 Follow the instructions in the [installation]({{< ref "../info/install.md" >}}) page.
 
-
 ## Configuration
+
 ```yaml
 # Common agents options described in agent.example.yaml
 agent: {}
@@ -60,11 +60,12 @@ mongo:
     mongos_node_name: ~
 ```
 
-
 ## Upgrades notes
-See the [full changelog]({{< versioned "https://github.com/replicante-io/agents/blob/{version}/mongodb/CHANGELOG.md" >}})
+
+See the [full changelog]({{< versioned "https://github.com/replicante-io/agents/blob/{version}/agents/mongodb/CHANGELOG.md" >}})
 for all details.
 
 ### Upgrading to 0.2.0
-- The API format for `/api/v1/shards` has changed (this would be a breaking change afer the 1.0 release).
+
+- The API format for `/api/v1/shards` has changed (this would be a breaking change after the 1.0 release).
 - The configuration format was changed and existing files may not work.

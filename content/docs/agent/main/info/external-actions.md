@@ -7,40 +7,42 @@ weight: 5
 ---
 
 External actions are a way to extend agent's abilities without
-having to write code and recompile all agents.
+having to write code and recompile projects.
 
 External actions are implemented as processes running along side the agent that
 can perform the required tasks and that can report back to the agent the results.
 
-Because Replicante Agents are not process supervisors, something else needs to manage them.
+Because Replicante Agents are not process supervisors, something else needs to manage external
+action processes.
 Below there is an example on how to do this with [systemd](https://systemd.io/).
 The decision to delegate process management to an external software is not just to keep
 Replicante Agents simpler.
 This separation is also a requirement to ensure that your action keeps running should the
 agent process crash or be restarted.
 
-In practice this means that the start action:
+In practice this means that the start action either:
 
-  * Instructs a process supervisor to start and manage action process (the systemd example below).
-  * Correctly daemonises itself to perform the action.
-
+* Instructs a process supervisor to start and manage action process (the systemd example below).
+* Correctly daemonizes itself to perform the action.
 
 ## Define an external action
+
 An action is defined in the agent configuration, under the `external_actions` map,
 with the following properties:
 
-  * The external action `kind`, defined as the `external_actions` key.
-    This attribute is used to generate the action's `kind` used to schedule the action: `external.agent.replicante.io/${KIND}`.
-  * A `description` attribute which can be used by the agents to provide
-    an operator friendly description of the action.
-  * An `action` command used to start executing the action process.
-  * A `check` command used to periodically check the state of the action process.
+* The external action `kind`, defined as the `external_actions` key.
+  This attribute is used to generate the action's `kind` used to schedule the action:
+  `external.agent.replicante.io/${KIND}`.
+* A `description` attribute which can be used by the agents to provide
+  an operator friendly description of the action.
+* An `action` command used to start executing the action process.
+* A `check` command used to periodically check the state of the action process.
 
 ```yaml
 agent:
   external_actions:
     my.custom.action:
-      description: Example YAML definiton for extranal actions
+      description: Example YAML definition for external actions
       action:
         - 'start-action'
         - '--with-options=true'
@@ -51,6 +53,7 @@ agent:
 ```
 
 ### The `action` command
+
 Command to execute to start the action.
 
 The first element in the list is the command to run.
@@ -59,11 +62,12 @@ All following elements in the list are optional and are passed to the command as
 The start command MUST return quickly and execute the action asynchronously.
 This allows the agent to move on to other tasks.
 
-A record for the action invocation to check is passed as JSON to standard input.
+A record for the action invocation is passed as JSON to standard input.
 This information can be used to access things like the action ID, usable as a unique
 reference, or arguments passed to the agent when the action was scheduled.
 
 ### The `check` command
+
 Command to execute to check on the state of the action.
 
 The first element in the list is the command to run.
@@ -71,18 +75,19 @@ All following elements in the list are optional and are passed to the command as
 
 The check command MUST implement the following protocol:
 
-  * The check command MUST return quickly.
-    Long running actions should periodically generate status information for the check
-    command to look up and make decisions from.
-  * The check command MUST exit successfully (exit code 0) if it could determine the
-    state of the process, even if the process has failed.
-  * The check MUST report the state of the action as JSON sent to its standard output.
-    The expected JSON object is described below.
-  * If the check command exists unsuccessfully (exit code not 0) it is assume the action
-    state can no longer be determined and it has failed.
-  * A record for the action invocation to check is passed as JSON to standard input.
+* The check command MUST return quickly.
+  Long running actions should periodically generate status information for the check
+  command to look up and make decisions from.
+* The check command MUST exit successfully (exit code 0) if it could determine the
+  state of the process, even if the process has failed.
+* The check MUST report the state of the action as JSON sent to its standard output.
+  The expected JSON object is described below.
+* If the check command exists unsuccessfully (exit code not 0) it is assume the action
+  state can no longer be determined and the action has failed.
+* A record for the action invocation to check is passed as JSON to standard input.
 
 The JSON report printed by the check to standard output must match the following:
+
 ```json
 {
   "status": "running | finished | failed",
@@ -90,11 +95,11 @@ The JSON report printed by the check to standard output must match the following
 }
 ```
 
-
 ## Managing actions with SystemD
+
 Actions can be managed with systemd's
-[template uints](https://fedoramagazine.org/systemd-template-unit-files/)
-and two helper scrips.
+[template units](https://fedoramagazine.org/systemd-template-unit-files/)
+and two helper scripts.
 These scripts, as well as an example unit file, can be found in the
 [agents repo]({{< versioned "https://github.com/replicante-io/agents/tree/{version}/tools/systemd" >}}).
 
@@ -110,8 +115,8 @@ and the action ID is also passed to the service as the template unit argument.
 The `systemd-check` command will clear it up once the action completes.  
 The `/run` path can be configured with the `--data` argument.
 
-
 ### Example
+
 ```systemd
 # file: ~/.config/systemd/user/example@.service
 [Unit]

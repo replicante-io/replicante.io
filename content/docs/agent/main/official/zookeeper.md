@@ -9,20 +9,20 @@ weight: 204
 [Zookeeper](https://zookeeper.apache.org/) is a centralized service for maintaining configuration
 information, naming, providing distributed synchronization, and providing group services.
 
-
 ## Supported versions
+
 {{% table-wrapper %}}
 | Agent Version | Zookeeper Version |
 | ------------- | ----------------- |
 | 0.1.0+        | 3.3+              |
 {{% /table-wrapper %}}
 
-
 ## Install
+
 Follow the instructions in the [installation]({{< ref "../info/install.md" >}}) page.
 
-
 ## Configuration
+
 ```yaml
 # Common agents options described in agent.example.yaml
 agent: {}
@@ -39,7 +39,7 @@ zookeeper:
   target: "localhost:2181"
 ```
 
-
 ## Upgrades notes
-See the [full changelog]({{< versioned "https://github.com/replicante-io/agents/blob/{version}/zookeeper/CHANGELOG.md" >}})
+
+See the [full changelog]({{< versioned "https://github.com/replicante-io/agents/blob/{version}/agents/zookeeper/CHANGELOG.md" >}})
 for all details.
