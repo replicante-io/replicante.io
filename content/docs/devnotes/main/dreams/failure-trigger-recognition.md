@@ -7,4 +7,4 @@ weight: 207
 ---
 
 Feed monitoring data and events to some patter recognition system.
-The aim is to identifiy early simptoms of downtime if not conditions that cause it.
+The aim is to identify early symptoms of downtime if not conditions that cause it.

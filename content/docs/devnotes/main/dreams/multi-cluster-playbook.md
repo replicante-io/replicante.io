@@ -3,7 +3,7 @@ title: "Multi-Cluster Playbooks"
 date: 2020-02-15T17:10:31Z
 draft: false
 group: dreams
-weight: 211
+weight: 210
 ---
 
 Initially playbooks will be a sequence of stages and actions targeting nodes in a cluster.

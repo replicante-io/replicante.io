@@ -1,5 +1,5 @@
 ---
-title: "Scheduling Actions"
+title: "Scheduling Node Actions"
 date: 2020-02-09T13:43:30+01:00
 draft: false
 group: notes
@@ -22,10 +22,10 @@ These actions can be scheduled either directly though the agent API or through R
 Replicante Core can schedule actions on behalf of a user or automatically as part of a playbook.
 
 Generally, an agent's actions queue should be short.
-Replicante Core will not generate playbook actions until the playbook reaches the stage
-where the actions are needed and manually scheduled actions are expected to be few.
+Replicante Core will not generate new actions (even from playbook) until necessary
+and manually scheduled actions are expected to be few.
 
-## Actions scheduling
+## Nodes Actions scheduling
 
 To minimise the complexity around actions concurrency Replicante Core pushes and pulls
 actions to and from Agents only during a cluster orchestration.
@@ -36,17 +36,17 @@ This delay on the other hand pays for simplicity, especially when scheduling nee
 
 As a result, the process of scheduling action in Replicante Core works as follows:
 
-  1. An action is recorded in Replicante Core with a `PENDING_*` state.
-  2. The action is left untouched until it reaches the `PENDING_SCHEDULE` state.
-  3. During a cluster orchestrate operation, for each node:
-     1. Core fetches actions updates from the agent.
-     2. Any `PENDING_SCHEDULE` action in Core is scheduled on the agent.
-     3. Errors are captured for debugging but ignored to avoid blocking orchestrating of other
-        nodes in the cluster.
+1. An action is recorded in Replicante Core with a `PENDING_*` state.
+2. The action is left untouched until it reaches the `PENDING_SCHEDULE` state.
+3. During a cluster orchestrate operation, for each node:
+   1. Core fetches actions updates from the agent.
+   2. Any `PENDING_SCHEDULE` action in Core is scheduled on the agent.
+   3. Errors are captured for debugging but ignored to avoid blocking orchestrating of other
+      nodes in the cluster.
 
 Retries are automatically performed at the next cluster orchestration.
 
-Actions are processes by creation time by both agents and Core. This provides a simple
+Actions are processed by creation time by both agents and Core. This provides a simple
 way to ensure actions execute fairly without a "late comer" taking the spotlight.
 This is of course not a fool proof method: time skew as well as scheduling actions
 directly with agents instead of Core are examples of why actions may execute "out of order".
@@ -54,14 +54,15 @@ directly with agents instead of Core are examples of why actions may execute "ou
 The only rule or ordering, enforced by each agent, is that actions execute sequentially and
 no new action is started until the currently running action is complete.
 
-During cluster orchestration process actions may not actually be scheduled.
+During the cluster orchestration process actions may not actually be scheduled.
 Replicante Core uses the cluster view and recently fetched node information to choose:
 
 * Actions are not scheduled if the node is not healthy (`Status::Up`).
+* Based on actions concurrency and scheduling policies documented in the Core user guide.
 
 ### Conflicting actions
 
-Actions can be scheduled directly with Agents setting an action ID for them.
+Node actions can be scheduled directly with Agents setting an action ID for them.
 This is required so that Replicante Core can generate IDs for Actions without
 having to interact with any Agent.
 
@@ -80,7 +81,7 @@ Playbooks progress when all actions in the current stage have finished.
 Playbooks progress in a similar way to actions, moving along stages.
 
 Both actions and playbooks progress checks are reactive: events have to trigger them.
-This is opposed to proactive checks where the system would have to poll pending and running
+This is opposed to active checks where the system would have to poll pending and running
 actions and playbooks and check if they can progress.
 
 Reactive checks are more efficient because resources are not spent checking
