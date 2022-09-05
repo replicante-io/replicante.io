@@ -5,6 +5,7 @@ draft: false
 group: agent
 weight: 101
 ---
+<!-- markdownlint-disable MD033 -->
 
 {{% notice class="warning" %}}
 **Alpha state disclaimer**
@@ -21,8 +22,8 @@ Any date or time returned or receiver by the agent API MUST be in UTC.
 The Agent API MUST expose dates and times as
 [RFC 3339](https://tools.ietf.org/html/rfc3339) encoded strings.
 
-
 ## Information and Monitoring
+
 One of the tasks an agent is expected to do is provide specialised information and monitoring data.
 Replicante Core will collect and aggregate this data to estimate (distributed systems, remember?)
 the state and health of the cluster.
@@ -31,7 +32,7 @@ the state and health of the cluster.
 **A note about monitoring**
 
 Just because "monitoring" was mentioned as one of the agent's responsibilities
-it does not mean the agent is responsible for general purpose moniotring.
+it does not mean the agent is responsible for general purpose monitoring.
 
 Use [Prometheus](https://prometheus.io/) or other tools for general purpose monitoring.
 
@@ -39,8 +40,8 @@ Replicante Agents MAY be built to also provide general purpose monitoring servic
 but that is outside the scope of this specification.
 {{% /notice %}}
 
-
 ### Agent information API
+
 <div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/info/agent</div>
@@ -53,8 +54,8 @@ but that is outside the scope of this specification.
 
 [Details about these endpoints]({{% ref "../info.md" %}})
 
-
 ### Shards information API
+
 <div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/shards</div>
@@ -63,8 +64,8 @@ but that is outside the scope of this specification.
 
 [Details about these endpoints]({{% ref "../shards.md" %}})
 
-
 ## Actions
+
 Another task the agent is responsible for is the execution of actions.
 Actions are the execution layer on which any automation is built.
 
@@ -75,17 +76,17 @@ Actions MUST be executed in the order they have been successfully scheduled with
 
 Actions have the following set of properties:
 
-  * `args`: Arguments passed to the action when invoked.
-  * `created_ts`: Time the action was first created (by the agent, by core, ...).
-  * `finished_ts`: Time the action entered a final state.
-  * `headers`: Additional metadata headers attached to the action.
-  * `id`: Unique ID of the action.
-  * `kind`: Type ID of the action to run.
-            Consult the agent documentation for information about actions discovery.
-  * `requester`: Entity (system or user) requesting the execution of the action.
-  * `scheduled_ts`: Time the agent recorded the action in the DB.
-  * `state`: State the action is currently in (see below).
-  * `state_payload`: Optional payload attached to the current `state`.
+* `args`: Arguments passed to the action when invoked.
+* `created_ts`: Time the action was first created (by the agent, by core, ...).
+* `finished_ts`: Time the action entered a final state.
+* `headers`: Additional metadata headers attached to the action.
+* `id`: Unique ID of the action.
+* `kind`: Type ID of the action to run.
+          Consult the agent documentation for information about actions discovery.
+* `requester`: Entity (system or user) requesting the execution of the action.
+* `scheduled_ts`: Time the agent recorded the action in the DB.
+* `state`: State the action is currently in (see below).
+* `state_payload`: Optional payload attached to the current `state`.
 
 The action `state` attribute indicates at which point of the lifecycle the action is:
 
@@ -93,13 +94,14 @@ The action `state` attribute indicates at which point of the lifecycle the actio
 
 The states are as follows:
 
-  * `NEW`: all actions start of in the `NEW` state when they are scheduled.
-  * `RUNNING`: when a `NEW` action is picked up for execution and started, it enters the `RUNNING` state.
-               `RUNNING` actions can transition from `RUNNING` to `RUNNING`, when this happen their `state_payload` may change.
-  * `DONE`: the agent completed execution of the action successfully.
-  * `FAILED`: the action encountered an error or was otherwise unable to transition the system to the desired state.
+* `NEW`: all actions start of in the `NEW` state when they are scheduled.
+* `RUNNING`: when a `NEW` action is picked up for execution and started, it enters the `RUNNING` state.
+             `RUNNING` actions can transition from `RUNNING` to `RUNNING`, when this happen their `state_payload` may change.
+* `DONE`: the agent completed execution of the action successfully.
+* `FAILED`: the action encountered an error or was otherwise unable to transition the system to the desired state.
 
 ### Actions API
+
 <div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/actions/finished</div>

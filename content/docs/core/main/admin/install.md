@@ -12,8 +12,8 @@ It does NOT detail the installation process of the needed [dependences]({{< ref 
 If you are looking for a development/test/demo environment the
 [quick start guide]({{< ref "/quick-start/index.md" >}}) is where you can find all that.
 
-
 ## 1. Installing dependencies
+
 The first step is to install all the required dependencies.
 As the process depends on the chosen solution this guide does not cover how to do so.
 
@@ -22,14 +22,14 @@ are installed and configured in highly available mode.
 
 When using the recommended set of dependencies these guides may be of help:
 
-  * Storage layer: MongoDB - https://docs.mongodb.com/manual/installation/
-  * Distributed coordinator: Zookeeper - http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_zkMulitServerSetup
-  * Event streaming platform: Kafka - https://kafka.apache.org/documentation/#quickstart
-
+* Storage layer: MongoDB - <https://docs.mongodb.com/manual/installation/>
+* Distributed coordinator: Zookeeper - <http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_zkMulitServerSetup>
+* Event streaming platform and message queues service: Kafka - <https://kafka.apache.org/documentation/#quickstart>
 
 ## 2. Install
 
 ### From pre-built binaries
+
 Pre-built binaries are helpful for users to get up and running quickly.
 Unfortunately they require a good deal of effort from the community to be available for all
 popular distributions that people my want to use.
@@ -58,7 +58,21 @@ chmod +x replicante replictl
 ./replictl --version
 ```
 
+### With Docker
+
+A docker image with the pre-compiled core is also available:
+<https://hub.docker.com/r/replicanteio/replicante>
+
+To check the image works as expected:
+
+```bash
+docker pull replicanteio/replicante:v0
+docker run --rm -it replicanteio/replicante:v0 replicante --version
+docker run --rm -it replicanteio/replicante:v0 replictl --version
+```
+
 ### From code
+
 The following instructions where executed on a clean Fedora 31 install but should work for any
 Linux system given the correct package manager and package names:
 
@@ -88,28 +102,16 @@ cp target/release/replicante \
     /path/to/install/location/
 ```
 
-### With Docker
-A docker image with the pre-compiled core is also available:
-https://hub.docker.com/r/replicanteio/replicante
+## 3. Dependencies initialisation
 
-To check the image works as expected:
-```bash
-docker pull replicanteio/replicante:v0
-docker run --rm -it replicanteio/replicante:v0 replicante --version
-docker run --rm -it replicanteio/replicante:v0 replictl --version
-```
+Whatever your choice, the dependencies need some initialisation before Replicante Core can start.
 
+The requirements depend on the service and the selected implementation:
 
-## 3. Store initialisation
-Whatever your choice, the store needs some initialisation before it can be used.  
-The requirements depend on the selected store:
-
-  * [MongoDB]({{< versioned "https://github.com/replicante-io/replicante/blob/{version}/devtools/deps/configs/essential/mongo/indexes.js" >}})
-
-It is possible to verify the store configuration with
-[`repliadm validate primary-store-schema`]({{< ref "../cli/repliadm/validate.md#primary-store-schema" >}}).
-Note: `repliadm` requires Replicante to be [configured]({{< ref "./config.md" >}}) before the tests can work.
-
+* [Kafka]({{< versioned "https://github.com/replicante-io/replicante/blob/{version}/devtools/deps/configs/essential/kafka/init.sh" >}})
+* [MongoDB]({{< versioned "https://github.com/replicante-io/replicante/blob/{version}/devtools/deps/configs/essential/mongo/indexes.js" >}})
 
 ## 4. Next steps
-Once the binaries are ready and the store is initialised it is time to [configure replicante]({{< ref "./config.md" >}}).
+
+Once the binaries are ready and the store is initialised it is time to
+[configure replicante]({{< ref "./config.md" >}}).

@@ -3,43 +3,34 @@ title: "Scaling"
 date: 2020-02-11T22:25:44Z
 draft: false
 group: notes
-weight: 11
+weight: 10
 ---
 
-Replicante is a highly available and scalable service.
+Replicante Core is a highly available and scalable service.
 
-In Replicante Core the horizontal scaling unit is the cluster.
-This means scaling focuses on managing a large number of clusters rather than few large clusters.
+In Replicante Core the horizontal scaling unit is the managed cluster.
+This means scaling focuses on increasing the number of managed clusters rather then their size.
+
+**NOTE**: the size of a managed cluster is not about the amount of data it managed but
+more about the number of nodes and shards involved.
 
 The current thinking is that even the largest clusters can be managed with commodity hardware
 and that code can be improved when limits on cluster size are reached.
-This position can be re-evaluated should this assumption be proved incorrect or stretched to its limit.
+This idea can be re-evaluated should this assumption be proved incorrect or stretched to its limit.
 
 ## High availability
 
 High availability is achieved by running multiple instances of the same process.
-Replicante uses a coordinator service (Zookeeper) to ensure that processes do not
-interfere with each other and that tasks assigned to failed process are taken over.
+Replicante Core uses a distributed coordinator to ensure that processes do not
+interfere with each other and that duties assigned to failed processes are taken over.
 
 ## Scaling
 
-Replicante uses sharding techniques to scale: each cluster is a "shard" operated on independently.
+Replicante Core processes are stateless and obtain records to operate on from their dependencies.
+If Replicante Core can't keep up with the number of managed clusters additional processes can
+be added to support the growth in managed clusters.
 
-Replicante assumes a cluster can be managed by a single process.
-The code attempts to process each node individuality in a lazy fashion when possible
-to further reduce the impact of processing large clusters.
+It is expected that scaling will be limited by Replicante Core dependencies more then
+Replicante Core processes.
 
-Details of scaling are provided in the
-[admin manual]({{< docs-link "admin" "stable" >}}).
-
-## Dependencies
-
-All services Replicante depends on can be configured to be highly available and scale as well.
-It is the user's task to configure all services to provide high availability and scale as desired.
-
-Dependency services that support sharding should be configured to shard data on cluster ID.
-**NOTE: this is likely to change!!!**
-
-* Organisations may be introduced sooner or later, allowing Replicante to become a multi-tenanted
-  platform, which would likely change the shard key from cluster ID to organisation ID
-  (plus cluster ID for instances that need to deal with large organisations).
+Details of scaling dependencies are provided in the [admin manual]({{< docs-link "admin" "stable" >}}).

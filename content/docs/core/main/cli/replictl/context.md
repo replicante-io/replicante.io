@@ -11,43 +11,49 @@ login/logout of Replicante Core API servers.
 See `replictl context --help` for general information.
 
 ## change
+
 Set or update an existing context's scope attributes.
 
 ```text
-$ replictl context change [OPTIONS]
+replictl context change [OPTIONS]
 ```
 
 ## describe
+
 Descibe the active context.
 
 ```text
-$ replictl context describe [OPTIONS]
+replictl context describe [OPTIONS]
 ```
 
 ## list
+
 List known contexts and shows some attributes about them.
 
 ```text
-$ replictl context list [OPTIONS]
+replictl context list [OPTIONS]
 ```
 
 ## login
+
 Connect to Replicante API server(s) or update connection details.
 
 ```text
-$ replictl context login [OPTIONS]
+replictl context login [OPTIONS]
 ```
 
 ## logout
+
 Forget how to connect to a Replicante API server and remove its context.
 
 ```text
-$ replictl context logout [OPTIONS]
+replictl context logout [OPTIONS]
 ```
 
 ## select
+
 Select a context to be the active context.
 
 ```text
-$ replictl context select [OPTIONS]
+replictl context select [OPTIONS]
 ```

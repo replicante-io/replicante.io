@@ -7,4 +7,5 @@ weight: 202
 ---
 
 Between automated and (likely) manual actions, Replicante will be a powerful system.
-It is essential for such a system to expose a trail of activities, who/what performed them, and who/what triggered them.
+It is essential for such a system to expose a trail of activities, who/what performed them,
+and who/what triggered them.

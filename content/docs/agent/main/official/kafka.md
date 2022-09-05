@@ -8,20 +8,20 @@ weight: 202
 
 [Kafka](https://kafka.apache.org/) is a distributed streaming platform.
 
-
 ## Supported versions
+
 {{% table-wrapper striped=false %}}
 | Agent Version | Kafka Version |
 | ------------- | ------------- |
 | 0.1.0+        | 1.0+          |
 {{% /table-wrapper %}}
 
-
 ## Install
+
 Follow the instructions in the [installation]({{< ref "../info/install.md" >}}) page.
 
-
 ## Configuration
+
 ```yaml
 # Common agents options described in agent.example.yaml
 agent: {}
@@ -48,16 +48,16 @@ kafka:
     #   https://github.com/apache/kafka/blob/1.1.1/bin/kafka-run-class.sh#L166-L174
     jmx: 'localhost:9999'
 
-    # Zookeeper ensamble for the Kafka cluster.
+    # Zookeeper ensemble for the Kafka cluster.
     zookeeper:
-      # Addresses "host:port" of the zookeeper ensamble.
+      # Addresses "host:port" of the zookeeper ensemble.
       uri: 'localhost:2181'
 
       # Zookeeper session timeout.
       timeout: 10
 ```
 
-
 ## Upgrades notes
-See the [full changelog]({{< versioned "https://github.com/replicante-io/agents/blob/{version}/kafka/CHANGELOG.md" >}})
+
+See the [full changelog]({{< versioned "https://github.com/replicante-io/agents/blob/{version}/agents/kafka/CHANGELOG.md" >}})
 for all details.

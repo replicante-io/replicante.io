@@ -57,15 +57,12 @@ These are some examples of where the distinction above is useful.
 
 ### View models
 
-{{% notice class="warning" %}}
-The code does not currently reflect the use of view models.
-As replicante evolves and a view layer is defined these models will be added.
-{{% /notice %}}
+Replicante Core provides a report to users about the latest cluster orchestration task.
+This report is a view model, built incrementally during orchestration and with no relation to
+how data is stored or processed internally.
 
-Replicante Core (will) support organisation.
-This means that every model inside the system must have an organisation ID attached to it.
-Adding this information to the system could break the public API if the internal model is also
-used as the view model.
+This means that cluster orchestration can change how it does things, steps can move around
+and the logic even entirely replaced without changing anything of how the results are presented.
 
 ### Internal models
 
@@ -73,31 +70,32 @@ Internal models are what replicante operates on.
 Keeping them private means that changes to the logic do not unexpectedly leak the the API
 or break the storage layer.
 
+For example the cluster view internal model can be used to represent a cluster with no impact
+on how data is stored or presented to the user.
+
 ### Persistence models
 
 Persistence models allow the structure of data in the DB to be more efficient for storage
 and search operations.
 
-For example some models are stored with an extra staleness flag that is used to filter
-records in some queries but not all.
-This is not exposed to the application as it does not care for this information.
+For example some models are stored with additional timestamp information for periodic loops to
+efficiently find only the records they need to look at and not scan all records.
+This is not exposed to the application as it does not care for this information outside of querying.
 
 ## Data storage format
 
-Replicante core stores data in a document store.
+Replicante Core stores data in a document store.
 
-The format of the data stored here is strictly defined by the
-[application code](https://github.com/replicante-io/replicante/tree/main/models)
-and care must be taken to allow for a zero downtime upgrade path.
+Care must be taken to allow for a zero downtime upgrade path.
 This means that changing the data format must be incremental:
 
-  1. Make the change optional while supporting the existing data format.
-  2. Release and run the code long enough for all data to be regenerated or aged-out.
-  3. Make the new data format a requirement and introduce features that rely on it.
-  4. Release the code with the new data format and features.
+1. Make the change optional while supporting the existing data format.
+2. Release and run the code long enough for all data to be regenerated or aged-out.
+3. Make the new data format a requirement and introduce features that rely on it.
+4. Release the code with the new data format and features.
 
 Each data item is stored and updated atomically.
-The encoding details vary from store to store but Replicante uses a general interface
+The encoding details vary from store to store but Replicante Core uses a general interface
 to interact with the store, regardless of the functionality it exposes.
 
 ### Why a documents store?
@@ -114,7 +112,7 @@ The main reasons for choosing [MongoDB](https://www.mongodb.com/) as the store a
   are not easily available out of the box in traditional SQL servers.
 * *Scalability*: MongoDB comes in replica set mode for high availability as well as a slightly
   more complex sharded cluster mode.
-  Since Replicante logically groups data by cluster (maybe one day by organisation instead?)
+  Since Replicante Core logically groups data by cluster (maybe one day by organisation instead?)
   it is possible to shard large collections and grow/parallelise work (although if you get
   to that level already you HAVE to let me know!).
 
@@ -125,13 +123,11 @@ does not support them.
 The reasons MongoDB was the preferred store to begin with are listed above.
 
 Although the current implementation is not making use of transactions,
-things may change in the future.
-More and more transactional document stores are becoming available and MongoDB itself
-recently added support for transactions.
+things may change in the future as the project changes and matures.
 
-Finally the value of transactions is questionable since the data source has no
-atomicity guarantee to begin with.
+Finally the value of transactions is questionable in a lot of Replicante Core use cases
+since the data source has no atomicity guarantee to begin with.
 When refreshing the state of each cluster node, all we can say is the data returned by
 a single call to an agent endpoint is consistent in itself.
-There are no guarantees the result of two calls to the same agent, one after the other,
-would return results that are consistent across the two calls.
+There are no guarantees the result of two calls to the same agent would return results that are
+consistent across the two calls, even during the same orchestration cycle.

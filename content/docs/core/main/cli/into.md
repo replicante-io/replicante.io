@@ -6,10 +6,5 @@ group: cli
 weight: 501
 ---
 
-Replicante comes with command line tools to interact with,
-perform cluster maintenance and other one-off tasks.
-
-The following tools are available:
-
-  * [`repliadm`]({{< ref "./repliadm/intro.md" >}}): admin tool to manage Replicante Core instances.
-  * [`replictl`]({{< ref "./replictl/intro.md" >}}): interact with Replicante Core to manage your datastores.
+Replicante Core comes with a command line tool, [`replictl`]({{< ref "./replictl/intro.md" >}}),
+that is used to interact with Replicante Core Clusters and control the clusters it manages.

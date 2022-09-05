@@ -3,10 +3,10 @@ title: "Playbook Variables"
 date: 2020-02-15T17:07:38Z
 draft: false
 group: dreams
-weight: 214
+weight: 213
 ---
 
-Playbooks bould become significantly more powerful if variables were an option.
+Playbooks should become significantly more powerful if variables were an option.
 
 This would allow playbooks to be defined with variables that are set at the time
 the playbook is scheduled for execution against a cluster.

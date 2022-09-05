@@ -1,5 +1,5 @@
 ---
-title: "Felexible Deployments"
+title: "Flexible Deployments"
 date: 2020-03-02T20:42:13Z
 draft: false
 group: admin
@@ -16,24 +16,24 @@ and can be disabled if the functionality provided is not useful to the user.
 By default, all components are enabled on all nodes.
 The exception are components providing experimental or deprecated functionality.
 
-
 ## Uniform deployment
+
 As a result of these defaults, Replicante Core runs as a *uniform deployment*:
 each node is equivalent to all other nodes and capable of performing the same functions.
 
 The main advantage of a uniform deployment is simplicity:
 
-  * Each node is the same as all others.
-  * The system is simpler to understand: no "who does what?" scenarios.
+* Each node is the same as all others.
+* The system is simpler to understand: no "who does what?" scenarios.
 
 This simplicity comes at a cost:
 
-  * One component miss-behaving on a node can impact all other components on the same node.
-  * Expensive API requests can impact system functionality and system functionality can impact API requests.
-  * Scaling the system is less granular: the bottleneck sets the "size" for all components.
-
+* One component miss-behaving on a node can impact all other components on the same node.
+* Expensive API requests can impact system functionality and system functionality can impact API requests.
+* Scaling the system is less granular: the bottleneck sets the "size" for all components.
 
 ## Dedicated API servers
+
 Another very common deployment configuration is based on separating the API servers from
 other components in the system.
 This protects the system from expensive API requests and ensures that API requests are not
@@ -44,6 +44,7 @@ for each role.
 Most options are the same across both roles so only the different parts are shown here.
 
 For the "API server" role use the following configuration:
+
 ```yaml
 components:
   _default: false  # Disable all components not explicitly listed.
@@ -52,6 +53,7 @@ components:
 ```
 
 For the "system server" role, the one running all non-API components, use the following configuration:
+
 ```yaml
 components:
   _default: true  # Enable all components not explicitly listed.
@@ -62,8 +64,8 @@ components:
 While this approach isolates API requests from all other system functionality
 it does not address any of the other limitations of a uniform deployment.
 
-
 ## Dedicated everything
+
 The approach of dedicated roles can be extended from API vs everything else
 to the extreme of a role for each component.
 
@@ -72,6 +74,7 @@ To pick which tasks a node should be working on the `task_workers.*` configurati
 can be used in a similar way to `components.*`.
 
 To define a role for a component use the following configuration snippet:
+
 ```yaml
 components:
   _default: false
@@ -79,6 +82,7 @@ components:
 ```
 
 For task worker roles use the following configuration snippet:
+
 ```yaml
 components:
   _default: false
@@ -91,22 +95,22 @@ task_workers:
 
 While such a diverse deployment requires more effort to manage it does have several advantages:
 
-  * Each component and/or task worker can scale independently as much or as little as needed.
-  * Components are isolated from each other (through the user's preferred process isolation solution).
-
+* Each component and/or task worker can scale independently as much or as little as needed.
+* Components are isolated from each other (through the user's preferred process isolation solution).
 
 ## To each their own
+
 From the configuration snippets above is should be clear that a spectrum of deployments is possible.
 Users are free to configure different nodes to best fit their needs.
 
 To ensure that all required components are configured and available somewhere in the cluster
-replicante exposes metrics for which components are enabled on each node.
+Replicante Core exposes metrics for which components are enabled on each node.
 
 The following prometheus queries can aid operators monitor components and task workers across
 all nodes in a Replicante Core cluster:
 
-  * `sum(replicore_components_enabled{type="required"}) by (component)`: should be `>= 1` for each `component`.
-  * `sum(replicore_workers_enabled) by (worker)`: should be `>= 1` for each task `worker`.
+* `sum(replicore_components_enabled{type="required"}) by (component)`: should be `>= 1` for each `component`.
+* `sum(replicore_workers_enabled) by (worker)`: should be `>= 1` for each task `worker`.
 
 There is also a query to check optional components:
 `sum(replicore_components_enabled{type="optional"}) by (components)`.  

@@ -19,33 +19,35 @@ On the other hand it has been very painful and limiting to not introduce time at
   This is fine if the operation is within a single process but that only works for short times
   and does not survive process crashing or restarting.
 * User-oriented time data, such as `Event`s timestamps is essential.
-  So far information about time of last sync and similar is missing because it requires time.
 
 It is clear at this point that some concept of time is needed but a global clock is not an option.
-Each Replicante process uses the UTC time reported by the server it is running on assuming that
-time on all other servers in the custer is "accurate enough".
+Each Replicante Core process uses the UTC time reported by the server it is running on assuming
+that time on all other servers in the custer is "accurate enough".
+This assumption extends to the server(s) running dependencies.
 
 What "accurate enough" means exactly depends on the operation being performed but sub-second
 precision should NEVER be required for the system to function correctly.
 On the other hand there is no guarantee the system works correctly in case the
-[clock skew](https://en.wikipedia.org/wiki/Clock_skew) exceeds several minutes.
+[clock skew] exceeds several minutes.
 
 Final notes:
 
 * All generated times are in UTC and all received times expected to be in UTC as well.
-  Replicante uses the [chrono](https://docs.rs/chrono/) library, which serialises values in
-  [RFC 3339](https://tools.ietf.org/html/rfc3339) by default.
-  All APIs MUST expose times in the same well known format.
-  User interfaces (WebUI and `replictl`) can convert times as needed before showing.
+  Replicante Core serialises time values in [RFC 3339] by default.
+* All APIs MUST expose times in this same well known format.
+* User interfaces (WebUI and `replictl`) can convert times as needed before showing.
 * Precision needs vary by task but should never be sub-second.
-  Features that rely on higher than average time precision should document this.
-  **NOTE**: setups where time is precise enough for most tasks but not for high precision
-  tasks the system may appear to work overall while some features actually do not.
-* The expectation is that most setups will be centrally managed by the same group
-  therefore making reliance on time a more realistic option than the open internet.
+  Features that rely on higher time precision should document this clearly.
+  **NOTE**: in setups where time is precise enough for most tasks but not for high precision
+  tasks the system may appear to work overall while some features are unreliable or broken.
+* The expectation is that most Replicante Core clusters will be centrally managed by a single
+  group/team therefore making reliance on time a more realistic option than the open internet.
 
 {{% notice class="info" %}}
 For practical purposes all the above just means means that an
 [NTP](https://en.wikipedia.org/wiki/Network_Time_Protocol) agent should be
-running on all Replicante servers, including dependencies and monitored datastores.
+running on all Replicante Core servers, including dependencies and ideally monitored datastores.
 {{% /notice %}}
+
+[clock skew]: https://en.wikipedia.org/wiki/Clock_skew
+[RFC 3339]: https://tools.ietf.org/html/rfc3339

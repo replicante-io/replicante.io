@@ -5,6 +5,7 @@ draft: false
 group: apiref
 weight: 605
 ---
+<!-- markdownlint-disable MD033 -->
 
 The WebUI is an external project to visualise and control clusters and automation
 managed by Replicante Core.
@@ -18,7 +19,6 @@ likely to change in the future with the introduction of a dedicated out-of-proce
 In that eventuality these endpoints are likely to be removed entirely.
 {{% /notice %}}
 
-
 <div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/webui/cluster/:cluster/discovery</div>
@@ -27,7 +27,6 @@ In that eventuality these endpoints are likely to be removed entirely.
 
 Return the discovery record for the specified `:cluster` ID.
 
-
 <div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/webui/cluster/:cluster/meta</div>
@@ -35,7 +34,6 @@ Return the discovery record for the specified `:cluster` ID.
 </div>
 
 Return metadata for the specified `:cluster` ID.
-
 
 <div class="rest">
   <div class="method get">GET</div>
@@ -46,7 +44,6 @@ Return metadata for the specified `:cluster` ID.
 List cluster IDs matching the given `:query`, which defaults to the empty string.  
 Clusters match the query if their name or ID includes the `:query` string.
 
-
 <div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/webui/clusters/top</div>
@@ -54,7 +51,6 @@ Clusters match the query if their name or ID includes the `:query` string.
 </div>
 
 Return the ID of the 10 clusters with the gratest number of nodes.
-
 
 <div class="rest">
   <div class="method get">GET</div>

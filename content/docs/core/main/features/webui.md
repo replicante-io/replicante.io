@@ -11,13 +11,15 @@ The main purpose of which is to visualise collected information and events.
 
 The WebUI aims to be minimal and self-explicatory so just install it and click around.
 
-
 ## Install
+
 ### With Docker
+
 A docker image with the pre-built WebUI is available:
-https://hub.docker.com/r/replicanteio/webui
+<https://hub.docker.com/r/replicanteio/webui>
 
 To use it, simply pull it and start it:
+
 ```bash
 docker pull replicanteio/webui:v0
 docker run --rm -it \
@@ -26,6 +28,7 @@ docker run --rm -it \
 ```
 
 ### From code
+
 The WebUI lives in a dedicated repository and is an nodejs application.
 It can be installed by fetching the code, installing dependences, building static assets.
 

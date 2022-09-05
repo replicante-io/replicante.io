@@ -5,6 +5,7 @@ draft: false
 group: agent
 weight: 104
 ---
+<!-- markdownlint-disable MD033 -->
 
 {{% notice class="warning" %}}
 **Alpha state disclaimer**
@@ -12,7 +13,6 @@ weight: 104
 The protocol defined below is in early development cycle
 and is subject to (potentially breaking) change.
 {{% /notice %}}
-
 
 <div class="rest">
   <div class="method get">GET</div>
@@ -29,14 +29,15 @@ from growing too large and the agent state from taking over the node.
 
 A list of finished actions MUST include:
 
-  * The action ID.
-  * The final action state.
+* The action ID.
+* The final action state.
 
 And it MAY include:
 
-  * The action kind.
+* The action kind.
 
 Example:
+
 ```json
 [
     {
@@ -57,7 +58,6 @@ Example:
 ]
 ```
 
-
 <div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/actions/queue</div>
@@ -70,6 +70,7 @@ The format of elements in this list is the same as the one of items
 returned by `/api/unstable/actions/finished`.
 
 Example:
+
 ```json
 [
     {
@@ -90,7 +91,6 @@ Example:
 ]
 ```
 
-
 <div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/actions/info/:id</div>
@@ -99,23 +99,24 @@ Example:
 
 The following parameters are REQUIRED in the URL:
 
-  * `:id`: the ID of the action to lookup.
+* `:id`: the ID of the action to lookup.
 
 The response will include the following information:
 
-  * `action`: the full action model as described in the [protocol section](agent-intro.md#actions).
-  * `history`: array of action transition events:
-    * `action_id`: (optional) ID of the action that transition.
-                   If set, this MUST be the same as `action.id`.
-    * `timestamp`: the (agent) time the action entered the state.
-    * `state`: the state that was reached.
-    * `state_payload`: optional JSON value defined by the action at the time of transition.
+* `action`: the full action model as described in the [protocol section](agent-intro.md#actions).
+* `history`: array of action transition events:
+  * `action_id`: (optional) ID of the action that transition.
+                 If set, this MUST be the same as `action.id`.
+  * `timestamp`: the (agent) time the action entered the state.
+  * `state`: the state that was reached.
+  * `state_payload`: optional JSON value defined by the action at the time of transition.
 
 Example:
+
 ```json
 {
     "action": {
-        "kind": "replicante.io/service.gracefulrestart",
+        "kind": "replicante.io/service.graceful.restart",
         "created_ts": "2019-08-30T20:40:24Z",
         "finished_ts": "2019-08-30T20:40:37Z",
         "headers": {},
@@ -184,7 +185,6 @@ Example:
 }
 ```
 
-
 <div class="rest">
   <div class="method post">POST</div>
   <div class="url post">/api/unstable/actions/schedule/:kind</div>
@@ -193,26 +193,28 @@ Example:
 
 The following parameters are REQUIRED in the URL:
 
-  * `:kind`: the ID of the action to lookup.
+* `:kind`: the ID of the action to lookup.
 
 A JSON body is REQUIRED for this endpoint:
 
-  * The entiry JSON body is passed as arguments to the request.
+* The entry JSON body is passed as arguments to the request.
 
-The agent is REQUIRED to validate the agruments passed to the request.
+The agent is REQUIRED to validate the arguments passed to the request.
 If the provided arguments are incompatible to what the action `:kind` expects
 the endpoint MUST return an HTTP 400 error to the caller.
 
 The response will include the following information:
 
-  * `id`: unique ID of the newly scheduled action.
+* `id`: unique ID of the newly scheduled action.
 
 Example request:
+
 ```json
 {}
 ```
 
 Example response:
+
 ```json
 {
     "id": "308fb8bc-79a1-49d9-bf71-1191d7d6c5d2"

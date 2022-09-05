@@ -13,17 +13,17 @@ So how does cluster discovery work?
 
 {{< img "discovery.png" "Overview: cluster discovery" >}}
 
-  0. Users apply one or more `DiscoverySetting` objects though the API.
-  1. The cluster `discovery` component periodically runs at fixed intervals.
-     The interval should be short as it determines the delay between
-     discoveries needing to run and them being scheduled.
-  2. The `discovery` run looks for any discoveries with an **expected** next schedule time in the past.
-     If no cluster discovery needs to run the `discovery` run does nothing.
-  3. The `discovery` run schedules a discovery task for each discovery that needs to be performed.
-  4. The **expected** next schedule time is updated to `now() + discovery interval`.
-  5. A task worker picks up the discovery task.
-  6. The discovery task fetches discovery records from the given discovery.
-  7. Discovery records are updated in the primary store.
+0. Users apply one or more `DiscoverySetting` objects though the API.
+1. The cluster `discovery` component periodically runs at fixed intervals.
+   The interval should be short as it determines the delay between
+   discoveries needing to run and them being scheduled.
+2. The `discovery` run looks for any discoveries with an **expected** next schedule time in the past.
+   If no cluster discovery needs to run the `discovery` run does nothing.
+3. The `discovery` run schedules a discovery task for each discovery that needs to be performed.
+4. The **expected** next schedule time is updated to `now() + discovery interval`.
+5. A task worker picks up the discovery task.
+6. The discovery task fetches discovery records from the given discovery.
+7. Discovery records are updated in the primary store.
 
 ## Deleting clusters and nodes
 
@@ -46,5 +46,5 @@ Cluster discovery has several advantages:
 
 * A single source of truth as to which instances should exist in which clusters.
 * Automatic detection of node creation and retirement.
-* Agents are "checked" against some form of trusted server inventory
-  (agents can't just add themselves to a cluster).
+* Nodes are "checked" against some form of trusted server inventory
+  (nodes can't just add themselves to a cluster).

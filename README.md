@@ -30,11 +30,13 @@ For some sections there are dedicated archetypes that should be used (with `--ki
 
 * For `docs/agent/<version>/info/` use `agent-info`.
 * For `docs/agent/<version>/official/` use `agent-official`.
+* For `docs/agent/<version>/nodeactref/` use `agent-nodeactref`.
 * For `docs/core/<version>/admin/` use `core-admin`.
 * For `docs/core/<version>/apiref/` use `core-apiref`.
 * For `docs/core/<version>/basics/` use `core-basics`.
 * For `docs/core/<version>/cli/` use `core-cli`.
 * For `docs/core/<version>/features/` use `core-feature`.
+* For `docs/core/<version>/orcactref/` use `core-orcactref`.
 * For `docs/core/<version>/scale/` use `core-scale`.
 * For `docs/core/<version>/security/` use `core-sec`.
 * For `docs/core/<version>/upgrade/` use `core-upgrade`.

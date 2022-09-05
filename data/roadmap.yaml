@@ -1,10 +1,7 @@
-todo:
-  - 'Add and update documentation'
-  - 'Update `Orchestrator` box on homepage to remove the "coming soon" tag'
+todo: []
 
 progress:
   - 'Replace TravisCI with GitHub Actions'
-  - 'Orchestrator actions'
 
 done:
   - 'Remove CI caches and clean up travis (management overhead is too high)'
@@ -19,3 +16,6 @@ done:
   - 'Introduce `ClusterOrchestrateReport`s'
   - 'Introduce `EventScope`s to better represent the "target" of an event'
   - 'Compute a lag value for each non-primary shard that does not report it'
+  - 'Orchestrator actions'
+  - 'Add and update documentation'
+  - 'Update `Orchestrator` box on homepage to remove the "coming soon" tag'

@@ -6,10 +6,10 @@ group: notes
 weight: 7
 ---
 
-At the essence of Replicante Core is an event driven engine: when a state change is
-detected actions are taken to return the system to a desired state.
+At the essence of Replicante Core is a state events engine: when a state change is
+detected actions are taken to adapt or to return the system to a desired state.
 
-The idea of orchestration built on an event driven engine is not new:
+The idea of orchestration built on events is not new:
 
 * It is an easy model to understand for humans (physics is based on the action-reaction paradigm).
 * It is easy enough to implement (at least compared to other options).
@@ -26,17 +26,17 @@ So how does cluster orchestration work?
 
 {{< img "orchestration.png" "Overview: cluster orchestration" >}}
 
-  1. The cluster `orchestrate` component periodically runs at fixed intervals.
-     The interval should be short as it determines the delay between cluster
-     needing orchestration and the orchestration being scheduled.
-  2. The `orchestrate` run looks for any cluster with an **expected** next orchestration time in the past.
-     If no cluster needs to be orchestrated the `orchestrate` run does nothing.
-  3. The `orchestrate` run schedules an orchestrate task for each cluster that needs to run.
-  4. The **expected** next orchestration time is updated to `now() + orchestrate interval`.
-  5. A task worker picks up the orchestration task.
-  6. The orchestration task performs all orchestration logic (see below).
-  7. Events are emitted for state changes.
-  8. Persist agent state and aggregated cluster state to the primary store.
+1. The cluster `orchestrate` component periodically runs at fixed intervals.
+   The interval should be short as it determines the delay between cluster
+   needing orchestration and the orchestration being scheduled.
+2. The `orchestrate` run looks for any cluster with an **expected** next orchestration time in the past.
+   If no cluster needs to be orchestrated the `orchestrate` run does nothing.
+3. The `orchestrate` run schedules an orchestrate task for each cluster that needs to run.
+4. The **expected** next orchestration time is updated to `now() + orchestrate interval`.
+5. A task worker picks up the orchestration task.
+6. The orchestration task performs all orchestration logic (see below).
+7. Events are emitted for state changes.
+8. The new cluster state records and aggregated generated data is persisted to the primary store.
 
 ## Avoid concurrent orchestration tasks
 
@@ -57,25 +57,29 @@ This section covers how an orchestration task works against an individual cluste
 The orchestration logic performs the following steps sequentially:
 
 1. Build a cluster view (see below) from existing data about the cluster.
-2. Process each node in the cluster discovery record:
+2. Process each node in the latest cluster discovery record:
    1. Fetch updated information from the cluster nodes.
    2. Use this information to create an incremental updated view.
    3. Use this information and the starting cluster view to emit events.
-   4. The information is also saved to the primary store.
-   5. [Schedule actions]({{< ref "../scheduling-actions/index.md" >}}) not already scheduled.
-3. Perform data aggregation to report on the cluster as a whole:
+   4. The information is saved to the primary store once relevant events are emitted.
+   5. [Schedule node actions]({{< ref "../scheduling-actions/index.md" >}}) not already scheduled.
+3. Progress and/or start any orchestrator actions waiting to be scheduled.
+   Scheduling priorities and running actions are taken into account to determine
+   which orchestrator actions can start.
+4. Perform data aggregation to report on the cluster as a whole:
    1. Report on cluster level metadata such as number of nodes, versions, etc ...
 
 ### A cluster view
 
-The newly fetched agents information is aggregated to generate an
+The newly fetched cluster information is used to generate an
 [approximate cluster view]({{< ref "../cluster-view.md" >}}).
-This cluster view is compared to a view based on the last known cluster data
-to generate events describing changes in the view of the system.
+This new cluster view is compared to a view based on the last known cluster data
+to generate events describing changes observed happening to the cluster.
 
 Because the cluster view is approximate node events are always based on reporting from the node
 themselves (we do not report a node as down if we see it up, even if another node in the cluster
 think it is down).
 
 Only cluster level events are generated off the top of this views.
-Actions will have to check if the state of the system matches the expectations before they are executed.
+Actions will also have to check if the state of the cluster matches
+expectations before they are executed.
