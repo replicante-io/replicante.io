@@ -1,7 +1,6 @@
 todo: []
 
-progress:
-  - 'Replace TravisCI with GitHub Actions'
+progress: []
 
 done:
   - 'Remove CI caches and clean up travis (management overhead is too high)'
@@ -19,3 +18,4 @@ done:
   - 'Orchestrator actions'
   - 'Add and update documentation'
   - 'Update `Orchestrator` box on homepage to remove the "coming soon" tag'
+  - 'Replace TravisCI with GitHub Actions'
