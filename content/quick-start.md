@@ -37,17 +37,20 @@ Only nodes with an agent attached to them will be exposed by the discovery serve
 There are two command line tools you will need to install:
 
 * [`replidev`]: the Replicante development tool will start, stop and manage datastore and similar components.
-* [`replictl`]: the Replicante command line client to interact with you playground Core stack.
+* [`replictl`]: the Replicante command line client to interact with your playground's RepliCore stack.
 
 ### Install [`replidev`]
 
 First of all, [`replidev`] requires some dependencies:
 
+* The [Rust Programming Language](https://www.rust-lang.org/) toolchain `cargo` to build some of the tools.
 * [`Podman`](https://podman.io/getting-started/installation) to manage containers (version 1.9 or later).
 * [`easy-rsa`](https://github.com/OpenVPN/easy-rsa) and [`openssl`](https://www.openssl.org/)
   to generate certificates.
+  * Tested with easyrsa 3.1.0.
+  * Some versions of easyrsa are bugged and ask for a passphrase when they should not.
 
-This tools must be available in `$PATH` for [`replidev`] to be able to use them.
+These tools must be available in `$PATH` for [`replidev`] to be able to use them.
 
 Once dependencies are available fetch and compile [`replidev`]:
 
@@ -98,18 +101,19 @@ First, generate certificates to be used by core and agents:
 
 ```bash
 $ replidev gen-certs
---> Generating CA certificates
---> Generating Server certificates
---> Generating Client certificates
---> Bundling some certs
-CA Certificate:     ./data/pki/replidev/certs/replidev.crt
-CA Private Key:     ./data/pki/replidev/keys/replidev.key
+
+[ MANY .+- ]
+[ CAN BE IGNORED ]
+
+--> Here is where you can find your certificates:
+CA Certificate:     ./data/pki/replidev/ca.crt
+CA Private Key:     ./data/pki/replidev/private/ca.key
 Client Bundle:      ./data/pki/replidev/bundles/client.pem
-Client Certificate: ./data/pki/replidev/certs/client.crt
-Client Private Key: ./data/pki/replidev/keys/client.key
+Client Certificate: ./data/pki/replidev/issued/client.crt
+Client Private Key: ./data/pki/replidev/private/client.key
 Server Bundle:      ./data/pki/replidev/bundles/server.pem
-Server Certificate: ./data/pki/replidev/certs/server.crt
-Server Private Key: ./data/pki/replidev/keys/server.key
+Server Certificate: ./data/pki/replidev/issued/server.crt
+Server Private Key: ./data/pki/replidev/private/server.key
 ```
 
 This step is only needed once on a new machine or when the certificates expire.
@@ -147,6 +151,13 @@ MongoDB shell version v4.2.5
 connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
 Implicit session: session { "id" : UUID("9ea25960-0f73-4866-903a-a04d6c8ea869") }
 MongoDB server version: 4.2.5
+--> Initialise play-replicore/kafka from play-replicore-kafka
+Creating topic stream_events if needed
+Creating topic task_discover_clusters if needed
+Creating topic task_discover_clusters_retry if needed
+Creating topic task_orchestrate_cluster if needed
+Creating topic task_orchestrate_cluster_retry if needed
+--> Initialise play-replicore/app from play-replicore-app
 ```
 
 Once the above command completes you should have access to the WebUI at [http://localhost:3000](http://localhost:3000)
@@ -154,13 +165,44 @@ and you can follow replicante core logs with `podman logs -f play-replicore-app`
 
 ## 3. Start the playgrounds API server
 
-At this point you should see an empty WebUI and, if you look at the logs, some errors like the one below:
+At this point you should see an empty WebUI.
+Replicante Core won't do much until we tell it where to get clusters information.
 
-```json
-{"msg":"Cluster discovery error","level":"ERRO","ts":"2020-04-26T09:23:08.957288273+00:00","module":"replicante::components::discovery::election","error_cause":"http://podman-host:9876/discover: error trying to connect: Connection refused (os error 111)","error_layers":2,"error_message":"HTTP request failed","error_name":"HttpRequest"}
+The first step is to configure a `DiscoverySettings` so Replicante Core can start finding clusters.
+To do so:
+
+```bash
+# Configure access to the Replicante Core instance.
+$ replictl context login --context quick-start
+Replicante API address: http://localhost:16016
+(Optional) API CA certificate file: data/pki/replidev/ca.crt
+(Optional) API client certificate bundle: data/pki/replidev/bundles/client.pem
+
+$ replictl context select
+Select default context (esc or q to clear selection): quick-start
+
+$ replictl context list
+ACTIVE   NAME          URL                      CA BUNDLE   CLIENT KEY   NAMESPACE   CLUSTER   NODE
+*        quick-start   http://localhost:16016   Set         Set          Not set     Not set   Not set
+
+# Set the default namespace for the context to keep commands shorter
+$ replictl context change
+Select a namespace (empty to clear selection): default
+Select a cluster (empty to clear selection):
+Select a node (empty to clear selection):
+
+# Apply the DiscoverySettings configuration.
+$ replictl apply -f replicore/apply/discovery.yaml
+Object applied successfully
 ```
 
-This is because this Replicante stack is configured to discover clusters from the
+At this point the logs should start periodically emitting some errors like the one below:
+
+```json
+{"msg":"Failed to handle cluster discovery task","level":"ERRO","ts":"2022-09-14T20:51:05.323143396Z","module":"replicore_task_discovery","error_cause":"error sending request for url (http://localhost:9876/discover): error trying to connect: tcp connect error: Connection refused (os error 111)","error_layers":3,"error_message":"unable to fetch discovery record from backend default.playground","error_name":"FetchCluster"}
+```
+
+This is because this Replicante Core is configured to discover clusters from the
 playgrounds API server running on your podman host.
 To start this service open a new console and run:
 
@@ -169,7 +211,7 @@ $ replidev play server
 --> Server listening at http://0.0.0.0:9876
 ```
 
-While the WebUI will stay empty, the error should be gone now!
+If you look at the events list in the WebUI you should now see a `DISCOVERY_SETTINGS_APPLY` event.
 
 ## 4. Start a MongoDB cluster
 
@@ -201,7 +243,7 @@ Let's fix that now:
 ```bash
 # Note that the port set in the host attribute is set dynamically and may be different.
 # Use replidev play node-list to check for the correct store port.
-$ podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.initiate({_id: "mongo-rs", members: [{_id: 0, host: "podman-host:10000"}]})'
+$ podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.initiate({_id: "mongo-rs", members: [{_id: 0, host: "host.containers.internal:10000"}]})'
 ```
 
 Once replicante checks the cluster, the node should be in the `UP` state.
@@ -231,8 +273,8 @@ fda39e282598843251638c9392516b1c8cf12be564d172ca68929c18af033ba7
 And add them to the initialised replica set:
 
 ```bash
-podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.add("podman-host:10002");'
-podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.add("podman-host:10004");'
+podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.add("host.containers.internal:10002");'
+podman exec -it play-node-JfC9yNPm-mongo mongo --eval 'rs.add("host.containers.internal:10004");'
 ```
 
 ## 5. Start a zookeeper cluster
@@ -268,26 +310,6 @@ $ replidev play node-start zookeeper --var-file 'cluster=zookeeper.demo.json' --
 
 ## 6. Schedule some actions
 
-Before you can interact with the local Replicante Core stack you need to set up [`replictl`]:
-
-```bash
-$ replictl context login --context play
-Replicante API address: http://localhost:16016/
-(Optional) API CA certificate file:
-(Optional) API client certificate bundle:
-
-$ replictl context select --context play
-$ replictl context list
-ACTIVE   NAME   URL                       CA BUNDLE   CLIENT KEY   NAMESPACE   CLUSTER   NODE  
-*        play   http://localhost:16016/   Not set     Not set      Not set     Not set   Not set
-
-# Set the namespace for the context once for all other commands.
-$ replictl context change
-Select a namespace (empty to clear selection): default
-Select a cluster (empty to clear selection):
-Select a node (empty to clear selection):
-```
-
 Actions are defined as YAML files.
 This is a bit much for an example ping action but provides many advantages for real use systems:
 
@@ -301,13 +323,14 @@ For our example we'll schedule a ping action against any cluster/node:
 $ cat - > ping.yaml <<EOS
 apiVersion: replicante.io/v0
 kind: AgentAction
-metadata: {}
+metadata:
+  approval: granted
 spec:
   action: agent.replicante.io/test.ping
 EOS
-$ replictl apply -f ping.yaml --cluster mongo-rs --node 'https://podman-host:10001'
-$ replictl apply -f ping.yaml --cluster mongo-rs --node 'https://podman-host:10003'
-$ replictl apply -f ping.yaml --cluster zookeeper --node 'https://podman-host:10009'
+$ replictl apply -f ping.yaml --cluster mongo-rs --node 'https://host.containers.internal:10001'
+$ replictl apply -f ping.yaml --cluster mongo-rs --node 'https://host.containers.internal:10003'
+$ replictl apply -f ping.yaml --cluster zookeeper --node 'https://host.containers.internal:10009'
 ```
 
 Note how the same action definition is applied to any nodes across any cluster.
