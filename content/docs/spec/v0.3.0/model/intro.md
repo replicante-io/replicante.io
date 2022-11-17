@@ -3,6 +3,7 @@ title: "Introduction"
 date: 2020-02-18T23:02:13Z
 draft: false
 group: model
+spec: agent
 weight: 1
 ---
 

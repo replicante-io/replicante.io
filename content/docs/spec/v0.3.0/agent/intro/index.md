@@ -3,6 +3,7 @@ title: "The Agent Protocol"
 date: 2020-02-18T23:03:12Z
 draft: false
 group: agent
+spec: agent
 weight: 101
 ---
 
@@ -45,7 +46,9 @@ but that is outside the scope of this specification.
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/info/agent</div>
   <div class="desc get rtl">Returns information about the agent itself</div>
+</div>
 
+<div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/info/datastore</div>
   <div class="desc get rtl">Returns information about the datastore</div>
@@ -104,15 +107,21 @@ The states are as follows:
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/actions/finished</div>
   <div class="desc get rtl">Returns a list of finished actions</div>
+</div>
 
+<div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/actions/queue</div>
   <div class="desc get rtl">Returns a list of currently running or queued actions</div>
+</div>
 
+<div class="rest">
   <div class="method get">GET</div>
   <div class="url get">/api/unstable/actions/info/:id</div>
   <div class="desc get rtl">Returns an action details as well as its state history</div>
+</div>
 
+<div class="rest">
   <div class="method post">POST</div>
   <div class="url post">/api/unstable/actions/schedule/:kind</div>
   <div class="desc post rtl">Request the scheduling of a new action</div>

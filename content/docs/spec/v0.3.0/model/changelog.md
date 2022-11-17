@@ -3,6 +3,7 @@ title: "Changelog"
 date: 2020-02-18T23:18:45Z
 draft: false
 group: model
+spec: agent
 weight: 3
 ---
 

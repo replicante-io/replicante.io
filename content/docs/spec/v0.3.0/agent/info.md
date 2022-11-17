@@ -3,6 +3,7 @@ title: "Agent Information API"
 date: 2020-02-22T16:50:44Z
 draft: false
 group: agent
+spec: agent
 weight: 102
 ---
 

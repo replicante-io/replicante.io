@@ -14,15 +14,14 @@ All you need to know to use, configure, install, manage replicante.
 
 You likely want to start here.
 
-Check out the architecture overview and the quickstart, then dive into the details.
+Check out the architecture overview and the quick start, then dive into the details.
 
 [Latest version]({{% docs-link "core" "stable" %}})  
 [Development version]({{% docs-link "core" "main" %}})
 {{% /content-box %}}
 
-
 {{% content-box title="Agents Documentation" %}}
-Agents are lightweight processes runninng next to datastore processes to perform
+Agents are lightweight processes running next to datastore processes to perform
 all management tasks the datastore software should not deal with.
 
 Agents developed by the Replicante team are documented here.
@@ -31,13 +30,12 @@ Agents developed by the Replicante team are documented here.
 [Development version]({{% docs-link "agent" "main" %}})
 {{% /content-box %}}
 
+{{% content-box title="Specifications" %}}
+The specification documents define attributes, behaviours and expectations of entities
+Replicante Core interacts with such as data stores and infrastructure platforms.
 
-{{% content-box title="Datastore specification" %}}
-The specifications document defines a model that details the attributes,
-behaviours, and expectations needed of datastores.
-
-In Replicante we see every datastore through the lenses of this specifications
-so that datastores can be managed and monitored consistently regardless of software.
+In Replicante Core every interaction with external systems is done through the
+relevant specification so features apply equally to any backing software.
 
 [Latest version]({{% docs-link "spec" "stable" %}})  
 [Development version]({{% docs-link "spec" "main" %}})
@@ -53,7 +51,6 @@ Mainly aimed at project developers to learn the past, understand the now, and gl
 [Development version]({{% docs-link "devnotes" "main" %}})
 {{% /content-box %}}
 {{< /row >}}
-
 
 <div class="alert alert-secondary text-center" role="alert">
   Could not find what you are looking for?

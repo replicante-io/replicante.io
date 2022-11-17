@@ -3,6 +3,7 @@ title: "Example: Kafka"
 date: 2020-02-18T23:18:22Z
 draft: false
 group: model
+spec: agent
 weight: 4
 ---
 

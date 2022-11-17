@@ -3,6 +3,7 @@ title: "Shards Information API"
 date: 2020-02-22T16:55:25Z
 draft: false
 group: agent
+spec: agent
 weight: 103
 ---
 

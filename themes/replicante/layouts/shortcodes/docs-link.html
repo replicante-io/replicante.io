@@ -3,12 +3,29 @@
 {{- if eq $version "stable" -}}
   {{- $version = index $.Site.Data.docs.stable $section }}
 {{- end -}}
+{{- $docs_base := printf "/docs/%s/%s" $section $version -}}
 
-{{- $docs := printf "/docs/%s/%s" $section $version -}}
+{{- /* First case: looking for a specific page in the docs. */ -}}
 {{- with .Get 2 -}}
-  {{ printf "%s/%s" $docs . }}
+  {{- /* Page lookup and Permalink does not work here (at a minimum we loose anchors). */ -}}
+  {{ printf "%s/%s" $docs_base . }}
+
+{{- /* Second case: looking for the root page of a section. */ -}}
 {{- else -}}
-  {{- $docs := $.Site.GetPage $docs -}}
-  {{- $page := index $docs.Pages 0 -}}
-  {{ $page.Permalink }}
+  {{- /* First attempt to lookup a marked page (including the section page). */ -}}
+  {{- $page_search := $.Site.GetPage $docs_base -}}
+  {{- $page_search := slice $page_search | append $page_search.Pages -}}
+  {{- $landing_page := where $page_search "Params.is_landing" "true" -}}
+
+  {{- /* If we find a page tagged as landing link to it. */ -}}
+  {{- $maybe_page := index $landing_page 0 -}}
+  {{- if $maybe_page -}}
+    {{ $maybe_page.Permalink }}
+
+  {{- else -}}
+    {{- /* If no page is marked as landing for the section pick the first page in it. */ -}}
+    {{- $page_search := $.Site.GetPage $docs_base -}}
+    {{- $page := index $page_search.Pages 0 -}}
+    {{- $page.Permalink -}}
+  {{- end -}}
 {{- end -}}

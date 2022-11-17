@@ -3,6 +3,7 @@ title: "The Model"
 date: 2020-02-18T23:16:29Z
 draft: false
 group: model
+spec: agent
 weight: 2
 ---
 

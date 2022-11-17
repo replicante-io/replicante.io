@@ -1,9 +1,9 @@
 ---
-title: "Changelog"
-date: 2020-02-18T23:18:45Z
+title: "CHANGELOG"
+date: 2022-11-07T08:50:00Z
 draft: false
-group: model
-weight: 3
+spec: agent
+weight: 5
 ---
 
 <!-- markdownlint-disable MD022 MD024 MD032 -->
@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Changed
+- Restructured the agents specification documents.
+
+## 0.3.1 - 2022-09-25
 ### Changed
 - Clarify meaning of primary and secondary shard roles.
 - Clarify that agents aren't required as long as data store nodes can respect the model.
@@ -38,3 +42,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## 0.1.0 - 2018-01-28
 ### Added
 - Initial model definition.
+

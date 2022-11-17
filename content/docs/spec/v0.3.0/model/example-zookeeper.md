@@ -3,6 +3,7 @@ title: "Example: Zookeeper"
 date: 2020-02-18T23:18:35Z
 draft: false
 group: model
+spec: agent
 weight: 6
 ---
 
