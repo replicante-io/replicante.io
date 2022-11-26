@@ -6,4 +6,4 @@ stable:
   agent: v0.5.0
   core: v0.7.1
   devnotes: v0.7.1
-  spec: v0.3.0
+  spec: stable

@@ -7,6 +7,7 @@ menu:
     identifier: docs
     weight: 2
 ---
+<!-- markdownlint-disable MD033 -->
 
 {{< row >}}
 {{% content-box title="Core Documentation" %}}
@@ -37,8 +38,8 @@ Replicante Core interacts with such as data stores and infrastructure platforms.
 In Replicante Core every interaction with external systems is done through the
 relevant specification so features apply equally to any backing software.
 
-[Latest version]({{% docs-link "spec" "stable" %}})  
-[Development version]({{% docs-link "spec" "main" %}})
+[Current specifications]({{% docs-link "spec" "stable" %}})  
+[Development specifications]({{% docs-link "spec" "main" %}})
 {{% /content-box %}}
 
 {{% content-box title="Developers Notebook" %}}

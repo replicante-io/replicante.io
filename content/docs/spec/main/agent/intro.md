@@ -34,7 +34,7 @@ of data, means that simple operations may become slow, expensive and/or risky.
 
 * [Attributes and Behaviours]({{< ref "./behave.md" >}}) details what we can know
   of data stores and data store nodes and what they can do.
-* The [API Reference]({{< ref "./api.md" >}}) is available for both agent developers and clients.
-* [Examples]({{< ref "./examples.md" >}}) are then provided of how some selected database software
-  map to this specification.
+* The [API Reference]({{< ref "./api/index.md" >}}) is available for both agent developers and clients.
+* [Examples]({{< ref "./examples.md" >}}) are then provided of how some data store
+  software map to this specification.
 * The [CHANGELOG]({{< ref "./changelog.md" >}}) page details the evolution of this specification.
