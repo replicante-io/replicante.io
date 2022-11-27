@@ -1,13 +1,14 @@
 <div class="btn-group docs-versions">
   {{ $version := .CurrentSection }}
+  {{ $version_name := $version.Params.version_name | default $version.Title }}
   <button type="button" class="btn btn-brand btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Version: {{ $version.Title }}
+    Version: {{ $version_name }}
   </button>
   <div class="dropdown-menu">
     {{ range .CurrentSection.Parent.Pages }}
-    {{ $page := index .Pages 0 }}
     {{ $active := eq $version . }}
-    <a class="dropdown-item{{ if $active }} active{{ end }}" href="{{ $page.Permalink }}">{{ .Title }}</a>
+    {{ $name := .Params.version_name | default .Title }}
+    <a class="dropdown-item{{ if $active }} active{{ end }}" href="{{ .Permalink }}">{{ $name }}</a>
     {{ end }}
   </div>
 </div>

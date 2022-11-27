@@ -3,14 +3,18 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-2 docs-pages">
-      {{ $agent := where .CurrentSection.Pages "Params.group" "agent" }}
-      {{ $model := where .CurrentSection.Pages "Params.group" "model" }}
       {{ partial "version-select" . }}
+      <h3>
+        <a href="{{ .CurrentSection.Permalink }}">{{ .CurrentSection.Title }}</a>
+      </h3>
 
-      <h3>The Datastore Model</h3>
-      {{ partial "nav-group" (dict "Pages" $model "Current" $) }}
-      <h3>The Agent Protocol</h3>
+      <h3>Agents Specification</h3>
+      {{ $agent := where .CurrentSection.Pages "Params.spec" "agent" }}
       {{ partial "nav-group" (dict "Pages" $agent "Current" $) }}
+
+      <h3>Platforms Specification</h3>
+      {{ $platform := where .CurrentSection.Pages "Params.spec" "platform" }}
+      {{ partial "nav-group" (dict "Pages" $platform "Current" $) }}
     </div>
 
     <div class="col-6 docs-content">

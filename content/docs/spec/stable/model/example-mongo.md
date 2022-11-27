@@ -3,6 +3,7 @@ title: "Example: MongoDB"
 date: 2020-02-18T23:18:31Z
 draft: false
 group: model
+spec: agent
 weight: 5
 ---
 

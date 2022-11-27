@@ -44,7 +44,7 @@ For some sections there are dedicated archetypes that should be used (with `--ki
 * For `docs/devnotes/<version>/notes/` use `devnotes-note`.
 * For `docs/devnotes/<version>/opts/` use `devnotes-optimise`.
 * For `docs/spec/<version>/agent/` use `spec-agent`.
-* For `docs/spec/<version>/model/` use `spec-model`.
+* For `docs/spec/<version>/platform/` use `spec-platform`.
 
 ### Versioned documents
 
