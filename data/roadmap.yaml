@@ -1,21 +1,17 @@
-todo: []
+todo:
+  - 'Cluster initialisation and joining actions (orchestrator and agent)'
+  - 'Cluster convergence logic in Replicante Core'
+  - 'Kubernetes Platform'
+  - 'Update Replicante Core user documentation and quick start'
 
-progress: []
+progress:
+  - 'Start work on a `replisdk::platform` framework to implement Platform services'
+  - 'Start work on a `replisdk` modules for reusable runtime logic'
 
 done:
-  - 'Remove CI caches and clean up travis (management overhead is too high)'
-  - 'Update `replidev` install steps to `cargo install <git>`'
-  - 'Update playgrounds to latest release and add actions examples'
-  - 'Add a `replidev curl -- <arg>...` wrapper to call `curl` with added TLS parameters'
-  - 'Rename agents crates and binaries to `repliagent-$AGENT`'
-  - 'Sync view DB using the events stream only'
-  - 'Replace uses of problematic terms with inclusive language'
-  - 'Build an in-memory view of the cluster'
-  - 'Enforce `default` as the only namespace ID'
-  - 'Introduce `ClusterOrchestrateReport`s'
-  - 'Introduce `EventScope`s to better represent the "target" of an event'
-  - 'Compute a lag value for each non-primary shard that does not report it'
-  - 'Orchestrator actions'
-  - 'Add and update documentation'
-  - 'Update `Orchestrator` box on homepage to remove the "coming soon" tag'
-  - 'Replace TravisCI with GitHub Actions'
+  - 'Start working on a `replisdk` rust crate'
+  - 'Rework cluster discovery to return node IDs along side the agent address'
+  - 'First iteration of a Platform specification and API'
+  - 'Implement the Platform API for the `replidev` playground service'
+  - 'Discover clusters from Platforms'
+  - 'Implement node provisioning orchestrator action'

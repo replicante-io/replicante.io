@@ -1,17 +1,11 @@
 current:
-  title: 'Orchestrator Actions'
-  description: 'Expand the actions system with cluster-level actions perfomred by the orchestrator.'
+  title: 'Platforms and Declarative Clusters'
+  description: |
+    Platforms API to discover clusters and create cluster nodes as well as
+    initial support for declarative cluster convergence to the desired state
 
 
 next:
-  - title: 'Platforms and Declarative Clusters'
-    description: |
-      Platforms API to discover clusters and create cluster nodes as well as
-      initial support for declarative cluster convergence to the desired state
-  #- title: 'Nodes Provisioning'
-  #  description: 'Orchestrator actions to create and destroy nodes.'
-  #- title: 'Declarative Clusters'
-  #  description: 'Bootstrap, scale and reconfigure any supported datastore. All from a YAML file.'
   - title: 'Nodes Deletion'
     description: 'Support deleting nodes and forgetting deleted nodes'
   - title: 'RepliCore Authentication'
