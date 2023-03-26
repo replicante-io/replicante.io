@@ -88,6 +88,21 @@ Version of the data store process for the node, in [SemVer] format.
 <td>List of all the shards (data units, see the sharding behaviour) currently on the node.</td>
 </tr>
 <tr>
+<td>Node Status</td>
+<td>
+
+Each node in the cluster has a status attribute:
+
+* `Unavailable`: the agent is unable to connect to the node.
+* `NotInCluster`: the node is running but it is not part of any cluster.
+* `JoiningCluster`: the node is in the process of joining a cluster.
+* `LeavingCluster`: the node is in the process of leaving a cluster.
+* `Unhealthy`: the agent has confirmed the node has experienced an issue and is unhealthy.
+* `Healthy`: the agent can connect to the node and has not noticed any failures.
+
+</td>
+</tr>
+<tr>
 <td>Shard ID</td>
 <td>
 
@@ -197,6 +212,39 @@ This means heterogeneous clusters (nodes with different configuration or softwar
 </td>
 </tr>
 <tr>
+<td>Dynamic Nodes Membership</td>
+<td>
+
+Data stores MUST support dynamically adding and removing nodes from a cluster without
+interrupting operations on every node currently in the cluster.
+
+Implementation of dynamic node membership is data store specific but it MUST
+respect the properties below.
+
+**New node provisioning**:
+
+When a new node is provisioned it will need to join a cluster before it is fully initialised.
+A node can join a cluster in one of the following ways:
+
+* Automatically: a new node knows how to join an existing cluster and will do so when it starts.
+* Join a cluster: an agent action run on the new node will make it join an existing cluster.
+* Adopt a node: an agent action run on an *existing* node will add the *new* node to its cluster.
+
+**Existing node deprovisioning**:
+
+When a current member of the cluster is deprovisioned it must be forgotten by the cluster it
+was a member of.
+
+Nodes may be terminated unexpectedly as a result of error or deprovisioned while network partitions
+prevent them from communicating with the rest of the cluster.
+
+For these reasons all clusters MUST provide an agent action to remove and forget a node.
+The action will run on an *existing* node in the cluster and MUST be idempotent: a cluster may
+be asked to remove a node that is not part of it, in which case the action does nothing.
+
+</td>
+</tr>
+<tr>
 <td>Replication</td>
 <td>
 
@@ -250,7 +298,7 @@ Data store SHOULD provide an administrative command to perform a voluntary failo
 <td>Agent Actions</td>
 <td>
 
-Agents actions are the execution unit on which any automation is built.
+Agent actions are the execution unit on which any automation is built.
 The agent/data store node is responsible for tracking and executing these actions.
 
 Agents allow clients to schedule as many actions as they like and can start rejecting actions
@@ -258,8 +306,88 @@ if too many actions are schedule and have not been processed yet.
 Agents MUST execute only one action at a time.
 Actions MUST be executed in the order they have been successfully scheduled with the agent.
 
-Agents can provide implementations for any actions they choose.
+Agents can provide implementations for any actions they choose on top of any action required
+by this specification document.
 Agents SHOULD document the actions they provide, their arguments and outputs.
+
+</td>
+</tr>
+<tr>
+<td>
+Action: Cluster Initialisation
+<small><pre>agent.replicante.io/cluster.init</pre></small>
+</td>
+<td>
+
+Initialise an uninitialised cluster.
+What this means exactly is dependent on the data store.
+
+**Action arguments**: refer to each data store/agent documentation.
+
+**Action final state**: refer to each data store/agent documentation.
+
+**Maybe Required**: this action is required for data stores that require an explicit
+cluster initialisation step.
+
+</td>
+</tr>
+<tr>
+<td>
+Action: Add Node
+<small><pre>agent.replicante.io/cluster.add</pre></small>
+</td>
+<td>
+
+Add a new node into an existing cluster.
+This action is run on a node that is already part of the cluster to add another node to it.
+
+**Action arguments**: refer to each data store/agent documentation.
+
+**Action final state**: refer to each data store/agent documentation.
+
+**Maybe Required**: this action is required for data stores where new nodes are added to
+clusters from existing nodes.
+
+</td>
+</tr>
+<tr>
+<td>
+Action: Join Cluster
+<small><pre>agent.replicante.io/cluster.join</pre></small>
+</td>
+<td>
+
+Have a new node join an existing cluster.
+This action is run on a new node that is not part of the cluster and will add itself to it.
+
+**Action arguments**: refer to each data store/agent documentation.
+
+**Action final state**: refer to each data store/agent documentation.
+
+**Maybe Required**: this action is required for data stores where new nodes add themselves
+to existing clusters.
+
+</td>
+</tr>
+<tr>
+<td>
+Action: Remove Node
+<small><pre>agent.replicante.io/cluster.remove</pre></small>
+</td>
+<td>
+
+Remove a node from an existing cluster.
+This action is run on a node still in a cluster to remove and forget another node.
+
+The node to remove may have already been terminated and/or removed from the cluster
+when the action is called and therefore MUST be idempotent.
+
+**Action arguments**: refer to each data store/agent documentation.
+
+**Action final state**: refer to each data store/agent documentation.
+
+**Maybe Required**: this action is required for data stores where terminated nodes are explicitly
+removed from the cluster.
 
 </td>
 </tr>

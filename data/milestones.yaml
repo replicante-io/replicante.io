@@ -15,8 +15,6 @@ next:
     description: 'Define roles for people and applications to access all your datastores in one place'
   #- title: 'Replicante Users, Roles, Teams'
   #  description: 'Close the loop with the addition of users, roles and teams to Replicante Core'
-  - title: 'Support more datastores'
-    description: 'Expand supported datastores with new agents'
   #- title: 'The first Dance (playbooks)'
   #  description: |
   #    Nodes coordination to perform advanced cluster operations  
@@ -30,4 +28,4 @@ next:
   #- title: 'Advanced WebUI'
   #  description: 'Flash out a full WebUI application with dedicated backend'
   - title: 'And much more ...'
-    description: 'So much that it is impossible to list at this time'
+    description: 'So much that it is not possible to list at this time'
