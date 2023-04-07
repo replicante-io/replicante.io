@@ -180,6 +180,33 @@ For example this could be:
 
 </td>
 </tr>
+<tr>
+<td>Agent Action Invocation Records</td>
+<td>
+
+Agent Actions, described below in the behaviours, run on the nodes.
+An invocation record is created every time an action runs on an agent to track its progress.
+
+Invocation records have the following properties specified on creation:
+
+* `args`: Arguments passed to the action when it executes.
+* `headers`: Additional metadata attached to the action when it was scheduled.
+* `id`: UUID of the action invocation record.
+  MUST be unique to the cluster without requiring nodes coordination, hence the use of UUIDs.
+* `kind`: Identifier of the action implementation to execute.
+* `requester`: Entity (system, user, ...) requesting the execution of the action.
+
+Invocation records have the following properties added by agents:
+
+* `created_ts`: Time the action was first created on the agent.
+* `finished_ts`: Time the action entered a final state.
+  For completed actions only (either successfully or not).
+* `scheduled_ts`: Time the agent recorded the action in the DB.
+* `state`: State the action is currently in.
+* `state_payload`: If set, where an action implementation can store progress information.
+
+</td>
+</tr>
 </tbody>
 </table>
 {{% /table-wrapper %}}
