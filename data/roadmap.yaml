@@ -1,12 +1,12 @@
 todo:
-  - 'Cluster initialisation and joining actions (orchestrator and agent)'
   - 'Cluster convergence logic in Replicante Core'
   - 'Kubernetes Platform'
   - 'Update Replicante Core user documentation and quick start'
 
 progress:
-  - 'Start work on a `replisdk::platform` framework to implement Platform services'
-  - 'Start work on a `replisdk` modules for reusable runtime logic'
+  - 'Start work on `replisdk::agent::models` module'
+  - 'Improve agent data models'
+  - 'Cluster initialisation and joining actions (orchestrator and agent)'
 
 done:
   - 'Start working on a `replisdk` rust crate'
@@ -15,3 +15,5 @@ done:
   - 'Implement the Platform API for the `replidev` playground service'
   - 'Discover clusters from Platforms'
   - 'Implement node provisioning orchestrator action'
+  - 'Start work on a `replisdk::platform` framework to implement Platform services'
+  - 'Start work on a `replisdk` modules for reusable runtime logic'

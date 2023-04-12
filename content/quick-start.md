@@ -18,7 +18,7 @@ for production use and it does not attempt to cover all possible configuration,
 installation and management details.
 {{% /notice %}}
 
-## 0. Overview
+## Overview
 
 Replicante provides an opinionated development tool, [`replidev`],
 that can be used to demo and experiment with replicante's features as well.
@@ -43,7 +43,7 @@ There are two command line tools you will need to install:
 
 First of all, [`replidev`] requires some dependencies:
 
-* The [Rust Programming Language](https://www.rust-lang.org/) toolchain `cargo` to build some of the tools.
+* The [Rust Programming Language] toolchain `cargo` to build some of the tools.
 * [`Podman`](https://podman.io/getting-started/installation) to manage containers (version 1.9 or later).
 * [`easy-rsa`](https://github.com/OpenVPN/easy-rsa) and [`openssl`](https://www.openssl.org/)
   to generate certificates.
@@ -56,7 +56,7 @@ Once dependencies are available fetch and compile [`replidev`]:
 
 ```bash
 # Cargo install will fetch the git sources and make the compiled binary available in $PATH.
-$ cargo install --git https://github.com/replicante-io/replicante.git replidev
+$ cargo install --git https://github.com/replicante-io/replicante.git --tag 'v0.7.2' replidev
 
 # Check that replidev is working:
 $ replidev --version
@@ -67,7 +67,7 @@ which provides the definitions for datastore nodes and Replicante Core pods to s
 
 ```bash
 $ cd /path/for/replicante/repos
-$ git clone https://github.com/replicante-io/playgrounds
+$ git clone https://github.com/replicante-io/playgrounds --branch 'v0.7'
 $ cd playgrounds/
 
 # Check replidev works and finds podman:
@@ -86,7 +86,7 @@ If that does not work for you or you want to install the latest version from the
 
 ```bash
 # Cargo install will fetch the git sources and make the compiled binary available in $PATH.
-$ cargo install --git https://github.com/replicante-io/replicante.git replictl
+$ cargo install --git https://github.com/replicante-io/replicante.git --tag 'v0.7.2' replictl
 
 # Check that replidev is working:
 $ replictl --version
@@ -364,7 +364,8 @@ play-node-q3mKXaG4   mongo-rs    10004        10004         10005        Running
 play-node-8bMJWWs0   mongo-rs    10002        10002         10003        Running   32593ddfdf9b  
 play-node-JfC9yNPm   mongo-rs    10000        10000         10001        Running   8d2312ace6da
 
-$ replidev play node-stop play-node-ou1ZPcVe play-node-epjE9kI8 play-node-RJZBqGQf play-node-q3mKXaG4 play-node-8bMJWWs0 play-node-JfC9yNPm
+$ replidev play node-stop play-node-ou1ZPcVe play-node-epjE9kI8 play-node-RJZBqGQf \
+  play-node-q3mKXaG4 play-node-8bMJWWs0 play-node-JfC9yNPm
 --> Stop pod play-node-ou1ZPcVe
 0dc4ed954b0b1798a6d00d492fa20bc44339d3056bf03464ea2737abcf150564
 --> Remove pod play-node-ou1ZPcVe
@@ -415,3 +416,4 @@ $ replidev play replicore-clean --confirm
 
 [`replidev`]: https://github.com/replicante-io/replicante/tree/main/devtools/replidev
 [`replictl`]: https://github.com/replicante-io/replicante/tree/main/bin/replictl
+[Rust Programming Language]: https://www.rust-lang.org/
