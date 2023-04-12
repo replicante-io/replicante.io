@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/replicante-io/replicante.io.git"
   },
-  "author": "Stefano Pogliani <stefano@spogliani.net> (http://spogliani.net/)",
+  "author": "Stefano Pogliani <stefano@spogliani.net> (https://spogliani.net/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/replicante-io/replicante.io/issues"
