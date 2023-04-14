@@ -6,6 +6,11 @@ group: notes
 weight: 6
 ---
 
+{{% notice class="warning" %}}
+Cluster discovery will soon be deprecated and will be replaced by
+[Platforms]({{< ref "../platforms/index.md" >}}) and platforms discovery.
+{{% /notice %}}
+
 The cluster discovery process aims to keep administration and management overheads at a minimum
 and take advantage of the highly dynamic platforms and tools available today ("The Cloud").
 

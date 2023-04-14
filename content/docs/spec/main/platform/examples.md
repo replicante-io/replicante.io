@@ -94,9 +94,12 @@ This section exists as a placeholder in case attributes are added in the future.
 * The cluster ID is attached as a label to each pod metadata.
 * The agent address is determined using pod annotations:
   1. Value of `k8s.replicante.io/agent-address` if it exists.
-  2. Value of `{k8s.replicante.io/agent-schema}://{pod_id}:{k8s.replicante.io/agent-port}`
+  2. Figure out the `target_ip` for the node:
+     1. If `k8s.replicante.io/agent-ip-from` is set, use the Node IP (`node`) or Pod IP (`pod`).
+     2. Check `platform.config.agent-ip-from` to use the Node IP (`node`) or Pod IP (`pod`).
+  3. Value of `{k8s.replicante.io/agent-schema}://{target_ip}:{k8s.replicante.io/agent-port}`
      if all required attributes are present.
-  3. Value of `{platform.config.agent-schema}://{pod_id}:{platform.config.agent-port}`.
+  4. Value of `{platform.config.agent-schema}://{target_ip}:{platform.config.agent-port}`.
 
 </td>
 </tr>

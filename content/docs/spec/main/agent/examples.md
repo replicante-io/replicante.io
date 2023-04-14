@@ -81,7 +81,8 @@ Need to consult each topic's partition map zookeeper node (`/brokers/topics/PART
 <td>
 
 * Unit: number of messages.
-* Value: [`kafka.server:type=FetcherLagMetrics,name=ConsumerLag,clientId=ReplicaFetcherThread-0-LEADER_ID,topic=TOPIC,partition=PARTITON_ID`] JMX MBean.
+* Value: [`kafka.server:type=FetcherLagMetrics,name=ConsumerLag,clientId=ReplicaFetcherThread-0-LEADER_ID,topic=TOPIC,partition=PARTITON_ID`]
+  JMX MBean.
 
 </td>
 </tr>

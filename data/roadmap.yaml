@@ -1,5 +1,6 @@
 todo:
   - 'Cluster convergence logic in Replicante Core'
+  - 'Ensure clusters without discovery records can still be orchestrated'
   - 'Kubernetes Platform'
   - 'Update Replicante Core user documentation and quick start'
 
