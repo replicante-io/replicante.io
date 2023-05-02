@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - **BREAKING**: Dynamic Nodes Membership behaviour.
+- **BREAKING**: Node Attributes Maps.
 - **BREAKING**: Node Status information.
 - Action: Cluster Initialisation.
 - Action: Add Node.
@@ -23,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Definition of Agent Action Invocation Records.
 
 ### Changed
+- **BREAKING**: Agent API endpoints and returned information.
 - Restructured the agents specification documents.
 
 ## 0.3.1 - 2022-09-25

@@ -79,50 +79,68 @@ The Agent API MUST expose dates and times as
 
 <div class="rest">
   <div class="method get">GET</div>
-  <div class="url get">/api/unstable/info/agent</div>
-  <div class="desc get rtl">Returns information about the agent itself</div>
+  <div class="url get">/api/unstable/info/node</div>
+  <div class="desc get rtl">Returns information about the Node</div>
 </div>
 
 The following information MUST be included in the response:
 
-* `version` information:
+* `agent_version` information:
   * Version `number`: the [SemVer](https://semver.org/) agent version.
   * Version control `checkout`: VCS ID of the agent code that is running.
   * Version control `taint` status: indicates uncommitted changes to the code.
+* `attributes`: map of attributes based on information available even without the store process.
+* `node_id`: identifier of the node, as reported by the Platform provider the node is running on.
+* `node_status`: the current status of the node (as enumerated in the Attributes specification).
+* `store_id`: identifier of the store software running on the node.
+* `store_version`:
+  * Version `number`: the [SemVer](https://semver.org/) agent version.
+  * Version control `checkout`: VCS ID of the agent code that is running.
+  * `extra` information: store specific additional version information.
 
 Example:
 
 ```json
 {
-  "version": {
+  "agent_version": {
     "number": "0.1.0",
     "checkout": "11a24d9c3940f60e527c571680d64e80e0889abe",
     "taint": "not tainted"
+  },
+  "attributes": {
+    "client.agent.replicante.io/port": 1234,
+    "client.agent.replicante.io/address": "instance.persistence.com",
+  },
+  "node_status": "JOINING_CLUSTER",
+  "store_id": "mongodb/rs",
+  "store_version": {
+    "number": "5.0.15",
+    "checkout": "935639beed3d0c19c2551c93854b831107c0b118",
+    "extra": null
   }
 }
 ```
 
 <div class="rest">
   <div class="method get">GET</div>
-  <div class="url get">/api/unstable/info/datastore</div>
-  <div class="desc get rtl">Returns information about the datastore</div>
+  <div class="url get">/api/unstable/info/store</div>
+  <div class="desc get rtl">Returns information about the Store process</div>
 </div>
 
 The following information MUST be included in the response:
 
-* `cluster_id`: datastore determined cluster identifier.
-* `id`: datastore determined, cluster unique, node identifier.
-* `kind`: datastore software managed by the agent.
-* `version`: the [SemVer](https://semver.org/) datastore version.
+* `cluster_id`: store determined cluster identifier.
+* `attributes`: map of attributes based on information available only from the store process.
 
 Example:
 
 ```json
 {
   "cluster_id": "replica-set-name",
-  "id": "host.domain.com:27017",
-  "kind": "MongoDB",
-  "version": "3.4.5"
+  "attributes": {
+    "mongodb.com/oplog.size": 1234,
+    "mongodb.com/compatibility": "5.0"
+  }
 }
 ```
 

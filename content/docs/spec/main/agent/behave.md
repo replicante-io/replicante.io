@@ -99,6 +99,7 @@ Each node in the cluster has a status attribute:
 * `LeavingCluster`: the node is in the process of leaving a cluster.
 * `Unhealthy`: the agent has confirmed the node has experienced an issue and is unhealthy.
 * `Healthy`: the agent can connect to the node and has not noticed any failures.
+* `Unknown(reason)`: the agent was unable to determine the sate of the node (and provides a reason).
 
 </td>
 </tr>
@@ -204,6 +205,33 @@ Invocation records have the following properties added by agents:
 * `scheduled_ts`: Time the agent recorded the action in the DB.
 * `state`: State the action is currently in.
 * `state_payload`: If set, where an action implementation can store progress information.
+
+</td>
+</tr>
+<tr>
+<td>Node Attributes Maps</td>
+<td>
+
+Nodes MUST expose custom attributes maps: one for information known only when the store process
+is running and another for information available even without the store process.
+
+These maps allow agent implementations to expose arbitrary named attributes.
+These attributes can be used in Replicante Core to implement logic, match nodes and more.
+
+The attribute names are mapped to values of selected types:
+
+* Strings.
+* Numbers.
+* Booleans.
+* Luck of value (`null`).
+
+Attributes should be scoped to ensure different implementations don't clash.
+The `*.replicante.io` scope is reserved for attributes defined by the official project.
+
+Examples:
+
+* `replicante.io/zone`: infrastructure defined failure domain identifier.
+* `nats.io/jetstream`: flag to indicate the extra NATS JetStream component is enabled on the node.
 
 </td>
 </tr>
