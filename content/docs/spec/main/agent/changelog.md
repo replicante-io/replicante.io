@@ -13,7 +13,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Added
+- **BREAKING**: Dynamic Nodes Membership behaviour.
+- **BREAKING**: Node Attributes Maps.
+- **BREAKING**: Node Status information.
+- Action: Cluster Initialisation.
+- Action: Add Node.
+- Action: Join Cluster.
+- Action: Remove Node.
+- Definition of Agent Action Invocation Records.
+
 ### Changed
+- **BREAKING**: Agent API endpoints and returned information.
 - Restructured the agents specification documents.
 
 ## 0.3.1 - 2022-09-25

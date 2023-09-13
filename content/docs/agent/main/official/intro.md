@@ -6,13 +6,11 @@ group: official
 weight: 201
 ---
 
-Some datastore agents are maintained by the Replicante Project directly.
+Some store agents are maintained by the Replicante Project directly.
 
 Official agents are not special to the community or the project but do evolve
 more closely with Replicante Core itself.
 
 This is a list of agents currently supported as part of the Replicante Project:
 
-* [Kafka]({{< ref "./kafka.md" >}})
-* [MongoDB]({{< ref "./mongo.md" >}})
-* [Zookeeper]({{< ref "./zookeeper.md" >}})
+- [MongoDB]({{< ref "./mongo.md" >}})

@@ -1,17 +1,17 @@
 ---
-title: "Debug Actions"
+title: "Test Actions"
 date: 2022-09-03T15:03:05+01:00
 draft: false
 group: nodeactref
-weight: 301
+weight: 302
 ---
 
-Available as the `agent.replicante.io/debug.*` family of identifiers, these actions focus
-on debugging, testing and understanding an agent.
+Available as the `agent.replicante.io/test.*` family of identifiers, these actions focus
+on testing and understanding the agents.
 
 None of these action do much useful work but they can be used to:
 
-* Test the node actions system and the agent.
+* Test and explore the node actions system and connection to the agent.
 * Understand how node actions work, execute and impact the agent.
 * Provide a a way to write demos and examples that actually run without risk to the node.
 
@@ -31,39 +31,41 @@ metadata:
   node: target-node-id
 
 spec:
-  action: agent.replicante.io/debug.${ACTION}
+  action: agent.replicante.io/test.${ACTION}
   args: null
 ```
 
-Each debug action supports different `args` as detailed below.
+Each test action supports different `args` as detailed below.
 
 ## Fail
 
 | | |
 | --------------- | - |
-| Action ID       |`agent.replicante.io/debug.fail` |
-| Summary         | Debugging action that always fails |
+| Action ID       |`agent.replicante.io/test.fail` |
+| Summary         | Action that always fails |
 
-This action handler always returns an error from its `Action::invoke` implementation.
+This action always returns an error when executed.
 Mainly useful to test and explore how errors during action execution are handled.
 
 Any `args` specified for the action are ignored.
 
-## Progress
+## Loop
 
 | | |
 | --------------- | - |
-| Action ID       |`agent.replicante.io/debug.progress` |
-| Summary         | Debugging action that progresses over time |
+| Action ID       |`agent.replicante.io/test.loop` |
+| Summary         | Action that increments a counter until a total is reached |
 
-This action will move from the `NEW` state to `RUNNING` on first invocation and then
-from `RUNNING` to `DONE` the invocation after.
+The action implementation increments a counter (tracked in the execution state) every loop.
+Once the counter reaches the total count the action succeeds.
+
+The target count to reach can be set with the `args.target` attribute.
 
 ## Success
 
 | | |
 | --------------- | - |
-| Action ID       |`agent.replicante.io/debug.success` |
-| Summary         | Debugging action that always succeed |
+| Action ID       |`agent.replicante.io/test.success` |
+| Summary         | Action that always succeed |
 
 The action succeeds as soon as it is invoked and any `args` to it are ignored.

@@ -12,10 +12,10 @@ If is therefore essential to read the agent documentation with regards to what a
 available and how they work.
 
 To provide some consistency and standard expectations across the Replicante ecosystem some
-standard node actions are defined.
+standard node actions are defined as part of the agent specification.
 Agents may not implement these actions but if they do they are expected to implement them
 as described in this reference with regards to:
 
-* What the action does (but of course not how as that would be store dependent).
-* What arguments the action accepts and what these mean.
-* The format of the payload after the action completes, if that is detailed in the reference.
+- What the action does (but of course not how it is done).
+- What arguments the action accepts and what they mean.
+- The schema of the `state.payload` data once the action completes, if that is detailed in the reference.

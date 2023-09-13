@@ -22,15 +22,10 @@ a malicious user can record a legitimate request and re-send it to the agent at 
 Official agents support HTTPS-only servers,
 with mutual certificate verification required for actions to be enabled.
 
-{{% notice class="info" %}}
-The actions system can only be enabled if mutual HTTPS verification is enforced.  
-This is by design as actions can easily compromise datastores if used carelessly or maliciously.
-{{% /notice %}}
-
 ## Runtime user
 
 The agent may require some privileges on a server to perform actions
-such as restart datastores or update TLS certificates.
+such as restart a store process or update TLS certificates.
 
 The recommended approach is to run the agent under a user with limited permissions
 and grant extra permissions as and when required.
