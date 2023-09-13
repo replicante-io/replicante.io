@@ -367,6 +367,21 @@ Agents SHOULD document the actions they provide, their arguments and outputs.
 
 </td>
 </tr>
+</tbody>
+</table>
+{{% /table-wrapper %}}
+
+### Actions
+
+Some behaviours are expected through specific agent actions.
+These enable building automation:
+
+{{% table-wrapper striped=true %}}
+<table>
+<thead>
+<tr><th>Action</th><th>Description</th></tr>
+</thead>
+<tbody>
 <tr>
 <td>
 Action: Cluster Initialisation

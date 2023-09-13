@@ -10,12 +10,14 @@ for all our projects.
 
 Any issue should be reported to [stefano-pogliani](https://github.com/stefano-pogliani)
 by emailing [conduct@replicante.io](mailto:conduct@replicante.io).  
-Unfortunately, as the community lucks members, we are unable to provide a second contact to report incidents to.  
+Unfortunately, as the community lucks members, we are unable to provide a second contact to
+report incidents to.  
 We would still encourage people to report issues, even anonymously.
 
 In addition to the Code Of Conduct below the following documents are relevant:
 
-* The [Reporting Guideline](https://www.replicante.io/conduct/reporting), especially if you wish to report an incident.
+* The [Reporting Guideline](https://www.replicante.io/conduct/reporting), especially if you wish
+  to report an incident.
 * The [Enforcement Guideline](https://www.replicante.io/conduct/enforcing)
 
 ## Adding new content

@@ -25,47 +25,50 @@ the same interface over other protocols.
 
 The interface is defined in terms of:
 
-* Data models: the objects passed between clients and server.
-* API endpoints: the channel to interact with agents.
+- Data models: the objects passed between clients and server.
+- API endpoints: the channel to interact with agents.
 
 ## Data Models
 
-### Agent Actions
+### Agent Action Executions
 
-Actions have the following set of properties:
+Action executions have the following set of properties:
 
-* `args`: Arguments passed to the action when invoked.
-* `created_ts`: Time the action was first created (by the agent, by core, ...).
-* `finished_ts`: Time the action entered a final state.
-* `headers`: Additional metadata headers attached to the action.
-* `id`: Unique ID of the action.
-* `kind`: Type ID of the action to run.
-          Consult the agent documentation for information about actions discovery.
-* `requester`: Entity (system or user) requesting the execution of the action.
-* `scheduled_ts`: Time the agent recorded the action in the DB.
-* `state`: State the action is currently in (see below).
-* `state_payload`: Optional payload attached to the current `state`.
+- `args`: Arguments passed to the action when it was created.
+- `created_time`: Time the action was first created.  
+  An action execution may be created in systems other then Agents (such as Core).
+  In such cases the `created_time` is the time the action execution was created in the system other
+  then the Agent (such as Core) and is passed to Agents.
+- `finished_time`: Time the action entered a final state, for finished actions only.
+- `id`: Unique ID of the action execution.
+- `kind`: Identifier of the action implementation to execute.
+- `metadata`: Unstructured metadata attached to the action when it was created.
+- `scheduled_time`: Time the agent recorded the action execution in its own store.
+- `state`: Nested object with the current state of an Agent Action execution.
+  - `state.error`: Loosely structured information for any error encountered during action execution.
+  - `state.payload`: Scratch pad for action implementations to keep track of how they are processing.
+  - `state.phase`: Current phase of the action execution process.
 
-The action `state` attribute indicates at which point of the lifecycle the action is:
+The action `state.phase` attribute indicates at which point of the lifecycle the action is:
 
 {{< img "action-states.png" "Action state transitions" >}}
 
-The `state`s are as follows:
+The `state.phase`s are as follows:
 
-* `NEW`: all actions start of in the `NEW` state when they are scheduled.
-* `RUNNING`: when a `NEW` action is picked up for execution and started, it enters
+- `NEW`: all actions start of in the `NEW` state when they are scheduled.
+- `RUNNING`: when a `NEW` action is picked up for execution and started, it enters
   the `RUNNING` state. `RUNNING` actions can transition from `RUNNING` to `RUNNING`,
   when this happen their `state_payload` may change.
-* `DONE`: the agent completed execution of the action successfully.
-* `FAILED`: the action encountered an error or was otherwise unable to transition
+- `DONE`: the agent completed execution of the action successfully.
+- `FAILED`: the action encountered an error or was otherwise unable to transition
   the system to the desired state.
 
 The `requester` is one of:
 
-* `AGENT_API`: action requested over the Agent API.
-* `CORE_API`: action requested over the Replicante Core API.
-* `CORE_PLAYBOOK`: action requested by Replicante Core as part of a playbook.
-* `CORE_DECLARATIVE`: action requested by Replicante Core while converging a declarative cluster.
+- `AGENT_API`: action requested over the Agent API.
+- `CORE_API`: action requested over the Replicante Core API.
+- `CORE_PLAYBOOK`: action requested by Replicante Core as part of a playbook.
+- `CORE_DECLARATIVE`: action requested by Replicante Core while converging a declarative cluster.
 
 ### Date and time format
 
@@ -85,18 +88,18 @@ The Agent API MUST expose dates and times as
 
 The following information MUST be included in the response:
 
-* `agent_version` information:
-  * Version `number`: the [SemVer](https://semver.org/) agent version.
-  * Version control `checkout`: VCS ID of the agent code that is running.
-  * Version control `taint` status: indicates uncommitted changes to the code.
-* `attributes`: map of attributes based on information available even without the store process.
-* `node_id`: identifier of the node, as reported by the Platform provider the node is running on.
-* `node_status`: the current status of the node (as enumerated in the Attributes specification).
-* `store_id`: identifier of the store software running on the node.
-* `store_version`:
-  * Version `number`: the [SemVer](https://semver.org/) agent version.
-  * Version control `checkout`: VCS ID of the agent code that is running.
-  * `extra` information: store specific additional version information.
+- `agent_version` information:
+  - Version `number`: the [SemVer](https://semver.org/) agent version.
+  - Version control `checkout`: VCS ID of the agent code that is running.
+  - Version control `taint` status: indicates uncommitted changes to the code.
+- `attributes`: map of attributes based on information available even without the store process.
+- `node_id`: identifier of the node, as reported by the Platform provider the node is running on.
+- `node_status`: the current status of the node (as enumerated in the Attributes specification).
+- `store_id`: identifier of the store software running on the node.
+- `store_version`:
+  - Version `number`: the [SemVer](https://semver.org/) agent version.
+  - Version control `checkout`: VCS ID of the agent code that is running.
+  - `extra` information: store specific additional version information.
 
 Example:
 
@@ -111,6 +114,7 @@ Example:
     "client.agent.replicante.io/port": 1234,
     "client.agent.replicante.io/address": "instance.persistence.com",
   },
+  "node_id": "i-123456",
   "node_status": "JOINING_CLUSTER",
   "store_id": "mongodb/rs",
   "store_version": {
@@ -129,8 +133,8 @@ Example:
 
 The following information MUST be included in the response:
 
-* `cluster_id`: store determined cluster identifier.
-* `attributes`: map of attributes based on information available only from the store process.
+- `cluster_id`: store determined cluster identifier.
+- `attributes`: map of attributes based on information available only from the store process.
 
 Example:
 
@@ -146,29 +150,27 @@ Example:
 
 <div class="rest">
   <div class="method get">GET</div>
-  <div class="url get">/api/unstable/shards</div>
+  <div class="url get">/api/unstable/info/shards</div>
   <div class="desc get rtl">Returns detailed information about shards</div>
 </div>
 
 The following information MUST be included:
 
-* A list of `shards` on the node:
-  * The shard `id`.
-  * The `role` of the node for the shard.
-  * The (optional) `commit_offset` of the shard on the node:
-    * The commit offset `unit`.
-    * The commit offset `value` (as a 64-bits integer).
-  * The (optional) `lag` of a secondary from its primary:
-    * The lag `unit`.
-    * The lag `value` (as a 64-bits integer).
+- A list of `shards` on the node:
+  - The shard `id`.
+  - The `role` of the node for the shard.
+  - The (optional) `commit_offset` of the shard on the node:
+    - The commit offset `unit`.
+    - The commit offset `value` (as a 64-bits integer).
+  - The (optional) `lag` of a secondary from its primary:
+    - The lag `unit`.
+    - The lag `value` (as a 64-bits integer).
 
 Example:
 
 ```json
 {
   "shards": [{
-    "id": "shard_id",
-    "role": "SECONDARY",
     "commit_offset": {
       "unit": "seconds",
       "value": 67890
@@ -176,12 +178,80 @@ Example:
     "lag": {
       "unit": "seconds",
       "value": 33
-    }
+    },
+    "role": "SECONDARY",
+    "shard_id": "shard_id"
   }]
 }
 ```
 
 ### Actions Endpoints
+
+<div class="rest">
+  <div class="method post">POST</div>
+  <div class="url post">/api/unstable/action/</div>
+  <div class="desc post rtl">Request the scheduling of a new action</div>
+</div>
+
+A JSON body is REQUIRED for this endpoint:
+
+- `args`: [optional] arguments passed to the action execution being created.
+- `created_time`: [optional] time the action execution was first created.
+- `id`: [optional] unique ID of the action execution.
+- `kind`: [required] identifier of the action implementation to execute.
+- `metadata`: [optional] unstructured metadata attached to the action when it was created.
+
+The response will include the following information:
+
+- `id`: unique ID of the newly scheduled action.
+
+Example request:
+
+```json
+{
+  "kind": "agent.replicante.io/test.success"
+}
+```
+
+Example response:
+
+```json
+{
+    "id": "308fb8bc-79a1-49d9-bf71-1191d7d6c5d2"
+}
+```
+
+<div class="rest">
+  <div class="method get">GET</div>
+  <div class="url get">/api/unstable/action/:id</div>
+  <div class="desc get rtl">Returns an action execution details</div>
+</div>
+
+The following parameters are REQUIRED in the URL:
+
+- `:id`: the ID of the action execution to lookup.
+
+The response is a JSON encoded representation of an action execution
+model detailed above.
+
+Example:
+
+```json
+{
+  "args": {},
+  "created_time": "2019-08-30T20:40:24Z",
+  "finished_time": "2019-08-30T20:40:37Z",
+  "id": "308fb8bc-79a1-49d9-bf71-1191d7d6c5d2",
+  "kind": "agent.replicante.io/test.success",
+  "metadata": {},
+  "scheduled_time": "2019-08-30T20:40:24Z",
+  "state": {
+    "error": null,
+    "payload": null,
+    "phase": "DONE"
+  }
+}
+```
 
 <div class="rest">
   <div class="method get">GET</div>
@@ -198,9 +268,9 @@ from growing too large and the agent state from taking over the node.
 
 A list of finished actions MUST include:
 
-* The action ID.
-* The action kind.
-* The final action state.
+- The action ID.
+- The action kind.
+- The final action state.
 
 Example:
 
@@ -209,17 +279,17 @@ Example:
     {
         "kind": "replicante.io/store.stop",
         "id": "703824bf-2c16-44f5-b4da-b21688c57043",
-        "state": "DONE"
+        "phase": "DONE"
     },
     {
         "kind": "replicante.io/store.stop",
         "id": "f4fdda3f-3130-474b-b22c-66c6824a5d89",
-        "state": "DONE"
+        "phase": "DONE"
     },
     {
         "kind": "replicante.io/store.stop",
         "id": "191cc19b-2dee-4013-b908-29c7985f79ac",
-        "state": "DONE"
+        "phase": "DONE"
     }
 ]
 ```
@@ -242,149 +312,19 @@ Example:
     {
         "kind": "replicante.io/store.stop",
         "id": "703824bf-2c16-44f5-b4da-b21688c57043",
-        "state": "RUNNING"
+        "phase": "RUNNING"
     },
     {
         "kind": "replicante.io/store.stop",
         "id": "f4fdda3f-3130-474b-b22c-66c6824a5d89",
-        "state": "NEW"
+        "phase": "NEW"
     },
     {
         "kind": "replicante.io/store.stop",
         "id": "191cc19b-2dee-4013-b908-29c7985f79ac",
-        "state": "NEW"
+        "phase": "NEW"
     }
 ]
-```
-
-<div class="rest">
-  <div class="method get">GET</div>
-  <div class="url get">/api/unstable/actions/info/:id</div>
-  <div class="desc get rtl">Returns an action details as well as its state history</div>
-</div>
-
-The following parameters are REQUIRED in the URL:
-
-* `:id`: the ID of the action to lookup.
-
-The response will include the following information:
-
-* `action`: the full action model as described in the [protocol section](agent-intro.md#actions).
-* `history`: array of action transition events:
-  * `action_id`: (optional) ID of the action that transition.
-                 If set, this MUST be the same as `action.id`.
-  * `timestamp`: the (agent) time the action entered the state.
-  * `state`: the state that was reached.
-  * `state_payload`: optional JSON value defined by the action at the time of transition.
-
-Example:
-
-```json
-{
-    "action": {
-        "kind": "replicante.io/service.graceful.restart",
-        "created_ts": "2019-08-30T20:40:24Z",
-        "finished_ts": "2019-08-30T20:40:37Z",
-        "headers": {},
-        "id": "308fb8bc-79a1-49d9-bf71-1191d7d6c5d2",
-        "requester": "API",
-        "args": {},
-        "state": "DONE",
-        "state_payload": {
-            "payload": {
-                "attempt": 0,
-                "message": "the service is running",
-                "pid": "11634"
-            },
-            "stage": 2,
-            "state": "DONE"
-        }
-    },
-    "history": [
-        {
-            "action_id": "308fb8bc-79a1-49d9-bf71-1191d7d6c5d2",
-            "timestamp": "2019-08-30T20:40:37Z",
-            "state": "DONE",
-            "state_payload": {
-                "payload": {
-                    "attempt": 0,
-                    "message": "the service is running",
-                    "pid": "11634"
-                },
-                "stage": 2,
-                "state": "DONE"
-            }
-        },
-        {
-            "action_id": "308fb8bc-79a1-49d9-bf71-1191d7d6c5d2",
-            "timestamp": "2019-08-30T20:40:33Z",
-            "state": "RUNNING",
-            "state_payload": {
-                "payload": {
-                    "attempt": 0,
-                    "message": "the service is not running",
-                    "pid": null
-                },
-                "stage": 1,
-                "state": "DONE"
-            }
-        },
-        {
-            "action_id": "308fb8bc-79a1-49d9-bf71-1191d7d6c5d2",
-            "timestamp": "2019-08-30T20:40:30Z",
-            "state": "RUNNING",
-            "state_payload": {
-                "payload": {
-                    "message": "Err(OperationError(\"No servers available for the provided ReadPreference.\"))"
-                },
-                "stage": 0,
-                "state": "DONE"
-            }
-        },
-        {
-            "action_id": "308fb8bc-79a1-49d9-bf71-1191d7d6c5d2",
-            "timestamp": "2019-08-30T20:40:24Z",
-            "state": "NEW",
-            "state_payload": null
-        }
-    ]
-}
-```
-
-<div class="rest">
-  <div class="method post">POST</div>
-  <div class="url post">/api/unstable/actions/schedule/:kind</div>
-  <div class="desc post rtl">Request the scheduling of a new action</div>
-</div>
-
-The following parameters are REQUIRED in the URL:
-
-* `:kind`: the ID of the action to lookup.
-
-A JSON body is REQUIRED for this endpoint:
-
-* The entry JSON body is passed as arguments to the request.
-
-The agent is REQUIRED to validate the arguments passed to the request.
-If the provided arguments are incompatible to what the action `:kind` expects
-the endpoint MUST return an HTTP 400 error to the caller.
-
-The response will include the following information:
-
-* `id`: unique ID of the newly scheduled action.
-
-Example request:
-
-```json
-{}
-```
-
-Example response:
-
-```json
-{
-    "id": "308fb8bc-79a1-49d9-bf71-1191d7d6c5d2"
-}
 ```
 
 [attributes and behaviours]: {{< ref "./behave.md" >}}
